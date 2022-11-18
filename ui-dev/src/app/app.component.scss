@@ -1,0 +1,11 @@
+@import '../app/styles/colors.scss';
+
+
+#footer {
+  background-color: $greyBlack;
+  height: 25px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}

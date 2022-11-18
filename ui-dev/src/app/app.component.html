@@ -1,0 +1,22 @@
+<div id="angular-spa">
+  <div #headerComponent id="header">
+    <app-header></app-header>
+  </div>
+  <div id="content">
+    <div class="router-wrapper">
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <div *ngIf="600 > width" id="mobile-menu" [ngClass]="{'show-mobile-nav':sidebarStatus}">
+    <nav (click)="closeMobileNav()">
+      <div routerLink="/">Home</div>
+      <div routerLink="projects/javascript-projects">Projects</div>
+      <div routerLink="components/angular-components">Components</div>
+      <div routerLink="development/development">Development</div>
+      <div routerLink="front-end-dev-resume">Experience</div>
+      <div routerLink="front-end-developer">About</div>
+      <div (click)="navigateToContact()">Contact</div>
+    </nav>
+  </div>
+</div>
