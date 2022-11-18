@@ -1,0 +1,16 @@
+.nasa-pod-search {
+  height: 70px;
+  padding: 10px 10px 0 10px;
+}
+
+@media screen and (max-width:992px){
+  .nasa-pod-search {
+    width: 252px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nasa-pod-search {
+    border: none
+  }
+}

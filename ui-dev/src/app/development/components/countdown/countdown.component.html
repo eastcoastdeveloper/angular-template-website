@@ -1,0 +1,69 @@
+<div class="count-down-timer element-shadow">
+  <p>Countdown to {{currentTime}}</p>
+  <div class="wrapper">
+    <div class="description">
+      <p>Days</p>
+      <p>Hours</p>
+      <p>Minutes</p>
+      <p>Seconds</p>
+    </div>
+    <div class="times">
+      <p #days></p>
+      <p #hours></p>
+      <p #minutes></p>
+      <p #seconds></p>
+    </div>
+  </div>
+</div>
+
+<div class="snippet-description item-margin">
+  Sometimes I'm amazed how much developers can accomplish in such few lines of code. No frameworks or libraries, just
+  code in a native language. I think this is one of those times. Here's a neat component, done so with minimal
+  code.<br><br>Begin by setting the variables.
+  <ul>
+    <li>Basic date reference followed by the current time, denoted via this.date.getTime().</li>
+    <li>targetDate is of course the desired date to countdown from.</li>
+    <li>targetTime is the numeric version of the date.</li>
+    <li>difference is then subtracted by now (numerically).</li>
+    <li>The months array is used to illustrate the month name in the template. Feel free to substitute this w/ template
+      literals. <a
+        href="https://stackblitz.com/edit/angular-countdown-timer-component?file=src%2Fapp%2Fapp.component.ts%3AL28"
+        target="_blank">(Template Literal)</a></li>
+    <li>We're using basic ViewChild to retrieve the DOM elements, which are then populated w/ values.</li>
+    <li>ngAfterViewInit is used because ViewChild elements do not become available at early life cycle hooks.</li>
+    <li>The isNaN bit is pertinent because days is NaN before it's calculated. So unless you want NaN showing in the UI,
+      use the ternary.</li>
+    <li>In this hook, we call a repeating fn every 1 second. It updates the difference bwtween then and now and divides
+      it by a series to make it readable/presentable.</li>
+    <li>tickTock() creates a new date, and updates the aforementioned values. That's it!</li>
+  </ul>
+</div>
+<div class="code-preview">
+  <pre>
+		<code>{{appTypeScript}}</code>
+	</pre>
+</div>
+
+<div class="snippet-description item-margin">
+  The markup is a rudimentary warpper with two rows of elements.
+</div>
+<div class="code-preview">
+  <pre>
+		<code>{{markup}}</code>
+	</pre>
+</div>
+<p class="snippet-description item-margin">
+  Styling is nothing revolutionary.
+</p>
+<div class="code-preview">
+  <pre>
+		<code>{{styling}}</code>
+	</pre>
+</div>
+<br>
+
+<div class="snippet-description item-last-child">
+  As always, if you get stuck or need a working version, check out my <a
+    href="https://stackblitz.com/edit/angular-countdown-timer-component?file=src%2Fapp%2Fapp.component.ts"
+    target="_blank">Angular countdown timer</a> component on Stackblitz.
+</div>

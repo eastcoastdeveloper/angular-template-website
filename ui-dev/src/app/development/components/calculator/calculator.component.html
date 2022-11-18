@@ -1,0 +1,24 @@
+<div class="calculator-wrapper">
+    <div class="output">
+        <div data-equation-value class="equation"></div>
+        <div data-result-value class="result"></div>
+    </div>
+    <button data-clear-all (click)="clear()" class="double-width">AC</button>
+    <button data-delete>DEL</button>
+    <button data-operator (click)="selectOperation(0)">&#247;</button>
+    <button (click)="addNumber($event)">1</button>
+    <button (click)="addNumber($event)">2</button>
+    <button (click)="addNumber($event)">3</button>
+    <button data-operator (click)="selectOperation(1)">*</button>
+    <button (click)="addNumber($event)">4</button>
+    <button (click)="addNumber($event)">5</button>
+    <button (click)="addNumber($event)">6</button>
+    <button data-operator (click)="selectOperation(2)">+</button>
+    <button (click)="addNumber($event)">7</button>
+    <button (click)="addNumber($event)">8</button>
+    <button (click)="addNumber($event)">9</button>
+    <button data-operator (click)="selectOperation(3)">-</button>
+    <button (click)="addNumber($event)">.</button>
+    <button (click)="addNumber($event)">0</button>
+    <button data-equals (click)="addValues()" class="double-width">=</button>
+</div>

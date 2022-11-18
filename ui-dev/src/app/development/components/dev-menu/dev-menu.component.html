@@ -1,0 +1,24 @@
+<div class="category-menu element-shadow">
+    <div class="category-list">
+        <ul>
+            <li *ngFor="let item of dataArray" [ngClass]="{'active-category': activeCategory === item.category}"
+                (click)="navigateToCategory(item.category)">
+                {{item.category}}</li>
+        </ul>
+    </div>
+    <div class="section-list">
+        <div>
+            <div *ngFor="let item of dataArray; let i = index">
+                <div *ngIf="activeCategory === item.category">
+                    <div *ngFor="let page of item.pages; let j = index" class="sub-category">
+                        <span *ngIf="page.internal" (click)="navigateToProject(page.path, i, j)">{{page.title }}</span>
+                        <a *ngIf="!page.internal && !page.stackblitz"
+                            (click)="navigateToExternalPage(page.path)">{{page.title }}</a>
+                        <a *ngIf="!page.internal && page.stackblitz" target="_blank"
+                            (click)="navigateToNewTab(page.path)">{{page.title }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="nasa-pod" class="element-shadow">
+    <nasa-pod-header (click)="externalClick()"></nasa-pod-header>
+    <main>
+        <div nasa-photo-body (outputData)="searchResults($event)" class="column-data" (click)="externalClick()">
+            <div class="photo"></div>
+            <p>Photo description ...</p>
+        </div>
+        <div nasa-search class="column-search"></div>
+        <div class="history" *ngIf="history != undefined && history.length > 0" (click)="externalClick()">
+            <p>History</p>
+            <div class="vertical-slider">
+                <div class="img-wrapper">
+                    <div *ngFor="let item of history.slice().reverse()" (click)="loadDataSet(item)">
+                        <span>{{item.date}}</span>
+                        <img *ngIf="item.media_type === 'image'" src="{{item.url}}" />
+                        <img class="video" *ngIf="item.media_type === 'video'" src="../../../../../assets/img/you-tube.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<div class="snippet-description item-margin">
+    APOD NASA Gov is, <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank">NASA's Astronomy Photo of the Day</a>. It's a super cool endpoint that outputs photographic urls and descriptions for any given date. Dates extend as far back as 1995. Development aside, I think it's absolutely amazing any individual with rudimentary programming skills can tap into NASA's data archives. Programming skills can be in any one of a variety of languages. One simply needs the ability to perform a GET request in their most comfortable language.<br><br>
+    This is an app written in Angular using TypeScript with a little bit of RxJS. It consists of a header component displaying the photo title and date. The date is derived from the date picker component which sends a string to a service. Observers listen to updates in the header, main photo component, and sidebar. All of which are wrapped in a parent component. Change month and year in the date picker by clicking on either. History is stored in the sidebar with inbuilt cache. Though the endpoint primarily outputs photos, sporadically it supplies a video. Which is handled accordingly, enabling the UI to play an array of videos from Mars, galaxies, and other far away places.<br><br>
+    There's a number of ways the UI could be designed to accommodate date selection and data display. This elementary layout certainly acheives the goal, responsively. Cycle through dates. Enjoy this APOD NASA Gov API!
+  </div>

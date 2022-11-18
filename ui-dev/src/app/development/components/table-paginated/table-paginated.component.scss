@@ -1,0 +1,119 @@
+@import '../../../styles/colors.scss';
+
+#table-component {
+  font-family: sans-serif;
+  background-color: $white;
+  border: 1px solid $greyBlack;
+  border-radius: 4px;
+  height: 340px;
+  position: relative;
+
+  >.table-details {
+    background-color: $greyBlack;
+    color: $yellowGold;
+    margin: 0;
+    padding: 10px;
+    position: relative;
+
+    .total-items {
+      margin-left: 10px;
+      font-size: 12px;
+    }
+
+    .search-box {
+      float: right;
+      width: 175px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      input {
+        outline: none;
+        border: none;
+        width: 100%;
+        padding: 3px 3px 3px 5px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        font: normal 12px sans-serif;
+      }
+    }
+  }
+
+  table {
+    margin-top: 15px;
+    width: 100%;
+    border-collapse: collapse;
+
+    tbody tr:nth-child(even) {
+      background-color: lightgray;
+    }
+
+    tr {
+      td:first-child {
+        padding-left: 15px;
+      }
+    }
+
+    td {
+      width: 33.3%;
+      font-size: 13px;
+    }
+
+    thead {
+      font-size: 14px;
+
+      th {
+        border-bottom: 1px solid $greyBlack;
+        text-align: left;
+        padding-bottom: 5px;
+      }
+    }
+
+    .pl-15 {
+      padding-left: 15px;
+    }
+
+    tbody {
+      td {
+        padding: 5px 0;
+        border-bottom: 1px solid lightgrey;
+      }
+    }
+  }
+
+  .pagination {
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  ::ng-deep .pagination-next a,
+  ::ng-deep .pagination-previous a {
+    outline: none;
+  }
+
+  ::ng-deep .ngx-pagination .current {
+    border-radius: 4px;
+  }
+
+  ::ng-deep .ngx-pagination a:hover,
+  ::ng-deep .ngx-pagination button:hover {
+    border-radius: 4px;
+  }
+
+  ::ng-deep .ngx-pagination a,
+  ::ng-deep .ngx-pagination button {
+    border-radius: 4px;
+    outline: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  #table-component {
+    max-width: unset;
+  }
+}

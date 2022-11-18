@@ -1,0 +1,195 @@
+<div class="snippet-description">
+  This OMDB API is an example of a data driven UI. Enter a movie or TV show (must be exact) and watch the results
+  populate the UI. By means of OMDB's endpoint, we're fetching data, and populating it accordingly. Though this could no
+  doubt be accomplished in React, Vue, or in native HTML and JavaScript, this sample's in Angular. If you're familiar
+  with TypeScript, it should be no problem. Populate the UI with some content. Then toggle between poster and table
+  layout to get the full scope of the interface.<br><br>
+</div>
+
+<div id="movies-app" [ngClass]="{'displayBlock':dataArr.length > 0}">
+  <div class="input-fields" [ngClass]="{'hasData':dataArr.length > 0}">
+    <h3 [ngClass]="{'title-w-data':dataArr.length > 0}">Search Movies & TV Titles</h3>
+    <input #title class="year" type="text" placeholder="Title (enter to search)" (keydown.enter)="fetchResults()" />
+    <input #year class="title" type="text" placeholder="Year (optional)" />
+    <button (click)="fetchResults()">search</button>
+  </div>
+  <div class="results" [ngClass]="{'displayBlock':dataArr.length > 0}">
+    <div class="layout-options">
+      <div class="in-line" (click)="setLayout('inline')">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="grid" (click)="setLayout('grid')"></div>
+    </div>
+    <div class="table-layout" *ngIf="layout === 'inline'">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Actors</th>
+            <th>Awards</th>
+            <th>Box Office</th>
+            <th>Country</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Language</th>
+            <th>Year</th>
+            <th>Runtime</th>
+            <th>Released</th>
+            <th>Ratings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let items of dataArr; let i = index" class="cinema-group">
+            <td>{{items.Title}}</td>
+            <td>{{items.Actors}}</td>
+            <td>{{items.Awards}}</td>
+            <td>{{items.BoxOffice}}</td>
+            <td>{{items.Country}}</td>
+            <td>{{items.Director}}</td>
+            <td>{{items.Genre}}</td>
+            <td>{{items.Language}}</td>
+            <td>{{items.Year}}</td>
+            <td>{{items.Runtime}}</td>
+            <td>{{items.Released}}</td>
+            <td>
+              <table>
+                <tr *ngFor="let rating of items.Ratings">
+                  <td>{{rating.Source}}</td>
+                  <td>{{rating.Value}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer" *ngIf="layout === 'inline'">
+      <div class="table-data">
+        <span *ngIf="dataArr.length > 1">{{ dataArr.length + ' Total Records'}}</span>
+      </div>
+    </div>
+
+    <div class="grid-layout" *ngIf="layout === 'grid'">
+      <div class="movie-data-block" *ngFor="let items of dataArr; let i = index" (click)="openLightbox(i)">
+        <div class="poster">
+          <img *ngIf="items.Poster != 'N/A'" [src]="items.Poster" />
+          <div *ngIf="items.Poster == 'N/A'" class="movie-unavailable">
+            <p>Movie Poster N/A</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="lightbox" class="bg"></div>
+  <section *ngIf="lightbox" class="lightbox">
+    <div (click)="closeLightbox()" *ngIf="lightbox" class="close-lightbox">
+      <span>&#x2715;</span>
+    </div>
+    <div class="movie-poster">
+      <img *ngIf="null != dataArr[currentMovie] && dataArr[currentMovie].Poster != 'N/A'"
+        [src]="dataArr[currentMovie].Poster" />
+      <div *ngIf="dataArr[currentMovie].Poster == 'N/A'" class="movie-unavailable">
+        <p>Movie Poster N/A</p>
+      </div>
+    </div>
+    <div *ngIf="null != dataArr[currentMovie]" class="movie-details">
+      <p>
+        <span>Title:</span>
+        <span>{{dataArr[currentMovie].Title}}</span>
+      </p>
+      <p>
+        <span>Actors:</span>
+        <span>{{dataArr[currentMovie].Actors}}</span>
+      </p>
+      <p>
+        <span>Awards:</span>
+        <span>{{dataArr[currentMovie].Awards}}</span>
+      </p>
+      <p>
+        <span>Box Office:</span>
+        <span>{{dataArr[currentMovie].BoxOffice}}</span>
+      </p>
+      <p>
+        <span>Country</span>
+        <span>{{dataArr[currentMovie].Country}}</span>
+      </p>
+      <p>
+        <span>Director:</span>
+        <span>{{dataArr[currentMovie].Director}}</span>
+      </p>
+      <p>
+        <span>Genre:</span>
+        <span>{{dataArr[currentMovie].Genre}}</span>
+      </p>
+      <p>
+        <span>Language:</span>
+        <span>{{dataArr[currentMovie].Language}}</span>
+      </p>
+      <p>
+        <span>Year:</span>
+        <span>{{dataArr[currentMovie].Year}}</span>
+      </p>
+      <p>
+        <span>Runtime:</span>
+        <span>{{dataArr[currentMovie].Runtime}}</span>
+      </p>
+      <p>
+        <span>Released:</span>
+        <span>{{dataArr[currentMovie].Released}}</span>
+      </p>
+    </div>
+    <div class="navigation">
+      <button class="previous" (click)="previousFlick()" *ngIf="currentMovie > 0">Previous</button>
+      <button class="next" (click)="nextFlick()" *ngIf="dataArr.length -1 > currentMovie">Next</button>
+    </div>
+  </section>
+</div>
+
+<div class="snippet-description item-margin">
+  Let's begin with the TypeScript.
+  <ul>
+    <li>Retrieve the two form fields (title and year). Create a reference between the model and template.</li>
+    <li>Create the variables. All of which should be self explanatory.</li>
+    <li>Bring in a reference to the HTTP Client in the constructor.</li>
+  </ul>
+</div>
+<div class="code-preview">
+  <pre>
+		  <code>{{typescript}}</code>
+	  </pre>
+</div>
+
+<div class="snippet-description item-margin">
+  Let's begin with the data. Though this is in Angular, it could very well be isolated to just vanilla JavaScript with
+  an index.html and script file. Don't be deterred simply because you may be most comfortable in React or Vue. This is
+  the data that populates the UI.
+</div>
+<div class="code-preview">
+  <pre>
+		  <code>{{markup}}</code>
+	  </pre>
+</div>
+
+<div class="snippet-description item-margin">
+  Let's begin with the data. Though this is in Angular, it could very well be isolated to just vanilla JavaScript with
+  an index.html and script file. Don't be deterred simply because you may be most comfortable in React or Vue. This is
+  the data that populates the UI.
+</div>
+<div class="code-preview">
+  <pre>
+		  <code>{{scss}}</code>
+	  </pre>
+</div>
+
+<br>
+<div class="snippet-description item-last-child">
+  There's no way around it. If you're creating a UI like this without a library, it's gonna be complex. Plus, factoring
+  in POST requests at every drop like my project called for... Though many would advocate using a library, I try to
+  avoid using libs whenever possible. Especially if it calls for custom solutions. You'll spend more time trying to get
+  the lib to mimic the intended behavior vs creating a system of your own.<br><br>This could no doubt be improved with
+  more specified data types, but time was of the essence when I built a low-fi mock. One in which to emulate an actual
+  feature in a proprietary application. If you need a working version of this JavaScript drag and drop UI, see the demo
+</div>

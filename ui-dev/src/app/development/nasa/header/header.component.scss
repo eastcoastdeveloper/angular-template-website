@@ -1,0 +1,17 @@
+header {
+  background-color: #313b3f;
+  color: #D9A74A;
+  font: normal .9em sans-serif;
+  padding: 10px 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: auto;
+
+  p:first-child {
+    float: left;
+  }
+
+  p:last-child {
+    float: right;
+  }
+}

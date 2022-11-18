@@ -1,0 +1,15 @@
+
+.form-wrapper {
+  border-radius: 4px;
+  padding: 10px;
+  font: normal 12px sans-serif;
+
+  label {
+    display: grid;
+    margin-bottom: 20px;
+
+    span {
+      margin-bottom: 5px;
+    }
+  }
+}

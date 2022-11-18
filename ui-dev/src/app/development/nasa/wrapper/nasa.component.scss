@@ -1,0 +1,152 @@
+@import '../../../styles/colors.scss';
+
+#nasa-pod {
+  background-color: $oceanBlue;
+  border-radius: 6px;
+  height: calc(100vh - 205px);
+  margin: 0 auto;
+
+  main {
+    height: calc(100% - 61px);
+    background-color: $white;
+    position: relative;
+    margin: 10px 15px;
+    display: grid;
+    overflow: hidden;
+    border-radius: 6px;
+    grid-template-columns: calc(100% - 200px) 200px;
+    grid-template-areas: 'photo-body search';
+
+    .column-data {
+      height: 100%;
+      grid-area: photo-body;
+
+      .photo {
+        background-color: lightgreen;
+        height: calc(100% - 50px);
+      }
+    }
+
+    .history {
+      height: calc(100% - 50px);
+      position: absolute;
+      width: 200px;
+      top: 50px;
+      right: 0;
+
+      .vertical-slider {
+        height: calc(100% - 41px);
+        overflow-y: auto;
+        padding-top: 10px;
+      }
+
+      p {
+        font: normal 15px sans-serif;
+        text-align: center;
+        margin: 5px 0 0 0;
+        color: $greyBlack;
+        border-bottom: 1px solid $greyBlack;
+        padding-bottom: 8px;
+      }
+
+      .img-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 80px);
+        grid-gap: 12px;
+        justify-content: center;
+        padding-bottom: 10px;
+
+        >div {
+          width: 80px;
+          height: 74px;
+          border-radius: 4px;
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        img:not(.video) {
+          position: static;
+          width: 100%;
+          height: 100%;
+        }
+
+        .video {
+          position: static;
+          height: 80%;
+          width: 80%;
+          margin: 0 auto;
+          display: block;
+        }
+
+        span {
+          font: normal 12px sans-serif;
+          text-align: center;
+          display: block;
+        }
+      }
+    }
+
+    .column-search {
+      grid-area: search;
+      border-left: 1px solid $greyBlack;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #nasa-pod {
+    main {
+      grid-template-areas:
+        'search'
+        'photo-body';
+      grid-template-columns: 100%;
+      grid-template-rows: 55px calc(100% - 70px);
+
+      .history {
+        overflow-x: auto;
+        top: unset;
+        width: 100%;
+        height: 100px;
+        bottom: 0;
+
+        p {
+          display: none;
+        }
+
+        .img-wrapper {
+          display: flex;
+          padding: 0;
+          justify-content: end;
+          margin-left: 10px;
+          grid-template-columns: none;
+          grid-gap: unset;
+          position: absolute;
+          bottom: 10px;
+
+          >div {
+            width: 70px;
+            height: 50px;
+            margin-right: 10px;
+            display: inline-block;
+          }
+        }
+      }
+
+      .column-search {
+        border: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #nasa-pod {
+    main {
+      .history {
+        .vertical-slider {
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

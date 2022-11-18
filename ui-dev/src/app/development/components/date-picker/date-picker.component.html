@@ -1,0 +1,105 @@
+<div id="calendar-component" (window:resize)="onResize($event)">
+    <input type="text" placeholder="Select a date..." (focus)="openCalendar()"
+        [ngClass]="{'future-date':selectedDate > currentDate && currentDate != ''}" value="{{getValue()}}" />
+    <div *ngIf="calendarVisible" class="calendar">
+        <nav>
+            <div class="close-calendar" (click)="closeCalendar()">
+                <span>&#x2715;</span>
+            </div>
+            <div class="month" (click)="showMonths()">
+                <span>{{months[monthIndex]}}</span>
+                <ul *ngIf="monthsMenu">
+                    <li *ngFor="let month of months; let i = index" (click)="selectMonth(i)">{{month}}</li>
+                </ul>
+            </div>
+            <div class="year" (click)="showYears()">
+                <span>{{year}}</span>
+                <ul *ngIf="yearsMenu">
+                    <li *ngFor="let year of years; let i = index" (click)="selectYear(year)">{{year}}</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="weekdays">
+            <ul>
+                <li *ngFor="let day of weekdays">{{day}}</li>
+            </ul>
+        </div>
+        <div class="all-days-skeleton">
+            <div *ngFor="let day of daySpan; let i = index" (click)="selectDay(day)"
+                [ngClass]="{'has-value':day.value != null, 'current-date':day.value === currentDay}">
+                <div class="day-value">{{day.value}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="snippet-description item-margin" (click)="closeCalendar()">
+    I created this Angular datepicker to have as a standalone component. A feature to easily add into projects as
+    needed. I arrived at this decision after taking unnessary time configure everything that Material needs. I've done
+    this several times&mdash;for a date picker. Much of what the library supplies can be developed as custom features.
+    Custom features vs needing to conform to the library's demands. The TypeScript file below has a number of
+    moving parts. Once we get past the first function however, it's not as complex.
+</p>
+<div class="snippet-description item-margin" (click)="closeCalendar()">
+    <ul>
+        <li>calendarVisible is the variable that determines if the component is open or closed. Whether it's in the DOM,
+            or removed.</li>
+        <li>d is the date object.</li>
+        <li>Manually declare weekdays, months, and years.</li>
+        <li>currentDay, monthIndex, and year are standard date methods.</li>
+        <li>firstDay and lastDay holds the first and last day of each month respectively.</li>
+        <li>monthsMenu determines visibility of the months when the current month is clicked.</li>
+        <li>yearsMenu the same as monthsMenu.</li>
+        <li>In calculateStartEndDate fn, we loop over 42 indices. With seven days in a week multiplied by six potential
+            weeks in a month, there's 42 possible days. One month may begin on a Saturday, end on Sunday&mdash;spanning
+            six weeks. If the first day of the month is greater than one of the 42, add empty cells. Then push those
+            values to the array. So, the 42 slots may look like: {{ '{value: null}, {value: null}, {value: null},
+            {value: 1}, {value: 2}, {value: 3}' }}. daySpan is an array of objects with these values.</li>
+        <li>firstLastDays fn gets the first and last day of the month respectively, then passes them into the previous
+            fn.</li>
+        <li>selectDay(), selectYear(), and selectMonth() are similar.</li>
+        <li>showMonths() toggle the months menu while closing the years menu.</li>
+        <li>checkForFutureDate() flags to the user, "hey, you're selecting a future date".</li>
+        <li>This is clearly the brains of the Angular datepicker. Moderately complex, yet easier than maintaining
+            Material in my opinion.</li>
+    </ul>
+    <div class="code-preview" (click)="closeCalendar()">
+        <pre>
+		<code>{{typescript}}</code>
+	</pre>
+    </div>
+
+    <div class="snippet-description item-margin">
+        <ul>
+            <li>The only semi unrecognizable part of the input should be the value. Which simply lays out the date,
+                already retrieved.</li>
+            <li>monthsMenu is visible only if, and loops over the months.</li>
+            <li>As does yearsMenu.</li>
+            <li>weekdays are constant. Looping over the days.</li>
+            <li>The all-days-skeleton block applies a dynamic class and populates the calendar the {{ '{value: null},
+                {value: 1}, etc' }}</li>
+        </ul>
+    </div>
+    <div class="code-preview">
+        <pre>
+		<code>{{markup}}</code>
+	</pre>
+    </div>
+
+    <div class="snippet-description item-margin">
+        Styling...
+    </div>
+
+    <div class="code-preview">
+        <pre>
+		<code>{{scss}}</code>
+	</pre>
+    </div>
+
+    <br>
+    <div class="snippet-description item-last-child">
+        <a href="https://stackblitz.com/edit/datepicker-angular-component?file=src%2Fapp%2Fdate-picker%2Fdate-picker.component.ts"
+            target="_blank">If you get stuck, check out the live demo.</a>. I really hope these explanations helped you
+        understand this component. My objective here was to give something back to the developer community. Hope I've
+        succeeded in providing a valuable Angular datepicker!
+    </div>

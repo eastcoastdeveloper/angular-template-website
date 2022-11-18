@@ -1,0 +1,101 @@
+@import '../../../styles/colors.scss';
+
+.accordion-wrapper {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.data-block {
+  font: normal 14px sans-serif;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid $white;
+
+  p {
+    background-color: $greyBlack;
+    color: $yellowGold;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+  }
+
+  .count {
+    position: absolute;
+    top: 0;
+    right: 15px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0;
+    line-height: 25px;
+
+    li {
+      display: grid;
+      padding: 5px 10px 5px 30px;
+      grid-template-areas: 'title title''code project';
+
+      .title {
+        color: $white;
+      }
+
+      div:not(:first-child) {
+        font-style: italic;
+      }
+    }
+
+    li:nth-child(even) {
+      background-color: rgba(49, 59, 63, .8);
+    }
+
+    li:nth-child(odd) {
+      background-color: rgba(49, 59, 63, .9);
+    }
+
+    li:hover {
+      background-color: $greyBlack;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    a:hover {
+      color: $yellowGold;
+    }
+  }
+}
+
+.data-block:last-child {
+  border: none;
+}
+
+.hidden-content {
+  overflow: auto;
+  max-height: 0;
+  color: $white;
+}
+
+
+#skills {
+  list-style-type: unset;
+  background-color: $greyBlack;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  line-height: 20px;
+  padding: 20px 0 10px 30px;
+
+  li {
+    display: block;
+    padding: 5px 10px 5px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-wrapper {
+    width: 100%;
+    max-width: unset;
+  }
+}
