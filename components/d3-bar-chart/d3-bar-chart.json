@@ -1,0 +1,22 @@
+[
+  {
+    "amount": 1000000000,
+    "item": "Value 1"
+  },
+  {
+    "amount": 750000000,
+    "item": "Value 2"
+  },
+  {
+    "amount": 30999000,
+    "item": "Value 3"
+  },
+  {
+    "amount": 200000000,
+    "item": "Value 4"
+  },
+  {
+    "amount": 500000000,
+    "item": "Value 5"
+  }
+]
