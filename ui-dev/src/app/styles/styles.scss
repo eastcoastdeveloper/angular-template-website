@@ -1,0 +1,116 @@
+@import "./colors.scss";
+@import "./reset.scss";
+
+html {
+  background-color: $white;
+}
+
+body {
+  background-color: rgba(211, 211, 211, 0.2);
+}
+
+a {
+  text-decoration: none;
+}
+
+.greyBlack {
+  background-color: $greyBlack;
+  color: $white;
+}
+
+.yellowGold {
+  background-color: $yellowGold;
+  color: $greyBlack;
+}
+
+.oceanBlue {
+  background-color: $oceanBlue;
+  color: $white;
+}
+
+.project-intro {
+  overflow: hidden;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.greyBlack,
+.yellowGold,
+.oceanBlue {
+  height: calc(100vh - 243px);
+  margin-top: 10px;
+  border-radius: 6px;
+  padding: 20px;
+  box-sizing: border-box;
+  line-height: 23px;
+  font: normal 15px/22px sans-serif;
+
+  p {
+    font-weight: 600;
+    padding-bottom: 15px;
+  }
+}
+
+.item-margin {
+  margin-top: 28px;
+}
+
+.item-last-child {
+  margin-top: 5px;
+}
+
+.paragraphFont {
+  font: normal 10pt sans-serif;
+  line-height: 20px;
+  color: $greyBlack;
+}
+
+.padding-20-LR {
+  padding: 0 20px;
+}
+
+.details-position {
+  right: 25px;
+  top: 20px;
+}
+
+.screen-btn {
+  right: 108px;
+  top: 12px;
+  z-index: 999;
+}
+
+.standard-btn {
+  background-color: $white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  color: $greyBlack;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+}
+
+.is-active {
+  background-color: $greyBlack !important;
+  color: $yellowGold !important;
+}
+
+.video-wrapper {
+  text-align: center;
+  max-width: 600px;
+
+  video {
+    outline: none;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h2 {
+    padding-left: 20px;
+  }
+
+  .video-wrapper {
+    margin: 0 auto;
+  }
+}

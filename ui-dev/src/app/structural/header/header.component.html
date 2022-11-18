@@ -1,0 +1,29 @@
+<header class="app-header" (click)="externalClick()">
+    <div *ngIf="screenSize > 1150" class="url" routerLink="/">
+        <h2>Front End Development</h2><span>.tech</span>
+    </div>
+    <div *ngIf="screenSize < 1151" class="logo" routerLink="/">
+        <img src="../../../assets/img/logo.png" />
+    </div>
+    <nav *ngIf="screenSize > 605" (click)="externalClick()">
+        <div class="mock-link" routerLink="web-development">
+            <span routerLinkActive="is-active">Folio</span>
+        </div>
+        <div class="mock-link" routerLink="front-end-dev-resume">
+            <span routerLinkActive="is-active">Experience</span>
+        </div>
+        <div class="mock-link" routerLink="front-end-developer">
+            <span routerLinkActive="is-active">About</span>
+        </div>
+        <div class="mock-link">
+            <a href="https://www.frontenddevelopment.tech/contact/inquire.html">Contact</a>
+        </div>
+    </nav>
+    <div class="mobile-title">
+        FrontendDev
+    </div>
+    <div *ngIf="screenSize < 606" class="mobile-menu" (click)="toggleMobileNav()">
+        <span *ngIf="!sidebarStatus">&#9776;</span>
+        <span [ngClass]="{'close-mobile-menu':!sidebarStatus}">&#x2715;</span>
+    </div>
+</header>

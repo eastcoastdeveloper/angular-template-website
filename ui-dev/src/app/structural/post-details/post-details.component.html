@@ -1,0 +1,28 @@
+<div class="post-details" *ngIf="showInPage === true">
+  <div class="top-row">
+    <span class="published-on">Published: {{publishedOn}}</span>
+    <div class="git-repo" [ngClass]="{'visibility-none':repoTitle === ''}">
+      <img src="../../../../assets/img/git.png" />
+      <a href="{{repoLink}}" target="_blank">{{windowWidth > 1200 ? repoTitle : 'Repo'}}</a>
+    </div>
+  </div>
+  <div class="bottom-row">
+    <div>
+      <span *ngIf="updatedOn != ''" class="updated-on">Updated: {{updatedOn}}</span>
+    </div>
+    <div class="project-specs" *ngIf="views != undefined ? views > 0 : ''"
+      [ngClass]="forks != undefined && forks < 1 ? 'two-column' : 'three-column'">
+      <span class="stackblitz_logo">
+        <img src="../../../assets/img/stackblitz_logo.png" />
+      </span>
+      <span class="views">
+        <img src="../../../assets/img/views-icon.jpg" />
+        <span>{{views != undefined ? formatViews(views) : ''}}</span>
+      </span>
+      <span class="forked" *ngIf="forks != undefined ? forks > 0 : ''">
+        <img src="../../../assets/img/fork-icon.png" />
+        <span>{{forks}}</span>
+      </span>
+    </div>
+  </div>
+</div>
