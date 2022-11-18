@@ -1,0 +1,17 @@
+@import '../../styles/colors.scss';
+
+.routing-example {
+  height: calc(100% - 20px);
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-column-gap: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .routing-example {
+    height: auto;
+  }
+}

@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+
+.form-confirmation {
+    display: flex;
+    height: 100%;
+  p {
+    background-color: $greyBlack;
+    margin: auto;
+    color: $white;
+    font: normal 14px sans-serif;
+    text-align: center;
+    max-width: 600px;
+    padding: 10px;
+    border-radius: 4px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .form-confirmation {
+    margin: auto 20px;
+  }
+}

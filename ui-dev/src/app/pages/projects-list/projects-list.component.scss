@@ -1,0 +1,34 @@
+@import '../../styles/cornerstone.scss';
+
+#project-list-title {
+  text-transform: capitalize;
+}
+
+.filter-items {
+  list-style-type: none;
+  font: normal 14px sans-serif;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+
+  li {
+    cursor: pointer;
+  }
+}
+
+.item-length {
+  margin-left: 5px;
+  font: normal 14px sans-serif;
+  display: inline-block;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .item-length {
+    font: normal 13px sans-serif;
+    transform: translateY(-1px);
+  }
+}

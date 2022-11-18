@@ -1,0 +1,112 @@
+@import '../../styles/colors.scss';
+
+#experience-page {
+  margin: 0 auto;
+  font-family: sans-serif;
+  max-width: 1000px;
+
+  .skills {
+    font: normal 14px sans-serif;
+    line-height: 25px;
+  }
+
+  h4 {
+    font: bold 16px sans-serif;
+  }
+
+  .employer-history {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-row-gap: 5px;
+
+    h6 {
+      font: bold 14px sans-serif;
+    }
+
+    span {
+      font: normal 14px sans-serif;
+      text-align: right;
+    }
+  }
+
+  .history-block {
+    margin-top: 25px;
+
+    .job-description {
+      font: normal 14px sans-serif;
+      list-style-type: disc;
+      line-height: 25px;
+      margin-top: 10px;
+      padding-left: 20px;
+
+
+      li {
+        span {
+          font-weight: 100;
+        }
+      }
+    }
+
+    table {
+      font: normal 14px sans-serif;
+      margin-top: 10px;
+      line-height: 25px;
+      border-collapse: collapse;
+      width: 100%;
+
+      tr td:last-child {
+        padding-left: 15px;
+      }
+
+      tr:nth-child(odd) {
+        background-color: rgba(0, 0, 0, .1);
+
+        td:first-child {
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
+
+        td:last-child {
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+      }
+
+      tr {
+        td {
+          padding: 5px 10px;
+        }
+      }
+    }
+
+    .mobile-contracts {
+      font-size: 14px;
+      font-family: sans-serif;
+      margin-top: 10px;
+      line-height: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  #experience-page {
+    margin: 27px 20px 20px 20px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  #experience-page {
+    .history-block {
+      .employer-history {
+        border-bottom: 1px solid $greyBlack;
+        padding-bottom: 10px;
+      }
+    }
+
+    .history-block:nth-child(odd) {
+      background-color: rgba(0, 0, 0, .1);
+      padding: 10px;
+      border-radius: 6px;
+    }
+  }
+}

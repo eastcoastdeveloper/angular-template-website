@@ -1,0 +1,29 @@
+<div class="page-content">
+    <div class="details">
+        <h1 id="project-list-title" class="page-title">{{activeCategory === '' ? 'Web Development' : activeCategory}}
+        </h1>
+        <span class="item-length" *ngIf="projectsArray.length > 0">({{projectsArray.length}})</span>
+        <ul class="filter-items" *ngIf="windowWidth > 605">
+            <li class="standard-btn" (click)="filterItems('')" [ngClass]="{'is-active':activeCategory === '' }">All</li>
+            <li class="standard-btn" (click)="filterItems('projects')"
+                [ngClass]="{'is-active':activeCategory === 'projects' }">Projects</li>
+            <li class="standard-btn" (click)="filterItems('components')"
+                [ngClass]="{'is-active':activeCategory === 'components' }">Components</li>
+            <li class="standard-btn" (click)="filterItems('development')"
+                [ngClass]="{'is-active':activeCategory === 'development' }">Development</li>
+            <li class="standard-btn" (click)="mostViews('views')" [ngClass]="{'is-active':activeCategory === 'views' }">
+                Viewed</li>
+            <li class="standard-btn" (click)="mostViews('forks')" [ngClass]="{'is-active':activeCategory === 'forks' }">
+                Forks</li>
+        </ul>
+    </div>
+    <main class="two-column-layout">
+        <div class="left-column">
+            <app-project-list [dataArray]="projectsArray"></app-project-list>
+        </div>
+        <div class="middle-column"></div>
+        <div class="right-column">
+            <app-right-column></app-right-column>
+        </div>
+    </main>
+</div>

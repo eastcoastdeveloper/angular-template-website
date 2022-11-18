@@ -1,0 +1,31 @@
+<div class="page-content">
+    <div class="details" (click)="pageClickHandler($event)">
+        <h1 class="page-title">{{pageTitle}}</h1>
+        <div class="breadcrumbs">
+            <span class="base-category" *ngIf="windowWidth > 768">Development</span>
+            <span class="carrot" *ngIf="windowWidth > 768">&#10095;</span>
+            <div class="active-crumb" (click)="toggleDevMenu()">
+                <span #projects>Projects</span>
+                <span #menuIcon class="menu-icon">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </span>
+            </div>
+        </div>
+        <app-dev-menu *ngIf="devMenuStatus"></app-dev-menu>
+    </div>
+    <main class="two-column-layout"
+        (click)="pageClickHandler($event)">
+
+        <div class="left-column">
+            <app-post-details></app-post-details>
+            <router-outlet></router-outlet>
+            <app-right-column *ngIf="windowWidth < 769"></app-right-column>
+        </div>
+        <div *ngIf="threeColumnLayout" class="middle-column"></div>
+        <div class="right-column" (click)="pageClickHandler($event)">
+            <app-right-column></app-right-column>
+        </div>
+    </main>
+</div>
