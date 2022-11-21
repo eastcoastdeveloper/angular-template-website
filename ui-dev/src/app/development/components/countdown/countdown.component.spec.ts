@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CountdownComponent } from './countdown.component';
+import { CountdownComponent } from "./countdown.component";
 
-describe('CountdownComponent', () => {
+describe("CountdownComponent", () => {
   let component: CountdownComponent;
   let fixture: ComponentFixture<CountdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CountdownComponent ]
-    })
-    .compileComponents();
+      declarations: [CountdownComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CountdownComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
