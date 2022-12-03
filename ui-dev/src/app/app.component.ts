@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   windowSize: any;
   resizeID: any;
   window: any;
+  status = "DOWN";
 
   isMobile: boolean = false;
   sidebarStatus: boolean;

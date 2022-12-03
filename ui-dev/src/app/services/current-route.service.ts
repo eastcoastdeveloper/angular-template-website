@@ -1,6 +1,6 @@
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, map, Observable, Subject } from "rxjs";
+import { BehaviorSubject, map, Subject } from "rxjs";
 import { PageData } from "../interfaces/page-date.interface";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 
@@ -20,7 +20,7 @@ export class ProjectListService {
 
   getProjects() {
     this._http
-      .get<any>("../../assets/json/projectList.json")
+      .get<any>("https://frontenddevelopment.tech/app/")
       .pipe(
         map((responseData) => {
           const result = [];
