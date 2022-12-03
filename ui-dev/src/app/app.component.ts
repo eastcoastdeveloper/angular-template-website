@@ -8,6 +8,7 @@ import { ScrollToTopService } from "./services/scroll-to-top.service";
 import { ProjectListService } from "./services/current-route.service";
 import { ProjectsListInterface } from "./interfaces/projects-list.interface";
 import { DOCUMENT } from "@angular/common";
+// import { GetContentsService } from "./services/get-contents.service";
 
 @Component({
   selector: "my-app",
@@ -83,7 +84,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isMobile = this.width < this.mobileWidth;
-    this._projectListService.getProjects();
+    this.getPageData();
 
     this._windowService.currentWidth$
       .pipe(takeUntil(this.destroy$))
@@ -111,6 +112,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngAfterViewInit() {
     this._windowService.changeValue(window.innerWidth);
+  }
+
+  getPageData() {
+    // this._projectListService.getTemporaryJSON();
+    this._projectListService.getDataFromAPI();
   }
 
   closeMobileNav() {

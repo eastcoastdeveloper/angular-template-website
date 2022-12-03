@@ -414,24 +414,6 @@
       "category": "development"
    },
    {
-      "title": "Services in Angular",
-      "imgUrl": "../../assets/components-grid/services-in-angular.jpg",
-      "description": "Services in Angular are an absolutely awesome way to share data, distribute observable values, isolate code, and much more. Check out these examples. Begin implementing them to your projects!",
-      "path": "/development/services-in-angular",
-      "altText": "Services in Angular demo. Three examples of how to send and receive data with services.",
-      "stackblitz": false,
-      "internal": true,
-      "views": 30,
-      "forks": 0,
-      "publishedOn": "Oct 1, 2022",
-      "updatedOn": "Nov 15, 2022",
-      "repoLink": "https://github.com/eastcoastdeveloper/services-in-angular",
-      "repoTitle": "services-in-angular",
-      "threeColumnLayout": false,
-      "showInPage": true,
-      "category": "development"
-   },
-   {
       "title": "In Page Navigation",
       "imgUrl": "../../assets/components-grid/in-page-navigation.jpg",
       "description": "Basic in page navigation mock. Easily show and hide different sections of a page without changing pages. Ideal for a questionaire, quiz, or any type of user info gathering UI.",

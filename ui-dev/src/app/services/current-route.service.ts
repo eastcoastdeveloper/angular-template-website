@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map, Subject } from "rxjs";
+import { environment } from "src/environments/environment";
 import { PageData } from "../interfaces/page-date.interface";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 
@@ -18,15 +19,17 @@ export class ProjectListService {
 
   constructor(private _http: HttpClient) {}
 
-  getProjects() {
+  getDataFromAPI() {
+    console.log("fired");
     this._http
-      .get<any>("https://frontenddevelopment.tech/app/")
+      .get<any>("/app")
       .pipe(
         map((responseData) => {
           const result = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
               result.push({ ...responseData[key] });
+              console.log(result);
             }
           }
           return result;
@@ -36,6 +39,12 @@ export class ProjectListService {
         this.projectList = data as ProjectsListInterface[];
       });
   }
+
+  // getTemporaryJSON() {
+  //   this._http.get("assets/json/projectsList.json").subscribe((data) => {
+  //     this.projectList = data as ProjectsListInterface[];
+  //   });
+  // }
 
   /* Project Data */
   changeProjectData(obj: ProjectsListInterface) {
