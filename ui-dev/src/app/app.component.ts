@@ -8,7 +8,6 @@ import { ScrollToTopService } from "./services/scroll-to-top.service";
 import { ProjectListService } from "./services/current-route.service";
 import { ProjectsListInterface } from "./interfaces/projects-list.interface";
 import { DOCUMENT } from "@angular/common";
-// import { GetContentsService } from "./services/get-contents.service";
 
 @Component({
   selector: "my-app",
@@ -115,7 +114,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   getPageData() {
-    // this._projectListService.getTemporaryJSON();
     this._projectListService.getDataFromAPI();
   }
 

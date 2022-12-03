@@ -20,7 +20,6 @@ export class ProjectListService {
   constructor(private _http: HttpClient) {}
 
   getDataFromAPI() {
-    console.log("fired");
     this._http
       .get<any>("/app")
       .pipe(
@@ -29,22 +28,16 @@ export class ProjectListService {
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
               result.push({ ...responseData[key] });
-              console.log(result);
             }
           }
           return result;
         })
       )
       .subscribe((data) => {
-        this.projectList = data as ProjectsListInterface[];
+        // this.projectList = data as ProjectsListInterface[];
+        console.log(data);
       });
   }
-
-  // getTemporaryJSON() {
-  //   this._http.get("assets/json/projectsList.json").subscribe((data) => {
-  //     this.projectList = data as ProjectsListInterface[];
-  //   });
-  // }
 
   /* Project Data */
   changeProjectData(obj: ProjectsListInterface) {
