@@ -9,7 +9,7 @@
 <div id="dynamic-sidebar" class="element-shadow">
   <div class="group" *ngFor="let item of result; let i = index">
     <a *ngIf="item.submenu.length" (click)="ddToggle(i)" class="light-blue-bg">{{ item.linkText }}</a>
-    <a *ngIf="!item.submenu.length" (click)="ddToggle(i)" routerLink="{{ item.parentLink }}" class="light-blue-bg">{{
+    <a *ngIf="!item.submenu.length" (click)="ddToggle(i)" class="light-blue-bg">{{
       item.linkText }}</a>
     <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
       <ul *ngFor="let menu of result[i].submenu">
