@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { ProjectListService } from "src/app/services/current-route.service";
 import { ScrollToTopService } from "src/app/services/scroll-to-top.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
@@ -18,12 +18,12 @@ import { ProjectsListInterface } from "../../interfaces/projects-list.interface"
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
   @ViewChild("leftColumn", { static: false }) leftColumn: ElementRef;
-  windowWidthSubscription: Subscription;
   activeCategory: string = "";
   filteredArray: any = [];
   projectsArray: ProjectsListInterface[] = [];
   masterArray: ProjectsListInterface[] = [];
   windowWidth: number;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private _windowWidth: WindowWidthService,
@@ -32,18 +32,30 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.projectsArray = this._projectListService.projectList;
-    this.projectsArray = this.projectsArray.slice(
-      0,
-      this.projectsArray.length - 3
-    );
-    this.masterArray = this.projectsArray.slice();
-
-    this.windowWidthSubscription = this._windowWidth.currentWidth$.subscribe(
-      (value) => {
+    this.getEndpointData();
+    this._windowWidth.currentWidth$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value) => {
         this.windowWidth = value;
-      }
-    );
+      });
+  }
+
+  getEndpointData() {
+    new Promise((resolve, reject) => {
+      this._projectListService.getDataFromAPI();
+      resolve(
+        this._projectListService.pageData
+          .pipe(takeUntil(this.destroy$))
+          .subscribe((val) => {
+            this.projectsArray = val;
+            this.projectsArray = this.projectsArray.slice(
+              0,
+              this.projectsArray.length - 3
+            );
+            this.masterArray = this.projectsArray.slice();
+          })
+      );
+    });
   }
 
   mostViews(type: string) {
@@ -85,6 +97,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.windowWidthSubscription.unsubscribe();
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }

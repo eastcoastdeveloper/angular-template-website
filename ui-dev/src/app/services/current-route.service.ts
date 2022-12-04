@@ -1,15 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map, Subject } from "rxjs";
-import { environment } from "src/environments/environment";
-import { PageData } from "../interfaces/page-date.interface";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProjectListService {
-  public routeData = new Subject<PageData>();
+  pageData = new Subject<ProjectsListInterface[]>();
   projectList: ProjectsListInterface[] = [];
 
   /* Page Title */
@@ -20,7 +18,7 @@ export class ProjectListService {
   constructor(private _http: HttpClient) {}
 
   getDataFromAPI() {
-    this._http
+    return this._http
       .get<any>("/app")
       .pipe(
         map((responseData) => {
@@ -34,8 +32,8 @@ export class ProjectListService {
         })
       )
       .subscribe((data) => {
-        // this.projectList = data as ProjectsListInterface[];
-        console.log(data);
+        this.projectList = data as ProjectsListInterface[];
+        this.pageData.next(this.projectList);
       });
   }
 
