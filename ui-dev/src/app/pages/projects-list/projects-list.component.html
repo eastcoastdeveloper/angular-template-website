@@ -26,4 +26,7 @@
             <app-right-column></app-right-column>
         </div>
     </main>
+    <div *ngIf="!loading" loader>
+        <app-loader></app-loader>
+    </div>
 </div>

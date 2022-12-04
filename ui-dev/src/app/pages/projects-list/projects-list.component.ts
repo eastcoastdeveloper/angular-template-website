@@ -18,12 +18,13 @@ import { ProjectsListInterface } from "../../interfaces/projects-list.interface"
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
   @ViewChild("leftColumn", { static: false }) leftColumn: ElementRef;
-  activeCategory: string = "";
-  filteredArray: any = [];
+  destroy$: Subject<boolean> = new Subject<boolean>();
   projectsArray: ProjectsListInterface[] = [];
   masterArray: ProjectsListInterface[] = [];
+  activeCategory: string = "";
+  loading: boolean = false;
+  filteredArray: any = [];
   windowWidth: number;
-  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private _windowWidth: WindowWidthService,
@@ -53,6 +54,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
               this.projectsArray.length - 3
             );
             this.masterArray = this.projectsArray.slice();
+            this.loading = true;
           })
       );
     });
