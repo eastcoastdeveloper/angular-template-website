@@ -34,6 +34,7 @@ export class ProjectListService {
       .subscribe((data) => {
         this.projectList = data as ProjectsListInterface[];
         this.pageData.next(this.projectList);
+        console.log(this.projectList);
       });
   }
 

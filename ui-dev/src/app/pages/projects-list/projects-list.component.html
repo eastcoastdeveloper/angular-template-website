@@ -26,7 +26,7 @@
             <app-right-column></app-right-column>
         </div>
     </main>
-    <div *ngIf="!loading" loader>
+    <div *ngIf="projectsArray.length < 0" loader>
         <app-loader></app-loader>
     </div>
 </div>

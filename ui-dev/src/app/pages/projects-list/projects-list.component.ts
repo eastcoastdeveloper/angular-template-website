@@ -22,7 +22,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   projectsArray: ProjectsListInterface[] = [];
   masterArray: ProjectsListInterface[] = [];
   activeCategory: string = "";
-  loading: boolean = false;
   filteredArray: any = [];
   windowWidth: number;
 
@@ -54,7 +53,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
               this.projectsArray.length - 3
             );
             this.masterArray = this.projectsArray.slice();
-            this.loading = true;
           })
       );
     });

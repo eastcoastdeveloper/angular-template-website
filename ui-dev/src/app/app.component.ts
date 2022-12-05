@@ -83,8 +83,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isMobile = this.width < this.mobileWidth;
-    this.getPageData();
-
     this._windowService.currentWidth$
       .pipe(takeUntil(this.destroy$))
       .subscribe((currentVal) => {
@@ -111,10 +109,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngAfterViewInit() {
     this._windowService.changeValue(window.innerWidth);
-  }
-
-  getPageData() {
-    this._projectListService.getDataFromAPI();
   }
 
   closeMobileNav() {
