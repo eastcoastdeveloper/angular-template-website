@@ -8,6 +8,7 @@ import { ScrollToTopService } from "./services/scroll-to-top.service";
 import { ProjectListService } from "./services/current-route.service";
 import { ProjectsListInterface } from "./interfaces/projects-list.interface";
 import { DOCUMENT } from "@angular/common";
+import { CanonicalService } from "./services/canonical.service";
 
 @Component({
   selector: "my-app",
@@ -57,6 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private _scrollToTop: ScrollToTopService,
     private _projectListService: ProjectListService,
     private _router: Router,
+    private _canonicalService: CanonicalService,
     private _renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
   ) {
@@ -82,7 +84,12 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this._canonicalService.setCanonicalURL();
     this.isMobile = this.width < this.mobileWidth;
+    // if (this._projectListService.projectList.length === 0) {
+    this.getPageData();
+    // }
+
     this._windowService.currentWidth$
       .pipe(takeUntil(this.destroy$))
       .subscribe((currentVal) => {
@@ -109,6 +116,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngAfterViewInit() {
     this._windowService.changeValue(window.innerWidth);
+  }
+
+  getPageData() {
+    this._projectListService.getDataFromAPI();
   }
 
   closeMobileNav() {

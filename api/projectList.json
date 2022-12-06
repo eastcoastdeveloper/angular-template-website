@@ -183,7 +183,7 @@
       "title": "Chart JS Area Chart",
       "imgUrl": "../../assets/components-grid/chart-js-area-chart.jpg",
       "description": "Chart JS area chart showcasing how easy it is to import data via JSON. Easily change colors, X or Y axis options, labels. Fork and make it your own.",
-      "path": "https://stackblitz.com/edit/angular-share-component-data?file=src%2Fapp%2Fapp.component.ts",
+      "path": "https://stackblitz.com/edit/angular-8-area-chart?file=src%2Fapp%2Fapp.component.ts",
       "altText": "Chart JS area chart with not much styling. Project shows how to easily use dynamic data streams.",
       "stackblitz": true,
       "internal": false,
