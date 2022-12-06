@@ -22,7 +22,7 @@ export class ProjectListService {
       .get<any>("/app")
       .pipe(
         map((responseData) => {
-          const result = [];
+          const result: any[] = [];
           for (const key in responseData) {
             if (responseData.hasOwnProperty(key)) {
               result.push({ ...responseData[key] });
@@ -34,7 +34,6 @@ export class ProjectListService {
       .subscribe((data) => {
         this.projectList = data as ProjectsListInterface[];
         this.pageData.next(this.projectList);
-        console.log(this.projectList);
       });
   }
 
