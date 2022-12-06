@@ -889,6 +889,12 @@ a.snippet-description,
   .page-content .details .breadcrumbs .carrot {
     display: none;
   }
+  .page-content .details .breadcrumbs {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
   .post-details .top-row {
     margin-bottom: 15px;
   }
