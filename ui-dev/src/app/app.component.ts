@@ -87,7 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._canonicalService.setCanonicalURL();
     this.isMobile = this.width < this.mobileWidth;
     // if (this._projectListService.projectList.length === 0) {
-    this.getPageData();
+    // this.getPageData();
     // }
 
     this._windowService.currentWidth$
@@ -118,9 +118,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this._windowService.changeValue(window.innerWidth);
   }
 
-  getPageData() {
-    this._projectListService.getDataFromAPI();
-  }
+  // getPageData() {
+  //   this._projectListService.getDataFromAPI();
+  // }
 
   closeMobileNav() {
     this._sidebarService.changeValue(false);
