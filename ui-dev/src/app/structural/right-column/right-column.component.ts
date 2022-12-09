@@ -4,10 +4,10 @@ import { AccordionComponentInterface } from "../../interfaces/accordion.interfac
 
 @Component({
   selector: "app-right-column",
-  templateUrl: "./accordion.component.html",
-  styleUrls: ["./accordion.component.scss"],
+  templateUrl: "./right-column.component.html",
+  styleUrls: ["./right-column.component.scss"],
 })
-export class AccordionComponent implements OnInit {
+export class RightColumnComponent implements OnInit {
   accordionData: AccordionComponentInterface[] = [];
 
   @ViewChild("accordionParent") accordionParent!: ElementRef;

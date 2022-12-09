@@ -5,10 +5,10 @@ import { NavigationEnd, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { DevMenuService } from "./services/dev-menu.service";
 import { ScrollToTopService } from "./services/scroll-to-top.service";
-import { ProjectListService } from "./services/current-route.service";
 import { ProjectsListInterface } from "./interfaces/projects-list.interface";
 import { DOCUMENT } from "@angular/common";
 import { CanonicalService } from "./services/canonical.service";
+import { ProjectListService } from "./services/project-list.service";
 
 @Component({
   selector: "my-app",
@@ -34,7 +34,6 @@ export class AppComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   pageDetails: ProjectsListInterface = {
     title: "",
-    threeColumnLayout: false,
     imgUrl: "",
     description: "",
     path: "",
@@ -67,7 +66,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this._projectListService.projectList.map((val) => {
           if (this._router.url === val.path) {
             this.pageDetails.title = val.title;
-            this.pageDetails.threeColumnLayout = val.threeColumnLayout;
             this.pageDetails.publishedOn = val.publishedOn;
             this.pageDetails.updatedOn = val.updatedOn;
             this.pageDetails.repoTitle = val.repoTitle;
@@ -86,9 +84,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this._canonicalService.setCanonicalURL();
     this.isMobile = this.width < this.mobileWidth;
-    // if (this._projectListService.projectList.length === 0) {
-    // this.getPageData();
-    // }
 
     this._windowService.currentWidth$
       .pipe(takeUntil(this.destroy$))
@@ -117,10 +112,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngAfterViewInit() {
     this._windowService.changeValue(window.innerWidth);
   }
-
-  // getPageData() {
-  //   this._projectListService.getDataFromAPI();
-  // }
 
   closeMobileNav() {
     this._sidebarService.changeValue(false);

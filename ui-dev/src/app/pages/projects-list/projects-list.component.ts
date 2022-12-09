@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
-import { ProjectListService } from "src/app/services/current-route.service";
+import { ProjectListService } from "src/app/services/project-list.service";
 import { ScrollToTopService } from "src/app/services/scroll-to-top.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 import { ProjectsListInterface } from "../../interfaces/projects-list.interface";
@@ -32,7 +32,12 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.getEndpointData();
+    // Call Endpoint if Not Cached
+    if (this._projectListService.projectList.length > 0) {
+      this.projectsArray = this._projectListService.projectList;
+    } else {
+      this.getEndpointData(1, 10);
+    }
     this._windowWidth.currentWidth$
       .pipe(takeUntil(this.destroy$))
       .subscribe((value) => {
@@ -40,24 +45,20 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       });
   }
 
-  getEndpointData() {
+  // API
+  getEndpointData(page, limit) {
     new Promise((resolve, reject) => {
-      this._projectListService.getDataFromAPI();
+      this._projectListService.getDataFromAPI(page, limit);
       resolve(
-        this._projectListService.pageData
-          .pipe(takeUntil(this.destroy$))
-          .subscribe((val) => {
-            this.projectsArray = val;
-            this.projectsArray = this.projectsArray.slice(
-              0,
-              this.projectsArray.length - 3
-            );
-            this.masterArray = this.projectsArray.slice();
-          })
+        this._projectListService.pageData.subscribe((val) => {
+          this.projectsArray = val;
+          this.masterArray = this.projectsArray.slice();
+        })
       );
     });
   }
 
+  // Most Views
   mostViews(type: string) {
     this.projectsArray = this.masterArray;
     this.filteredArray = [];
@@ -74,6 +75,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this._scrollToTop.scrollToTop();
   }
 
+  // Filter Views
   filterItems(val: string) {
     this.filteredArray = [];
     this.projectsArray = this.masterArray;
@@ -92,6 +94,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this._scrollToTop.scrollToTop();
   }
 
+  // Go to External Page
   navigateToExternalPage(url: string) {
     window.location.href = url;
   }

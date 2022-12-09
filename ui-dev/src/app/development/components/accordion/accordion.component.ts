@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AccordionComponentInterface } from "src/app/interfaces/accordion.interface";
+import { Meta } from "@angular/platform-browser";
 
 @Component({
   selector: "accordion",
@@ -12,9 +13,21 @@ export class AccordionComponent implements OnInit {
 
   @ViewChild("accordionParent", { static: false }) accordionParent: ElementRef;
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient, private _metaTagService: Meta) {}
 
   ngOnInit(): void {
+    this._metaTagService.addTags([
+      {
+        name: "keywords",
+        content: "Angular SEO Integration, Music CRUD, Angular Universal",
+      },
+      { name: "robots", content: "index, follow" },
+      { name: "author", content: "Eric Scott" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "date", content: "2022-11-31", scheme: "YYYY-MM-DD" },
+      { charset: "UTF-8" },
+    ]);
+
     this._http
       .get<AccordionComponentInterface[]>("assets/json/accordion-cmpt.json")
       .subscribe((res) => {
@@ -24,7 +37,7 @@ export class AccordionComponent implements OnInit {
 
   // Toggle Accordion
   toggleSection(e: any, i: number) {
-    var allGroups = [];
+    var allGroups: any[] = [];
     allGroups =
       this.accordionParent.nativeElement.getElementsByClassName(
         "hidden-content"

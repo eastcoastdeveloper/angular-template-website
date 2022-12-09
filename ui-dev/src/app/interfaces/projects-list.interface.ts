@@ -12,7 +12,6 @@ export class ProjectsListInterface {
   updatedOn: string;
   repoLink: string;
   repoTitle: string;
-  threeColumnLayout: boolean;
   showInPage: boolean;
   category: string;
 }

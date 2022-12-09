@@ -9,9 +9,9 @@ const routes: Routes = [
     path: "",
     component: DevelopmentWrapper,
     children: [
-      { path: "", redirectTo: "development", pathMatch: "full" },
+      { path: "", redirectTo: "learn-to-code", pathMatch: "full" },
       {
-        path: "development",
+        path: "learn-to-code",
         loadChildren: () =>
           import(
             `../../modules/cornerstone-development/cornerstone-development.module`
@@ -32,7 +32,7 @@ const routes: Routes = [
         path: "services-in-angular",
         component: ServicesComponent,
       },
-      { path: "**", redirectTo: "development" },
+      { path: "**", redirectTo: "learn-to-code" },
     ],
   },
 ];

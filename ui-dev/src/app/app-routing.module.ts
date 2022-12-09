@@ -4,21 +4,21 @@ import { WeatherComponent } from "./development/weather/weather.component";
 import { FormConfirmationComponent } from "./pages/form-confirmation/form-confirmation.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "web-development", pathMatch: "full" },
+  { path: "", redirectTo: "web-technologies", pathMatch: "full" },
   {
     path: "projects",
     loadChildren: () =>
       import(`./modules/apps/apps.module`).then((m) => m.AppsModule),
   },
   {
-    path: "components",
+    path: "ui-components",
     loadChildren: () =>
       import(`./modules/components/components.module`).then(
         (m) => m.ComponentsModule
       ),
   },
   {
-    path: "development",
+    path: "web-development",
     loadChildren: () =>
       import(`./modules/development/development.module`).then(
         (m) => m.DevelopmentModule
@@ -37,13 +37,13 @@ const routes: Routes = [
       import(`./modules/about/about.module`).then((m) => m.AboutPageModule),
   },
   {
-    path: "web-development",
+    path: "web-technologies",
     loadChildren: () =>
       import(`./modules/projects-list/projects-list.module`).then(
         (m) => m.ProjectListModule
       ),
   },
-  { path: "**", redirectTo: "web-development" },
+  { path: "**", redirectTo: "web-technologies" },
 ];
 
 @NgModule({

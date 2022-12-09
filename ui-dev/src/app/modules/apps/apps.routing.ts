@@ -8,9 +8,9 @@ const routes: Routes = [
     path: "",
     component: AppsWrapperComponent,
     children: [
-      { path: "", redirectTo: "javascript-projects", pathMatch: "full" },
+      { path: "", redirectTo: "front-end-development", pathMatch: "full" },
       {
-        path: "javascript-projects",
+        path: "front-end-development",
         loadChildren: () =>
           import(`../cornerstone-apps/cornerstone-apps.module`).then(
             (m) => m.CornerstoneAppsModule
@@ -55,7 +55,7 @@ const routes: Routes = [
       },
       {
         path: "**",
-        redirectTo: "javascript-projects",
+        redirectTo: "front-end-development",
       },
     ],
   },

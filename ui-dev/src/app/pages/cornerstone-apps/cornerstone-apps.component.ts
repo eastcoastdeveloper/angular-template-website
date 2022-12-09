@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { ProjectListService } from "src/app/services/current-route.service";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-cornerstone-apps",

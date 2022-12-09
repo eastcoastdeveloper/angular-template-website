@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { NasaSearchService } from "src/app/development/nasa/nasa.service";
-import { ProjectListService } from "src/app/services/current-route.service";
+import { ProjectListService } from "src/app/services/project-list.service";
 import { DevMenuService } from "src/app/services/dev-menu.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 
@@ -45,7 +45,9 @@ export class AppsWrapperComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
         this.pageTitle = val?.title;
-        this.threeColumnLayout = val?.threeColumnLayout;
+        val?.title === "Front End Development"
+          ? (this.threeColumnLayout = false)
+          : (this.threeColumnLayout = true);
       });
 
     this._devMenu.devMenuState$

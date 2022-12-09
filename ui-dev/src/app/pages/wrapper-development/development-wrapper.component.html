@@ -2,10 +2,8 @@
     <div class="details" (click)="pageClickHandler($event)">
         <h1 class="page-title">{{pageTitle}}</h1>
         <div class="breadcrumbs">
-            <span class="base-category" *ngIf="windowWidth > 768">Home</span>
-            <span class="carrot" *ngIf="windowWidth > 768">&#10095;</span>
             <div class="active-crumb" (click)="toggleDevMenu()">
-                <span #development>Development</span>
+                <span #development>Learn to Code</span>
                 <span #menuIcon class="menu-icon">
                     <div></div>
                     <div></div>
@@ -23,9 +21,13 @@
         </div>
         <div *ngIf="threeColumnLayout" class="middle-column" (click)="pageClickHandler($event)">
             <div *ngIf="windowWidth > 1100">
-                As a frontend developer, I'm often called upon to work directly with designers, create my own designs, and/or refine UI designs. These pieces are several, rather old, designs/videos I created with Photoshop, Sketch, and After Effects.<br><br>
-                Today, I enjoy creating my own complex, data driven UIs. I enjoy adding unique details to each screen size, paying special attention to speed and performance.<br><br>
-                These days most anyone can create a backend solution. But good, responsive UI design is both hard to come by, and sometimes more challenging than coding.
+                As a frontend developer, I'm often called upon to work directly with designers, create my own designs,
+                and/or refine UI designs. These pieces are several, rather old, designs/videos I created with Photoshop,
+                Sketch, and After Effects.<br><br>
+                Today, I enjoy creating my own complex, data driven UIs. I enjoy adding unique details to each screen
+                size, paying special attention to speed and performance.<br><br>
+                These days most anyone can create a backend solution. But good, responsive UI design is both hard to
+                come by, and sometimes more challenging than coding.
             </div>
             <div *ngIf="windowWidth < 1101">
                 <app-right-column></app-right-column>

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from "@angular/core";
 import { PageData } from "src/app/interfaces/page-date.interface";
-import { ProjectListService } from "src/app/services/current-route.service";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-calculator",
@@ -8,23 +8,12 @@ import { ProjectListService } from "src/app/services/current-route.service";
   styleUrls: ["./calculator.component.scss"],
 })
 export class CalculatorComponent implements AfterViewInit {
-  routeData: PageData = {
-    title: "Calculator Component",
-    threeColumnLayout: true,
-  };
-
   operationalBtns: any = [];
   deleteBtn: any = null;
   clearAllBtn: any = null;
   equationValue: any = null;
   resultValue: any = null;
   operation: any = null;
-
-  constructor(private _currentRoute: ProjectListService) {}
-
-  // ngOnInit() {
-  //   this._currentRoute.changeRouteData(this.routeData);
-  // }
 
   ngAfterViewInit(): void {
     this.operationalBtns = Array.from(

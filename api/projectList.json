@@ -13,7 +13,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "",
       "repoTitle": "",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -31,7 +30,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/rest-countries-leaflet-map",
       "repoTitle": "rest-countries",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -49,7 +47,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/hacker-news-app",
       "repoTitle": "react-project",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -67,7 +64,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "",
       "repoTitle": "",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -75,7 +71,7 @@
       "title": "Angular Countdown Timer",
       "imgUrl": "../../assets/components-grid/angular-countdown-timer.jpg",
       "description": "Angular countdown timer component with very minimal code. Plug it into any Angular project. Easily customize style or add milliseconds. Great feature to use in advertisements.",
-      "path": "/components/angular-countdown-timer",
+      "path": "/ui-components/angular-countdown-timer",
       "altText": "Angular countdown timer component. Countdown with days, hours, minutes, and seconds. Written in TypeScript.",
       "stackblitz": false,
       "internal": true,
@@ -85,15 +81,14 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-countdown-timer-component",
       "repoTitle": "angular-countdown-timer",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Angular Date Picker",
       "imgUrl": "../../assets/components-grid/angular-date-picker.jpg",
       "description": "I've never cared for Angular Material, so I created my own Angular date picker. No complex configurations or modular additions. Just add the component and you're up and running.",
-      "path": "/components/angular-date-picker",
+      "path": "/ui-components/angular-date-picker",
       "altText": "Angular date picker component that'll easily fit into any project by exporting the date value. Closes on external clicks.",
       "stackblitz": false,
       "internal": true,
@@ -103,15 +98,14 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/datepicker-angular-component",
       "repoTitle": "angular-date-picker",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Angular Accordion",
       "imgUrl": "../../assets/components-grid/accordion-component.jpg",
       "description": "Angular accordion component to neatly organize data in to sections. Use it in a column or as body content. The choice is yours. Comes with two different layouts, but easily add more.",
-      "path": "/components/accordion-component",
+      "path": "/ui-components/accordion-component",
       "altText": "Angular accordion component. Store information in colapasable units. Built with three layouts, but add as many as you'd like.",
       "stackblitz": false,
       "internal": true,
@@ -121,15 +115,14 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/Angular-Accordion-JSON",
       "repoTitle": "angular-accordion",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Angular Dynamic Sidebar",
       "imgUrl": "../../assets/components-grid/angular-dynamic-sidebar.jpg",
       "description": "I recently had to create an Angular dynamic sidebar with user permissions. Users only had access to pages provided in the endpoints output. This is a close representation of my creation minus the permissions.",
-      "path": "/components/angular-dynamic-sidebar",
+      "path": "/ui-components/angular-dynamic-sidebar",
       "altText": "Angular dynamic sidebar. Specify which section is a drop down menu, and populate all menu items via a DB/API.",
       "stackblitz": false,
       "internal": true,
@@ -139,15 +132,14 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar",
       "repoTitle": "angular-dynamic-sidebar",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Angular Data Table",
       "imgUrl": "../../assets/components-grid/angular-data-table.jpg",
       "description": "Angular data table importing JSON. Search, filter, and pagination; set item count per page. Easily modify height, width, colors, etc. Replace dummy data stream with your own, customize style, etc.",
-      "path": "/components/angular-data-table",
+      "path": "/ui-components/angular-data-table",
       "altText": "Paginated Angular data table importing JSON data. Easily customize height and width, colors, etc.",
       "stackblitz": false,
       "internal": true,
@@ -157,9 +149,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-8-table-pagination",
       "repoTitle": "angular-data-table",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Table in HTML",
@@ -175,9 +166,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/Dynamic-HTML-Table",
       "repoTitle": "table-in-html",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Chart JS Area Chart",
@@ -193,9 +183,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/ChartJS-Double-Line-Chart",
       "repoTitle": "chart-js-area-chart",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Chart JS Multiple Lines",
@@ -211,9 +200,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/chartjs-multi-line-chart",
       "repoTitle": "chart-js-multi-lines",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Chart JS Bar Chart UI",
@@ -229,9 +217,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/chartjs-bar-chart/",
       "repoTitle": "chart-js-bar-chart",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Chart JS Doughnut Chart",
@@ -247,9 +234,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/doughnut-chart-component/",
       "repoTitle": "chart-js-doughnut-chart",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Chart JS Line Chart",
@@ -265,9 +251,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/chartjs-line-chart/",
       "repoTitle": "chart-js-line-chart",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "D3 Bar Chart",
@@ -283,9 +268,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/D3-Bar-Chart",
       "repoTitle": "d3-bar-chart",
-      "threeColumnLayout": null,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Website Examples",
@@ -301,7 +285,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "",
       "repoTitle": "",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -319,7 +302,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/react-list-item-app",
       "repoTitle": "react-list-item-app",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -337,7 +319,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-weather-leaflet",
       "repoTitle": "angular-weather-leaflet",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -355,7 +336,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angularjs-project",
       "repoTitle": "angularjs-project",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -363,7 +343,7 @@
       "title": "Modules in Angular",
       "imgUrl": "../../assets/components-grid/modules-in-angular.jpg",
       "description": "Modules in Angular are the backbone of the framework. See modular code navigation and learn how to properly maintain modules in a large production ready application.",
-      "path": "/development/modules-in-angular/home",
+      "path": "/web-development/modules-in-angular/home",
       "altText": "Showcasing modules in Angular. How to use them and navigate between them.",
       "stackblitz": false,
       "internal": true,
@@ -373,9 +353,8 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-routing-between-modules",
       "repoTitle": "modules-in-angular",
-      "threeColumnLayout": false,
       "showInPage": true,
-      "category": "development"
+      "category": "web-development"
    },
    {
       "title": "JavaScript Drag and Drop",
@@ -391,7 +370,6 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/drag-and-drop-javascript",
       "repoTitle": "javascript-drag-and-drop",
-      "threeColumnLayout": false,
       "showInPage": true,
       "category": "projects"
    },
@@ -409,15 +387,14 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-share-component-data",
       "repoTitle": "angular-event-emitter",
-      "threeColumnLayout": false,
       "showInPage": true,
-      "category": "development"
+      "category": "web-development"
    },
    {
       "title": "In Page Navigation",
       "imgUrl": "../../assets/components-grid/in-page-navigation.jpg",
       "description": "Basic in page navigation mock. Easily show and hide different sections of a page without changing pages. Ideal for a questionaire, quiz, or any type of user info gathering UI.",
-      "path": "/development/in-page-navigation",
+      "path": "/web-development/in-page-navigation",
       "altText": "In page navigation with a progress bar at the bottom. Navigate to different sections without changing pages.",
       "stackblitz": false,
       "internal": true,
@@ -427,15 +404,14 @@
       "updatedOn": "",
       "repoLink": "https://github.com/eastcoastdeveloper/in-page-navigation",
       "repoTitle": "in-page-navigation",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "development"
+      "category": "web-development"
    },
    {
       "title": "Angular Slider",
       "imgUrl": "../../assets/components-grid/angular-slider.jpg",
       "description": "Basic Angular slider. Replace the JSON to suit your own needs. Take this foundation and add transitions or textual descriptions. Tinker with it here or in Stackblitz.",
-      "path": "/components/angular-slider",
+      "path": "/ui-components/angular-slider",
       "altText": "Angular slider w/ clickable dots. Click a dot to shift the slider to a new book or change book w/ next/prev buttons.",
       "stackblitz": false,
       "internal": true,
@@ -445,9 +421,8 @@
       "updatedOn": "",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-basic-carousel",
       "repoTitle": "angular-slider",
-      "threeColumnLayout": true,
       "showInPage": true,
-      "category": "components"
+      "category": "ui-components"
    },
    {
       "title": "Angular Resolver",
@@ -463,15 +438,14 @@
       "updatedOn": "Nov 15, 2022",
       "repoLink": "https://github.com/eastcoastdeveloper/angular-resolver-mock",
       "repoTitle": "angular-resolver",
-      "threeColumnLayout": false,
       "showInPage": true,
-      "category": "development"
+      "category": "web-development"
    },
    {
-      "title": "Web Development",
+      "title": "Front End Development",
       "imgUrl": "",
       "description": "",
-      "path": "/projects/javascript-projects",
+      "path": "/projects/front-end-development",
       "altText": "",
       "stackblitz": null,
       "internal": true,
@@ -481,15 +455,14 @@
       "updatedOn": "",
       "repoLink": "",
       "repoTitle": "",
-      "threeColumnLayout": false,
       "showInPage": false,
       "category": "projects"
    },
    {
-      "title": "Angular Components",
+      "title": "UI Components",
       "imgUrl": "",
       "description": "",
-      "path": "/components/angular-components",
+      "path": "/ui-components/html-javascript-css",
       "altText": "",
       "stackblitz": null,
       "internal": true,
@@ -499,15 +472,14 @@
       "updatedOn": "",
       "repoLink": "",
       "repoTitle": "",
-      "threeColumnLayout": false,
       "showInPage": false,
-      "category": "components"
+      "category": "ui-components"
    },
    {
-      "title": "Development",
+      "title": "Learn to Code",
       "imgUrl": "",
       "description": "",
-      "path": "/development/development",
+      "path": "/web-development/learn-to-code",
       "altText": "",
       "stackblitz": null,
       "internal": true,
@@ -517,8 +489,7 @@
       "updatedOn": "",
       "repoLink": "",
       "repoTitle": "",
-      "threeColumnLayout": false,
       "showInPage": false,
-      "category": "development"
+      "category": "web-development"
    }
 ]

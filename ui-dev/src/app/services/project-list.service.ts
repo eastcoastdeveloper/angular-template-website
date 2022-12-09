@@ -21,21 +21,34 @@ export class ProjectListService {
     private _localStorageService: LocalStorageService
   ) {}
 
-  getDataFromAPI() {
+  getDataFromAPI(pageNum: number, pageLimit: number) {
     const httpOptions = {
       headers: new HttpHeaders(),
     };
 
     return this._http
-      .get<HttpResponse<ProjectsListInterface>>("/app", httpOptions)
+      .get<HttpResponse<ProjectsListInterface>>(
+        `/app?page=${pageNum}&limit=${pageLimit}`,
+        httpOptions
+      )
       .pipe(
         map((responseData) => {
+          console.log(responseData);
+          let pageData: ProjectsListInterface[] = [];
+          Object.keys(responseData).filter((currentVal, index, arr) => {
+            currentVal === "results"
+              ? (pageData = Object.values(responseData)[index])
+              : "";
+          });
+          console.log(pageData);
+
           const result: ProjectsListInterface[] = [];
-          for (const key in responseData) {
-            if (responseData.hasOwnProperty(key)) {
-              result.push({ ...responseData[key] });
+          for (const key in pageData) {
+            if (pageData.hasOwnProperty(key)) {
+              result.push({ ...pageData[key] });
             }
           }
+          console.log(result);
           return result;
         })
       )
@@ -44,8 +57,7 @@ export class ProjectListService {
           "web-development",
           JSON.stringify(data)
         );
-
-        this.projectList = data as ProjectsListInterface[];
+        this.projectList = data;
         this.pageData.next(this.projectList);
       });
   }

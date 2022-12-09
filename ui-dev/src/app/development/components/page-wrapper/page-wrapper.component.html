@@ -1,9 +1,11 @@
 <div class="page-content">
-    <div class="details" (click)="pageClickHandler($event)">
+    <div class="details" (click)="closeDatePicker($event)">
         <h1 class="page-title">{{pageTitle}}</h1>
         <div class="breadcrumbs">
+            <!-- <span class="base-category" *ngIf="windowWidth > 768">Development</span>
+            <span class="carrot" *ngIf="windowWidth > 768">&#10095;</span> -->
             <div class="active-crumb" (click)="toggleDevMenu()">
-                <span #projects>Projects</span>
+                <span #apps>Components</span>
                 <span #menuIcon class="menu-icon">
                     <div></div>
                     <div></div>
@@ -13,16 +15,16 @@
         </div>
         <app-dev-menu *ngIf="devMenuStatus"></app-dev-menu>
     </div>
-    <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'"
-        (click)="pageClickHandler($event)">
-
+    <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'" (click)="closeDatePicker($event)">
         <div class="left-column">
             <app-post-details></app-post-details>
             <router-outlet></router-outlet>
-            <app-right-column *ngIf="windowWidth < 769"></app-right-column>
+            <div *ngIf="windowWidth < 769">
+                <app-right-column></app-right-column>
+            </div>
         </div>
-        <div class="middle-column">
-            <div *ngIf="windowWidth > 1100 && threeColumnLayout">
+        <div *ngIf="threeColumnLayout" class="middle-column" (click)="closeDatePicker($event)">
+            <div *ngIf="windowWidth > 1400">
                 I use components as often as possible. I use web components for native JS applications and Angular
                 components for single page apps. I enjoy creating libraries of components. Passing data between
                 siblings, parents/children, and via services; components are the building blocks of most if not all
@@ -38,8 +40,8 @@
                 <app-right-column></app-right-column>
             </div>
         </div>
-        <div class="right-column" (click)="pageClickHandler($event)">
-            <app-right-column></app-right-column>
-        </div>
     </main>
+    <div class="right-column" (click)="closeDatePicker($event)">
+        <app-right-column></app-right-column>
+    </div>
 </div>

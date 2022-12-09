@@ -4,7 +4,6 @@ import { ComponentsWrapperComponent } from "../../pages/wrapper-components/compo
 import { TablePaginatedComponent } from "../../development/components/table-paginated/table-paginated.component";
 import { AccordionComponent } from "../../development/components/accordion/accordion.component";
 import { CategoryMenuComponent } from "src/app/development/components/category-menu/category-menu.component";
-import { CalculatorComponent } from "../../development/components/calculator/calculator.component";
 import { CountdownComponent } from "../../development/components/countdown/countdown.component";
 import { DatePickerComponent } from "src/app/development/components/date-picker/date-picker.component";
 import { DynamicSidebarComponent } from "../../development/components/dynamic-sidebar/dynamic-sidebar.component";
@@ -15,9 +14,9 @@ const routes: Routes = [
     path: "",
     component: ComponentsWrapperComponent,
     children: [
-      { path: "", redirectTo: "angular-components", pathMatch: "full" },
+      { path: "", redirectTo: "html-javascript-css", pathMatch: "full" },
       {
-        path: "angular-components",
+        path: "html-javascript-css",
         loadChildren: () =>
           import(
             `../cornerstone-components/cornerstone-components.module`
@@ -47,7 +46,7 @@ const routes: Routes = [
         path: "angular-slider",
         component: SliderComponent,
       },
-      { path: "**", redirectTo: "angular-components" },
+      { path: "**", redirectTo: "html-javascript-css" },
     ],
   },
 ];
@@ -63,7 +62,6 @@ export const componentsComponents = [
   TablePaginatedComponent,
   AccordionComponent,
   CategoryMenuComponent,
-  CalculatorComponent,
   CountdownComponent,
   DynamicSidebarComponent,
   DatePickerComponent,

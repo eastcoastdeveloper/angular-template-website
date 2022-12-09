@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AccordionComponent } from '../../structural/accordion/accordion.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RightColumnComponent } from "../../structural/right-column/right-column.component";
 
 @NgModule({
-  declarations: [AccordionComponent],
+  declarations: [RightColumnComponent],
   imports: [CommonModule],
-  exports: [AccordionComponent],
+  exports: [RightColumnComponent],
 })
 export class RightColumnModule {}

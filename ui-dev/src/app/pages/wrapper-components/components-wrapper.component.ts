@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
-import { ProjectListService } from "src/app/services/current-route.service";
+import { ProjectListService } from "src/app/services/project-list.service";
 import { DevMenuService } from "src/app/services/dev-menu.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 
@@ -11,10 +11,10 @@ import { WindowWidthService } from "src/app/services/window-width.service";
 })
 export class ComponentsWrapperComponent {
   pageTitle?: string;
-  threeColumnLayout?: boolean = false;
   windowWidth: number;
   destroy$: Subject<boolean> = new Subject<boolean>();
   devMenuStatus?: boolean;
+  threeColumnLayout: boolean = false;
 
   @ViewChild("apps", { static: false }) apps: ElementRef;
   @ViewChild("menuIcon", { static: false }) menuIcon: ElementRef;
@@ -38,7 +38,9 @@ export class ComponentsWrapperComponent {
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
         this.pageTitle = val?.title;
-        this.threeColumnLayout = val?.threeColumnLayout;
+        val?.title === "UI Components"
+          ? (this.threeColumnLayout = false)
+          : (this.threeColumnLayout = true);
       });
 
     // Dev Menu Status

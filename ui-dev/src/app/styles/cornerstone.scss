@@ -47,6 +47,10 @@
     }
   }
 
+  .project-img:focus {
+    outline: none;
+  }
+
   h2 {
     font: bold 1.15em sans-serif;
     margin-bottom: 10px;
