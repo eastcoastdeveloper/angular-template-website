@@ -65,6 +65,14 @@
   }
 }
 
+@media screen and (max-width: 1150px) {
+  .cornerstone {
+    h2 {
+      font-size: 1.095em;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .cornerstone {
     grid-template-columns: 100%;

@@ -1,56 +1,20 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 
 @Component({
   selector: "app-cornerstone-components",
   templateUrl: "./cornerstone-components.component.html",
 })
-export class CornerstoneComponentsComponent implements OnInit {
+export class CornerstoneComponentsComponent {
   cmpsArray: ProjectsListInterface[] = [];
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(private _localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.cmpsArray = this._projectListService.projectList;
-    let filtered = this.cmpsArray.filter((item) => {
-      return item.category === "ui-components";
+    this._localStorageService.searchCacheForCategory("ui-components");
+    this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
+      this.cmpsArray = val;
     });
-    this.cmpsArray = filtered;
-    this.cmpsArray.pop();
   }
 }
-
-/* 
-  ngOnInit(): void {
-    // If Local Storage is Empty ...
-    if (localStorage.getItem("web-development") === null) {
-      new Promise((resolve, reject) => {
-        this._projectListService.getDataFromAPI();
-        resolve(
-          this._projectListService.pageData
-            .pipe(takeUntil(this.destroy$))
-            .subscribe((val) => {
-              this.filterPageData(val);
-              console.log(val);
-            })
-        );
-      });
-    }
-    // If Local Storage Has Key
-    else {
-      this.cmpsArray = JSON.parse(
-        this._localStorageService.getData("web-development")
-      );
-      this.filterPageData(this.cmpsArray);
-    }
-  }
-
-  filterPageData(obj: ProjectsListInterface[]) {
-    const filtered = obj.filter((item) => {
-      return item.category === "components";
-    });
-    this.cmpsArray = filtered;
-    this.cmpsArray.pop();
-  }
-*/

@@ -1,5 +1,6 @@
 import {
   Component,
+  DoCheck,
   ElementRef,
   OnDestroy,
   OnInit,
@@ -9,12 +10,14 @@ import { Subject, takeUntil } from "rxjs";
 import { ProjectListService } from "src/app/services/project-list.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 import { DevMenuService } from "../../services/dev-menu.service";
+import { Location } from "@angular/common";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 
 @Component({
   selector: "app-development",
   templateUrl: "./development-wrapper.component.html",
 })
-export class DevelopmentWrapper implements OnInit, OnDestroy {
+export class DevelopmentWrapper implements OnInit, DoCheck, OnDestroy {
   private destroy$ = new Subject<boolean>();
   pageTitle?: string;
   threeColumnLayout?: boolean = false;
@@ -27,8 +30,22 @@ export class DevelopmentWrapper implements OnInit, OnDestroy {
   constructor(
     private _windowWidth: WindowWidthService,
     private _devMenu: DevMenuService,
-    private _projectListService: ProjectListService
+    private _projectListService: ProjectListService,
+    private _location: Location,
+    private _localStorageService: LocalStorageService
   ) {}
+
+  ngDoCheck(): void {
+    // Cornerstone Page Title
+    if (this._location.path() === "/web-development/learn-to-code") {
+      this.pageTitle = "Learn to Code";
+      this.threeColumnLayout = false;
+    }
+    // On Page Refresh
+    if (this.pageTitle === undefined) {
+      this._localStorageService.searchCacheForCategory("projects");
+    }
+  }
 
   ngOnInit(): void {
     // Get Window Width
@@ -38,21 +55,19 @@ export class DevelopmentWrapper implements OnInit, OnDestroy {
         this.windowWidth = currentVal;
       });
 
-    // Get Page Title & Layout Type
+    // Retrieve Page Title, Git, Updated, etc
     this._projectListService.pageData$
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
         this.pageTitle = val?.title;
-        val?.title === "Learn to Code"
-          ? (this.threeColumnLayout = false)
-          : (this.threeColumnLayout = true);
+        this.threeColumnLayout = true;
       });
   }
 
-  toggleDevMenu() {
-    this.devMenuStatus = !this.devMenuStatus;
-    this._devMenu.changeValue(this.devMenuStatus);
-  }
+  // toggleDevMenu() {
+  //   this.devMenuStatus = !this.devMenuStatus;
+  //   this._devMenu.changeValue(this.devMenuStatus);
+  // }
 
   pageClickHandler(event: any) {
     if (

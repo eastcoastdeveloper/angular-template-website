@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   ElementRef,
   OnDestroy,
@@ -28,34 +29,40 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   constructor(
     private _windowWidth: WindowWidthService,
     private _scrollToTop: ScrollToTopService,
-    private _projectListService: ProjectListService
+    private _projectListService: ProjectListService,
+    private _changeDetection: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    // Call Endpoint if Not Cached
-    if (this._projectListService.projectList.length > 0) {
-      this.projectsArray = this._projectListService.projectList;
-    } else {
-      this.getEndpointData(1, 10);
-    }
+    // Call API or Use Cached Data
+    this.getEndpointData(1, 10);
+
+    // Window Width Service
     this._windowWidth.currentWidth$
       .pipe(takeUntil(this.destroy$))
       .subscribe((value) => {
         this.windowWidth = value;
       });
+
+    this._changeDetection.detectChanges();
   }
 
-  // API
-  getEndpointData(page, limit) {
+  // // Check Cache ...
+  getEndpointData(page: number, limit: number) {
+    console.log("called from projects list");
     new Promise((resolve, reject) => {
-      this._projectListService.getDataFromAPI(page, limit);
+      this._projectListService.checkCacheBeforeFetch(page, limit);
       resolve(
         this._projectListService.pageData.subscribe((val) => {
           this.projectsArray = val;
-          this.masterArray = this.projectsArray.slice();
+          // this.masterArray = this.projectsArray.slice();
         })
       );
     });
+  }
+
+  getPageContent(evt: any) {
+    this.projectsArray = evt;
   }
 
   // Most Views
@@ -79,6 +86,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   filterItems(val: string) {
     this.filteredArray = [];
     this.projectsArray = this.masterArray;
+    console.log(this._projectListService.projectArray);
     this.projectsArray.filter((value: any) => {
       if (value.category === val) {
         this.filteredArray.push(value);

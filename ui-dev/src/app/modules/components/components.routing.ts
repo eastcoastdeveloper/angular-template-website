@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { ComponentsWrapperComponent } from "../../pages/wrapper-components/components-wrapper.component";
 import { TablePaginatedComponent } from "../../development/components/table-paginated/table-paginated.component";
 import { AccordionComponent } from "../../development/components/accordion/accordion.component";
-import { CategoryMenuComponent } from "src/app/development/components/category-menu/category-menu.component";
+// import { CategoryMenuComponent } from "src/app/development/components/category-menu/category-menu.component";
 import { CountdownComponent } from "../../development/components/countdown/countdown.component";
 import { DatePickerComponent } from "src/app/development/components/date-picker/date-picker.component";
 import { DynamicSidebarComponent } from "../../development/components/dynamic-sidebar/dynamic-sidebar.component";
@@ -61,7 +61,7 @@ export const componentsComponents = [
   ComponentsWrapperComponent,
   TablePaginatedComponent,
   AccordionComponent,
-  CategoryMenuComponent,
+  // CategoryMenuComponent,
   CountdownComponent,
   DynamicSidebarComponent,
   DatePickerComponent,

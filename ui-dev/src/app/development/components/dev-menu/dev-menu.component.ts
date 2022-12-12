@@ -25,11 +25,14 @@ export class DevMenuComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.projectList = this._projectListService.projectList;
+    this.projectList = this._projectListService.projectArray;
 
     // Create Array of Objects
     this.projectList.map((val) => {
-      this.dataArray[0] = { category: "Projects", pages: this.projectItems };
+      this.dataArray[0] = {
+        category: "Projects",
+        pages: this.projectItems,
+      };
       this.dataArray[1] = {
         category: "UI-Components",
         pages: this.componentItems,

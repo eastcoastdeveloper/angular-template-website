@@ -1,0 +1,16 @@
+<div *ngIf="totalPages > 1" class="pagination">
+    <div class="selections">
+        <div class="previous">
+            <div class="arrow left"></div>
+        </div>
+        <div class="numbers">
+            <div *ngFor="let num of [].constructor(totalPages); let i = index;" class="page-num"
+                (click)="getEndpointData(i + 1, 10)">
+                <span>{{i + 1}}</span>
+            </div>
+        </div>
+        <div class="next">
+            <div class="arrow right"></div>
+        </div>
+    </div>
+</div>

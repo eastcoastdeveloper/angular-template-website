@@ -1,15 +1,24 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import {
+  Component,
+  DoCheck,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { ProjectListService } from "src/app/services/project-list.service";
 import { DevMenuService } from "src/app/services/dev-menu.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
+import { Location } from "@angular/common";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 
 @Component({
   selector: "app-components-wrapper",
   templateUrl: "./components-wrapper.component.html",
   styleUrls: ["./components-wrapper.component.scss"],
 })
-export class ComponentsWrapperComponent {
+export class ComponentsWrapperComponent implements OnInit, DoCheck, OnDestroy {
   pageTitle?: string;
   windowWidth: number;
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -22,8 +31,22 @@ export class ComponentsWrapperComponent {
   constructor(
     private _windowWidthService: WindowWidthService,
     private _devMenu: DevMenuService,
-    private _projectListService: ProjectListService
+    private _projectListService: ProjectListService,
+    private _location: Location,
+    private _localStorageService: LocalStorageService
   ) {}
+
+  ngDoCheck(): void {
+    // Cornerstone Page Title
+    if (this._location.path() === "/ui-components/html-javascript-css") {
+      this.pageTitle = "UI Components";
+      this.threeColumnLayout = false;
+    }
+    // On Page Refresh
+    if (this.pageTitle === undefined) {
+      this._localStorageService.searchCacheForCategory("ui-components");
+    }
+  }
 
   ngOnInit(): void {
     // Get Window Width
@@ -33,14 +56,12 @@ export class ComponentsWrapperComponent {
         this.windowWidth = currentVal;
       });
 
-    // Get Page Title & Layout Type
+    // Retrieve Page Title, Git, Updated, etc
     this._projectListService.pageData$
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
         this.pageTitle = val?.title;
-        val?.title === "UI Components"
-          ? (this.threeColumnLayout = false)
-          : (this.threeColumnLayout = true);
+        this.threeColumnLayout = true;
       });
 
     // Dev Menu Status
@@ -49,10 +70,10 @@ export class ComponentsWrapperComponent {
     });
   }
 
-  toggleDevMenu() {
-    this.devMenuStatus = !this.devMenuStatus;
-    this._devMenu.changeValue(this.devMenuStatus);
-  }
+  // toggleDevMenu() {
+  //   this.devMenuStatus = !this.devMenuStatus;
+  //   this._devMenu.changeValue(this.devMenuStatus);
+  // }
 
   closeDatePicker(event: any) {
     if (

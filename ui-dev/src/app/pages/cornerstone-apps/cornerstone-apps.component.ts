@@ -1,22 +1,19 @@
 import { Component, OnInit } from "@angular/core";
-import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 
 @Component({
   selector: "app-cornerstone-apps",
   templateUrl: "./cornerstone-apps.component.html",
 })
 export class CornerstoneAppsComponent implements OnInit {
-  appsArray: ProjectsListInterface[] = [];
+  appsArray: any;
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(private _localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.appsArray = this._projectListService.projectList;
-    let filtered = this.appsArray.filter((item) => {
-      return item.category === "projects";
+    this._localStorageService.searchCacheForCategory("projects");
+    this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
+      this.appsArray = val;
     });
-    this.appsArray = filtered;
-    this.appsArray.pop();
   }
 }

@@ -6,22 +6,21 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
-} from '@angular/core';
+} from "@angular/core";
 
 @Component({
-  selector: 'app-in-page-navigation',
-  templateUrl: './in-page-navigation.component.html',
-  styleUrls: ['./in-page-navigation.component.scss']
+  selector: "app-in-page-navigation",
+  templateUrl: "./in-page-navigation.component.html",
+  styleUrls: ["./in-page-navigation.component.scss"],
 })
 export class InPageNavigationComponent implements OnInit {
-
   markup: string;
   typescript: string;
   style: string;
 
-  @ViewChildren('sections') sections: QueryList<ElementRef>;
-  @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
-  @ViewChild('bar', { static: false }) bar: ElementRef;
+  @ViewChildren("sections") sections: QueryList<ElementRef>;
+  @ViewChild("btnGroup", { static: false }) btnGroup: ElementRef;
+  @ViewChild("bar", { static: false }) bar: ElementRef;
 
   // SET TO ANY AMOUNT!
   sectionLength = 3;
@@ -36,44 +35,44 @@ export class InPageNavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.renderCode();
+    this.renderCode();
   }
 
   ngAfterViewInit() {
     this._cd.detectChanges();
     this.progress = Array.prototype.slice.call(
-      document.querySelectorAll('#percent > div')
+      document.querySelectorAll("#percent > div")
     );
     this.barLinkWidth = 100 / this.sections.length;
     this.bar.nativeElement.setAttribute(
-      'style',
-      'width:' + this.barLinkWidth + '%'
+      "style",
+      "width:" + this.barLinkWidth + "%"
     );
     this.btnGroup.nativeElement.style.gridTemplateColumns =
-      'repeat(' + this.sectionLength + ', auto)';
+      "repeat(" + this.sectionLength + ", auto)";
   }
 
   navigate(sectionIndex: number) {
     this.currentSection = sectionIndex;
     this.bar.nativeElement.style.width =
-      this.barLinkWidth * (sectionIndex + 1) + '%';
+      this.barLinkWidth * (sectionIndex + 1) + "%";
   }
 
   showProgressBar() {
-    this.bar.nativeElement.style.height = '22px';
+    this.bar.nativeElement.style.height = "22px";
     for (var i = 0; i < this.progress.length; i++) {
       this.progress[i].style.opacity = 1;
     }
   }
 
   hideProgressBar() {
-    this.bar.nativeElement.style.height = '3px';
+    this.bar.nativeElement.style.height = "3px";
     for (var i = 0; i < this.progress.length; i++) {
       this.progress[i].style.opacity = 0;
     }
   }
 
-  private renderCode(){
+  private renderCode() {
     this.markup = `
     <div id="module-name">
     <section *ngFor="let item of [].constructor(sectionLength); let i = index" [ngClass]="{ 'display-none': currentSection != i }">
@@ -290,4 +289,3 @@ export class InPageNavigationComponent implements OnInit {
     }`;
   }
 }
-

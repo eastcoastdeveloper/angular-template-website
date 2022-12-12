@@ -37,6 +37,7 @@ export class DragDropUiComponent {
     this.snippetThree = `{title: itemTitle}, {title: itemTitle}. itemAdded()`;
     this.snippetFour = `[{active: false}, {active: false}, {active: false}, {active: false}, ...]`;
     this.snippetFive = `{active: true}`;
+
     this.json = `
     {
       "unsortedItems": [

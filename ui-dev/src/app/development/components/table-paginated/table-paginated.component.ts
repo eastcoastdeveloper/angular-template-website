@@ -13,9 +13,7 @@ export class TablePaginatedComponent implements OnInit {
   windowWidth: number;
   p: any;
 
-  constructor(
-    private _http: HttpClient
-  ) {}
+  constructor(private _http: HttpClient) {}
 
   ngOnInit(): void {
     this._http

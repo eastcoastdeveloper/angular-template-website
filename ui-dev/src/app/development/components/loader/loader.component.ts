@@ -5,4 +5,8 @@ import { Component } from "@angular/core";
   template: `<div class="circle"><div class="loader"></div></div>`,
   styleUrls: ["./loader.component.scss"],
 })
-export class LoaderComponent {}
+export class LoaderComponent {
+  constructor() {
+    console.log("loading");
+  }
+}

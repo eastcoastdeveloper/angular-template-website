@@ -1,0 +1,27 @@
+@import '../../../styles/colors.scss';
+
+.category-group {
+    font: normal 15px sans-serif;
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
+    right: 20px;
+
+    >div {
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        padding: 3px 10px;
+        border-radius: 4px;
+        transition: background-color .25s;
+    }
+
+    >div:hover {
+        background-color: $greyBlack;
+        color: $yellowGold;
+    }
+
+    >div:not(:last-child) {
+        margin-right: 5px;
+    }
+}

@@ -1,21 +1,11 @@
 <div class="page-content">
     <div class="details" (click)="closeDatePicker($event)">
         <h1 class="page-title">{{pageTitle}}</h1>
-        <div class="breadcrumbs">
-            <div class="active-crumb" (click)="toggleDevMenu()">
-                <span #apps>UI Components</span>
-                <span #menuIcon class="menu-icon">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </span>
-            </div>
-        </div>
-        <app-dev-menu *ngIf="devMenuStatus"></app-dev-menu>
+        <app-category-navigation></app-category-navigation>
     </div>
     <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'" (click)="closeDatePicker($event)">
         <div class="left-column">
-            <app-post-details></app-post-details>
+            <app-post-details *ngIf="threeColumnLayout"></app-post-details>
             <router-outlet></router-outlet>
             <div *ngIf="windowWidth < 769">
                 <app-right-column></app-right-column>
