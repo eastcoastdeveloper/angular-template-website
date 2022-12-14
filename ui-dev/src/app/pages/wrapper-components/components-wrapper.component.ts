@@ -8,7 +8,6 @@ import {
 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { ProjectListService } from "src/app/services/project-list.service";
-import { DevMenuService } from "src/app/services/dev-menu.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 import { Location } from "@angular/common";
 import { LocalStorageService } from "src/app/services/local-storage.service";
@@ -30,7 +29,6 @@ export class ComponentsWrapperComponent implements OnInit, DoCheck, OnDestroy {
 
   constructor(
     private _windowWidthService: WindowWidthService,
-    private _devMenu: DevMenuService,
     private _projectListService: ProjectListService,
     private _location: Location,
     private _localStorageService: LocalStorageService
@@ -43,9 +41,9 @@ export class ComponentsWrapperComponent implements OnInit, DoCheck, OnDestroy {
       this.threeColumnLayout = false;
     }
     // On Page Refresh
-    if (this.pageTitle === undefined) {
-      this._localStorageService.searchCacheForCategory("ui-components");
-    }
+    // if (this.pageTitle === undefined) {
+
+    // }
   }
 
   ngOnInit(): void {
@@ -63,11 +61,6 @@ export class ComponentsWrapperComponent implements OnInit, DoCheck, OnDestroy {
         this.pageTitle = val?.title;
         this.threeColumnLayout = true;
       });
-
-    // Dev Menu Status
-    this._devMenu.devMenuState$.subscribe((val) => {
-      this.devMenuStatus = val;
-    });
   }
 
   // toggleDevMenu() {
@@ -75,17 +68,17 @@ export class ComponentsWrapperComponent implements OnInit, DoCheck, OnDestroy {
   //   this._devMenu.changeValue(this.devMenuStatus);
   // }
 
-  closeDatePicker(event: any) {
-    if (
-      this._devMenu.devMenu &&
-      event.target != this.apps.nativeElement &&
-      this._devMenu.devMenu &&
-      event.target != this.menuIcon.nativeElement &&
-      event.target.parentElement != this.menuIcon.nativeElement
-    ) {
-      this._devMenu.closeMenu();
-    }
-  }
+  // closeDatePicker(event: any) {
+  //   if (
+  //     this._devMenu.devMenu &&
+  //     event.target != this.apps.nativeElement &&
+  //     this._devMenu.devMenu &&
+  //     event.target != this.menuIcon.nativeElement &&
+  //     event.target.parentElement != this.menuIcon.nativeElement
+  //   ) {
+  //     this._devMenu.closeMenu();
+  //   }
+  // }
 
   ngOnDestroy(): void {
     this.destroy$.next(true);

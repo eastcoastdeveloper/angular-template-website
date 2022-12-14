@@ -6,13 +6,9 @@ import { ProjectsListInterface } from "../../../interfaces/projects-list.interfa
   templateUrl: "./projects-list-content.component.html",
   styleUrls: ["./projects-list-content.component.scss"],
 })
-export class ProjectsListContentComponent implements OnInit {
+export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];
   @Input() pageHeader: string;
-
-  ngOnInit() {
-    console.log(this.dataArray);
-  }
 
   formatViews(val: number | bigint) {
     return new Intl.NumberFormat().format(val);

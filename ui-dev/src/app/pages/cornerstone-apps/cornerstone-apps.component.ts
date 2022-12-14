@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LocalStorageService } from "src/app/services/local-storage.service";
+import { ProjectCategoryService } from "src/app/services/project-category.service";
 
 @Component({
   selector: "app-cornerstone-apps",
@@ -8,12 +8,16 @@ import { LocalStorageService } from "src/app/services/local-storage.service";
 export class CornerstoneAppsComponent implements OnInit {
   appsArray: any;
 
-  constructor(private _localStorageService: LocalStorageService) {}
+  constructor(private _projectCategoryService: ProjectCategoryService) {}
 
   ngOnInit(): void {
-    this._localStorageService.searchCacheForCategory("projects");
-    this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
-      this.appsArray = val;
+    new Promise((resolve) => {
+      this._projectCategoryService.configureCategory("projects");
+      resolve(
+        this._projectCategoryService.categorySubject.subscribe((val) => {
+          this.appsArray = val;
+        })
+      );
     });
   }
 }

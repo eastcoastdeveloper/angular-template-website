@@ -1,9 +1,9 @@
 <div class="page-content">
-    <div class="details" (click)="closeDatePicker($event)">
+    <div class="details">
         <h1 class="page-title">{{pageTitle}}</h1>
         <app-category-navigation></app-category-navigation>
     </div>
-    <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'" (click)="closeDatePicker($event)">
+    <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'">
         <div class="left-column">
             <app-post-details *ngIf="threeColumnLayout"></app-post-details>
             <router-outlet></router-outlet>
@@ -11,7 +11,7 @@
                 <app-right-column></app-right-column>
             </div>
         </div>
-        <div *ngIf="threeColumnLayout" class="middle-column" (click)="closeDatePicker($event)">
+        <div *ngIf="threeColumnLayout" class="middle-column">
             <div *ngIf="windowWidth > 1400">
                 I use components as often as possible. I use web components for native JS applications and Angular
                 components for single page apps. I enjoy creating libraries of components. Passing data between
@@ -29,7 +29,7 @@
             </div>
         </div>
     </main>
-    <div class="right-column" (click)="closeDatePicker($event)">
+    <div class="right-column">
         <app-right-column></app-right-column>
     </div>
 </div>

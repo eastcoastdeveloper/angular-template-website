@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { DevMenuComponent } from "../../development/components/dev-menu/dev-menu.component";
 import { PostDetailsComponent } from "../../structural/post-details/post-details.component";
 import { RouterModule } from "@angular/router";
 import { LoaderComponent } from "src/app/development/components/loader/loader.component";
@@ -11,7 +10,6 @@ import { CategoryNavigationComponent } from "src/app/development/components/cate
 
 @NgModule({
   declarations: [
-    DevMenuComponent,
     PostDetailsComponent,
     ProjectsListContentComponent,
     LoaderComponent,
@@ -20,7 +18,6 @@ import { CategoryNavigationComponent } from "src/app/development/components/cate
   ],
   imports: [CommonModule, RouterModule, RightColumnModule],
   exports: [
-    DevMenuComponent,
     PostDetailsComponent,
     ProjectsListContentComponent,
     LoaderComponent,

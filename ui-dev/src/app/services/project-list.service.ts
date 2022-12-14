@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { NavigationEnd, Router, Event } from "@angular/router";
-import { BehaviorSubject, map } from "rxjs";
+import { BehaviorSubject, filter, map } from "rxjs";
+import { CachedObject } from "../interfaces/cached-object";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 import { LocalStorageService } from "./local-storage.service";
 
@@ -9,8 +10,11 @@ import { LocalStorageService } from "./local-storage.service";
   providedIn: "root",
 })
 export class ProjectListService {
+  filteredBehaviorSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
+
   // Subject Shares Data w/ Component
-  pageData = new BehaviorSubject<ProjectsListInterface[]>([]);
+  allProjectsSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
+  categorySubject = new BehaviorSubject<ProjectsListInterface[]>([]);
   pageTitle = new BehaviorSubject<string>("");
 
   // Searches Cache
@@ -48,7 +52,7 @@ export class ProjectListService {
   checkCacheBeforeFetch(pageNum: number, pageLimit: number) {
     // Check for Cache
     let cachedItems: boolean = false;
-    this.searchQuery = this._localStorageService.getData("web-development");
+    this.searchQuery = this._localStorageService.getData("prjs");
     this.searchQuery.length > 0 ? (cachedItems = true) : (cachedItems = false);
 
     // There IS Cache
@@ -61,13 +65,13 @@ export class ProjectListService {
       // Page 1
       if (pageNum === 1) {
         this.projectArray = JSON.parse(this.searchQuery).slice(0, 10);
-        this.pageData.next(this.projectArray);
+        this.allProjectsSubject.next(this.projectArray);
         return;
       }
 
       // Other Pages for the First Time
       if (this.projectArray.slice((pageNum - 1) * 10).length === 0) {
-        this.getDataFromAPI(pageNum, pageLimit);
+        this.getAllProjects(pageNum, pageLimit);
         return;
       }
 
@@ -75,46 +79,46 @@ export class ProjectListService {
       if (this.projectArray.slice((pageNum - 1) * 10).length > 0) {
         const parsedData = JSON.parse(this.searchQuery);
         this.projectArray = parsedData.slice((pageNum - 1) * 10, pageNum * 10);
-        this.pageData.next(this.projectArray);
+        this.allProjectsSubject.next(this.projectArray);
       }
     }
 
     // There's NO Cache
     if (this.searchQuery === "") {
-      this.getDataFromAPI(pageNum, pageLimit);
+      this.getAllProjects(pageNum, pageLimit);
     }
   }
 
-  // Call API
-  getDataFromAPI(pageNum: number, pageLimit: number) {
+  // Call All Projects API
+  getAllProjects(pageNum: number, pageLimit: number) {
     const httpOptions = {
       headers: new HttpHeaders(),
     };
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
-        `/app?page=${pageNum}?&limit=${pageLimit}`,
+        `/app/all/?page=${pageNum}?&limit=${pageLimit}`,
         httpOptions
       )
       .pipe(
         map((responseData) => {
-          let dummyArray: ProjectsListInterface[] = [];
+          let allProjects: ProjectsListInterface[] = [];
           Object.keys(responseData).filter((currentVal, index) => {
             currentVal === "results"
-              ? (dummyArray = Object.values(responseData)[index])
+              ? (allProjects = Object.values(responseData)[index])
               : "";
           });
-          dummyArray.map((val) => {
+          allProjects.map((val) => {
             this.projectArray.push(val);
           });
-          return dummyArray;
+          return allProjects;
         })
       )
       .subscribe((data) => {
         this._localStorageService.saveData(
-          "web-development",
+          "prjs",
           JSON.stringify(this.projectArray)
         );
-        this.pageData.next(data);
+        this.allProjectsSubject.next(data);
       });
   }
 

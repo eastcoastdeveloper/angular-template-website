@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { LocalStorageService } from "src/app/services/local-storage.service";
+import { ProjectCategoryService } from "src/app/services/project-category.service";
 
 @Component({
   selector: "app-development-components",
@@ -9,12 +9,16 @@ import { LocalStorageService } from "src/app/services/local-storage.service";
 export class CornerstoneDevelopmentComponent {
   developmentArray: ProjectsListInterface[] = [];
 
-  constructor(private _localStorageService: LocalStorageService) {}
+  constructor(private _projectCategoryService: ProjectCategoryService) {}
 
   ngOnInit(): void {
-    this._localStorageService.searchCacheForCategory("web-development");
-    this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
-      this.developmentArray = val;
+    new Promise((resolve) => {
+      this._projectCategoryService.configureCategory("development");
+      resolve(
+        this._projectCategoryService.categorySubject.subscribe((val) => {
+          this.developmentArray = val;
+        })
+      );
     });
   }
 }

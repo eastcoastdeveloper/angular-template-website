@@ -1,11 +1,11 @@
-<header class="app-header" (click)="externalClick()">
+<header class="app-header">
     <div *ngIf="screenSize > 1150" class="url" routerLink="/">
         <h2>Front End Development</h2><span>.tech</span>
     </div>
     <div *ngIf="screenSize < 1151" class="logo" routerLink="/">
         <img src="../../../assets/img/logo.png" />
     </div>
-    <nav *ngIf="screenSize > 605" (click)="externalClick()">
+    <nav *ngIf="screenSize > 605">
         <div class="mock-link" routerLink="web-technologies">
             <span routerLinkActive="is-active">Folio</span>
         </div>

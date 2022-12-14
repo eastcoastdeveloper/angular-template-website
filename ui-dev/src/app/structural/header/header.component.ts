@@ -4,7 +4,6 @@ import { SideBarService } from "../../services/sidebar-service";
 import { Subject, Subscription, takeUntil } from "rxjs";
 import { NasaSearchService } from "src/app/development/nasa/nasa.service";
 import { Router } from "@angular/router";
-import { DevMenuService } from "src/app/services/dev-menu.service";
 import { DOCUMENT } from "@angular/common";
 import { ScrollToTopService } from "src/app/services/scroll-to-top.service";
 
@@ -29,7 +28,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private nasaSearchService: NasaSearchService,
     private windowWidth: WindowWidthService,
     public sideBarService: SideBarService,
-    private devMenu: DevMenuService,
     private _router: Router,
     private _renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
@@ -52,12 +50,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  externalClick() {
-    this.devMenu.closeMenu();
-    if (this._router.url.includes("nasa")) {
-      this.nasaSearchService.changeDatePickerVal(false);
-    }
-  }
+  // externalClick() {
+  //   this.devMenu.closeMenu();
+  //   if (this._router.url.includes("nasa")) {
+  //     this.nasaSearchService.changeDatePickerVal(false);
+  //   }
+  // }
 
   toggleMobileNav() {
     this.sidebarStatus = !this.sidebarStatus;

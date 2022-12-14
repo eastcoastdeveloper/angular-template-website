@@ -53,7 +53,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     new Promise((resolve, reject) => {
       this._projectListService.checkCacheBeforeFetch(page, limit);
       resolve(
-        this._projectListService.pageData.subscribe((val) => {
+        this._projectListService.allProjectsSubject.subscribe((val) => {
           this.projectsArray = val;
           // this.masterArray = this.projectsArray.slice();
         })

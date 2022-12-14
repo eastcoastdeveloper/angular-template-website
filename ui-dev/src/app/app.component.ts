@@ -3,7 +3,6 @@ import { WindowWidthService } from "./services/window-width.service";
 import { SideBarService } from "./services/sidebar-service";
 import { NavigationEnd, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
-import { DevMenuService } from "./services/dev-menu.service";
 import { ScrollToTopService } from "./services/scroll-to-top.service";
 import { ProjectsListInterface } from "./interfaces/projects-list.interface";
 import { DOCUMENT } from "@angular/common";
@@ -54,7 +53,6 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private _windowService: WindowWidthService,
     private _sidebarService: SideBarService,
-    private _devMenu: DevMenuService,
     private _scrollToTop: ScrollToTopService,
     private _projectListService: ProjectListService,
     private _router: Router,
@@ -68,8 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (data instanceof NavigationEnd) {
         const cachedData = this._localStorageService.getData("web-development");
 
-        // If /web-technologies and There's Cache, Set = to projectsArray
-        // Remove Duplicates
+        // If /web-technologies & There's Cache, Remove Duplicates, & Set projectsArray Value
         if (this._router.url === "/web-technologies" && cachedData.length > 0) {
           const parsedData = JSON.parse(cachedData);
           this._projectListService.projectArray = parsedData;
@@ -80,6 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
             );
         }
 
+        // Set Global Object Values
         this._projectListService.projectArray.map((val) => {
           if (this._router.url === val.path) {
             this.setValues(val);
@@ -136,7 +134,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.pageDetails.category = val.category;
     this.pageDetails.views = val.views;
     this.pageDetails.forks = val.forks;
-    console.log(this.pageDetails);
     this._projectListService.changeProjectData(this.pageDetails);
   }
 
@@ -155,7 +152,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isMobile = this.width < this.mobileWidth;
     this._windowService.changeValue(this.width);
     this._sidebarService.changeValue(false);
-    this._devMenu.closeMenu();
   }
 
   ngOnDestroy() {

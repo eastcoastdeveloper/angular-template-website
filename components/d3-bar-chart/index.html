@@ -1,112 +1,139 @@
 <!DOCTYPE html>
 <html>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0" />
-    <head>
-        <title>D3 Bar Chart</title>
-        <link rel="stylesheet" href="https://frontenddevelopment.tech/ui-dev.css" />
-        <style>
-            #graph-wrapper {
-                min-height: 300px;
-                max-width: 750px;
-                margin: 0 auto;
-                border-radius: 5px;
-            }
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,maximum-scale=1.0,minimum-scale=1.0" />
 
-            text { font-size: 1.2em; }
-            line { display: none;    }
+<head>
+    <title>D3 Bar Chart</title>
+    <link rel="stylesheet" href="https://frontenddevelopment.tech/ui-dev.css" />
+    <style>
+        #graph-wrapper {
+            min-height: 300px;
+            max-width: 750px;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
 
-            [text-anchor="end"] .domain    { d: path("M 0 0.5 H 0.5 V 250.5 H 0"); }
-            [text-anchor="middle"] .domain { d: path("M 0.5 6 V 0.5 H 531.5 V 0"); }
-        </style>
-    </head>
-    <body>
-        <div>
-            <div id="header">
-                <header class="app-header" onclick="closeDevMenu()">
-                    <a href="/">
-                        <div class="url">
-                            <h2>Front End Development</h2>
-                            <span>.tech</span>
-                        </div>
-                        <div class="logo"><img src="https://frontenddevelopment.tech/assets/img/logo.png" /></div>
-                    </a>
-                    <nav></nav>
-                    <div class="mobile-title">FrontendDev</div>
-                    <div class="mobile-menu">
-                        <span class="mobile-hamburger">&#9776;</span>
-                        <span class="close-mobile-menu">&#x2715;</span>
+        text {
+            font-size: 1.2em;
+        }
+
+        line {
+            display: none;
+        }
+
+        [text-anchor="end"] .domain {
+            d: path("M 0 0.5 H 0.5 V 250.5 H 0");
+        }
+
+        [text-anchor="middle"] .domain {
+            d: path("M 0.5 6 V 0.5 H 531.5 V 0");
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div id="header">
+            <header class="app-header" onclick="closeDevMenu()">
+                <a href="/">
+                    <div class="url">
+                        <h2>Front End Development</h2>
+                        <span>.tech</span>
                     </div>
-                </header>
-            </div>
-            <div id="content">
-                <div class="router-wrapper">
-                    <div class="page-content">
-                        <div class="details">
-                            <h1 class="page-title">D3 Bar Chart</h1>
-                            <div class="breadcrumbs">
-                                <span class="base-category">Development</span>
-                                <span class="carrot">&#10095;</span>
-                                <div class="active-crumb" onclick="toggleDevMenu()">
-                                    <span>Projects</span>
-                                    <span class="menu-icon">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <main class="three-column-layout">
-                            <div class="left-column">
-                                <!-- CONTENT -->
-                                <div class="snippet-description">
-                                    I created this D3 bar chart while working on a proprietary application for the government. Not this exact one of course&mdash;lol. I was absolutely baffled as to how <a href="https://nvd3.org/" target="_blank">NVD3</a> worked, so I created a bunch of graphs using the child framework. Then I wanted to do stuff beyond the very limited bounds of NVD3, so I jumped in to <a href="https://d3js.org/" target="_blank">D3</a>. An entire world of svg and canvas tools were suddenly at my disposal. It was beyond frustrating getting it to work in Angular, and in React. But it made sense in a vanilla JavaScript environment. I most definitely could've worked with this everyday, but we as devs usually don't get to choose what we build. I must say though, I enjoy Chart JS much more. Check out some of <a href="https://stackblitz.com/@eastcoastdeveloper/collections/chart-js-d3" target="_blank">my samples.</a><br />
-                                    <br />
-                                </div>
-                                
-                                <div id="graph-wrapper" class="element-shadow">
-                                    <svg></svg>
-                                </div>
-
-                                <!-- Code Preview -->
-                                <br />
-                                <div class="snippet-description item-margin">
-                                    As with most graphs&mdash;Chart JS, NVD3, D3, or even High Charts I believe, we begin with either a canvas tag or an svg element. That's exactly what's happening here. The svg element is then wrapped in D3's selector. Upon which, a whole host of methods make themselves available.
-                                </div>
-                                <div class="code-preview markup">
-                                    <pre><code></code></pre>
-                                </div>
-
-                                <br />
-                                <div class="snippet-description item-margin">
-                                   After retrieving the element with the select method, we can draw shapes with append(). Notice .append used multiple times in this d3 bar chart. Append then modifies the element by chaining methods. Similiar to jQuery. What's more, is we manipulate the DOM similar to many other libraries. Here however, animation occurs between values.<br><br>
-                                   Harnessing D3's real power however comes in when we introduce data. Done so either by an array or an external file. D3 will draw a shape for every point in the data set. Similar to RxJSs' observables' three methods of next, error, and complete, D3 has enter, update, and exit. Enter occurs on shape initialization. The update method occurs when there's changes to the data set, giving devs the ability to react to changes. To no surprise, D3 also provides methods to listen for events, such as mouseover on tool tips for instance.
-                                </div>
-                                <div class="code-preview javascript">
-                                    <pre><code></code></pre>
-                                </div>
-                                <br />
-                                <div class="snippet-description item-margin">
-                                    I think I seriously found D3 more confusing (initially) than Angular. I was new to data visualization libraries and techniques. Where we work and what we build no doubt defines us as developers. Developing data driven visualizations has no doubt made me a far better UI developer. After the uphill battle, I found the lib to be powerful, maleable, and quite unique. Regardless of where you're at in your career, take some time and build a D3 bar chart.
-                                </div>
-                                <!-- Code Preview -->
-
-                                <div class="sidebar-elements"></div>
-                            </div>
-                            <div class="right-column"></div>
-                        </main>
+                    <div class="logo"><img src="https://frontenddevelopment.tech/assets/img/logo.png" /></div>
+                </a>
+                <div class="mobile-title">FrontendDev</div>
+                <div class="mobile-menu">
+                    <span class="mobile-hamburger">&#9776;</span>
+                    <span class="close-mobile-menu">&#x2715;</span>
+                </div>
+            </header>
+        </div>
+        <div id="content">
+            <div class="router-wrapper">
+                <div class="page-content">
+                    <div class="details">
+                        <h1 class="page-title">D3 Bar Chart</h1>
                     </div>
+                    <main class="three-column-layout">
+                        <div class="left-column">
+                            <!-- CONTENT -->
+                            <div class="snippet-description">
+                                I created this D3 bar chart while working on a proprietary application for the
+                                government. Not this exact one of course&mdash;lol. I was absolutely baffled as to how
+                                <a href="https://nvd3.org/" target="_blank">NVD3</a> worked, so I created a bunch of
+                                graphs using the child framework. Then I wanted to do stuff beyond the very limited
+                                bounds of NVD3, so I jumped in to <a href="https://d3js.org/" target="_blank">D3</a>. An
+                                entire world of svg and canvas tools were suddenly at my disposal. It was beyond
+                                frustrating getting it to work in Angular, and in React. But it made sense in a vanilla
+                                JavaScript environment. I most definitely could've worked with this everyday, but we as
+                                devs usually don't get to choose what we build. I must say though, I enjoy Chart JS much
+                                more. Check out some of <a
+                                    href="https://stackblitz.com/@eastcoastdeveloper/collections/chart-js-d3"
+                                    target="_blank">my samples.</a><br />
+                                <br />
+                            </div>
+
+                            <div id="graph-wrapper" class="element-shadow">
+                                <svg></svg>
+                            </div>
+
+                            <!-- Code Preview -->
+                            <br />
+                            <div class="snippet-description item-margin">
+                                As with most graphs&mdash;Chart JS, NVD3, D3, or even High Charts I believe, we begin
+                                with either a canvas tag or an svg element. That's exactly what's happening here. The
+                                svg element is then wrapped in D3's selector. Upon which, a whole host of methods make
+                                themselves available.
+                            </div>
+                            <div class="code-preview markup">
+                                <pre><code></code></pre>
+                            </div>
+
+                            <br />
+                            <div class="snippet-description item-margin">
+                                After retrieving the element with the select method, we can draw shapes with append().
+                                Notice .append used multiple times in this d3 bar chart. Append then modifies the
+                                element by chaining methods. Similiar to jQuery. What's more, is we manipulate the DOM
+                                similar to many other libraries. Here however, animation occurs between values.<br><br>
+                                Harnessing D3's real power however comes in when we introduce data. Done so either by an
+                                array or an external file. D3 will draw a shape for every point in the data set. Similar
+                                to RxJSs' observables' three methods of next, error, and complete, D3 has enter, update,
+                                and exit. Enter occurs on shape initialization. The update method occurs when there's
+                                changes to the data set, giving devs the ability to react to changes. To no surprise, D3
+                                also provides methods to listen for events, such as mouseover on tool tips for instance.
+                            </div>
+                            <div class="code-preview javascript">
+                                <pre><code></code></pre>
+                            </div>
+                            <br />
+                            <div class="snippet-description item-margin">
+                                I think I seriously found D3 more confusing (initially) than Angular. I was new to data
+                                visualization libraries and techniques. Where we work and what we build no doubt defines
+                                us as developers. Developing data driven visualizations has no doubt made me a far
+                                better UI developer. After the uphill battle, I found the lib to be powerful, maleable,
+                                and quite unique. Regardless of where you're at in your career, take some time and build
+                                a D3 bar chart.
+                            </div>
+                            <!-- Code Preview -->
+
+                            <div class="sidebar-elements"></div>
+                        </div>
+                        <div class="right-column"></div>
+                    </main>
                 </div>
             </div>
-            <div id="mobile-menu"></div>
-            <footer id="app-footer">
-                <div class="copyright">&#169; 2022 frontenddevelopment.tech</div>
-            </footer>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js"></script>
-        <script src="../../script.js"></script>
-        <script src="d3-bar-chart.js"></script>
-    </body>
+        <div id="mobile-menu"></div>
+        <footer id="app-footer">
+            <div class="copyright">&#169; 2022 frontenddevelopment.tech</div>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js"></script>
+    <script src="../../script.js"></script>
+    <script src="d3-bar-chart.js"></script>
+</body>
+
 </html>

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const projectData = require('./projectList.json');
+
 const port = process.env.PORT || 8080;
 
 function paginatedResults(model) {
@@ -26,15 +27,28 @@ function paginatedResults(model) {
       }
     }
 
-    results.results = model.slice(startIndex, endIndex);
+    results.results = model.data.slice(startIndex, endIndex);
     res.paginatedResults = results;
     next();
   }
 }
 
-app.get('/app', paginatedResults(projectData), (req, res) => {
-  console.log(res.paginatedResults)
+function categoryResults(model) {
+  return (req, res, next) => {
+    const type = req.query.type;
+    const results = {};
+    results.results = model.data.filter((item) => item.category === type);
+    res.categoryResults = results;
+    next();
+  }
+}
+
+app.get('/app/all', paginatedResults(projectData), (req, res) => {
   res.json(res.paginatedResults);
+})
+
+app.get('/app/category', categoryResults(projectData), (req, res) => {
+  res.json(res.categoryResults);
 })
 
 app.listen(port, () => {

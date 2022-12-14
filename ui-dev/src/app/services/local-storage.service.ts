@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import * as CryptoJS from "crypto-js";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, filter } from "rxjs";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class LocalStorageService {
-  key = "web-development";
+  key = "prjs";
   filteredBehaviorSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
 
   public saveData(key: string, value: string) {
@@ -47,19 +47,6 @@ export class LocalStorageService {
       categoryArray = arr;
       console.log("use cached items");
       return categoryArray;
-    }
-  }
-
-  // Search Cache For Category
-  searchCacheForCategory(category: string) {
-    const cachedData = localStorage.getItem(this.key) ?? "";
-    if ("" != cachedData) {
-      const decryptedData = this.getData(this.key);
-      const parsedData = JSON.parse(decryptedData);
-      let filtered = parsedData.filter((currentVal: ProjectsListInterface) => {
-        return currentVal.category === category;
-      });
-      this.filteredBehaviorSubject.next(filtered);
     }
   }
 }

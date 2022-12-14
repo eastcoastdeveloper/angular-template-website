@@ -1,4 +1,3 @@
-
 var headers = Array.from(document.querySelectorAll('.headers > div')),
   search = document.getElementById('search-field'),
   caret = document.querySelector('.caret'),
@@ -94,9 +93,9 @@ function sortColumn(e) {
     .then((json) => {
       data = json;
       populateTable(data);
-  for (var i = 0; i < headers.length; i++) {
-    headers[i].addEventListener('click', sortColumn);
-  }
+      for (var i = 0; i < headers.length; i++) {
+        headers[i].addEventListener('click', sortColumn);
+      }
     });
 })();
 
@@ -225,4 +224,3 @@ var javascriptElem = document.querySelector('.javascript pre code');
 
 markupElem.innerText = markup;
 javascriptElem.innerText = javascript;
-

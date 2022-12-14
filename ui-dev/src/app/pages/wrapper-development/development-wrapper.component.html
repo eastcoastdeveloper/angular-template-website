@@ -1,15 +1,15 @@
 <div class="page-content">
-    <div class="details" (click)="pageClickHandler($event)">
+    <div class="details">
         <h1 class="page-title">{{pageTitle}}</h1>
         <app-category-navigation></app-category-navigation>
     </div>
     <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'">
-        <div class="left-column" (click)="pageClickHandler($event)">
+        <div class="left-column">
             <app-post-details *ngIf="threeColumnLayout"></app-post-details>
             <router-outlet></router-outlet>
             <app-right-column *ngIf="windowWidth < 769"></app-right-column>
         </div>
-        <div *ngIf="threeColumnLayout" class="middle-column" (click)="pageClickHandler($event)">
+        <div *ngIf="threeColumnLayout" class="middle-column">
             <div *ngIf="windowWidth > 1100">
                 As a frontend developer, I'm often called upon to work directly with designers, create my own designs,
                 and/or refine UI designs. These pieces are several, rather old, designs/videos I created with Photoshop,
@@ -24,10 +24,10 @@
             </div>
         </div>
     </main>
-    <div class="right-column" (click)="pageClickHandler($event)">
+    <div class="right-column">
         <app-right-column></app-right-column>
     </div>
-    <div class="right-column" (click)="pageClickHandler($event)">
+    <div class="right-column">
         <app-right-column></app-right-column>
     </div>
 </div>

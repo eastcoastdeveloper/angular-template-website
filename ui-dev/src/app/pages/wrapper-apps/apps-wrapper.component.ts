@@ -8,7 +8,6 @@ import {
 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { NasaSearchService } from "src/app/development/nasa/nasa.service";
-import { DevMenuService } from "src/app/services/dev-menu.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
 import { ProjectListService } from "src/app/services/project-list.service";
@@ -34,7 +33,6 @@ export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
   constructor(
     private _windowWidthService: WindowWidthService,
     private _projectListService: ProjectListService,
-    private _devMenu: DevMenuService,
     private _nasaService: NasaSearchService,
     private _location: Location,
     private _localStorageService: LocalStorageService
@@ -47,12 +45,12 @@ export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
       this.threeColumnLayout = false;
     }
     // On Page Refresh
-    if (this.pageTitle === undefined) {
-      this._localStorageService.searchCacheForCategory("projects");
-      // this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
-      //   console.log(val);
-      // });
-    }
+    // if (this.pageTitle === undefined) {
+    // this._localStorageService.searchCacheForCategory("projects");
+    // this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
+    //   console.log(val);
+    // });
+    // }
   }
 
   ngOnInit(): void {
@@ -67,14 +65,8 @@ export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
       .pipe(takeUntil(this.destroy$))
       .subscribe((val) => {
         this.pageTitle = val?.title;
-        console.log(this.pageTitle);
+        // console.log(this.pageTitle);
         this.threeColumnLayout = true;
-      });
-
-    this._devMenu.devMenuState$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((val) => {
-        this.devMenuStatus = val;
       });
   }
 
@@ -84,16 +76,6 @@ export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
   // }
 
   pageClickHandler(event: any) {
-    if (
-      // if dev menu's open & click evt != dev menu, or dev menu's open & click evt != dev menu icon & click evt parent != menu icon
-      this._devMenu.devMenu &&
-      event.target != this.projects.nativeElement &&
-      this._devMenu.devMenu &&
-      event.target != this.menuIcon.nativeElement &&
-      event.target.parentElement != this.menuIcon.nativeElement
-    ) {
-      this._devMenu.closeMenu();
-    }
     if (
       event.target.classList.contains("details") ||
       event.target.classList.contains("right-column") ||

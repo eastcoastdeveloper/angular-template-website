@@ -9,7 +9,6 @@ import {
 import { Subject, takeUntil } from "rxjs";
 import { ProjectListService } from "src/app/services/project-list.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
-import { DevMenuService } from "../../services/dev-menu.service";
 import { Location } from "@angular/common";
 import { LocalStorageService } from "src/app/services/local-storage.service";
 
@@ -29,7 +28,6 @@ export class DevelopmentWrapper implements OnInit, DoCheck, OnDestroy {
 
   constructor(
     private _windowWidth: WindowWidthService,
-    private _devMenu: DevMenuService,
     private _projectListService: ProjectListService,
     private _location: Location,
     private _localStorageService: LocalStorageService
@@ -42,9 +40,9 @@ export class DevelopmentWrapper implements OnInit, DoCheck, OnDestroy {
       this.threeColumnLayout = false;
     }
     // On Page Refresh
-    if (this.pageTitle === undefined) {
-      this._localStorageService.searchCacheForCategory("projects");
-    }
+    // if (this.pageTitle === undefined) {
+    //   this._localStorageService.searchCacheForCategory("projects");
+    // }
   }
 
   ngOnInit(): void {
@@ -69,17 +67,17 @@ export class DevelopmentWrapper implements OnInit, DoCheck, OnDestroy {
   //   this._devMenu.changeValue(this.devMenuStatus);
   // }
 
-  pageClickHandler(event: any) {
-    if (
-      this._devMenu.devMenu &&
-      event.target != this.development.nativeElement &&
-      this._devMenu.devMenu &&
-      event.target != this.menuIcon.nativeElement &&
-      event.target.parentElement != this.menuIcon.nativeElement
-    ) {
-      this._devMenu.closeMenu();
-    }
-  }
+  // pageClickHandler(event: any) {
+  //   if (
+  //     this._devMenu.devMenu &&
+  //     event.target != this.development.nativeElement &&
+  //     this._devMenu.devMenu &&
+  //     event.target != this.menuIcon.nativeElement &&
+  //     event.target.parentElement != this.menuIcon.nativeElement
+  //   ) {
+  //     this._devMenu.closeMenu();
+  //   }
+  // }
 
   ngOnDestroy(): void {
     this.destroy$.next(true);

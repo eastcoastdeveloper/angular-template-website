@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
 import { ProjectListService } from "src/app/services/project-list.service";
 
@@ -9,8 +9,10 @@ import { ProjectListService } from "src/app/services/project-list.service";
 })
 export class PaginationComponent implements OnInit {
   @Input() totalPages: number;
+  @Input() categories: boolean;
+  @Output() categoryClickEvt = new EventEmitter<number>();
+
   projectsArray: ProjectsListInterface[] = [];
-  masterArray: ProjectsListInterface[] = [];
 
   constructor(private _projectListService: ProjectListService) {}
 
@@ -21,13 +23,20 @@ export class PaginationComponent implements OnInit {
 
   // Check Cache ...
   getEndpointData(page: number, limit: number) {
-    new Promise((resolve, reject) => {
-      this._projectListService.checkCacheBeforeFetch(page, limit);
-      resolve(
-        this._projectListService.pageData.subscribe((val) => {
-          this.projectsArray = val;
-        })
-      );
-    });
+    if (!this.categories) {
+      new Promise((resolve, reject) => {
+        this._projectListService.checkCacheBeforeFetch(page, limit);
+        resolve(
+          this._projectListService.allProjectsSubject.subscribe((val) => {
+            this.projectsArray = val;
+          })
+        );
+      });
+    }
+  }
+
+  // Notify Parent of Page Click
+  categoryNavigation(pageNum: number) {
+    this.categoryClickEvt.emit(pageNum);
   }
 }
