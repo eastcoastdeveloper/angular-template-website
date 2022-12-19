@@ -4,7 +4,6 @@ import { SideBarService } from "./services/sidebar-service";
 import { NavigationEnd, Router } from "@angular/router";
 import { Subject, takeUntil } from "rxjs";
 import { ScrollToTopService } from "./services/scroll-to-top.service";
-import { ProjectsListInterface } from "./interfaces/projects-list.interface";
 import { DOCUMENT } from "@angular/common";
 import { CanonicalService } from "./services/canonical.service";
 import { ProjectListService } from "./services/project-list.service";
@@ -22,33 +21,15 @@ export class AppComponent implements OnInit, OnDestroy {
   windowSize: any;
   resizeID: any;
   window: any;
-  status = "DOWN";
 
+  // dummyArray: ProjectsListInterface;
   isMobile: boolean = false;
   sidebarStatus: boolean;
   width: number = window.innerWidth;
   height: number = window.innerWidth;
   mobileWidth: number = 760;
-  projectList: ProjectsListInterface[] = [];
   currentRoute: string;
   destroy$: Subject<boolean> = new Subject<boolean>();
-  pageDetails: ProjectsListInterface = {
-    title: "",
-    imgUrl: "",
-    description: "",
-    path: "",
-    altText: "",
-    stackblitz: false,
-    internal: false,
-    views: 0,
-    forks: 0,
-    publishedOn: "",
-    updatedOn: "",
-    repoLink: "",
-    repoTitle: "",
-    showInPage: false,
-    category: "",
-  };
 
   constructor(
     private _windowService: WindowWidthService,
@@ -64,10 +45,10 @@ export class AppComponent implements OnInit, OnDestroy {
     // Update Page Data on Route Change
     this._router.events.subscribe((data) => {
       if (data instanceof NavigationEnd) {
-        const cachedData = this._localStorageService.getData("web-development");
+        const cachedData = this._localStorageService.getData("prjs");
 
         // If /web-technologies & There's Cache, Remove Duplicates, & Set projectsArray Value
-        if (this._router.url === "/web-technologies" && cachedData.length > 0) {
+        if (this._router.url != "/web-technologies" && cachedData != "") {
           const parsedData = JSON.parse(cachedData);
           this._projectListService.projectArray = parsedData;
           this._projectListService.projectArray =
@@ -76,13 +57,6 @@ export class AppComponent implements OnInit, OnDestroy {
               "title"
             );
         }
-
-        // Set Global Object Values
-        this._projectListService.projectArray.map((val) => {
-          if (this._router.url === val.path) {
-            this.setValues(val);
-          }
-        });
       }
     });
   }
@@ -121,20 +95,6 @@ export class AppComponent implements OnInit, OnDestroy {
   // Reset Window Width Service
   ngAfterViewInit() {
     this._windowService.changeValue(window.innerWidth);
-  }
-
-  // Set Post Details Values
-  setValues(val: ProjectsListInterface) {
-    this.pageDetails.title = val.title;
-    this.pageDetails.publishedOn = val.publishedOn;
-    this.pageDetails.updatedOn = val.updatedOn;
-    this.pageDetails.repoTitle = val.repoTitle;
-    this.pageDetails.repoLink = val.repoLink;
-    this.pageDetails.showInPage = val.showInPage;
-    this.pageDetails.category = val.category;
-    this.pageDetails.views = val.views;
-    this.pageDetails.forks = val.forks;
-    this._projectListService.changeProjectData(this.pageDetails);
   }
 
   closeMobileNav() {

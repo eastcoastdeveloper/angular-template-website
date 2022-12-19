@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: repeat(2, calc(50% - 10px));
   grid-gap: 20px;
-  padding-right: 0 20px 0 0;
 
   .project {
     outline: none;
@@ -62,6 +61,12 @@
     font: normal 14px sans-serif;
     line-height: 22px;
     display: inline;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .cornerstone {
+    margin-bottom: 30px;
   }
 }
 

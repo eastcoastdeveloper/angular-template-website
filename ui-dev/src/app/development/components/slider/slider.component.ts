@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
 import { SliderInterface } from "src/app/interfaces/slider.interface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-slider",
@@ -8,6 +10,18 @@ import { SliderInterface } from "src/app/interfaces/slider.interface";
   styleUrls: ["./slider.component.scss"],
 })
 export class SliderComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "Angular Slider",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Dec 15, 2022",
+    repoTitle: "angular-slider",
+    repoLink: "https://github.com/eastcoastdeveloper/angular-basic-carousel",
+    showInPage: true,
+    category: "components",
+    views: 677,
+    forks: 8,
+  };
+
   result: SliderInterface[] = [];
   allBooks: any = [];
   currentIndex: number = 0;
@@ -19,9 +33,13 @@ export class SliderComponent implements OnInit {
 
   constructor(
     private _http: HttpClient,
+    private _projectListService: ProjectListService
   ) {}
 
   ngOnInit() {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this._http
       .get<SliderInterface[]>("assets/json/slider.json")
       .subscribe((val) => {

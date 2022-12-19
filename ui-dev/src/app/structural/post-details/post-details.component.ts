@@ -26,7 +26,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this._projectListService.pageData$.subscribe((val) => {
+    this._projectListService.pageDataObjectSubject.subscribe((val) => {
       this.publishedOn = val?.publishedOn;
       this.updatedOn = val?.updatedOn;
       this.repoTitle = val?.repoTitle;

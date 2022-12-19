@@ -7,6 +7,7 @@ import { RightColumnModule } from "./right-column.module";
 import { ProjectsListContentComponent } from "src/app/development/components/project-list/projects-list-content.component";
 import { PaginationComponent } from "src/app/development/components/pagination/pagination.component";
 import { CategoryNavigationComponent } from "src/app/development/components/category-navigation/category-navigation.component";
+import { RelatedComponentsComponent } from "src/app/development/components/related-components/related-components.component";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CategoryNavigationComponent } from "src/app/development/components/cate
     LoaderComponent,
     PaginationComponent,
     CategoryNavigationComponent,
+    RelatedComponentsComponent,
   ],
   imports: [CommonModule, RouterModule, RightColumnModule],
   exports: [
@@ -23,6 +25,7 @@ import { CategoryNavigationComponent } from "src/app/development/components/cate
     LoaderComponent,
     PaginationComponent,
     CategoryNavigationComponent,
+    RelatedComponentsComponent,
   ],
 })
 export class SharedModule {}

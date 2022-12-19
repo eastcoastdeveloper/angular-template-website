@@ -7,6 +7,8 @@ import {
   ViewChild,
 } from "@angular/core";
 import { Subscription } from "rxjs";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 
 @Component({
@@ -17,6 +19,18 @@ import { WindowWidthService } from "src/app/services/window-width.service";
 export class WebsiteExamplesComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
+  pageDataObject: PageDataObject = {
+    title: "Website Examples",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "",
+    repoLink: "",
+    showInPage: true,
+    category: "",
+    views: 0,
+    forks: 0,
+  };
+
   @ViewChild("description") description!: ElementRef;
   @ViewChild("projectLink") projectLink!: ElementRef;
   @ViewChild("mainImage") mainImage!: ElementRef;
@@ -96,14 +110,19 @@ export class WebsiteExamplesComponent
 
   dataArray: any[] = this.softwareCoArray;
 
-  constructor(private _windowWidthService: WindowWidthService) {}
+  constructor(
+    private _windowWidthService: WindowWidthService,
+    private _projectListService: ProjectListService
+  ) {}
 
   ngOnInit(): void {
-    this.winWidthSubscription = this._windowWidthService.currentWidth$.subscribe(
-      (val) => {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
+    this.winWidthSubscription =
+      this._windowWidthService.currentWidth$.subscribe((val) => {
         this.windowWidth = val;
-      }
-    );
+      });
   }
 
   ngAfterViewInit(): void {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "[app-date-picker]",
@@ -6,6 +8,18 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./date-picker.component.scss"],
 })
 export class DatePickerComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "Angular Date Picker",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "angular-date-picker",
+    repoLink:
+      "https://github.com/eastcoastdeveloper/datepicker-angular-component",
+    showInPage: true,
+    category: "",
+    views: 28,
+    forks: 0,
+  };
   calendarVisible: boolean = false;
   private d: any = new Date();
   readonly weekdays: string[] = ["S", "M", "T", "W", "T", "F", "S"];
@@ -43,7 +57,13 @@ export class DatePickerComponent implements OnInit {
   scss: string;
   typescript: string;
 
+  constructor(private _projectListService: ProjectListService) {}
+
   ngOnInit() {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
+    this._projectListService.changePageDataObject(this.pageDataObject);
     this.firstLastDays();
     this.renderCode();
   }

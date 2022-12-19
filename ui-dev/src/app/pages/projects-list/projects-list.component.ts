@@ -49,13 +49,11 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
   // // Check Cache ...
   getEndpointData(page: number, limit: number) {
-    console.log("called from projects list");
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
       this._projectListService.checkCacheBeforeFetch(page, limit);
       resolve(
         this._projectListService.allProjectsSubject.subscribe((val) => {
           this.projectsArray = val;
-          // this.masterArray = this.projectsArray.slice();
         })
       );
     });
@@ -86,7 +84,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   filterItems(val: string) {
     this.filteredArray = [];
     this.projectsArray = this.masterArray;
-    console.log(this._projectListService.projectArray);
     this.projectsArray.filter((value: any) => {
       if (value.category === val) {
         this.filteredArray.push(value);

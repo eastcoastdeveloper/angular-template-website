@@ -1,12 +1,33 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "countdown",
   templateUrl: "./countdown.component.html",
   styleUrls: ["./countdown.component.scss"],
 })
-export class CountdownComponent {
+export class CountdownComponent implements OnInit, AfterViewInit {
+  pageDataObject: PageDataObject = {
+    title: "Angular Countdown Timer",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "angular-countdown-timer",
+    repoLink:
+      "https://github.com/eastcoastdeveloper/angular-countdown-timer-component",
+    showInPage: true,
+    category: "",
+    views: 11060,
+    forks: 851,
+  };
+
   projectDetails?: ProjectsListInterface;
   publishedOn?: string;
   updatedOn?: string;
@@ -42,6 +63,13 @@ export class CountdownComponent {
   @ViewChild("hours", { static: true }) hours: ElementRef;
   @ViewChild("minutes", { static: true }) minutes: ElementRef;
   @ViewChild("seconds", { static: true }) seconds: ElementRef;
+
+  constructor(private _projectListService: ProjectListService) {}
+
+  ngOnInit() {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngAfterViewInit() {
     setInterval(() => {

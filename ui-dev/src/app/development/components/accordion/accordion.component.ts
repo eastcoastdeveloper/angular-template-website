@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AccordionComponentInterface } from "src/app/interfaces/accordion.interface";
 import { Meta } from "@angular/platform-browser";
+import { ProjectListService } from "src/app/services/project-list.service";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
 
 @Component({
   selector: "accordion",
@@ -9,13 +11,32 @@ import { Meta } from "@angular/platform-browser";
   styleUrls: ["./accordion.component.scss"],
 })
 export class AccordionComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "Angular Accordion",
+    publishedOn: "Sept 29, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "angular-accordion",
+    repoLink: "https://github.com/eastcoastdeveloper/Angular-Accordion-JSON",
+    showInPage: true,
+    category: "",
+    views: 672,
+    forks: 18,
+  };
+
   accordionData: AccordionComponentInterface[] = [];
 
   @ViewChild("accordionParent", { static: false }) accordionParent: ElementRef;
 
-  constructor(private _http: HttpClient, private _metaTagService: Meta) {}
+  constructor(
+    private _http: HttpClient,
+    private _metaTagService: Meta,
+    private _projectListService: ProjectListService
+  ) {}
 
   ngOnInit(): void {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this._metaTagService.addTags([
       {
         name: "keywords",

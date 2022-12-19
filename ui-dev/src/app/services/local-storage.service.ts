@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import * as CryptoJS from "crypto-js";
-import { BehaviorSubject, filter } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 
 @Injectable({
@@ -37,15 +37,13 @@ export class LocalStorageService {
     );
   }
 
-  // Populaate Page Content
+  // Populate Page Content
   configureProjects(arr: ProjectsListInterface[]) {
     let categoryArray: ProjectsListInterface[] = [];
     if (arr.length < 9) {
       categoryArray = arr;
-      console.log("fetch more items");
     } else {
       categoryArray = arr;
-      console.log("use cached items");
       return categoryArray;
     }
   }

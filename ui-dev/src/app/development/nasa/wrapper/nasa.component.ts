@@ -4,6 +4,8 @@ import { NasaHeaderComponent } from "../header/header.component";
 import { NasaSearchComponent } from "../seachbar/search.component";
 import { NasaSearchService } from "../nasa.service";
 import { Meta } from "@angular/platform-browser";
+import { ProjectListService } from "src/app/services/project-list.service";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
 
 @Component({
   selector: "app-nasa",
@@ -11,6 +13,18 @@ import { Meta } from "@angular/platform-browser";
   styleUrls: ["./nasa.component.scss"],
 })
 export class NasaComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "APOD NASA Gov",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "",
+    repoLink: "",
+    showInPage: true,
+    category: "",
+    views: 0,
+    forks: 0,
+  };
+
   history!: any[];
 
   @ViewChild(NasaPhotoBodyComponent) photoBodyReference: NasaPhotoBodyComponent;
@@ -19,10 +33,14 @@ export class NasaComponent implements OnInit {
 
   constructor(
     private _nasaSearchService: NasaSearchService,
+    private _projectListService: ProjectListService,
     private _metaTagService: Meta
   ) {}
 
   ngOnInit(): void {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this._metaTagService.addTags([
       {
         name: "nasa-api, apod nasa gov",

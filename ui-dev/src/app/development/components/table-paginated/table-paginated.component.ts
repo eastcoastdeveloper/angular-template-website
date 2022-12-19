@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CarsInterface } from "../../../interfaces/table-paginated.interface";
+import { ProjectListService } from "src/app/services/project-list.service";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
 
 @Component({
   selector: "table-paginated",
@@ -8,14 +10,32 @@ import { CarsInterface } from "../../../interfaces/table-paginated.interface";
   styleUrls: ["./table-paginated.component.scss"],
 })
 export class TablePaginatedComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "Angular Data Table",
+    publishedOn: "Aug 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "angular-data-table",
+    repoLink:
+      "https://github.com/eastcoastdeveloper/angular-8-table-pagination",
+    showInPage: true,
+    category: "",
+    views: 6622,
+    forks: 190,
+  };
+
   masterArray: CarsInterface[] = [];
   cars: CarsInterface[] = [];
   windowWidth: number;
   p: any;
 
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+    private _projectListService: ProjectListService
+  ) {}
 
   ngOnInit(): void {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
     this._http
       .get<CarsInterface[]>("assets/json/cars.json")
       .subscribe((res) => {

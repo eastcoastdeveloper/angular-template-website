@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { SidebarInterface } from "src/app/interfaces/dynamic-sidebar.interface";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-sidebar",
@@ -8,6 +10,18 @@ import { SidebarInterface } from "src/app/interfaces/dynamic-sidebar.interface";
   styleUrls: ["./dynamic-sidebar.component.scss"],
 })
 export class DynamicSidebarComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "Angular Dynamic Sidebar",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "angular-dynamic-sidebar",
+    repoLink: "https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar",
+    showInPage: true,
+    category: "",
+    views: 4100,
+    forks: 103,
+  };
+
   result: SidebarInterface[] = [];
   markup: string = `
   <div id="sidebar" class="dark-blue-bg">
@@ -201,9 +215,14 @@ export class DynamicSidebarComponent implements OnInit {
     }
   ]`;
 
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+    private _projectListService: ProjectListService
+  ) {}
 
   ngOnInit(): void {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
     this._http
       .get<SidebarInterface[]>("assets/json/sidebar.json")
       .subscribe((res) => {

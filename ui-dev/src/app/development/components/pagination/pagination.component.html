@@ -1,25 +1,18 @@
 <div *ngIf="totalPages > 1" class="pagination">
     <div class="selections">
-        <div class="previous">
+        <!-- <div class="previous">
             <div class="arrow left"></div>
-        </div>
+        </div> -->
 
-        <div *ngIf="!categories" class="numbers">
+        <div class="numbers">
             <div *ngFor="let num of [].constructor(totalPages); let i = index;" class="page-num"
                 (click)="getEndpointData(i + 1, 10)">
                 <span>{{i + 1}}</span>
             </div>
         </div>
 
-        <div *ngIf="categories" class="numbers">
-            <div *ngFor="let num of [].constructor(totalPages); let i = index;" class="page-num"
-                (click)="categoryNavigation(i + 1)">
-                <span>{{i + 1}}</span>
-            </div>
-        </div>
-
-        <div class="next">
+        <!-- <div class="next">
             <div class="arrow right"></div>
-        </div>
+        </div> -->
     </div>
 </div>

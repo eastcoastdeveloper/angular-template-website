@@ -1,48 +1,55 @@
 import {
+  AfterViewChecked,
+  ChangeDetectorRef,
   Component,
   DoCheck,
-  ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { ProjectListService } from "src/app/services/project-list.service";
 import { WindowWidthService } from "src/app/services/window-width.service";
 import { Location } from "@angular/common";
-import { LocalStorageService } from "src/app/services/local-storage.service";
+import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
+import { RelatedComponentsService } from "src/app/services/related-components.service";
 
 @Component({
   selector: "app-development",
   templateUrl: "./development-wrapper.component.html",
 })
-export class DevelopmentWrapper implements OnInit, DoCheck, OnDestroy {
+export class DevelopmentWrapper
+  implements OnInit, DoCheck, AfterViewChecked, OnDestroy
+{
   private destroy$ = new Subject<boolean>();
-  pageTitle?: string;
+  developmentArray: ProjectsListInterface[] = [];
   threeColumnLayout?: boolean = false;
   devMenuStatus: boolean;
   windowWidth: number;
-
-  @ViewChild("development", { static: false }) development: ElementRef;
-  @ViewChild("menuIcon", { static: false }) menuIcon: ElementRef;
+  pageTitle?: string;
+  arrayIndex: number;
 
   constructor(
     private _windowWidth: WindowWidthService,
     private _projectListService: ProjectListService,
     private _location: Location,
-    private _localStorageService: LocalStorageService
-  ) {}
+    private _cd: ChangeDetectorRef,
+    private _relatedComponentsService: RelatedComponentsService
+  ) {
+    // Category Wrapper Related Items
+    this._relatedComponentsService.init(this.developmentArray, "development");
+    this._relatedComponentsService.relatedItemsSubject.subscribe((val) => {
+      this.developmentArray = val;
+    });
+  }
 
   ngDoCheck(): void {
-    // Cornerstone Page Title
+    // Cornerstone Layout
     if (this._location.path() === "/web-development/learn-to-code") {
       this.pageTitle = "Learn to Code";
       this.threeColumnLayout = false;
+    } else {
+      this.threeColumnLayout = true;
     }
-    // On Page Refresh
-    // if (this.pageTitle === undefined) {
-    //   this._localStorageService.searchCacheForCategory("projects");
-    // }
   }
 
   ngOnInit(): void {
@@ -52,32 +59,15 @@ export class DevelopmentWrapper implements OnInit, DoCheck, OnDestroy {
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
-
-    // Retrieve Page Title, Git, Updated, etc
-    this._projectListService.pageData$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((val) => {
-        this.pageTitle = val?.title;
-        this.threeColumnLayout = true;
-      });
   }
 
-  // toggleDevMenu() {
-  //   this.devMenuStatus = !this.devMenuStatus;
-  //   this._devMenu.changeValue(this.devMenuStatus);
-  // }
+  ngAfterViewChecked(): void {
+    this._projectListService.pageDataObjectSubject.subscribe((val) => {
+      this.pageTitle = val.title;
+    });
 
-  // pageClickHandler(event: any) {
-  //   if (
-  //     this._devMenu.devMenu &&
-  //     event.target != this.development.nativeElement &&
-  //     this._devMenu.devMenu &&
-  //     event.target != this.menuIcon.nativeElement &&
-  //     event.target.parentElement != this.menuIcon.nativeElement
-  //   ) {
-  //     this._devMenu.closeMenu();
-  //   }
-  // }
+    this._cd.detectChanges();
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next(true);

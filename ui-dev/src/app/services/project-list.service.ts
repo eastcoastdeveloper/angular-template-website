@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { NavigationEnd, Router, Event } from "@angular/router";
-import { BehaviorSubject, filter, map } from "rxjs";
-import { CachedObject } from "../interfaces/cached-object";
+import { BehaviorSubject, map } from "rxjs";
+import { PageDataObject } from "../interfaces/pageDataInterface";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 import { LocalStorageService } from "./local-storage.service";
 
@@ -15,7 +14,12 @@ export class ProjectListService {
   // Subject Shares Data w/ Component
   allProjectsSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
   categorySubject = new BehaviorSubject<ProjectsListInterface[]>([]);
-  pageTitle = new BehaviorSubject<string>("");
+
+  // Page Data Object Initialization
+  pageDataObject: PageDataObject = new PageDataObject();
+  pageDataObjectSubject = new BehaviorSubject<PageDataObject>(
+    this.pageDataObject
+  );
 
   // Searches Cache
   searchQuery: string;
@@ -24,23 +28,10 @@ export class ProjectListService {
   projectArray: ProjectsListInterface[] = [];
   pagesFetched: number[] = [];
 
-  /* Page Title */
-  pageDataSource?: ProjectsListInterface;
-  private pageDataSubject = new BehaviorSubject(this.pageDataSource);
-  pageData$ = this.pageDataSubject.asObservable();
-
   constructor(
     private _http: HttpClient,
-    private _localStorageService: LocalStorageService,
-    private _router: Router
-  ) {
-    this._router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        if (event.url === "/projects") {
-        }
-      }
-    });
-  }
+    private _localStorageService: LocalStorageService
+  ) {}
 
   // Remove Duplicate Objects from Cache
   removeDuplicateObjectFromArray(array: ProjectsListInterface[], key: string) {
@@ -122,8 +113,7 @@ export class ProjectListService {
       });
   }
 
-  /* Project Data */
-  changeProjectData(obj: ProjectsListInterface) {
-    this.pageDataSubject.next(obj);
+  changePageDataObject(obj: PageDataObject) {
+    this.pageDataObjectSubject.next(obj);
   }
 }

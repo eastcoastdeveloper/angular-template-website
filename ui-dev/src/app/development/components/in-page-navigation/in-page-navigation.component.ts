@@ -7,6 +7,8 @@ import {
   ViewChild,
   ViewChildren,
 } from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-in-page-navigation",
@@ -14,6 +16,18 @@ import {
   styleUrls: ["./in-page-navigation.component.scss"],
 })
 export class InPageNavigationComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "In Page Navigation",
+    publishedOn: "Nov 7, 2022",
+    updatedOn: "Dec 15, 2022",
+    repoTitle: "in-page-navigation",
+    repoLink: "https://github.com/eastcoastdeveloper/in-page-navigation",
+    showInPage: true,
+    category: "development",
+    views: 87,
+    forks: 0,
+  };
+
   markup: string;
   typescript: string;
   style: string;
@@ -30,11 +44,19 @@ export class InPageNavigationComponent implements OnInit {
   progress: any = [];
   Math: any;
 
-  constructor(private _cd: ChangeDetectorRef) {
+  constructor(
+    private _cd: ChangeDetectorRef,
+    private _projectListService: ProjectListService
+  ) {
     this.Math = Math;
   }
 
   ngOnInit(): void {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
     this.renderCode();
   }
 

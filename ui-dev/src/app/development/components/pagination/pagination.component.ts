@@ -10,7 +10,7 @@ import { ProjectListService } from "src/app/services/project-list.service";
 export class PaginationComponent implements OnInit {
   @Input() totalPages: number;
   @Input() categories: boolean;
-  @Output() categoryClickEvt = new EventEmitter<number>();
+  // @Output() categoryClickEvt = new EventEmitter<number>();
 
   projectsArray: ProjectsListInterface[] = [];
 
@@ -33,10 +33,5 @@ export class PaginationComponent implements OnInit {
         );
       });
     }
-  }
-
-  // Notify Parent of Page Click
-  categoryNavigation(pageNum: number) {
-    this.categoryClickEvt.emit(pageNum);
   }
 }

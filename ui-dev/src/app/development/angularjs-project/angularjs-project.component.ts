@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-angularjs-project",
@@ -6,10 +8,27 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./angularjs-project.component.scss"],
 })
 export class AngularjsProjectComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "AngularJS Project",
+    publishedOn: "Oct 16, 2017",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "angularjs-project",
+    repoLink: "https://github.com/eastcoastdeveloper/angularjs-project",
+    showInPage: true,
+    category: "",
+    views: 1935,
+    forks: 0,
+  };
+
   controller: string;
   directives: string;
 
+  constructor(private _projectListService: ProjectListService) {}
+
   ngOnInit(): void {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this.renderCode();
   }
 

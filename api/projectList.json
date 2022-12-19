@@ -8,13 +8,6 @@
          "altText": "APOD NASA Gov API. Single page app w/ numerous components using the endpoint to populate the DOM. Access records dating back to 1995",
          "stackblitz": false,
          "internal": true,
-         "views": 0,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "",
-         "repoTitle": "",
-         "showInPage": true,
          "category": "projects"
       },
       {
@@ -25,13 +18,6 @@
          "altText": "REST Countries app coupled w/ Leafleft interactive maps. Pulls data in from an OMDB API and uses it to plot locations on a map.",
          "stackblitz": false,
          "internal": true,
-         "views": 388,
-         "forks": 3,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/rest-countries-leaflet-map",
-         "repoTitle": "rest-countries",
-         "showInPage": true,
          "category": "projects"
       },
       {
@@ -59,13 +45,6 @@
          "altText": "Movie app using the OMDB API as a data source. Search for cinema or TV titles. Results populate table rows or showcase movie posters.",
          "stackblitz": false,
          "internal": true,
-         "views": 0,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "",
-         "repoTitle": "",
-         "showInPage": true,
          "category": "projects"
       },
       {
@@ -76,13 +55,6 @@
          "altText": "Angular countdown timer component. Countdown with days, hours, minutes, and seconds. Written in TypeScript.",
          "stackblitz": false,
          "internal": true,
-         "views": 11060,
-         "forks": 851,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-countdown-timer-component",
-         "repoTitle": "angular-countdown-timer",
-         "showInPage": true,
          "category": "components"
       },
       {
@@ -93,13 +65,6 @@
          "altText": "Angular date picker component that'll easily fit into any project by exporting the date value. Closes on external clicks.",
          "stackblitz": false,
          "internal": true,
-         "views": 28,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/datepicker-angular-component",
-         "repoTitle": "angular-date-picker",
-         "showInPage": true,
          "category": "components"
       },
       {
@@ -110,13 +75,6 @@
          "altText": "Angular accordion component. Store information in colapasable units. Built with three layouts, but add as many as you'd like.",
          "stackblitz": false,
          "internal": true,
-         "views": 672,
-         "forks": 18,
-         "publishedOn": "Sept 29, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/Angular-Accordion-JSON",
-         "repoTitle": "angular-accordion",
-         "showInPage": true,
          "category": "components"
       },
       {
@@ -127,13 +85,6 @@
          "altText": "Angular dynamic sidebar. Specify which section is a drop down menu, and populate all menu items via a DB/API.",
          "stackblitz": false,
          "internal": true,
-         "views": 4100,
-         "forks": 103,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar",
-         "repoTitle": "angular-dynamic-sidebar",
-         "showInPage": true,
          "category": "components"
       },
       {
@@ -144,13 +95,6 @@
          "altText": "Paginated Angular data table importing JSON data. Easily customize height and width, colors, etc.",
          "stackblitz": false,
          "internal": true,
-         "views": 6622,
-         "forks": 190,
-         "publishedOn": "Aug 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-8-table-pagination",
-         "repoTitle": "angular-data-table",
-         "showInPage": true,
          "category": "components"
       },
       {
@@ -280,13 +224,6 @@
          "altText": "Two fully responsive website examples. Each of which showcase single page app architectures. One in native HTML, the other in TypeScript.",
          "stackblitz": false,
          "internal": true,
-         "views": 0,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "",
-         "repoTitle": "",
-         "showInPage": true,
          "category": "projects"
       },
       {
@@ -331,13 +268,6 @@
          "altText": "AngularJS project using all the bells and whistles of the framework. Controllers, factories, templates, transitions, and more.",
          "stackblitz": false,
          "internal": true,
-         "views": 1935,
-         "forks": 0,
-         "publishedOn": "Oct 16, 2017",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angularjs-project",
-         "repoTitle": "angularjs-project",
-         "showInPage": true,
          "category": "projects"
       },
       {
@@ -348,13 +278,6 @@
          "altText": "Showcasing modules in Angular. How to use them and navigate between them.",
          "stackblitz": false,
          "internal": true,
-         "views": 2126,
-         "forks": 112,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-routing-between-modules",
-         "repoTitle": "modules-in-angular",
-         "showInPage": true,
          "category": "development"
       },
       {
@@ -365,13 +288,6 @@
          "altText": "JavaScript drag and drop is a common task and this app showcases it via a simple UI. Drag/drop elements or create new ones.",
          "stackblitz": false,
          "internal": true,
-         "views": 219,
-         "forks": 3,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/drag-and-drop-javascript",
-         "repoTitle": "javascript-drag-and-drop",
-         "showInPage": true,
          "category": "projects"
       },
       {
@@ -399,13 +315,6 @@
          "altText": "In page navigation with a progress bar at the bottom. Navigate to different sections without changing pages.",
          "stackblitz": false,
          "internal": true,
-         "views": 87,
-         "forks": 0,
-         "publishedOn": "Nov 7, 2022",
-         "updatedOn": "",
-         "repoLink": "https://github.com/eastcoastdeveloper/in-page-navigation",
-         "repoTitle": "in-page-navigation",
-         "showInPage": true,
          "category": "development"
       },
       {
@@ -416,31 +325,24 @@
          "altText": "Angular slider w/ clickable dots. Click a dot to shift the slider to a new book or change book w/ next/prev buttons.",
          "stackblitz": false,
          "internal": true,
-         "views": 677,
-         "forks": 8,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-basic-carousel",
-         "repoTitle": "angular-slider",
-         "showInPage": true,
          "category": "components"
       },
       {
          "title": "Angular Resolver",
-         "imgUrl": "../../assets/components-grid/angular-resolver.jpg",
-         "description": "Angular resolver that preloads component content. This sample however takes it one step further by disallowing an endpoint to be called more than once. Ideal if you have a prefix appended to multiple endpoints.",
-         "path": "https://stackblitz.com/edit/angular-resolver-mock?file=src%2Fapp%2Fresolver.service.ts",
-         "altText": "Angular resolver that not only pre fetches content, but all ensures the endpoint is called only once.",
-         "stackblitz": true,
-         "internal": false,
-         "views": 13,
-         "forks": 0,
          "publishedOn": "Oct 1, 2022",
          "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-resolver-mock",
          "repoTitle": "angular-resolver",
+         "repoLink": "https://github.com/eastcoastdeveloper/angular-resolver-mock",
          "showInPage": true,
-         "category": "development"
+         "category": "development",
+         "views": 13,
+         "forks": 0,
+         "imgUrl": "../../assets/components-grid/angular-resolver.jpg",
+         "altText": "Angular resolver that not only pre fetches content, but all ensures the endpoint is called only once.",
+         "path": "https://stackblitz.com/edit/angular-resolver-mock?file=src%2Fapp%2Fresolver.service.ts",
+         "description": "Angular resolver that preloads component content. This sample however takes it one step further by disallowing an endpoint to be called more than once. Ideal if you have a prefix appended to multiple endpoints.",
+         "stackblitz": true,
+         "internal": false
       }
    ]
 }

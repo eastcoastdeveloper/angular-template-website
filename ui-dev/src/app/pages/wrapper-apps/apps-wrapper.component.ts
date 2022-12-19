@@ -1,10 +1,10 @@
 import {
+  AfterViewChecked,
+  ChangeDetectorRef,
   Component,
   DoCheck,
-  ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { NasaSearchService } from "src/app/development/nasa/nasa.service";
@@ -12,45 +12,44 @@ import { WindowWidthService } from "src/app/services/window-width.service";
 import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
 import { ProjectListService } from "src/app/services/project-list.service";
 import { Location } from "@angular/common";
-import { LocalStorageService } from "src/app/services/local-storage.service";
+import { RelatedComponentsService } from "src/app/services/related-components.service";
 
 @Component({
   selector: "app-apps-wrapper",
   templateUrl: "./apps-wrapper.component.html",
-  styleUrls: ["./apps-wrapper.component.scss"],
 })
-export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
+export class AppsWrapperComponent
+  implements OnInit, AfterViewChecked, OnDestroy, DoCheck
+{
   destroy$: Subject<boolean> = new Subject<boolean>();
   appsArray: ProjectsListInterface[] = [];
-  devMenuStatus?: boolean;
   windowWidth: number;
   pageTitle?: string;
   threeColumnLayout?: boolean = false;
-
-  @ViewChild("projects", { static: false }) projects: ElementRef;
-  @ViewChild("menuIcon", { static: false }) menuIcon: ElementRef;
 
   constructor(
     private _windowWidthService: WindowWidthService,
     private _projectListService: ProjectListService,
     private _nasaService: NasaSearchService,
     private _location: Location,
-    private _localStorageService: LocalStorageService
-  ) {}
+    private _relatedComponentsService: RelatedComponentsService,
+    private _cd: ChangeDetectorRef
+  ) {
+    // Category Wrapper Related Items
+    this._relatedComponentsService.init(this.appsArray, "projects");
+    this._relatedComponentsService.relatedItemsSubject.subscribe((val) => {
+      this.appsArray = val;
+    });
+  }
 
   ngDoCheck(): void {
-    // Cornerstone Page Title
+    // Cornerstone Layout
     if (this._location.path() === "/projects/front-end-development") {
       this.pageTitle = "Front End Development";
       this.threeColumnLayout = false;
+    } else {
+      this.threeColumnLayout = true;
     }
-    // On Page Refresh
-    // if (this.pageTitle === undefined) {
-    // this._localStorageService.searchCacheForCategory("projects");
-    // this._localStorageService.filteredBehaviorSubject.subscribe((val) => {
-    //   console.log(val);
-    // });
-    // }
   }
 
   ngOnInit(): void {
@@ -59,21 +58,7 @@ export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
-
-    // Retrieve Page Title, Git, Updated, etc
-    this._projectListService.pageData$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((val) => {
-        this.pageTitle = val?.title;
-        // console.log(this.pageTitle);
-        this.threeColumnLayout = true;
-      });
   }
-
-  // toggleDevMenu() {
-  //   this.devMenuStatus = !this.devMenuStatus;
-  //   this._devMenu.changeValue(this.devMenuStatus);
-  // }
 
   pageClickHandler(event: any) {
     if (
@@ -86,6 +71,14 @@ export class AppsWrapperComponent implements OnInit, OnDestroy, DoCheck {
     ) {
       this._nasaService.changeDatePickerVal(false);
     }
+  }
+
+  ngAfterViewChecked(): void {
+    this._projectListService.pageDataObjectSubject.subscribe((val) => {
+      this.pageTitle = val.title;
+    });
+
+    this._cd.detectChanges();
   }
 
   ngOnDestroy(): void {

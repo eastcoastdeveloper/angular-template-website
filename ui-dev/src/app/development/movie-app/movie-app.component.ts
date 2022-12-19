@@ -1,10 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "movie-app",
@@ -12,6 +9,18 @@ import {
   styleUrls: ["./movie-app.component.scss"],
 })
 export class MovieAppComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "OMDB API — Movie & TV Search",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "",
+    repoLink: "",
+    showInPage: true,
+    category: "",
+    views: 0,
+    forks: 0,
+  };
+
   @ViewChild("title", { static: false }) title: ElementRef;
   @ViewChild("year", { static: false }) year: ElementRef;
   protected typescript: string;
@@ -27,9 +36,13 @@ export class MovieAppComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private _projectListService: ProjectListService
   ) {}
 
   ngOnInit() {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this.renderCode();
   }
 

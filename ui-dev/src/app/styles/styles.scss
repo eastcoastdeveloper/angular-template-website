@@ -105,6 +105,18 @@ a {
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .item-last-child {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .item-last-child {
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   h2 {
     padding-left: 20px;

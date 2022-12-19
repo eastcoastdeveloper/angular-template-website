@@ -5,6 +5,8 @@ import {
   ViewChild,
   ViewChildren,
 } from "@angular/core";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-drag-drop-ui",
@@ -12,6 +14,18 @@ import {
   styleUrls: ["./drag-drop-ui.component.scss"],
 })
 export class DragDropUiComponent {
+  pageDataObject: PageDataObject = {
+    title: "JavaScript Drag and Drop",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "javascript-drag-and-drop",
+    repoLink: "https://github.com/eastcoastdeveloper/drag-and-drop-javascript",
+    showInPage: true,
+    category: "projects",
+    views: 219,
+    forks: 3,
+  };
+
   protected markup: string;
   protected typescript: string;
   protected interface: string;
@@ -27,7 +41,12 @@ export class DragDropUiComponent {
   @ViewChild("newDirectory", { static: false }) newDirectory: ElementRef;
   @ViewChild("newGroup", { static: false }) newGroup: ElementRef;
 
+  constructor(private _projectListService: ProjectListService) {}
+
   ngOnInit() {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this.renderCode();
   }
 

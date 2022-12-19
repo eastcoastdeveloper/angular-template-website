@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-rest-countries",
@@ -7,6 +9,19 @@ import { Subscription } from "rxjs";
   styleUrls: ["./rest-countries.component.scss"],
 })
 export class RestCountriesComponent implements OnInit {
+  pageDataObject: PageDataObject = {
+    title: "REST Countries",
+    publishedOn: "Oct 1, 2022",
+    updatedOn: "Nov 15, 2022",
+    repoTitle: "rest-countries",
+    repoLink:
+      "https://github.com/eastcoastdeveloper/rest-countries-leaflet-map",
+    showInPage: true,
+    category: "",
+    views: 388,
+    forks: 3,
+  };
+
   windowWidthSubscription: Subscription;
   markup: string;
   typescript: string;
@@ -14,8 +29,12 @@ export class RestCountriesComponent implements OnInit {
   model: string;
   module: string;
 
+  constructor(private _projectListService: ProjectListService) {}
 
   ngOnInit() {
+    // Send Page Data to Service & Wrapper
+    this._projectListService.changePageDataObject(this.pageDataObject);
+
     this.markup = `
     <div id="countries">
         <div class="content">
