@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import * as CryptoJS from "crypto-js";
-import { BehaviorSubject } from "rxjs";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 
 @Injectable({
@@ -8,7 +7,6 @@ import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 })
 export class LocalStorageService {
   key = "prjs";
-  filteredBehaviorSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
 
   public saveData(key: string, value: string) {
     localStorage.setItem(key, this.encrypt(value));

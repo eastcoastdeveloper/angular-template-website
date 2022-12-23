@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map } from "rxjs";
+import { LocalStorageInterface } from "../interfaces/localStorage.interface";
 import { PageDataObject } from "../interfaces/pageDataInterface";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
 import { LocalStorageService } from "./local-storage.service";
@@ -9,8 +10,6 @@ import { LocalStorageService } from "./local-storage.service";
   providedIn: "root",
 })
 export class ProjectListService {
-  filteredBehaviorSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
-
   // Subject Shares Data w/ Component
   allProjectsSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
   categorySubject = new BehaviorSubject<ProjectsListInterface[]>([]);
@@ -21,8 +20,7 @@ export class ProjectListService {
     this.pageDataObject
   );
 
-  // Searches Cache
-  searchQuery: string;
+  storageObject: LocalStorageInterface = new LocalStorageInterface();
 
   // Main Array
   projectArray: ProjectsListInterface[] = [];
@@ -34,50 +32,49 @@ export class ProjectListService {
   ) {}
 
   // Remove Duplicate Objects from Cache
-  removeDuplicateObjectFromArray(array: ProjectsListInterface[], key: string) {
-    var check = new Set();
-    return array.filter((obj) => !check.has(obj[key]) && check.add(obj[key]));
-  }
+  // removeDuplicateObjectFromArray(array: ProjectsListInterface[], key: string) {
+  //   var check = new Set();
+  //   return array.filter((obj) => !check.has(obj[key]) && check.add(obj[key]));
+  // }
 
-  // Check Cache or Call API for Pagination
-  checkCacheBeforeFetch(pageNum: number, pageLimit: number) {
-    // Check for Cache
-    let cachedItems: boolean = false;
-    this.searchQuery = this._localStorageService.getData("prjs");
-    this.searchQuery.length > 0 ? (cachedItems = true) : (cachedItems = false);
+  // Check for Cache (Called Once OnInit in ProjectList Cmpt)
+  isThereCache(pageNum: number, limit: number) {
+    const storage = this._localStorageService.getData("prjs");
+    this.projectArray = [];
 
     // There IS Cache
-    if (cachedItems) {
-      this.projectArray = this.removeDuplicateObjectFromArray(
-        JSON.parse(this.searchQuery),
-        "title"
-      );
+    if (storage != "") {
+      let parsed = JSON.parse(storage);
+      this.storageObject = parsed;
 
-      // Page 1
-      if (pageNum === 1) {
-        this.projectArray = JSON.parse(this.searchQuery).slice(0, 10);
+      // If Requested Page is Cached w/ a Value
+      if (this.storageObject.hasOwnProperty(pageNum)) {
+        this.projectArray = this.storageObject[pageNum];
         this.allProjectsSubject.next(this.projectArray);
-        return;
       }
 
-      // Other Pages for the First Time
-      if (this.projectArray.slice((pageNum - 1) * 10).length === 0) {
-        this.getAllProjects(pageNum, pageLimit);
-        return;
-      }
-
-      // Other Pages Once They're Cached
-      if (this.projectArray.slice((pageNum - 1) * 10).length > 0) {
-        const parsedData = JSON.parse(this.searchQuery);
-        this.projectArray = parsedData.slice((pageNum - 1) * 10, pageNum * 10);
-        this.allProjectsSubject.next(this.projectArray);
+      // Requested Page Called First Time
+      else {
+        new Promise((resolve) => {
+          this.getAllProjects(pageNum, limit);
+          resolve(this.saveNewlyCachedData(pageNum));
+        });
       }
     }
 
-    // There's NO Cache
-    if (this.searchQuery === "") {
-      this.getAllProjects(pageNum, pageLimit);
+    // There's NOTHING Cached
+    else {
+      this.getAllProjects(pageNum, limit);
     }
+  }
+
+  // Cache GET Request
+  saveNewlyCachedData(pageNum: number) {
+    this.storageObject[pageNum] = this.projectArray;
+    this._localStorageService.saveData(
+      "prjs",
+      JSON.stringify(this.storageObject)
+    );
   }
 
   // Call All Projects API
@@ -94,22 +91,25 @@ export class ProjectListService {
         map((responseData) => {
           let allProjects: ProjectsListInterface[] = [];
           Object.keys(responseData).filter((currentVal, index) => {
-            currentVal === "results"
-              ? (allProjects = Object.values(responseData)[index])
-              : "";
+            if (currentVal === "results") {
+              allProjects = Object.values(responseData)[index];
+              allProjects.map((val) => {
+                val.cached = true;
+              });
+            }
           });
           allProjects.map((val) => {
             this.projectArray.push(val);
           });
-          return allProjects;
+          this.storageObject[pageNum] = this.projectArray;
+          this._localStorageService.saveData(
+            "prjs",
+            JSON.stringify(this.storageObject)
+          );
         })
       )
-      .subscribe((data) => {
-        this._localStorageService.saveData(
-          "prjs",
-          JSON.stringify(this.projectArray)
-        );
-        this.allProjectsSubject.next(data);
+      .subscribe(() => {
+        this.allProjectsSubject.next(this.storageObject[pageNum]);
       });
   }
 
