@@ -20,10 +20,9 @@
             <img src="{{item.imgUrl}}" alt="{{item.altText}}" />
         </div>
 
-        <div *ngIf="!item.internal && !item.stackblitz" class="project-img element-shadow">
-            <a href="{{item.path}}">
-                <img src="{{item.imgUrl}}" alt="{{item.altText}}" />
-            </a>
+        <div *ngIf="!item.internal && !item.stackblitz" class="project-img element-shadow"
+            (click)="navigateToExternalURL(item.path)">
+            <img src="{{item.imgUrl}}" alt="{{item.altText}}" />
         </div>
 
         <div *ngIf="!item.internal && item.stackblitz" class="project-img element-shadow">
