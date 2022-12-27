@@ -15,7 +15,6 @@ export class DatePickerComponent implements OnInit {
     repoTitle: "angular-date-picker",
     repoLink:
       "https://github.com/eastcoastdeveloper/datepicker-angular-component",
-    showInPage: true,
     category: "",
     views: 28,
     forks: 0,

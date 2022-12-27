@@ -16,7 +16,6 @@ export class DynamicSidebarComponent implements OnInit {
     updatedOn: "Nov 15, 2022",
     repoTitle: "angular-dynamic-sidebar",
     repoLink: "https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar",
-    showInPage: true,
     category: "",
     views: 4100,
     forks: 103,

@@ -16,7 +16,6 @@ export class SliderComponent implements OnInit {
     updatedOn: "Dec 15, 2022",
     repoTitle: "angular-slider",
     repoLink: "https://github.com/eastcoastdeveloper/angular-basic-carousel",
-    showInPage: true,
     category: "components",
     views: 677,
     forks: 8,

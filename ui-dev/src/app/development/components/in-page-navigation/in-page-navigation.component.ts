@@ -22,7 +22,6 @@ export class InPageNavigationComponent implements OnInit {
     updatedOn: "Dec 15, 2022",
     repoTitle: "in-page-navigation",
     repoLink: "https://github.com/eastcoastdeveloper/in-page-navigation",
-    showInPage: true,
     category: "development",
     views: 87,
     forks: 0,

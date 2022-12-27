@@ -17,7 +17,6 @@ export class TablePaginatedComponent implements OnInit {
     repoTitle: "angular-data-table",
     repoLink:
       "https://github.com/eastcoastdeveloper/angular-8-table-pagination",
-    showInPage: true,
     category: "",
     views: 6622,
     forks: 190,
