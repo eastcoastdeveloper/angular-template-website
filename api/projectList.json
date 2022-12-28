@@ -4,21 +4,25 @@
          "title": "APOD NASA Gov",
          "imgUrl": "../../assets/components-grid/apod-nasa-gov.jpg",
          "description": "APOD NASA Gov is NASA's Photo of the Day API. This Angular app w/ numerous components pings the endpoint to populate the DOM. A service connects them all. Access records dating back to 1995.",
-         "path": "/projects/apod-nasa-gov",
+         "path": "/web-development-projects/apod-nasa-gov",
          "altText": "APOD NASA Gov API. Single page app w/ numerous components using the endpoint to populate the DOM. Access records dating back to 1995",
          "stackblitz": false,
          "internal": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 0,
+         "forks": 0
       },
       {
          "title": "REST Countries",
          "imgUrl": "../../assets/components-grid/rest-countries.jpg",
          "description": "REST Countries app coupled w/ Leafleft interactive maps wrapped in an Angular UI experience. Pulling data in from a remote source and using it to plot locations on a map. Flexible UI.",
-         "path": "/projects/rest-countries",
+         "path": "/web-development-projects/rest-countries",
          "altText": "REST Countries app coupled w/ Leafleft interactive maps. Pulls data in from an OMDB API and uses it to plot locations on a map.",
          "stackblitz": false,
          "internal": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 410,
+         "forks": 3
       },
       {
          "title": "React Project",
@@ -28,24 +32,21 @@
          "altText": "React project using the Hackernews API as a data feed. Multiple components, clearly showing data distribution and styling.",
          "stackblitz": true,
          "internal": false,
-         "views": 65,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/hacker-news-app",
-         "repoTitle": "react-project",
-         "showInPage": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 72,
+         "forks": 0
       },
       {
          "title": "OMDB API — Movie & TV Search",
          "imgUrl": "../../assets/components-grid/omdb-api.jpg",
          "description": "This app uses output from the OMDB API. It's packaged up in a neat UI. Fully responsive and written in TypeScript. Enter a TV show or movie EXACTLY and get tremendous data in return. Look up your favorite movies/tv shows.",
-         "path": "/projects/omdb-api",
+         "path": "/web-development-projects/omdb-api",
          "altText": "Movie app using the OMDB API as a data source. Search for cinema or TV titles. Results populate table rows or showcase movie posters.",
          "stackblitz": false,
          "internal": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 0,
+         "forks": 0
       },
       {
          "title": "Angular Countdown Timer",
@@ -55,7 +56,9 @@
          "altText": "Angular countdown timer component. Countdown with days, hours, minutes, and seconds. Written in TypeScript.",
          "stackblitz": false,
          "internal": true,
-         "category": "components"
+         "category": "components",
+         "views": 12117,
+         "forks": 895
       },
       {
          "title": "Angular Date Picker",
@@ -65,7 +68,9 @@
          "altText": "Angular date picker component that'll easily fit into any project by exporting the date value. Closes on external clicks.",
          "stackblitz": false,
          "internal": true,
-         "category": "components"
+         "category": "components",
+         "views": 41,
+         "forks": 0
       },
       {
          "title": "Angular Accordion",
@@ -75,7 +80,9 @@
          "altText": "Angular accordion component. Store information in colapasable units. Built with three layouts, but add as many as you'd like.",
          "stackblitz": false,
          "internal": true,
-         "category": "components"
+         "category": "components",
+         "views": 726,
+         "forks": 18
       },
       {
          "title": "Angular Dynamic Sidebar",
@@ -85,7 +92,9 @@
          "altText": "Angular dynamic sidebar. Specify which section is a drop down menu, and populate all menu items via a DB/API.",
          "stackblitz": false,
          "internal": true,
-         "category": "components"
+         "category": "components",
+         "views": 752,
+         "forks": 8
       },
       {
          "title": "Angular Data Table",
@@ -95,7 +104,9 @@
          "altText": "Paginated Angular data table importing JSON data. Easily customize height and width, colors, etc.",
          "stackblitz": false,
          "internal": true,
-         "category": "components"
+         "category": "components",
+         "views": 6659,
+         "forks": 177
       },
       {
          "title": "Table in HTML",
@@ -105,14 +116,9 @@
          "altText": "Table in HTML with search and sort functionality. Written in vanilla JavaScript.",
          "stackblitz": false,
          "internal": false,
-         "views": 14,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/Dynamic-HTML-Table",
-         "repoTitle": "table-in-html",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 39,
+         "forks": 0
       },
       {
          "title": "Chart JS Area Chart",
@@ -122,14 +128,9 @@
          "altText": "Chart JS area chart with not much styling. Project shows how to easily use dynamic data streams.",
          "stackblitz": true,
          "internal": false,
-         "views": 2683,
-         "forks": 131,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/ChartJS-Double-Line-Chart",
-         "repoTitle": "chart-js-area-chart",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 2793,
+         "forks": 137
       },
       {
          "title": "Chart JS Multiple Lines",
@@ -139,14 +140,9 @@
          "altText": "Chart JS multiple line chart. Data visualization by means of two lines spread out over multiple values.",
          "stackblitz": true,
          "internal": false,
-         "views": 2233,
-         "forks": 173,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/chartjs-multi-line-chart",
-         "repoTitle": "chart-js-multi-lines",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 2543,
+         "forks": 190
       },
       {
          "title": "Chart JS Bar Chart UI",
@@ -156,14 +152,9 @@
          "altText": "Chart JS bar chart user interface. Click on quarter 1, 2, or 3 and watch the data visualization bars change values.",
          "stackblitz": true,
          "internal": false,
-         "views": 2139,
-         "forks": 83,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/chartjs-bar-chart/",
-         "repoTitle": "chart-js-bar-chart",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 2341,
+         "forks": 89
       },
       {
          "title": "Chart JS Doughnut Chart",
@@ -173,14 +164,9 @@
          "altText": "Three dhart JS doughnut charts. Intended to showcase analytics. Use all three or just one. Demo of reusable code.",
          "stackblitz": true,
          "internal": false,
-         "views": 2790,
-         "forks": 163,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/doughnut-chart-component/",
-         "repoTitle": "chart-js-doughnut-chart",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 2947,
+         "forks": 178
       },
       {
          "title": "Chart JS Line Chart",
@@ -190,14 +176,9 @@
          "altText": "Custom chart JS line chart with an options menu. Hide/show labels on X or Y axis, or hide the grid alltogether.",
          "stackblitz": true,
          "internal": false,
-         "views": 845,
-         "forks": 32,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/chartjs-line-chart/",
-         "repoTitle": "chart-js-line-chart",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 31,
+         "forks": 0
       },
       {
          "title": "D3 Bar Chart",
@@ -207,24 +188,21 @@
          "altText": "Responsive D3 bar chart with an X and Y axis. Project includes both the HTMLa and JavaScript.",
          "stackblitz": false,
          "internal": false,
-         "views": 259,
-         "forks": 5,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/D3-Bar-Chart",
-         "repoTitle": "d3-bar-chart",
-         "showInPage": true,
-         "category": "components"
+         "category": "components",
+         "views": 297,
+         "forks": 6
       },
       {
          "title": "Website Examples",
          "imgUrl": "../../assets/components-grid/website-examples.jpg",
          "description": "Two fully responsive website examples I recently created. One developed in pure HTML, CSS, & JavaScript, but functions like a single page app. 100% on a Google Speed test at deployment. The other, a massive financial single page app.",
-         "path": "/projects/website-examples",
+         "path": "/web-development-projects/website-examples",
          "altText": "Two fully responsive website examples. Each of which showcase single page app architectures. One in native HTML, the other in TypeScript.",
          "stackblitz": false,
          "internal": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 0,
+         "forks": 0
       },
       {
          "title": "React To Do List",
@@ -234,14 +212,9 @@
          "altText": "React app to do list. Add and subtract things you'd like to do. Easily plug them into a DB or use for practice.",
          "stackblitz": true,
          "internal": false,
-         "views": 136,
-         "forks": 3,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/react-list-item-app",
-         "repoTitle": "react-list-item-app",
-         "showInPage": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 155,
+         "forks": 3
       },
       {
          "title": "Weather-Leaflet App",
@@ -251,44 +224,45 @@
          "altText": "Weather API communicating with the Leaflet maps API. Together they construct a modern weather forecast showing locations on a map.",
          "stackblitz": true,
          "internal": false,
-         "views": 191,
-         "forks": 3,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-weather-leaflet",
-         "repoTitle": "angular-weather-leaflet",
-         "showInPage": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 227,
+         "forks": 3
       },
       {
          "title": "AngularJS Project",
          "imgUrl": "../../assets/components-grid/angularjs-project.jpg",
          "description": "Though I built this circa 2017, I still love it. This AngularJS project uses nearly all the bells and whistles of the former framework. Components, templates, controllers, page transitions, APIs, nested JSON powered image galleries, factories, etc.",
-         "path": "/projects/angularjs-project",
+         "path": "/web-development-projects/angularjs-project",
          "altText": "AngularJS project using all the bells and whistles of the framework. Controllers, factories, templates, transitions, and more.",
          "stackblitz": false,
          "internal": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 1997,
+         "forks": 0
       },
       {
          "title": "Modules in Angular",
          "imgUrl": "../../assets/components-grid/modules-in-angular.jpg",
          "description": "Modules in Angular are the backbone of the framework. See modular code navigation and learn how to properly maintain modules in a large production ready application.",
-         "path": "/web-development/modules-in-angular/home",
+         "path": "/web-application-development/modules-in-angular/home",
          "altText": "Showcasing modules in Angular. How to use them and navigate between them.",
          "stackblitz": false,
          "internal": true,
-         "category": "development"
+         "category": "development",
+         "views": 2289,
+         "forks": 118
       },
       {
          "title": "JavaScript Drag and Drop",
          "imgUrl": "../../assets/components-grid/javascript-drag-and-drop.jpg",
          "description": "I was recently tasked w/ the challenge of creating a JavaScript drag and drop UI. It called for the ability to drag multiple elements, each w/ their own POST requests. I wanted to ensure it went smooth, so I developed this similar concept.",
-         "path": "/projects/javascript-drag-and-drop",
+         "path": "/web-development-projects/javascript-drag-and-drop",
          "altText": "JavaScript drag and drop is a common task and this app showcases it via a simple UI. Drag/drop elements or create new ones.",
          "stackblitz": false,
          "internal": true,
-         "category": "projects"
+         "category": "projects",
+         "views": 240,
+         "forks": 3
       },
       {
          "title": "Angular Event Emitter",
@@ -298,24 +272,21 @@
          "altText": "Angular event emitter showcased between an area chart and table. Click table rows and watch the area chart reflect the table values.",
          "stackblitz": true,
          "internal": false,
-         "views": 57,
-         "forks": 0,
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-share-component-data",
-         "repoTitle": "angular-event-emitter",
-         "showInPage": true,
-         "category": "development"
+         "category": "development",
+         "views": 66,
+         "forks": 0
       },
       {
          "title": "In Page Navigation",
          "imgUrl": "../../assets/components-grid/in-page-navigation.jpg",
          "description": "Basic in page navigation mock. Easily show and hide different sections of a page without changing pages. Ideal for a questionaire, quiz, or any type of user info gathering UI.",
-         "path": "/web-development/in-page-navigation",
+         "path": "/web-application-development/in-page-navigation",
          "altText": "In page navigation with a progress bar at the bottom. Navigate to different sections without changing pages.",
          "stackblitz": false,
          "internal": true,
-         "category": "development"
+         "category": "development",
+         "views": 96,
+         "forks": 0
       },
       {
          "title": "Angular Slider",
@@ -325,24 +296,21 @@
          "altText": "Angular slider w/ clickable dots. Click a dot to shift the slider to a new book or change book w/ next/prev buttons.",
          "stackblitz": false,
          "internal": true,
-         "category": "components"
+         "category": "components",
+         "views": 753,
+         "forks": 8
       },
       {
          "title": "Angular Resolver",
-         "publishedOn": "Oct 1, 2022",
-         "updatedOn": "Nov 15, 2022",
-         "repoTitle": "angular-resolver",
-         "repoLink": "https://github.com/eastcoastdeveloper/angular-resolver-mock",
-         "showInPage": true,
-         "category": "development",
-         "views": 13,
-         "forks": 0,
          "imgUrl": "../../assets/components-grid/angular-resolver.jpg",
-         "altText": "Angular resolver that not only pre fetches content, but all ensures the endpoint is called only once.",
-         "path": "https://stackblitz.com/edit/angular-resolver-mock?file=src%2Fapp%2Fresolver.service.ts",
          "description": "Angular resolver that preloads component content. This sample however takes it one step further by disallowing an endpoint to be called more than once. Ideal if you have a prefix appended to multiple endpoints.",
+         "path": "https://stackblitz.com/edit/angular-resolver-mock?file=src%2Fapp%2Fresolver.service.ts",
+         "altText": "Angular resolver that not only pre fetches content, but all ensures the endpoint is called only once.",
          "stackblitz": true,
-         "internal": false
+         "internal": false,
+         "category": "development",
+         "views": 40,
+         "forks": 1
       }
    ]
 }

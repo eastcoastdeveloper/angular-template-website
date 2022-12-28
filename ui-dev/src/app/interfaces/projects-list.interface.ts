@@ -12,6 +12,6 @@ export class ProjectsListInterface {
   updatedOn: string;
   repoLink: string;
   repoTitle: string;
-  showInPage: boolean;
   category: string;
+  cached?: boolean;
 }

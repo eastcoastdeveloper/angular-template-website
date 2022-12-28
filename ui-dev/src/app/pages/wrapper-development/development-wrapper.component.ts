@@ -44,7 +44,9 @@ export class DevelopmentWrapper
 
   ngDoCheck(): void {
     // Cornerstone Layout
-    if (this._location.path() === "/web-development/learn-to-code") {
+    if (
+      this._location.path() === "/web-application-development/learn-to-code"
+    ) {
       this.pageTitle = "Learn to Code";
       this.threeColumnLayout = false;
     } else {

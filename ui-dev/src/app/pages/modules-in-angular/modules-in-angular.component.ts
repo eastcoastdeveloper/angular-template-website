@@ -17,7 +17,6 @@ export class ModulesInAngularComponent implements OnInit, OnDestroy {
     repoTitle: "modules-in-angular",
     repoLink:
       "https://github.com/eastcoastdeveloper/angular-routing-between-modules",
-    showInPage: true,
     category: "",
     views: 2126,
     forks: 112,

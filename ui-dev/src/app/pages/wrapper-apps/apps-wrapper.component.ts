@@ -44,7 +44,10 @@ export class AppsWrapperComponent
 
   ngDoCheck(): void {
     // Cornerstone Layout
-    if (this._location.path() === "/projects/front-end-development") {
+    if (
+      this._location.path() ===
+      "/web-development-projects/front-end-development"
+    ) {
       this.pageTitle = "Front End Development";
       this.threeColumnLayout = false;
     } else {

@@ -45,7 +45,7 @@ export class ComponentsWrapperComponent
 
   ngDoCheck(): void {
     // Cornerstone Layout
-    if (this._location.path() === "/ui-components/html-javascript-css") {
+    if (this._location.path() === "/ui-components/website-features") {
       this.pageTitle = "UI Components";
       this.threeColumnLayout = false;
     } else {

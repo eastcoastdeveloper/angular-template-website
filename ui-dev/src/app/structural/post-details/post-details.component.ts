@@ -16,7 +16,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   updatedOn?: string;
   repoLink?: string;
   repoTitle?: string;
-  showInPage?: boolean;
   views?: number;
   forks?: number;
 
@@ -31,7 +30,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
       this.updatedOn = val?.updatedOn;
       this.repoTitle = val?.repoTitle;
       this.repoLink = val?.repoLink;
-      this.showInPage = val?.showInPage;
       this.views = val?.views;
       this.forks = val?.forks;
     });

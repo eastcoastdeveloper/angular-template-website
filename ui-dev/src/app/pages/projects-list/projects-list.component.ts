@@ -35,7 +35,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Call API or Use Cached Data
-    this.getEndpointData(1, 10);
+    this._projectListService.isThereCache(1, 10);
 
     // Window Width Service
     this._windowWidth.currentWidth$
@@ -44,23 +44,13 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
         this.windowWidth = value;
       });
 
+    this._projectListService.allProjectsSubject
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((val) => {
+        this.projectsArray = val;
+      });
+
     this._changeDetection.detectChanges();
-  }
-
-  // // Check Cache ...
-  getEndpointData(page: number, limit: number) {
-    new Promise((resolve) => {
-      this._projectListService.checkCacheBeforeFetch(page, limit);
-      resolve(
-        this._projectListService.allProjectsSubject.subscribe((val) => {
-          this.projectsArray = val;
-        })
-      );
-    });
-  }
-
-  getPageContent(evt: any) {
-    this.projectsArray = evt;
   }
 
   // Most Views

@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
-const fs = require('fs');
 const projectData = require('./projectList.json');
-
 const port = process.env.PORT || 8080;
 
 function paginatedResults(model) {
@@ -12,20 +10,6 @@ function paginatedResults(model) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const results = {};
-
-    if (endIndex < model.length) {
-      results.next = {
-        page: page + 1,
-        limit: limit
-      }
-    }
-
-    if (startIndex > 0) {
-      results.previous = {
-        page: page - 1,
-        limit: limit
-      }
-    }
 
     results.results = model.data.slice(startIndex, endIndex);
     res.paginatedResults = results;
@@ -43,11 +27,11 @@ function categoryResults(model) {
   }
 }
 
-app.get('/app/all', paginatedResults(projectData), (req, res) => {
+app.use('/api/javascript-projects', paginatedResults(projectData), (req, res) => {
   res.json(res.paginatedResults);
 })
 
-app.get('/app/category', categoryResults(projectData), (req, res) => {
+app.get('/api/category', categoryResults(projectData), (req, res) => {
   res.json(res.categoryResults);
 })
 

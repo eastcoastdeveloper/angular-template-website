@@ -66,7 +66,7 @@ export class ProjectCategoryService {
     };
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
-        `/app/category/?type=${type}`,
+        `/api/category/?type=${type}`,
         httpOptions
       )
       .pipe(

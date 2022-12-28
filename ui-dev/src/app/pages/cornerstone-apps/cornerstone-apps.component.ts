@@ -5,11 +5,13 @@ import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-cornerstone-apps",
-  templateUrl: "./cornerstone-apps.component.html",
+  template: `<app-projects-list-content
+    [dataArray]="appsArray"
+  ></app-projects-list-content>`,
 })
 export class CornerstoneAppsComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "Cornerstone Title",
+    title: "Front End Development",
   };
   appsArray: any;
 

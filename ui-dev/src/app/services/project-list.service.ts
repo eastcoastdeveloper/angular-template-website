@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map } from "rxjs";
 import { LocalStorageInterface } from "../interfaces/localStorage.interface";
-import { PageDataObject } from "../interfaces/pageDataInterface";
 import { ProjectsListInterface } from "../interfaces/projects-list.interface";
+import { PageDataObject } from "../interfaces/pageDataInterface";
 import { LocalStorageService } from "./local-storage.service";
 
 @Injectable({
@@ -30,12 +30,6 @@ export class ProjectListService {
     private _http: HttpClient,
     private _localStorageService: LocalStorageService
   ) {}
-
-  // Remove Duplicate Objects from Cache
-  // removeDuplicateObjectFromArray(array: ProjectsListInterface[], key: string) {
-  //   var check = new Set();
-  //   return array.filter((obj) => !check.has(obj[key]) && check.add(obj[key]));
-  // }
 
   // Check for Cache (Called Once OnInit in ProjectList Cmpt)
   isThereCache(pageNum: number, limit: number) {
@@ -84,7 +78,7 @@ export class ProjectListService {
     };
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
-        `/app/all/?page=${pageNum}?&limit=${pageLimit}`,
+        `/api/javascript-projects/?page=${pageNum}?&limit=${pageLimit}`,
         httpOptions
       )
       .pipe(

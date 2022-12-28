@@ -10,7 +10,8 @@ import { HeaderComponent } from "./structural/header/header.component";
 import { FooterComponent } from "./structural/footer/footer.component";
 import { FormConfirmationComponent } from "./pages/form-confirmation/form-confirmation.component";
 import { WindowRef } from "./windowRef";
-import { LoadingInterceptor } from "./services/loading.interceptor";
+import { LoadingInterceptor } from "./guards/loading.interceptor";
+import { ExternalLinkComponent } from './development/components/external-link/external-link.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { LoadingInterceptor } from "./services/loading.interceptor";
     FooterComponent,
     appRoutingComponents,
     FormConfirmationComponent,
+    ExternalLinkComponent,
   ],
   providers: [
     HttpClientModule,

@@ -14,7 +14,6 @@ export class AngularjsProjectComponent implements OnInit {
     updatedOn: "Nov 15, 2022",
     repoTitle: "angularjs-project",
     repoLink: "https://github.com/eastcoastdeveloper/angularjs-project",
-    showInPage: true,
     category: "",
     views: 1935,
     forks: 0,

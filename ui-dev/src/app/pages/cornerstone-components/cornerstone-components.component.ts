@@ -6,11 +6,13 @@ import { ProjectListService } from "src/app/services/project-list.service";
 
 @Component({
   selector: "app-cornerstone-components",
-  templateUrl: "./cornerstone-components.component.html",
+  template: `<app-projects-list-content
+    [dataArray]="cmpsArray"
+  ></app-projects-list-content>`,
 })
 export class CornerstoneComponentsComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "Cornerstone Apps",
+    title: "Website Features",
   };
 
   cmpsArray: ProjectsListInterface[] = [];

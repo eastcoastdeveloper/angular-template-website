@@ -25,7 +25,6 @@ export class WebsiteExamplesComponent
     updatedOn: "Nov 15, 2022",
     repoTitle: "",
     repoLink: "",
-    showInPage: true,
     category: "",
     views: 0,
     forks: 0,
