@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const projectData = require('./projectList.json');
 const port = process.env.PORT || 8080;
 
 // JavaScript Projects

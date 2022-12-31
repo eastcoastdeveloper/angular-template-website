@@ -12,8 +12,6 @@ import { FormConfirmationComponent } from "./pages/form-confirmation/form-confir
 import { WindowRef } from "./windowRef";
 import { LoadingInterceptor } from "./guards/loading.interceptor";
 import { ExternalLinkComponent } from './development/components/external-link/external-link.component';
-import { D3BarGraphComponent } from './pages/d3-bar-graph/d3-bar-graph.component';
-import { HtmlTableComponent } from './pages/html-table/html-table.component';
 
 @NgModule({
   imports: [
@@ -32,8 +30,6 @@ import { HtmlTableComponent } from './pages/html-table/html-table.component';
     appRoutingComponents,
     FormConfirmationComponent,
     ExternalLinkComponent,
-    D3BarGraphComponent,
-    HtmlTableComponent,
   ],
   providers: [
     HttpClientModule,
