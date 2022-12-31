@@ -14,9 +14,9 @@ const routes: Routes = [
     path: "",
     component: ComponentsWrapperComponent,
     children: [
-      { path: "", redirectTo: "html-javascript-css", pathMatch: "full" },
+      { path: "", redirectTo: "website-features", pathMatch: "full" },
       {
-        path: "html-javascript-css",
+        path: "website-features",
         loadChildren: () =>
           import(
             `../cornerstone-components/cornerstone-components.module`
@@ -46,7 +46,7 @@ const routes: Routes = [
         path: "angular-slider",
         component: SliderComponent,
       },
-      { path: "**", redirectTo: "html-javascript-css" },
+      { path: "**", redirectTo: "website-features" },
     ],
   },
 ];

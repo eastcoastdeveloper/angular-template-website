@@ -4,7 +4,6 @@ export class PageDataObject {
   updatedOn?: string;
   repoTitle?: string;
   repoLink?: string;
-  showInPage?: true;
   category?: string;
   views?: number;
   forks?: number;

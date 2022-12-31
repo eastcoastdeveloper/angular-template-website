@@ -5,12 +5,20 @@
 
 @media screen and (max-width:992px){
   .nasa-pod-search {
-    width: 252px;
+    width: 250px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .nasa-pod-search {
     border: none
+  }
+}
+
+@media screen and (max-width:500px){
+  .nasa-pod-search {
+    width: 110px;
+    padding: 14.5px 10px 0 10px;
+    height: unset;
   }
 }

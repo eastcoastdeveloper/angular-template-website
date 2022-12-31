@@ -6,8 +6,6 @@ import { Subject, takeUntil } from "rxjs";
 import { ScrollToTopService } from "./services/scroll-to-top.service";
 import { DOCUMENT } from "@angular/common";
 import { CanonicalService } from "./services/canonical.service";
-import { ProjectListService } from "./services/project-list.service";
-import { LocalStorageService } from "./services/local-storage.service";
 
 @Component({
   selector: "my-app",
@@ -18,11 +16,10 @@ import { LocalStorageService } from "./services/local-storage.service";
   },
 })
 export class AppComponent implements OnInit, OnDestroy {
-  windowSize: any;
+  // windowSize: any;
   resizeID: any;
   window: any;
 
-  // dummyArray: ProjectsListInterface;
   isMobile: boolean = false;
   sidebarStatus: boolean;
   width: number = window.innerWidth;
@@ -35,31 +32,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private _windowService: WindowWidthService,
     private _sidebarService: SideBarService,
     private _scrollToTop: ScrollToTopService,
-    private _projectListService: ProjectListService,
     private _router: Router,
     private _canonicalService: CanonicalService,
-    private _localStorageService: LocalStorageService,
     private _renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
-  ) {
-    // Update Page Data on Route Change
-    this._router.events.subscribe((data) => {
-      if (data instanceof NavigationEnd) {
-        const cachedData = this._localStorageService.getData("prjs");
-
-        // If /web-technologies & There's Cache, Remove Duplicates, & Set projectsArray Value
-        if (this._router.url != "/web-technologies" && cachedData != "") {
-          const parsedData = JSON.parse(cachedData);
-          this._projectListService.projectArray = parsedData;
-          this._projectListService.projectArray =
-            this._projectListService.removeDuplicateObjectFromArray(
-              parsedData,
-              "title"
-            );
-        }
-      }
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this._canonicalService.setCanonicalURL();
