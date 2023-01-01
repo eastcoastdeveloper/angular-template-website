@@ -3,26 +3,26 @@ import {
   ElementRef,
   QueryList,
   ViewChild,
-  ViewChildren,
-} from "@angular/core";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectListService } from "src/app/services/project-list.service";
+  ViewChildren
+} from '@angular/core';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "app-drag-drop-ui",
-  templateUrl: "./drag-drop-ui.component.html",
-  styleUrls: ["./drag-drop-ui.component.scss"],
+  selector: 'app-drag-drop-ui',
+  templateUrl: './drag-drop-ui.component.html',
+  styleUrls: ['./drag-drop-ui.component.scss']
 })
 export class DragDropUiComponent {
   pageDataObject: PageDataObject = {
-    title: "JavaScript Drag and Drop",
-    publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
-    repoTitle: "javascript-drag-and-drop",
-    repoLink: "https://github.com/eastcoastdeveloper/drag-and-drop-javascript",
-    category: "projects",
+    title: 'JavaScript Drag and Drop',
+    publishedOn: 'Oct 1, 2022',
+    updatedOn: 'Jan 3, 2022',
+    repoTitle: 'javascript-drag-and-drop',
+    repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
+    category: 'projects',
     views: 219,
-    forks: 3,
+    forks: 3
   };
 
   protected markup: string;
@@ -36,9 +36,9 @@ export class DragDropUiComponent {
   protected scss: string;
   protected json: string;
 
-  @ViewChildren("typeName") typeName: QueryList<any>;
-  @ViewChild("newDirectory", { static: false }) newDirectory: ElementRef;
-  @ViewChild("newGroup", { static: false }) newGroup: ElementRef;
+  @ViewChildren('typeName') typeName: QueryList<any>;
+  @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
+  @ViewChild('newGroup', { static: false }) newGroup: ElementRef;
 
   constructor(private _projectListService: ProjectListService) {}
 

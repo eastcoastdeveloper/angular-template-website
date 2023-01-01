@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { NasaSearchService } from '../nasa.service';
 
 @Component({
   selector: '[app-calendar]',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.scss'],
+  styleUrls: ['./date-picker.component.scss']
 })
 export class CalendarComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject<boolean>();
   calendarVisible: boolean = false;
   d: any = new Date();
   weekdays: any[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -23,17 +24,16 @@ export class CalendarComponent implements OnInit, OnDestroy {
     'Sep',
     'Oct',
     'Nov',
-    'Dec',
+    'Dec'
   ];
   years: any[] = [
     1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
     2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
-    2020, 2021, 2022,
+    2020, 2021, 2022
   ];
   year: any = this.d.getFullYear();
   monthIndex: any = this.d.getMonth();
   currentDay: any = this.d.getDate();
-  subscriptionVisible: Subscription = new Subscription;
   monthsMenu: boolean = false;
   yearsMenu: boolean = false;
   selectedDate: number = 0;
@@ -42,18 +42,16 @@ export class CalendarComponent implements OnInit, OnDestroy {
   firstDay: any;
   lastDay: any;
 
-  constructor(
-    private _nasa: NasaSearchService
-  ) {}
+  constructor(private _nasa: NasaSearchService) {}
 
   ngOnInit() {
     this.firstLastDays();
     this.updateServiceDate();
-    this.subscriptionVisible = this._nasa.dataPickerCurrentVal.subscribe(
-      (currentVal) => {
+    this._nasa.dataPickerCurrentVal
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((currentVal) => {
         this.calendarVisible = currentVal;
-      }
-    );
+      });
   }
 
   // Calculate First/ Last Days of the Month
@@ -67,7 +65,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
         value:
           i >= firstDayOfMonth && i < emptyCells + lastDayOfMonth
             ? dayIndex++
-            : null,
+            : null
       });
     }
   }
@@ -144,15 +142,17 @@ export class CalendarComponent implements OnInit, OnDestroy {
       returnValue = 'Calendar Inactive';
     }
     if (this.currentDate > this.selectedDate) {
-      returnValue = this.months[this.monthIndex] + ' ' + this.currentDay + ', ' + this.year
+      returnValue =
+        this.months[this.monthIndex] + ' ' + this.currentDay + ', ' + this.year;
     }
     if (this.currentDate < this.selectedDate) {
       returnValue = 'Future Date';
     }
-    return returnValue
+    return returnValue;
   }
 
   ngOnDestroy() {
-    this.subscriptionVisible.unsubscribe();
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

@@ -1,34 +1,35 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { SliderInterface } from "src/app/interfaces/slider.interface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { SliderInterface } from 'src/app/interfaces/slider.interface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "app-slider",
-  templateUrl: "./slider.component.html",
-  styleUrls: ["./slider.component.scss"],
+  selector: 'app-slider',
+  templateUrl: './slider.component.html',
+  styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit {
-  pageDataObject: PageDataObject = {
-    title: "Angular Slider",
-    publishedOn: "Oct 1, 2022",
-    updatedOn: "Dec 15, 2022",
-    repoTitle: "angular-slider",
-    repoLink: "https://github.com/eastcoastdeveloper/angular-basic-carousel",
-    category: "components",
-    views: 677,
-    forks: 8,
-  };
-
+export class SliderComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject<boolean>();
   result: SliderInterface[] = [];
   allBooks: any = [];
   currentIndex: number = 0;
-
   markup: string;
   scss: string;
   typescript: string;
   interface: string;
+
+  pageDataObject: PageDataObject = {
+    title: 'Angular Slider',
+    publishedOn: 'Oct 1, 2022',
+    updatedOn: 'Jan 3, 2022',
+    repoTitle: 'angular-slider',
+    repoLink: 'https://github.com/eastcoastdeveloper/angular-basic-carousel',
+    category: 'components',
+    views: 677,
+    forks: 8
+  };
 
   constructor(
     private _http: HttpClient,
@@ -40,7 +41,8 @@ export class SliderComponent implements OnInit {
     this._projectListService.changePageDataObject(this.pageDataObject);
 
     this._http
-      .get<SliderInterface[]>("assets/json/slider.json")
+      .get<SliderInterface[]>('assets/json/slider.json')
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.result = val;
       });
@@ -56,7 +58,7 @@ export class SliderComponent implements OnInit {
     this.getCurrentIndex();
     this.resetValues();
     this.currentIndex++;
-    this.currentIndex > this.result.length - 1 ? (this.currentIndex = 0) : "";
+    this.currentIndex > this.result.length - 1 ? (this.currentIndex = 0) : '';
     this.result[this.currentIndex].status = true;
   }
 
@@ -277,5 +279,10 @@ export class SliderComponent implements OnInit {
       url: string;
       link: string;
     }`;
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

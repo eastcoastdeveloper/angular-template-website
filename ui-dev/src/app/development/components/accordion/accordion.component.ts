@@ -1,30 +1,32 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { AccordionComponentInterface } from "src/app/interfaces/accordion.interface";
-import { Meta } from "@angular/platform-browser";
-import { ProjectListService } from "src/app/services/project-list.service";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AccordionComponentInterface } from 'src/app/interfaces/accordion.interface';
+import { Meta } from '@angular/platform-browser';
+import { ProjectListService } from 'src/app/services/project-list.service';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: "accordion",
-  templateUrl: "./accordion.component.html",
-  styleUrls: ["./accordion.component.scss"],
+  selector: 'accordion',
+  templateUrl: './accordion.component.html',
+  styleUrls: ['./accordion.component.scss']
 })
 export class AccordionComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "Angular Accordion",
-    publishedOn: "Sept 29, 2022",
-    updatedOn: "Nov 15, 2022",
-    repoTitle: "angular-accordion",
-    repoLink: "https://github.com/eastcoastdeveloper/Angular-Accordion-JSON",
-    category: "",
+    title: 'Angular Accordion',
+    publishedOn: 'Sept 29, 2022',
+    updatedOn: 'Jan 3, 2022',
+    repoTitle: 'angular-accordion',
+    repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
+    category: '',
     views: 672,
-    forks: 18,
+    forks: 18
   };
 
   accordionData: AccordionComponentInterface[] = [];
+  private unsubscribe$ = new Subject<boolean>();
 
-  @ViewChild("accordionParent", { static: false }) accordionParent: ElementRef;
+  @ViewChild('accordionParent', { static: false }) accordionParent: ElementRef;
 
   constructor(
     private _http: HttpClient,
@@ -38,18 +40,20 @@ export class AccordionComponent implements OnInit {
 
     this._metaTagService.addTags([
       {
-        name: "keywords",
-        content: "Angular SEO Integration, Music CRUD, Angular Universal",
+        name: 'keywords',
+        content: 'Angular SEO Integration, Music CRUD, Angular Universal'
       },
-      { name: "robots", content: "index, follow" },
-      { name: "author", content: "Eric Scott" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "date", content: "2022-11-31", scheme: "YYYY-MM-DD" },
-      { charset: "UTF-8" },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'Eric Scott' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'date', content: '2022-11-31', scheme: 'YYYY-MM-DD' },
+      { charset: 'UTF-8' }
     ]);
 
+    // Only Call if Not Cached
     this._http
-      .get<AccordionComponentInterface[]>("assets/json/accordion-cmpt.json")
+      .get<AccordionComponentInterface[]>('/api/accordion')
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res) => {
         this.accordionData = res;
       });
@@ -60,20 +64,20 @@ export class AccordionComponent implements OnInit {
     var allGroups: any[] = [];
     allGroups =
       this.accordionParent.nativeElement.getElementsByClassName(
-        "hidden-content"
+        'hidden-content'
       );
     for (var j = 0; j < allGroups.length; j++) {
       if (
         i === j &&
         !e.target.parentElement
-          .querySelector(".hidden-content")
-          .classList.contains("show-content")
+          .querySelector('.hidden-content')
+          .classList.contains('show-content')
       ) {
         e.target.parentElement
-          .querySelector(".hidden-content")
-          .classList.add("show-content");
+          .querySelector('.hidden-content')
+          .classList.add('show-content');
       } else {
-        allGroups[j].classList.remove("show-content");
+        allGroups[j].classList.remove('show-content');
       }
     }
   }

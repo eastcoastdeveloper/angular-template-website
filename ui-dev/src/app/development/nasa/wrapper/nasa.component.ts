@@ -16,7 +16,7 @@ export class NasaComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: "APOD NASA Gov",
     publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
+    updatedOn: "Jan 3, 2022",
     repoTitle: "",
     repoLink: "",
     category: "",

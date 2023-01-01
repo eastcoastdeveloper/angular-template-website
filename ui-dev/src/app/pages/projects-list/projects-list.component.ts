@@ -4,33 +4,33 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
-} from "@angular/core";
-import { Subject, takeUntil } from "rxjs";
-import { ProjectListService } from "src/app/services/project-list.service";
-import { ScrollToTopService } from "src/app/services/scroll-to-top.service";
-import { WindowWidthService } from "src/app/services/window-width.service";
-import { ProjectsListInterface } from "../../interfaces/projects-list.interface";
+  ViewChild
+} from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { ProjectListService } from 'src/app/services/project-list.service';
+import { ScrollToTopService } from 'src/app/services/scroll-to-top.service';
+import { WindowWidthService } from 'src/app/services/window-width.service';
+import { ProjectsListInterface } from '../../interfaces/projects-list.interface';
 
 @Component({
-  selector: "app-projects-list",
-  templateUrl: "./projects-list.component.html",
-  styleUrls: ["./projects-list.component.scss"],
+  selector: 'app-projects-list',
+  templateUrl: './projects-list.component.html',
+  styleUrls: ['./projects-list.component.scss']
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
-  @ViewChild("leftColumn", { static: false }) leftColumn: ElementRef;
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  @ViewChild('leftColumn', { static: false }) leftColumn: ElementRef;
+  private unsubscribe$ = new Subject<boolean>();
   projectsArray: ProjectsListInterface[] = [];
   masterArray: ProjectsListInterface[] = [];
-  activeCategory: string = "";
+  activeCategory: string = '';
   filteredArray: any = [];
   windowWidth: number;
 
   constructor(
-    private _windowWidth: WindowWidthService,
-    private _scrollToTop: ScrollToTopService,
     private _projectListService: ProjectListService,
-    private _changeDetection: ChangeDetectorRef
+    private _changeDetection: ChangeDetectorRef,
+    private _windowWidth: WindowWidthService,
+    private _scrollToTop: ScrollToTopService
   ) {}
 
   ngOnInit(): void {
@@ -39,13 +39,13 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
 
     // Window Width Service
     this._windowWidth.currentWidth$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((value) => {
         this.windowWidth = value;
       });
 
     this._projectListService.allProjectsSubject
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.projectsArray = val;
       });
@@ -58,7 +58,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this.projectsArray = this.masterArray;
     this.filteredArray = [];
     this.projectsArray.map((val: any) => {
-      val[type] > 0 ? this.filteredArray.push(val) : "";
+      val[type] > 0 ? this.filteredArray.push(val) : '';
     });
     this.filteredArray.sort(
       (a: { [x: string]: number }, b: { [x: string]: number }) => {
@@ -79,8 +79,8 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
         this.filteredArray.push(value);
         this.activeCategory = val;
       }
-      if (val === "") {
-        this.activeCategory = "";
+      if (val === '') {
+        this.activeCategory = '';
         this.filteredArray = this.masterArray;
       }
 
@@ -95,7 +95,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.complete();
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

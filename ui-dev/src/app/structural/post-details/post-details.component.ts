@@ -1,16 +1,16 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Subscription } from "rxjs";
-import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { ProjectListService } from "src/app/services/project-list.service";
-import { WindowWidthService } from "src/app/services/window-width.service";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ProjectListService } from 'src/app/services/project-list.service';
+import { WindowWidthService } from 'src/app/services/window-width.service';
 
 @Component({
-  selector: "app-post-details",
-  templateUrl: "./post-details.component.html",
+  selector: 'app-post-details',
+  templateUrl: './post-details.component.html'
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
   projectListArray: ProjectsListInterface[] = [];
-  windowWidthSubscription: Subscription;
+  private unsubscribe$ = new Subject<boolean>();
   windowWidth: number;
   publishedOn?: string;
   updatedOn?: string;
@@ -25,17 +25,20 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this._projectListService.pageDataObjectSubject.subscribe((val) => {
-      this.publishedOn = val?.publishedOn;
-      this.updatedOn = val?.updatedOn;
-      this.repoTitle = val?.repoTitle;
-      this.repoLink = val?.repoLink;
-      this.views = val?.views;
-      this.forks = val?.forks;
-    });
+    this._projectListService.pageDataObjectSubject
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.publishedOn = val?.publishedOn;
+        this.updatedOn = val?.updatedOn;
+        this.repoTitle = val?.repoTitle;
+        this.repoLink = val?.repoLink;
+        this.views = val?.views;
+        this.forks = val?.forks;
+      });
 
-    this.windowWidthSubscription =
-      this._windowWidthService.currentWidth$.subscribe((val) => {
+    this._windowWidthService.currentWidth$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
         this.windowWidth = val;
       });
   }
@@ -45,6 +48,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.windowWidthSubscription.unsubscribe();
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

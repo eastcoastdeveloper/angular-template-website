@@ -1,25 +1,25 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { CarsInterface } from "../../../interfaces/table-paginated.interface";
-import { ProjectListService } from "src/app/services/project-list.service";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CarsInterface } from '../../../interfaces/table-paginated.interface';
+import { ProjectListService } from 'src/app/services/project-list.service';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 
 @Component({
-  selector: "table-paginated",
-  templateUrl: "./table-paginated.component.html",
-  styleUrls: ["./table-paginated.component.scss"],
+  selector: 'table-paginated',
+  templateUrl: './table-paginated.component.html',
+  styleUrls: ['./table-paginated.component.scss']
 })
 export class TablePaginatedComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "Angular Data Table",
-    publishedOn: "Aug 1, 2022",
-    updatedOn: "Nov 15, 2022",
-    repoTitle: "angular-data-table",
+    title: 'Angular Data Table',
+    publishedOn: 'Aug 1, 2022',
+    updatedOn: 'Jan 3, 2022',
+    repoTitle: 'angular-data-table',
     repoLink:
-      "https://github.com/eastcoastdeveloper/angular-8-table-pagination",
-    category: "",
+      'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
+    category: '',
     views: 6622,
-    forks: 190,
+    forks: 190
   };
 
   masterArray: CarsInterface[] = [];
@@ -35,19 +35,17 @@ export class TablePaginatedComponent implements OnInit {
   ngOnInit(): void {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
-    this._http
-      .get<CarsInterface[]>("assets/json/cars.json")
-      .subscribe((res) => {
-        this.cars = res;
-        this.masterArray = this.cars.slice();
-      });
+    this._http.get<CarsInterface[]>('/api/table-paginated').subscribe((res) => {
+      this.cars = res;
+      this.masterArray = this.cars.slice();
+    });
   }
 
-  enteredSearchValue: string = "";
+  enteredSearchValue: string = '';
 
   applyFilter(filterValue: string) {
     this.p = 0;
-    if (this.enteredSearchValue != "") {
+    if (this.enteredSearchValue != '') {
       let filtered = this.masterArray.filter((elem: any) => {
         return (
           elem.make.includes(filterValue) || elem.model.includes(filterValue)
@@ -55,7 +53,7 @@ export class TablePaginatedComponent implements OnInit {
       });
       this.cars = filtered;
     }
-    if (this.enteredSearchValue === "") {
+    if (this.enteredSearchValue === '') {
       return (this.cars = this.masterArray);
     }
   }

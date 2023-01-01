@@ -4,7 +4,7 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 // import { icon, latLng, Map, MapOptions, Marker, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { WindowWidthService } from 'src/app/services/window-width.service';
 @Component({
   selector: 'weather',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.scss'],
+  styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent {
   // // country: string;
@@ -26,7 +26,6 @@ export class WeatherComponent {
   // // pageData: any[] = [];
   // // windowWidth: number;
   // // windowWidthSubscription: Subscription;
-
   // // Map
   // mapOptions: MapOptions;
   // map: Map;
@@ -35,16 +34,13 @@ export class WeatherComponent {
   // latitude: any = null;
   // weatherData: any;
   // error: boolean = false;
-
   // // @ViewChild('cityName', { static: false }) cityName: ElementRef;
   // // @ViewChild('temperature', { static: false }) temperature: ElementRef;
-
   // constructor(
   //   private http: HttpClient,
   //   // private _childRoutes: ChildRoutesService,
   //   private _windowWidth: WindowWidthService
   // ) {}
-
   // ngOnInit(): void {
   //   // this.windowWidthSubscription = this._windowWidth.currentWidth$.subscribe(
   //   //   (currentVal) => {
@@ -54,7 +50,6 @@ export class WeatherComponent {
   //   // // this.pageData = this._childRoutes.pageDataAPI;
   //   // this.initializeMapOptions();
   // }
-
   // private initializeMapOptions() {
   //   this.mapOptions = {
   //     center: latLng(38, -97),
@@ -67,13 +62,11 @@ export class WeatherComponent {
   //     ],
   //   };
   // }
-
   // onMapReady(map: Map) {
   //   this.map = map;
   //   this.setMarker(this.weatherData);
   //   map.panTo(new L.LatLng(this.latitude, this.longitude));
   // }
-
   // // SINGLE DAY
   // getSingleDay() {
   //   this.http
@@ -99,7 +92,6 @@ export class WeatherComponent {
   //       }
   //     );
   // }
-
   // setMarker(data: any) {
   //   this.userInteraction = true;
   //   this.longitude = data.coord.lon;
@@ -113,14 +105,12 @@ export class WeatherComponent {
   //   );
   //   marker.bindTooltip(this.weatherData.name).openTooltip();
   // }
-
   // // clearData() {
   // //   this.fahrenheit = null;
   // //   this.feelsLike = null;
   // //   this.humidity = null;
   // //   this.cityName.nativeElement.value = '';
   // // }
-
   // ngOnDestroy(): void {
   //   this.windowWidthSubscription.unsubscribe();
   // }

@@ -1,24 +1,24 @@
-import { Component, OnInit } from "@angular/core";
-import { Subscription } from "rxjs";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "app-rest-countries",
-  templateUrl: "./rest-countries.component.html",
-  styleUrls: ["./rest-countries.component.scss"],
+  selector: 'app-rest-countries',
+  templateUrl: './rest-countries.component.html',
+  styleUrls: ['./rest-countries.component.scss']
 })
 export class RestCountriesComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "REST Countries",
-    publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
-    repoTitle: "rest-countries",
+    title: 'REST Countries',
+    publishedOn: 'Oct 1, 2022',
+    updatedOn: 'Jan 3, 2022',
+    repoTitle: 'rest-countries',
     repoLink:
-      "https://github.com/eastcoastdeveloper/rest-countries-leaflet-map",
-    category: "",
+      'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
+    category: '',
     views: 388,
-    forks: 3,
+    forks: 3
   };
 
   windowWidthSubscription: Subscription;

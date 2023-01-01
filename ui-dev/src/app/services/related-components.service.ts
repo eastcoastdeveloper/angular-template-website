@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core";
-import { Router, Event, NavigationEnd } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
-import { ProjectsListInterface } from "../interfaces/projects-list.interface";
-import { ProjectCategoryService } from "./project-category.service";
+import { Injectable, OnDestroy } from '@angular/core';
+import { Router, Event, NavigationEnd } from '@angular/router';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { ProjectsListInterface } from '../interfaces/projects-list.interface';
+import { ProjectCategoryService } from './project-category.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
-export class RelatedComponentsService {
-  relatedItems: ProjectsListInterface[] = [];
+export class RelatedComponentsService implements OnDestroy {
   relatedItemsSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
+  relatedItems: ProjectsListInterface[] = [];
+  private unsubscribe$ = new Subject<boolean>();
   arrayIndex: ProjectsListInterface;
 
   constructor(
@@ -19,20 +20,24 @@ export class RelatedComponentsService {
 
   // Fires on Category Component Wrapper Constructor
   init(categoryArray: ProjectsListInterface[], categoryName: string) {
-    this._router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        this._projectCategoryService.categorySubject.subscribe((val) => {
-          if (val.length === 0) {
-            this._projectCategoryService.configureCategory(categoryName);
-          } else {
-            categoryArray = val;
-            // Populate & Shuffle Related Category Items
-            this.populateRelatedItems(categoryArray);
-            this.shuffleArray(categoryArray);
-          }
-        });
-      }
-    });
+    this._router.events
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((event: Event) => {
+        if (event instanceof NavigationEnd) {
+          this._projectCategoryService.categorySubject
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((val) => {
+              if (val.length === 0) {
+                this._projectCategoryService.configureCategory(categoryName);
+              } else {
+                categoryArray = val;
+                // Populate & Shuffle Related Category Items
+                this.populateRelatedItems(categoryArray);
+                this.shuffleArray(categoryArray);
+              }
+            });
+        }
+      });
   }
 
   // Populate Related Items
@@ -61,5 +66,10 @@ export class RelatedComponentsService {
 
     this.relatedItems = this.relatedItems.slice(0, 4);
     this.relatedItemsSubject.next(this.relatedItems);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

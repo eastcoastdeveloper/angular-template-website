@@ -1,121 +1,168 @@
 <div #accordionParent class="accordion-wrapper element-shadow">
-    <div class="data-block" *ngFor="let item of accordionData; let i = index;">
-        <p (click)="toggleSection($event, i)">{{ item.name }}</p>
-        <p class="count">{{ item.content.length }}</p>
-        <div class="hidden-content">
-            <ul *ngIf="i === 0">
-                <li *ngFor="let posts of item.content; let j = index">
-                    <div class="title" style="grid-area: title;">{{ posts.item }}</div>
-                </li>
-            </ul>
-            <ul id="skills" *ngIf="i === 1">
-                <li *ngFor="let listElems of item.content; let j = index">
-                    <div class="title" style="grid-area: title;">{{ listElems.title }}</div>
-                </li>
-            </ul>
-            <ul *ngIf="i === 2 || i === 3 || i === 4">
-                <li *ngFor="let listElems of item.content; let j = index">
-                    <div class="title" style="grid-area: title;">{{ listElems.title }}</div>
-                    <div>
-                        <a href="{{ listElems.code }}" target="_blank" style="grid-area: code">code</a>
-                    </div>
-                    <div>
-                        <a href="{{ listElems.viewProject }}" target="_blank" style="grid-area: project">view
-                            project</a>
-                    </div>
-                </li>
-            </ul>
-            <ul *ngIf="i === 4">
-                <li *ngFor="let listElems of item.content; let j = index">
-                    <div class="title" style="grid-area: title;">{{ listElems.title }}</div>
-                    <div>
-                        <a href="{{ listElems.code }}" target="_blank" style="grid-area: code">code</a>
-                    </div>
-                    <div>
-                        <a href="{{ listElems.viewProject }}" target="_blank" style="grid-area: project">view
-                            project</a>
-                    </div>
-                </li>
-            </ul>
-            <ul *ngIf="i === 5">
-                <li *ngFor="let posts of item.content; let j = index">
-                    <div class="title" style="grid-area: title;">{{ posts.title }}</div>
-                    <div>
-                        <a href="{{ posts.link }}" target="_blank" style="grid-area: code">Read the post</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+  <div class="data-block" *ngFor="let item of accordionData; let i = index">
+    <p (click)="toggleSection($event, i)">{{ item.name }}</p>
+    <p class="count">{{ item.content.length }}</p>
+    <div class="hidden-content">
+      <ul *ngIf="i === 0">
+        <li *ngFor="let posts of item.content; let j = index">
+          <div class="title" style="grid-area: title">{{ posts.item }}</div>
+        </li>
+      </ul>
+      <ul id="skills" *ngIf="i === 1">
+        <li *ngFor="let listElems of item.content; let j = index">
+          <div class="title" style="grid-area: title">
+            {{ listElems.title }}
+          </div>
+        </li>
+      </ul>
+      <ul *ngIf="i === 2 || i === 3 || i === 4">
+        <li *ngFor="let listElems of item.content; let j = index">
+          <div class="title" style="grid-area: title">
+            {{ listElems.title }}
+          </div>
+          <div>
+            <a
+              href="{{ listElems.code }}"
+              target="_blank"
+              style="grid-area: code"
+              >code</a
+            >
+          </div>
+          <div>
+            <a
+              href="{{ listElems.viewProject }}"
+              target="_blank"
+              style="grid-area: project"
+              >view project</a
+            >
+          </div>
+        </li>
+      </ul>
+      <ul *ngIf="i === 4">
+        <li *ngFor="let listElems of item.content; let j = index">
+          <div class="title" style="grid-area: title">
+            {{ listElems.title }}
+          </div>
+          <div>
+            <a
+              href="{{ listElems.code }}"
+              target="_blank"
+              style="grid-area: code"
+              >code</a
+            >
+          </div>
+          <div>
+            <a
+              href="{{ listElems.viewProject }}"
+              target="_blank"
+              style="grid-area: project"
+              >view project</a
+            >
+          </div>
+        </li>
+      </ul>
+      <ul *ngIf="i === 5">
+        <li *ngFor="let posts of item.content; let j = index">
+          <div class="title" style="grid-area: title">{{ posts.title }}</div>
+          <div>
+            <a href="{{ posts.link }}" target="_blank" style="grid-area: code"
+              >Read the post</a
+            >
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>
 
 <p class="snippet-description item-margin">
-    Let's begin with the data for the Accordion Component. In a real world environment, this would of course be a stream
-    from an endpoint. Depending on which version of Angular you're on, you may need to modify the JSON. In some
-    versions, named objects don't seem to play well with the framework.
+  Let's begin with the data for the Accordion Component. In a real world
+  environment, this would of course be a stream from an endpoint. Depending on
+  which version of Angular you're on, you may need to modify the JSON. In some
+  versions, named objects don't seem to play well with the framework.
 </p>
 
 <div class="code-preview">
-    <pre>
+  <pre>
 		<code>{{json}}</code>
 	</pre>
 </div>
 
 <p class="snippet-description item-margin">
-    Next, we'll tell TypeScript what to expect by creating an interface with optional values. Values are optional
-    because there's different layouts. Not all values exist in each layout.
+  Next, we'll tell TypeScript what to expect by creating an interface with
+  optional values. Values are optional because there's different layouts. Not
+  all values exist in each layout.
 </p>
 <div class="code-preview">
-    <pre>
+  <pre>
 		<code>{{interface}}</code>
 	</pre>
 </div>
 
 <div class="snippet-description item-margin">
-    <ul>
-        <li>In the TypeScript file, we begin with an empty array set to the interface data type.</li>
-        <li>Capture the parent element.</li>
-        <li>OnInit pushes the data into the afforementioned array via an http request.</li>
-        <li>Notice the http reference in the constructor. You'll also need to add HttpClientModule to the parent module.
-        </li>
-        <li>The subscribe method takes advantage of RxJS's inbuilt next, error, and complete methods. Of course in a
-            real world scenario, these would be beneficial.</li>
-        <li>The toggle function looks more complex than it really is. The hidden sections are gathered in an array. The
-            line before clears that array. Loop over the elements, and apply the 'show-content' class to the appropriate
-            section.</li>
-    </ul>
+  <ul>
+    <li>
+      In the TypeScript file, we begin with an empty array set to the interface
+      data type.
+    </li>
+    <li>Capture the parent element.</li>
+    <li>
+      OnInit pushes the data into the afforementioned array via an http request.
+    </li>
+    <li>
+      Notice the http reference in the constructor. You'll also need to add
+      HttpClientModule to the parent module.
+    </li>
+    <li>
+      The subscribe method takes advantage of RxJS's inbuilt next, error, and
+      complete methods. Of course in a real world scenario, these would be
+      beneficial.
+    </li>
+    <li>
+      The toggle function looks more complex than it really is. The hidden
+      sections are gathered in an array. The line before clears that array. Loop
+      over the elements, and apply the 'show-content' class to the appropriate
+      section.
+    </li>
+  </ul>
 </div>
 
 <div class="code-preview">
-    <pre>
+  <pre>
 		<code>{{appTypeScript}}</code>
 	</pre>
 </div>
 
 <div class="snippet-description item-margin">
-    Most of this is pretty basic. The main take away here are the ul blocks with ngIf directives. The numbers correspond
-    to the data which have different layouts.
+  Most of this is pretty basic. The main take away here are the ul blocks with
+  ngIf directives. The numbers correspond to the data which have different
+  layouts.
 </div>
 
 <div class="code-preview">
-    <pre>
+  <pre>
 		<code>{{markup}}</code>
 	</pre>
 </div>
 
 <div class="snippet-description item-margin">
-    Apply the scss styling. I love nesting like this. It makes things so clean and easy to isolate.
+  Apply the scss styling. I love nesting like this. It makes things so clean and
+  easy to isolate.
 </div>
 <div class="code-preview">
-    <pre>
+  <pre>
 		<code>{{styling}}</code>
 	</pre>
 </div>
-<br>
+<br />
 <div class="snippet-description item-last-child">
-    You could use this to send and receive data or click events. You could even transform this to basic HTML or React if
-    necessary. Regardless, this is useful feature to add to any desktop or mobile app. If you're met with a challenge at
-    any point, check out the <a
-        href="https://stackblitz.com/edit/angular-accordion-json?file=src%2Fapp%2Fapp.component.ts"
-        target="_blank">Accordion Component Stackblitz demo.</a>. Hope you found this useful.
+  You could use this to send and receive data or click events. You could even
+  transform this to basic HTML or React if necessary. Regardless, this is useful
+  feature to add to any desktop or mobile app. If you're met with a challenge at
+  any point, check out the
+  <a
+    href="https://stackblitz.com/edit/angular-accordion-json?file=src%2Fapp%2Fapp.component.ts"
+    target="_blank"
+    >Accordion Component Stackblitz demo.</a
+  >. Hope you found this useful.
 </div>

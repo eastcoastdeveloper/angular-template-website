@@ -1,26 +1,26 @@
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, map } from "rxjs";
-import { CachedObject } from "../interfaces/cached-object";
-import { ProjectsListInterface } from "../interfaces/projects-list.interface";
-import { LocalStorageService } from "./local-storage.service";
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, map } from 'rxjs';
+import { CachedObject } from '../interfaces/cached-object';
+import { ProjectsListInterface } from '../interfaces/projects-list.interface';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class ProjectCategoryService {
   categorySubject = new BehaviorSubject<ProjectsListInterface[]>([]);
 
   cachedObject: CachedObject = {
     projects: {
-      value: [],
+      value: []
     },
     components: {
-      value: [],
+      value: []
     },
     development: {
-      value: [],
-    },
+      value: []
+    }
   };
 
   constructor(
@@ -36,10 +36,10 @@ export class ProjectCategoryService {
 
   // Call Category API
   configureCategory(type: string) {
-    const categoryQuery = this._localStorageService.getData("cats");
+    const categoryQuery = this._localStorageService.getData('cats');
 
     // Something is Cached
-    if (categoryQuery != "") {
+    if (categoryQuery != '') {
       this.cachedObject = JSON.parse(categoryQuery);
 
       // Send To Component (Page is Refreshed)
@@ -54,7 +54,7 @@ export class ProjectCategoryService {
     }
 
     // There is NO Cache
-    if (categoryQuery === "") {
+    if (categoryQuery === '') {
       this.fetchCategory(type);
     }
   }
@@ -62,7 +62,7 @@ export class ProjectCategoryService {
   fetchCategory(type: string) {
     let allCategories: ProjectsListInterface[] = [];
     const httpOptions = {
-      headers: new HttpHeaders(),
+      headers: new HttpHeaders()
     };
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
@@ -72,9 +72,9 @@ export class ProjectCategoryService {
       .pipe(
         map((responseData) => {
           Object.keys(responseData).filter((currentVal, index) => {
-            currentVal === "results"
+            currentVal === 'results'
               ? (allCategories = Object.values(responseData)[index])
-              : "";
+              : '';
           });
           allCategories.map((val) => {
             allCategories.push(val);
@@ -82,20 +82,20 @@ export class ProjectCategoryService {
             // Remove Duplicates
             const filteredCategories = this.removeDuplicateObjectFromArray(
               allCategories,
-              "title"
+              'title'
             );
 
             // Set CachedObject Array Values
-            if (type === "projects")
+            if (type === 'projects')
               this.cachedObject.projects.value = filteredCategories;
-            if (type === "components")
+            if (type === 'components')
               this.cachedObject.components.value = filteredCategories;
-            if (type === "development")
+            if (type === 'development')
               this.cachedObject.development.value = filteredCategories;
           });
 
           this._localStorageService.saveData(
-            "cats",
+            'cats',
             JSON.stringify(this.cachedObject)
           );
 

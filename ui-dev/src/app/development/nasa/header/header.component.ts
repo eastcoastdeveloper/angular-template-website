@@ -2,41 +2,41 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  OnDestroy,
-} from "@angular/core";
-import { Subject, takeUntil } from "rxjs";
-import { WindowWidthService } from "../../../services/window-width.service";
-import { DataModel } from "../nasa.model";
-import { NasaSearchService } from "../nasa.service";
+  OnDestroy
+} from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { WindowWidthService } from '../../../services/window-width.service';
+import { DataModel } from '../nasa.model';
+import { NasaSearchService } from '../nasa.service';
 
 @Component({
-  selector: "nasa-pod-header",
-  templateUrl: "header.component.html",
-  styleUrls: ["header.component.scss"],
+  selector: 'nasa-pod-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.scss']
 })
 export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  private unsubscribe$ = new Subject<boolean>();
   windowWidth!: number;
   currentDate: any;
   months: any[] = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
   ];
   year!: number;
   month!: number;
   day!: number;
   payload!: DataModel;
-  title: string = "";
+  title: string = '';
   fullDate: any = null;
 
   constructor(
@@ -47,7 +47,7 @@ export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this._searchService.chosenDateValue$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.currentDate = currentVal;
         this.year = this.currentDate.year;
@@ -55,13 +55,13 @@ export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
         this.day = this.currentDate.day;
       });
     this._searchService.chosenMedia$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.payload = currentVal;
         this.title = this.payload.title;
       });
     this._windowWidth.currentWidth$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
@@ -81,7 +81,7 @@ export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.complete();
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

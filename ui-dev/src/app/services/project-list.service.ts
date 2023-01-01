@@ -1,13 +1,13 @@
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, map } from "rxjs";
-import { LocalStorageInterface } from "../interfaces/localStorage.interface";
-import { ProjectsListInterface } from "../interfaces/projects-list.interface";
-import { PageDataObject } from "../interfaces/pageDataInterface";
-import { LocalStorageService } from "./local-storage.service";
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, map } from 'rxjs';
+import { LocalStorageInterface } from '../interfaces/localStorage.interface';
+import { ProjectsListInterface } from '../interfaces/projects-list.interface';
+import { PageDataObject } from '../interfaces/pageDataInterface';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class ProjectListService {
   // Subject Shares Data w/ Component
@@ -33,11 +33,11 @@ export class ProjectListService {
 
   // Check for Cache (Called Once OnInit in ProjectList Cmpt)
   isThereCache(pageNum: number, limit: number) {
-    const storage = this._localStorageService.getData("prjs");
+    const storage = this._localStorageService.getData('prjs');
     this.projectArray = [];
 
     // There IS Cache
-    if (storage != "") {
+    if (storage != '') {
       let parsed = JSON.parse(storage);
       this.storageObject = parsed;
 
@@ -66,7 +66,7 @@ export class ProjectListService {
   saveNewlyCachedData(pageNum: number) {
     this.storageObject[pageNum] = this.projectArray;
     this._localStorageService.saveData(
-      "prjs",
+      'prjs',
       JSON.stringify(this.storageObject)
     );
   }
@@ -74,7 +74,7 @@ export class ProjectListService {
   // Call All Projects API
   getAllProjects(pageNum: number, pageLimit: number) {
     const httpOptions = {
-      headers: new HttpHeaders(),
+      headers: new HttpHeaders()
     };
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
@@ -85,7 +85,7 @@ export class ProjectListService {
         map((responseData) => {
           let allProjects: ProjectsListInterface[] = [];
           Object.keys(responseData).filter((currentVal, index) => {
-            if (currentVal === "results") {
+            if (currentVal === 'results') {
               allProjects = Object.values(responseData)[index];
               allProjects.map((val) => {
                 val.cached = true;
@@ -97,7 +97,7 @@ export class ProjectListService {
           });
           this.storageObject[pageNum] = this.projectArray;
           this._localStorageService.saveData(
-            "prjs",
+            'prjs',
             JSON.stringify(this.storageObject)
           );
         })

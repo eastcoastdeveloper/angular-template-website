@@ -1,1 +1,93 @@
-@import "../../styles/accordion.scss";
+@import '../../styles/accordion.scss';
+
+.right-column-cmp {
+  display: grid;
+  position: fixed;
+  width: 300px;
+  grid-template-areas:
+    'signup'
+    'social'
+    'code';
+}
+.right-column-cmp > div:first-child {
+  grid-area: signup;
+  width: 100%;
+  box-sizing: border-box;
+}
+.right-column-cmp .accordion-wrapper .code-samples li > div:first-child {
+  grid-area: title;
+}
+.right-column-cmp .accordion-wrapper .code-samples li > div:nth-child(2) a {
+  grid-area: code;
+}
+.right-column-cmp .accordion-wrapper .code-samples li > div:last-child a {
+  grid-area: project;
+}
+.right-column-cmp > div:nth-child(2) {
+  grid-area: social;
+}
+.right-column-cmp > div:last-child {
+  grid-area: code;
+}
+
+// @media screen and (max-width: 1300px) {
+//   .right-column-cmp {
+//     position: unset;
+//     grid-template-columns: repeat(3, calc(33.3% - 13px));
+//     width: 100%;
+//     grid-template-areas: 'signup social code';
+//     grid-column-gap: 20px;
+//   }
+// }
+
+@media screen and (max-width: 1200px) {
+  .right-column-cmp {
+    position: unset;
+    grid-template-columns: repeat(3, calc(33.3% - 13px));
+    width: 100%;
+    grid-template-areas: 'signup social code';
+    grid-column-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .right-column-cmp {
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    grid-template-areas: 'social social' 'signup code';
+    border-top: 1px solid #313b3f;
+    grid-column-gap: 20px;
+    display: grid;
+    height: unset;
+    padding-top: 8px;
+  }
+  .right-column-cmp .contact-form {
+    box-sizing: border-box;
+    max-width: none;
+    width: 100%;
+  }
+  .right-column-cmp .accordion-wrapper {
+    margin: 0;
+  }
+  .right-column-cmp .social-icons {
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 30px;
+    margin: 20px auto;
+    display: grid;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .right-column-cmp {
+    grid-template-areas: 'social' 'signup' 'code';
+    grid-template-columns: 100%;
+    grid-column-gap: 0;
+    grid-row-gap: 20px;
+  }
+  .right-column-cmp .social-icons {
+    grid-template-columns: repeat(2, auto);
+    margin-bottom: 0;
+    grid-column-gap: 30px;
+    grid-row-gap: 25px;
+  }
+}

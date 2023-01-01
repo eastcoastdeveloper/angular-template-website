@@ -8,6 +8,8 @@ import { CountdownComponent } from "../../development/components/countdown/count
 import { DatePickerComponent } from "src/app/development/components/date-picker/date-picker.component";
 import { DynamicSidebarComponent } from "../../development/components/dynamic-sidebar/dynamic-sidebar.component";
 import { SliderComponent } from "src/app/development/components/slider/slider.component";
+import { D3BarGraphComponent } from "../../development/components/d3-bar-graph/d3-bar-graph.component";
+import { HtmlTableComponent } from "../../development/components/html-table/html-table.component";
 
 const routes: Routes = [
   {
@@ -46,6 +48,14 @@ const routes: Routes = [
         path: "angular-slider",
         component: SliderComponent,
       },
+      {
+        path: "table-in-html",
+        component: HtmlTableComponent
+      },
+      {
+        path: 'd3-bar-chart',
+        component: D3BarGraphComponent
+      },
       { path: "**", redirectTo: "website-features" },
     ],
   },
@@ -66,4 +76,6 @@ export const componentsComponents = [
   DynamicSidebarComponent,
   DatePickerComponent,
   SliderComponent,
+  HtmlTableComponent,
+  D3BarGraphComponent
 ];

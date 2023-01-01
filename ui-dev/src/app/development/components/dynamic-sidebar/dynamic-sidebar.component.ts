@@ -1,24 +1,24 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { SidebarInterface } from "src/app/interfaces/dynamic-sidebar.interface";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { SidebarInterface } from 'src/app/interfaces/dynamic-sidebar.interface';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "app-sidebar",
-  templateUrl: "./dynamic-sidebar.component.html",
-  styleUrls: ["./dynamic-sidebar.component.scss"],
+  selector: 'app-sidebar',
+  templateUrl: './dynamic-sidebar.component.html',
+  styleUrls: ['./dynamic-sidebar.component.scss']
 })
 export class DynamicSidebarComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "Angular Dynamic Sidebar",
-    publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
-    repoTitle: "angular-dynamic-sidebar",
-    repoLink: "https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar",
-    category: "",
+    title: 'Angular Dynamic Sidebar',
+    publishedOn: 'Oct 1, 2022',
+    updatedOn: 'Jan 3, 2022',
+    repoTitle: 'angular-dynamic-sidebar',
+    repoLink: 'https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar',
+    category: '',
     views: 4100,
-    forks: 103,
+    forks: 103
   };
 
   result: SidebarInterface[] = [];
@@ -222,8 +222,10 @@ export class DynamicSidebarComponent implements OnInit {
   ngOnInit(): void {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
+
+    // Only Call if Not Cached
     this._http
-      .get<SidebarInterface[]>("assets/json/sidebar.json")
+      .get<SidebarInterface[]>('/api/dynamic-sidebar')
       .subscribe((res) => {
         this.result = res;
       });

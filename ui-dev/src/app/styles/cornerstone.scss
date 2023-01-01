@@ -2,27 +2,11 @@
 
 .cornerstone {
   display: grid;
-  grid-template-columns: repeat(2, calc(50% - 10px));
-  grid-gap: 20px;
+  grid-template-columns: repeat(2, calc(50% - 22px));
+  grid-gap: 40px;
 
   .project {
     outline: none;
-
-    .repo-link {
-      display: grid;
-      grid-template-columns: 37px auto;
-      margin-top: 5px;
-
-      img {
-        width: 100%;
-      }
-
-      .repo-direct {
-        font: normal 14px sans-serif;
-        color: $oceanBlue;
-        text-align: right;
-      }
-    }
   }
 
   .project-img {
@@ -30,7 +14,7 @@
     overflow: hidden;
     border: 1px solid $greyBlack;
     margin-bottom: 15px;
-    transition: transform .25s;
+    transition: transform 0.25s;
     cursor: pointer;
     width: 100%;
     position: relative;
@@ -42,7 +26,7 @@
     }
 
     &:hover {
-      transform: scale(.95);
+      transform: scale(0.95);
     }
   }
 
@@ -83,7 +67,7 @@
     grid-template-columns: 100%;
     padding: 0;
 
-    >div {
+    > div {
       margin: 0 auto;
       max-width: 80%;
     }
@@ -92,13 +76,12 @@
       font-size: 1em;
       padding: 0;
     }
-
   }
 }
 
 @media screen and (max-width: 768px) {
   .cornerstone {
-    >div {
+    > div {
       max-width: 100%;
     }
   }

@@ -1,6 +1,5 @@
 @import '../app/styles/colors.scss';
 
-
 #footer {
   background-color: $greyBlack;
   height: 25px;
@@ -8,4 +7,27 @@
   bottom: 0;
   width: 100%;
   z-index: 1;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  background-color: #313b3f;
+  z-index: 9999;
+  transition: all 0.3s;
+}
+
+#content {
+  background-color: #ffffff;
+  margin-top: 70px;
+}
+
+.router-wrapper {
+  overflow: auto;
+}
+
+@media screen and (max-width:605px) {
+  #mobile-menu {
+    height: calc(100% - 51px);
+  }
 }

@@ -4,29 +4,27 @@ import {
   Component,
   EventEmitter,
   OnDestroy,
-  Output,
-} from "@angular/core";
-import { Subject, takeUntil } from "rxjs";
-import { NasaSearchService } from "../nasa.service";
+  Output
+} from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { NasaSearchService } from '../nasa.service';
 
 @Component({
-  selector: "[nasa-photo-body]",
-  templateUrl: "photo-body.component.html",
-  styleUrls: ["photo-body.component.scss"],
+  selector: '[nasa-photo-body]',
+  templateUrl: 'photo-body.component.html',
+  styleUrls: ['photo-body.component.scss']
 })
 export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
-  destroy$: Subject<boolean> = new Subject<boolean>();
-  explanation: string = "";
+  private unsubscribe$ = new Subject<boolean>();
+  @Output() outputData = new EventEmitter();
+  fullExplanation: boolean = false;
+  datePickerStatus: boolean;
+  explanation: string = '';
+  searchQuery: any[] = [];
   backgroundImage: string;
+  result: any[] = [];
   videoURL: string;
   mediaType: null;
-  datePickerStatus: boolean;
-  searchQuery: any[] = [];
-
-  fullExplanation: boolean = false;
-  result: any[] = [];
-
-  @Output() outputData = new EventEmitter();
 
   constructor(
     private _nasa: NasaSearchService,
@@ -35,17 +33,17 @@ export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this._nasa.chosenMedia$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.explanation = currentVal.explanation;
         this.backgroundImage = currentVal.url;
         this.mediaType = currentVal.media_type;
-        this.videoURL != null ? this.createURL(currentVal.url) : "";
-        Object.keys(currentVal).length > 0 ? this.result.push(currentVal) : "";
+        this.videoURL != null ? this.createURL(currentVal.url) : '';
+        Object.keys(currentVal).length > 0 ? this.result.push(currentVal) : '';
       });
 
     this._nasa.dataPickerCurrentVal
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.datePickerStatus = currentVal;
         this.shareData();
@@ -85,7 +83,7 @@ export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.complete();
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

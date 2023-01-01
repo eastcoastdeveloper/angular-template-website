@@ -1,21 +1,22 @@
-import { Component } from "@angular/core";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { ProjectCategoryService } from "src/app/services/project-category.service";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { Component, OnDestroy } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ProjectCategoryService } from 'src/app/services/project-category.service';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "app-development-components",
+  selector: 'app-development-components',
   template: `<app-projects-list-content
     [dataArray]="developmentArray"
-  ></app-projects-list-content>`,
+  ></app-projects-list-content>`
 })
-export class CornerstoneDevelopmentComponent {
-  pageDataObject: PageDataObject = {
-    title: "Web Application Development",
-  };
-
+export class CornerstoneDevelopmentComponent implements OnDestroy {
   developmentArray: ProjectsListInterface[] = [];
+  private unsubscribe$ = new Subject<boolean>();
+  pageDataObject: PageDataObject = {
+    title: 'Web Application Development'
+  };
 
   constructor(
     private _projectCategoryService: ProjectCategoryService,
@@ -27,12 +28,19 @@ export class CornerstoneDevelopmentComponent {
     this._projectListService.changePageDataObject(this.pageDataObject);
 
     new Promise((resolve) => {
-      this._projectCategoryService.configureCategory("development");
+      this._projectCategoryService.configureCategory('development');
       resolve(
-        this._projectCategoryService.categorySubject.subscribe((val) => {
-          this.developmentArray = val;
-        })
+        this._projectCategoryService.categorySubject
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((val) => {
+            this.developmentArray = val;
+          })
       );
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

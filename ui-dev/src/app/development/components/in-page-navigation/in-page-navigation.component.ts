@@ -19,7 +19,7 @@ export class InPageNavigationComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: "In Page Navigation",
     publishedOn: "Nov 7, 2022",
-    updatedOn: "Dec 15, 2022",
+    updatedOn: "Jan 3, 2022",
     repoTitle: "in-page-navigation",
     repoLink: "https://github.com/eastcoastdeveloper/in-page-navigation",
     category: "development",

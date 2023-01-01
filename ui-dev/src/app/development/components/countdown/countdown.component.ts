@@ -18,7 +18,7 @@ export class CountdownComponent implements OnInit, AfterViewInit {
   pageDataObject: PageDataObject = {
     title: "Angular Countdown Timer",
     publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
+    updatedOn: "Jan 3, 2022",
     repoTitle: "angular-countdown-timer",
     repoLink:
       "https://github.com/eastcoastdeveloper/angular-countdown-timer-component",

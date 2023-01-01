@@ -1,22 +1,22 @@
-import { Component, Inject, OnDestroy, OnInit, Renderer2 } from "@angular/core";
-import { WindowWidthService } from "./services/window-width.service";
-import { SideBarService } from "./services/sidebar-service";
-import { NavigationEnd, Router } from "@angular/router";
-import { Subject, takeUntil } from "rxjs";
-import { ScrollToTopService } from "./services/scroll-to-top.service";
-import { DOCUMENT } from "@angular/common";
-import { CanonicalService } from "./services/canonical.service";
+import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { WindowWidthService } from './services/window-width.service';
+import { SideBarService } from './services/sidebar-service';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { ScrollToTopService } from './services/scroll-to-top.service';
+import { DOCUMENT } from '@angular/common';
+import { CanonicalService } from './services/canonical.service';
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
   host: {
-    "(window:resize)": "onWindowResize($event)",
-  },
+    '(window:resize)': 'onWindowResize($event)'
+  }
 })
 export class AppComponent implements OnInit, OnDestroy {
-  // windowSize: any;
+  private unsubscribe$ = new Subject<boolean>();
   resizeID: any;
   window: any;
 
@@ -26,7 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
   height: number = window.innerWidth;
   mobileWidth: number = 760;
   currentRoute: string;
-  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private _windowService: WindowWidthService,
@@ -44,24 +43,24 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // Window Service
     this._windowService.currentWidth$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.width = currentVal;
       });
 
     // Sidebar Service
     this._sidebarService.currentVal$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => (this.sidebarStatus = currentVal));
 
     this._sidebarService.urlVal$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => (this.currentRoute = currentVal));
 
     // Remove Inability to Scroll
-    this._router.events.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+    this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
       if (data instanceof NavigationEnd) {
-        this._renderer.removeAttribute(this.document.body, "class");
+        this._renderer.removeAttribute(this.document.body, 'class');
         this.currentRoute = data.url;
         this._sidebarService.changeRoute(this.currentRoute);
         this._scrollToTop.scrollToTop();
@@ -80,7 +79,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   navigateToContact() {
     window.location.href =
-      "https://frontenddevelopment.tech/contact/inquire.html";
+      'https://frontenddevelopment.tech/contact/inquire.html';
   }
 
   onWindowResize(event: any) {
@@ -92,7 +91,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.complete();
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.complete();
   }
 }

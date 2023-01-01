@@ -1,41 +1,48 @@
 <div class="cornerstone">
-    <div class="project" *ngFor="let item of dataArray" routerLink="{{item.path}}">
-        <h2>{{item.title}}</h2>
+  <div
+    class="project"
+    *ngFor="let item of dataArray"
+    routerLink="{{ item.path }}"
+  >
+    <h2>{{ item.title }}</h2>
 
-        <div class="project-specs" *ngIf="item.views > 0" [ngClass]="item.forks < 1 ? 'two-column' : 'three-column'">
-            <span class="stackblitz_logo">
-                <img src="../../../assets/img/stackblitz_logo.png" />
-            </span>
-            <span class="views">
-                <img src="../../../assets/img/views-icon.jpg" />
-                <span>{{formatViews(item.views)}}</span>
-            </span>
-            <span class="forked" *ngIf="item.forks > 0">
-                <img src="../../../assets/img/fork-icon.png" />
-                <span>{{item.forks}}</span>
-            </span>
-        </div>
-
-        <div *ngIf="item.internal" class="project-img element-shadow" routerLink="{{item.path}}" [state]="item">
-            <img src="{{item.imgUrl}}" alt="{{item.altText}}" />
-        </div>
-
-        <div *ngIf="!item.internal && !item.stackblitz" class="project-img element-shadow"
-            (click)="navigateToExternalURL(item.path)">
-            <img src="{{item.imgUrl}}" alt="{{item.altText}}" />
-        </div>
-
-        <div *ngIf="!item.internal && item.stackblitz" class="project-img element-shadow">
-            <a href="{{item.path}}" target="_blank">
-                <img src="{{item.imgUrl}}" alt="{{item.altText}}" />
-            </a>
-        </div>
-        <p>
-            {{item.description}}
-        </p>
-        <div class="repo-link" *ngIf="!item.internal && item.stackblitz">
-            <img src="../../../assets//img/git.png" />
-            <a class="repo-direct" href="{{item.repoLink}}" target="_blank">{{item.repoTitle}}</a>
-        </div>
+    <div
+      class="project-specs"
+      *ngIf="item.views > 0"
+      [ngClass]="item.forks < 1 ? 'two-column' : 'three-column'"
+    >
+      <span class="stackblitz_logo">
+        <img src="../../../assets/img/stackblitz_logo.png" />
+      </span>
+      <span class="views">
+        <img src="../../../assets/img/views-icon.jpg" />
+        <span>{{ formatViews(item.views) }}</span>
+      </span>
+      <span class="forked" *ngIf="item.forks > 0">
+        <img src="../../../assets/img/fork-icon.png" />
+        <span>{{ item.forks }}</span>
+      </span>
     </div>
+
+    <div
+      *ngIf="item.internal"
+      class="project-img element-shadow"
+      routerLink="{{ item.path }}"
+      [state]="item"
+    >
+      <img src="{{ item.imgUrl }}" alt="{{ item.altText }}" />
+    </div>
+
+    <div
+      *ngIf="!item.internal && item.stackblitz"
+      class="project-img element-shadow"
+    >
+      <a href="{{ item.path }}" target="_blank">
+        <img src="{{ item.imgUrl }}" alt="{{ item.altText }}" />
+      </a>
+    </div>
+    <p>
+      {{ item.description }}
+    </p>
+  </div>
 </div>

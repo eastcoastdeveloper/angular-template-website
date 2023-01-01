@@ -1,4 +1,4 @@
-html,
+/* html,
 body,
 div,
 span,
@@ -85,21 +85,21 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
+} */
 
-.app-header,
+/* .app-header,
 .app-header nav,
 .app-header nav #dropdown-component,
 .app-header nav .mock-link span,
 .app-header nav .mock-link a,
 .app-header .logo,
-.app-header .url,
+.app-header .url, */
 .page-content .two-column-layout {
   position: relative;
 }
-.app-header nav #dropdown-component .menu-wrapper,
+/* .app-header nav #dropdown-component .menu-wrapper,
 .app-header h2,
-.app-header h2 + span,
+.app-header h2 + span, */
 .mobile-menu,
 #mobile-menu,
 .category-menu,
@@ -174,10 +174,10 @@ video {
 #app-footer .copyright {
   margin-right: 10px;
 }
-.app-header {
+/* .app-header {
   height: 70px;
-}
-.app-header nav {
+} */
+/* .app-header nav {
   float: right;
   transform: translateY(-50%);
   top: 50%;
@@ -186,7 +186,7 @@ video {
   font: normal 14px sans-serif;
   grid-column-gap: 20px;
   margin-right: 20px;
-}
+} */
 .app-header nav #dropdown-component .selected span:first-child {
   margin-right: 10px;
   text-transform: capitalize;
@@ -238,11 +238,11 @@ video {
   background-color: #313b3f;
   color: #d9a74a;
 }
-.app-header nav .mock-link {
+/* .app-header nav .mock-link {
   cursor: pointer;
   outline: none;
-}
-.app-header nav .mock-link span,
+} */
+/* .app-header nav .mock-link span,
 .app-header nav .mock-link a {
   top: 50%;
   transform: translateY(-50%);
@@ -261,8 +261,8 @@ video {
   outline: none;
   float: left;
   display: none;
-}
-.app-header h2 {
+} */
+/* .app-header h2 {
   color: #d9a74a;
   margin: 0;
   font: bold 30px sans-serif;
@@ -273,8 +273,8 @@ video {
   text-transform: uppercase;
   position: absolute;
   top: 34px;
-}
-.app-header h2 + span {
+} */
+/* .app-header h2 + span {
   color: #d9a74a;
   font: normal 18px sans-serif;
   text-transform: uppercase;
@@ -290,7 +290,7 @@ video {
   transition: transform 0.3s;
   position: relative;
   height: 70px;
-}
+} */
 .category-menu {
   box-shadow: 1px 2px 5px 3px rgb(0 0 0 / 30%);
   grid-template-columns: 145px auto;
@@ -390,10 +390,10 @@ code {
   color: #313b3f;
   background-color: #d9a74a;
 }
-#content {
+/* #content {
   background-color: #ffffff;
   margin-top: 70px;
-}
+} */
 .data-block {
   font: normal 14px sans-serif;
   cursor: pointer;
@@ -461,27 +461,27 @@ code {
 .full-project {
   padding-bottom: 25px;
 }
-#header {
+/* #header {
   height: 70px;
   position: fixed;
   top: 0;
   background-color: #313b3f;
   z-index: 9999;
   transition: all 0.3s;
-}
+} */
 .hidden-content {
   overflow: auto;
   max-height: 0;
   color: #ffffff;
 }
-.mobile-title {
+/* .mobile-title {
   color: #d9a74a;
   font: normal 20px sans-serif;
   top: 50%;
   transform: translateY(-50%);
   right: 20px;
   display: none;
-}
+} */
 .mobile-menu {
   color: white;
   cursor: pointer;
@@ -497,9 +497,9 @@ code {
 p {
   font-family: Lato;
 }
-.router-wrapper {
+/* .router-wrapper {
   overflow: auto;
-}
+} */
 #mobile-menu {
   background-color: #313b3f;
   height: calc(100% - 76px);
@@ -688,7 +688,7 @@ pre {
 .project-specs .forked {
   grid-template-columns: 12px auto;
 }
-.right-column-cmp {
+/* .right-column-cmp {
   display: grid;
   position: fixed;
   width: 300px;
@@ -716,7 +716,7 @@ pre {
 }
 .right-column-cmp > div:last-child {
   grid-area: code;
-}
+} */
 .show-content {
   max-height: 250px !important;
 }
@@ -803,13 +803,13 @@ a.snippet-description,
     grid-column-gap: 20px;
   }
 
-  .right-column-cmp {
+  /* .right-column-cmp {
     position: unset;
     grid-template-columns: repeat(3, calc(33.3% - 13px));
     width: 100%;
     grid-template-areas: "signup social code";
     grid-column-gap: 20px;
-  }
+  } */
 
   .page-content .three-column-layout {
     width: calc(100% - 40px);
@@ -869,19 +869,19 @@ a.snippet-description,
   }
 }
 
-@media only screen and (max-width: 1150px) {
+/* @media only screen and (max-width: 1150px) {
   .app-header .url {
     display: none;
   }
   .app-header .logo {
     display: block;
   }
-}
+} */
 
 @media screen and (max-width: 992px) {
-  .right-column-cmp {
+  /* .right-column-cmp {
     position: unset;
-  }
+  } */
   .page-content .three-column-layout {
     grid-template-areas:
       "leftColumn"
@@ -922,7 +922,7 @@ a.snippet-description,
   }
 }
 @media screen and (max-width: 768px) {
-  .app-header {
+  /* .app-header {
     height: 50px;
   }
   .app-header .logo {
@@ -930,7 +930,7 @@ a.snippet-description,
   }
   .app-header nav {
     display: flex;
-  }
+  } */
   .category-menu {
     right: 10px;
   }
@@ -996,7 +996,7 @@ a.snippet-description,
     height: unset;
     width: 100%;
   }
-  .right-column-cmp {
+  /* .right-column-cmp {
     grid-template-columns: repeat(2, calc(50% - 10px));
     grid-template-areas: "social social" "signup code";
     border-top: 1px solid #313b3f;
@@ -1019,24 +1019,24 @@ a.snippet-description,
     margin: 20px auto;
     display: grid;
     width: auto;
-  }
+  } */
   .sidebar-elements {
     display: block;
   }
 }
 @media only screen and (max-width: 605px) {
-  .app-header .logo {
+  /* .app-header .logo {
     width: 75px;
     margin-left: 60px;
     transform: translateY(-46%);
-  }
+  } */
   .mobile-hamburger,
   #mobile-menu {
     display: block;
   }
-  .app-header nav {
+  /* .app-header nav {
     display: none;
-  }
+  } */
   .mobile-title {
     display: block;
   }
@@ -1049,7 +1049,7 @@ a.snippet-description,
 }
 
 @media screen and (max-width: 550px) {
-  .right-column-cmp {
+  /* .right-column-cmp {
     grid-template-areas: "social" "signup" "code";
     grid-template-columns: 100%;
     grid-column-gap: 0;
@@ -1060,7 +1060,7 @@ a.snippet-description,
     margin-bottom: 0;
     grid-column-gap: 30px;
     grid-row-gap: 25px;
-  }
+  } */
 
   .social-icons .stackblitz,
   .social-icons .codepen {

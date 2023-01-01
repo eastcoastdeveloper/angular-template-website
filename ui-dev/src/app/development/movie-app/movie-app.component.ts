@@ -12,7 +12,7 @@ export class MovieAppComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: "OMDB API — Movie & TV Search",
     publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
+    updatedOn: "Jan 3, 2022",
     repoTitle: "",
     repoLink: "",
     category: "",

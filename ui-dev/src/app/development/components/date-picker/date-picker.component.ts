@@ -11,7 +11,7 @@ export class DatePickerComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: "Angular Date Picker",
     publishedOn: "Oct 1, 2022",
-    updatedOn: "Nov 15, 2022",
+    updatedOn: "Jan 3, 2022",
     repoTitle: "angular-date-picker",
     repoLink:
       "https://github.com/eastcoastdeveloper/datepicker-angular-component",
@@ -60,8 +60,6 @@ export class DatePickerComponent implements OnInit {
 
   ngOnInit() {
     // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this._projectListService.changePageDataObject(this.pageDataObject);
     this.firstLastDays();
     this.renderCode();

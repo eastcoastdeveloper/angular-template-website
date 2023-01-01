@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const projectData = require('../project-list.json');
+const projectData = require('../json/project-list.json');
 
 function categoryResults(model) {
   return (req, res, next) => {
