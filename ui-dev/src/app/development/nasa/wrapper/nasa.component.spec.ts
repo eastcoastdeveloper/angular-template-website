@@ -8,9 +8,8 @@ describe('NasaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NasaComponent ]
-    })
-    .compileComponents();
+      declarations: [NasaComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

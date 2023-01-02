@@ -70,7 +70,6 @@
         margin: 20px 0;
       }
     }
-
   }
 
   .thumbs {
@@ -79,7 +78,7 @@
     cursor: pointer;
     grid-template-rows: repeat(4, 100px);
 
-    >div {
+    > div {
       border-radius: 5px;
       overflow: hidden;
       box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 30%);

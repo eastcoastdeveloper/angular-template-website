@@ -7,12 +7,11 @@
   border-radius: 6px;
   padding: 10px;
 
-  >p {
+  > p {
     margin: 5px 0 15px 0;
   }
 
   .wrapper {
-
     .description,
     .times {
       display: grid;
@@ -21,7 +20,7 @@
     }
 
     .description {
-      >p {
+      > p {
         font: normal 14px sans-serif;
       }
     }

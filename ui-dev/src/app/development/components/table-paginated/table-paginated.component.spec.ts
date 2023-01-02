@@ -8,9 +8,8 @@ describe('TablePaginatedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TablePaginatedComponent ]
-    })
-    .compileComponents();
+      declarations: [TablePaginatedComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

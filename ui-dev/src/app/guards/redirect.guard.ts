@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
   RouterStateSnapshot,
-  UrlTree,
-} from "@angular/router";
-import { Observable } from "rxjs";
+  UrlTree
+} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class RedirectGuard implements CanActivate {
@@ -17,7 +17,7 @@ export class RedirectGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    window.location.href = route.data["externalUrl"];
+    window.location.href = route.data['externalUrl'];
     return true;
   }
 }

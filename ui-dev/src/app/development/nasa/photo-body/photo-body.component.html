@@ -1,7 +1,15 @@
 <div class="photo-body">
-    <button type="text" (click)="showText()">{{fullExplanation && !datePickerStatus ? 'Hide ' : 'Show '}}Details</button>
-    <div class="hd-url" [ngStyle]="{'background-image': getUrl()}" (click)="closeCalendar()" *ngIf="mediaType === 'image'"></div>
-    <div class="hd-url" *ngIf="mediaType === 'video'">
-    </div>
-    <div class="explanation" *ngIf="fullExplanation && !datePickerStatus">{{explanation}}</div>
+  <button type="text" (click)="showText()">
+    {{ fullExplanation && !datePickerStatus ? 'Hide ' : 'Show ' }}Details
+  </button>
+  <div
+    class="hd-url"
+    [ngStyle]="{ 'background-image': getUrl() }"
+    (click)="closeCalendar()"
+    *ngIf="mediaType === 'image'"
+  ></div>
+  <div class="hd-url" *ngIf="mediaType === 'video'"></div>
+  <div class="explanation" *ngIf="fullExplanation && !datePickerStatus">
+    {{ explanation }}
+  </div>
 </div>

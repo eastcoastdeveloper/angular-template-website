@@ -8,9 +8,8 @@ describe('DragDropUiComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DragDropUiComponent ]
-    })
-    .compileComponents();
+      declarations: [DragDropUiComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

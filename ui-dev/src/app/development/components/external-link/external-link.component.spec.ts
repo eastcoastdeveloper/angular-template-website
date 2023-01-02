@@ -8,9 +8,8 @@ describe('ExternalLinkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExternalLinkComponent ]
-    })
-    .compileComponents();
+      declarations: [ExternalLinkComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ExternalLinkComponent);
     component = fixture.componentInstance;

@@ -8,7 +8,7 @@
   height: 340px;
   position: relative;
 
-  >.table-details {
+  > .table-details {
     background-color: $greyBlack;
     color: $yellowGold;
     margin: 0;
@@ -112,7 +112,7 @@
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   #table-component {
     max-width: unset;
   }

@@ -9,13 +9,13 @@ describe('MovieAppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MovieAppComponent],
+      declarations: [MovieAppComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule]
     });
     fixture = TestBed.createComponent(MovieAppComponent);
     component = fixture.componentInstance;

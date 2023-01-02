@@ -1,24 +1,34 @@
 <div id="product-gallery">
-    <div class="gallery-nav">
-        <span class="standard-btn" *ngFor="let btn of buttonArray" (click)="activeSite($event)"
-            [ngClass]="{ 'is-active': activeGallery === btn }">{{btn}}</span>
+  <div class="gallery-nav">
+    <span
+      class="standard-btn"
+      *ngFor="let btn of buttonArray"
+      (click)="activeSite($event)"
+      [ngClass]="{ 'is-active': activeGallery === btn }"
+      >{{ btn }}</span
+    >
+  </div>
+  <div #websiteExamples class="gallery">
+    <div class="main-image">
+      <img #mainImage src="{{ dataArray[0].image }}" />
+      <div class="project-description">
+        <p #description></p>
+        <a #projectLink target="_blank" class="standard-btn is-active"
+          >&#x2192; View Features</a
+        >
+      </div>
     </div>
-    <div #websiteExamples class="gallery">
-        <div class="main-image">
-            <img #mainImage src="{{dataArray[0].image}}" />
-            <div class="project-description">
-                <p #description></p>
-                <a #projectLink target="_blank" class="standard-btn is-active">&#x2192; View Features</a>
-            </div>
-        </div>
-        <div #thumbs class="thumbs" *ngIf="windowWidth > 950">
-            <div *ngFor="let img of dataArray; let i = index" (click)="changeMainImg(i)">
-                <img src="{{img.image}}" />
-            </div>
-        </div>
+    <div #thumbs class="thumbs" *ngIf="windowWidth > 950">
+      <div
+        *ngFor="let img of dataArray; let i = index"
+        (click)="changeMainImg(i)"
+      >
+        <img src="{{ img.image }}" />
+      </div>
     </div>
-    <div class="mobile-navigation" *ngIf="windowWidth < 951">
-        <div class="previous" (click)="previousSlide()">&larr;</div>
-        <div class="next" (click)="nextSlide()">&rarr;</div>
-    </div>
+  </div>
+  <div class="mobile-navigation" *ngIf="windowWidth < 951">
+    <div class="previous" (click)="previousSlide()">&larr;</div>
+    <div class="next" (click)="nextSlide()">&rarr;</div>
+  </div>
 </div>

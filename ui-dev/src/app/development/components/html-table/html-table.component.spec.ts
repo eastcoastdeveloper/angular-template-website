@@ -8,9 +8,8 @@ describe('HtmlTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HtmlTableComponent ]
-    })
-    .compileComponents();
+      declarations: [HtmlTableComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HtmlTableComponent);
     component = fixture.componentInstance;

@@ -32,7 +32,7 @@
       justify-content: center;
       font: normal 14px sans-serif;
 
-      >div {
+      > div {
         width: 31px;
         height: 25px;
         display: flex;
@@ -72,7 +72,7 @@
 
       span {
         margin: auto;
-        transform: translate(1px, -.5px);
+        transform: translate(1px, -0.5px);
       }
     }
 
@@ -91,7 +91,6 @@
 
     .month,
     .year {
-
       ul {
         display: grid;
         grid-template-columns: repeat(3, 33.3%);
@@ -155,7 +154,7 @@
   background-color: $oceanBlue;
   border-radius: 4px;
   color: white;
-  transform: scale(.9);
+  transform: scale(0.9);
 }
 
 .future-date {
@@ -163,7 +162,7 @@
   color: white !important;
 }
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width: 1100px) {
   #calendar-component.nasa-app {
     width: 120px;
 
@@ -174,14 +173,14 @@
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   #calendar-component {
     width: 100%;
     max-width: unset;
   }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
   #calendar-component {
     margin: 0;
     input {

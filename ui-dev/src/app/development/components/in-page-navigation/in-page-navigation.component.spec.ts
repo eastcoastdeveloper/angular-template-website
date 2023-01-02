@@ -8,9 +8,8 @@ describe('InPageNavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InPageNavigationComponent ]
-    })
-    .compileComponents();
+      declarations: [InPageNavigationComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(InPageNavigationComponent);
     component = fixture.componentInstance;

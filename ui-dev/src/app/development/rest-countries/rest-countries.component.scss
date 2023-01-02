@@ -19,13 +19,13 @@
   }
 }
 
-#countries>.snippet-description:first-child {
+#countries > .snippet-description:first-child {
   columns: 2;
 }
 
 .content {
   position: relative;
-  height: calc(100vh - 195px)
+  height: calc(100vh - 195px);
 }
 
 .countries-wrapper {
@@ -50,7 +50,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  #countries>.snippet-description:first-child {
+  #countries > .snippet-description:first-child {
     columns: 1;
   }
 

@@ -1,7 +1,7 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
 @Component({
-  selector: "app-external-link",
-  template: "<ng-content></ng-content>",
+  selector: 'app-external-link',
+  template: '<ng-content></ng-content>'
 })
 export class ExternalLinkComponent {}

@@ -1,10 +1,10 @@
-import { Component, Input } from "@angular/core";
-import { ProjectsListInterface } from "../../../interfaces/projects-list.interface";
+import { Component, Input } from '@angular/core';
+import { ProjectsListInterface } from '../../../interfaces/projects-list.interface';
 
 @Component({
-  selector: "app-projects-list-content",
-  templateUrl: "./projects-list-content.component.html",
-  styleUrls: ["../../../styles/cornerstone.scss"],
+  selector: 'app-projects-list-content',
+  templateUrl: './projects-list-content.component.html',
+  styleUrls: ['../../../styles/cornerstone.scss']
 })
 export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];

@@ -1,16 +1,26 @@
 <div class="snippet-description">
-  This Angular dynamic sidebar illustrates how to populate a navigation with JSON. Something that may become necessary
-  in the event you need to assign user permissions to page content. This would more than likely be accomplished via an
-  API. Hence the dummy data JSON stream. No doubt there's other ways to develop such a feature. This is but one possible
-  method.
-  <br><br>
+  This Angular dynamic sidebar illustrates how to populate a navigation with
+  JSON. Something that may become necessary in the event you need to assign user
+  permissions to page content. This would more than likely be accomplished via
+  an API. Hence the dummy data JSON stream. No doubt there's other ways to
+  develop such a feature. This is but one possible method.
+  <br /><br />
 </div>
 
 <div id="dynamic-sidebar" class="element-shadow">
   <div class="group" *ngFor="let item of result; let i = index">
-    <a *ngIf="item.submenu.length" (click)="ddToggle(i)" class="light-blue-bg">{{ item.linkText }}</a>
-    <a *ngIf="!item.submenu.length" (click)="ddToggle(i)" class="light-blue-bg">{{
-      item.linkText }}</a>
+    <a
+      *ngIf="item.submenu.length"
+      (click)="ddToggle(i)"
+      class="light-blue-bg"
+      >{{ item.linkText }}</a
+    >
+    <a
+      *ngIf="!item.submenu.length"
+      (click)="ddToggle(i)"
+      class="light-blue-bg"
+      >{{ item.linkText }}</a
+    >
     <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
       <ul *ngFor="let menu of result[i].submenu">
         <li>
@@ -22,9 +32,10 @@
 </div>
 
 <div class="snippet-description item-margin">
-  sidebar.json<br>
-  Let's begin with the data. linkText is the top tier text. parentLink is the top tier link. The menu boolean dictates
-  whether the dropdown is open or closed. The submenu array contains the dropdown menu text and link.
+  sidebar.json<br />
+  Let's begin with the data. linkText is the top tier text. parentLink is the
+  top tier link. The menu boolean dictates whether the dropdown is open or
+  closed. The submenu array contains the dropdown menu text and link.
 </div>
 <div class="code-preview">
   <pre>
@@ -33,7 +44,7 @@
 </div>
 
 <div class="snippet-description item-margin">
-  sidebar.model.ts<br>
+  sidebar.model.ts<br />
   SidebarModel is a representation of the above data.
 </div>
 <div class="code-preview">
@@ -61,9 +72,14 @@
   sidebar.component.html
   <ul>
     <li>Loop over the result containing the imported data.</li>
-    <li>There's two links&mdash;one for items with a submenu, the other without a submenu. Each contains the ddToggle
-      fn. Items that have a parentLink are accommodated.</li>
-    <li>The sub-menu class has a dynamic class tied to the meu boolean value. Following, we loop over the submenu items.
+    <li>
+      There's two links&mdash;one for items with a submenu, the other without a
+      submenu. Each contains the ddToggle fn. Items that have a parentLink are
+      accommodated.
+    </li>
+    <li>
+      The sub-menu class has a dynamic class tied to the meu boolean value.
+      Following, we loop over the submenu items.
     </li>
   </ul>
 </div>
@@ -74,7 +90,7 @@
 </div>
 
 <div class="snippet-description item-margin">
-  sidebar.component.scss<br>
+  sidebar.component.scss<br />
   Easy peasy styling.
 </div>
 <div class="code-preview">
@@ -83,11 +99,16 @@
 	</pre>
 </div>
 
-<br>
+<br />
 <div class="snippet-description item-last-child">
-  The only thing remaining here is to add HttpClientModule to the module. Not doing this will cause an error. As stated
-  above, there's numerous ways to accomplish this. Regardless of how it's done, conceptually, this is a theoretical
-  reference. Feel free to fork this Angular dynamic sidebar project located <a
+  The only thing remaining here is to add HttpClientModule to the module. Not
+  doing this will cause an error. As stated above, there's numerous ways to
+  accomplish this. Regardless of how it's done, conceptually, this is a
+  theoretical reference. Feel free to fork this Angular dynamic sidebar project
+  located
+  <a
     href="https://stackblitz.com/edit/angular-dynamic-sidebar?file=src%2Fapp%2Fcomponents%2Fsidebar%2Fsidebar.component.ts"
-    target="_blank">here</a>. Have a great day!
+    target="_blank"
+    >here</a
+  >. Have a great day!
 </div>

@@ -1,4 +1,4 @@
-import { ProjectsListInterface } from "./projects-list.interface";
+import { ProjectsListInterface } from './projects-list.interface';
 
 export type CachedObject = {
   projects: { value: ProjectsListInterface[]; cached?: boolean };

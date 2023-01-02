@@ -8,9 +8,8 @@ describe('D3BarGraphComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ D3BarGraphComponent ]
-    })
-    .compileComponents();
+      declarations: [D3BarGraphComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(D3BarGraphComponent);
     component = fixture.componentInstance;

@@ -33,7 +33,7 @@
     li {
       display: grid;
       padding: 5px 10px 5px 30px;
-      grid-template-areas: 'title title''code project';
+      grid-template-areas: 'title title' 'code project';
 
       .title {
         color: $white;
@@ -45,11 +45,11 @@
     }
 
     li:nth-child(even) {
-      background-color: rgba(49, 59, 63, .8);
+      background-color: rgba(49, 59, 63, 0.8);
     }
 
     li:nth-child(odd) {
-      background-color: rgba(49, 59, 63, .9);
+      background-color: rgba(49, 59, 63, 0.9);
     }
 
     li:hover {
@@ -59,7 +59,7 @@
     a {
       color: $white;
       text-decoration: none;
-      transition: color .3s;
+      transition: color 0.3s;
     }
 
     a:hover {
@@ -77,7 +77,6 @@
   max-height: 0;
   color: $white;
 }
-
 
 #skills {
   list-style-type: unset;

@@ -1,19 +1,34 @@
 <div class="related-items">
-    <div class="category-wrapper">
-        <p>Related Items</p>
-        <div *ngFor="let item of dataArray.slice(0,4)" class="element-shadow related-item">
-            <div *ngIf="item.internal" routerLink="{{item.path}}">
-                <div class="title">{{item.title.length > 25 ? item.title.slice(0,22) + '...' : item.title}}</div>
-                <div class="item-wrapper">
-                    <img src="{{item.imgUrl}}" />
-                </div>
-            </div>
-            <a *ngIf="!item.internal" href="{{item.path}}" target="_blank">
-                <div class="title">{{item.title.length > 25 ? item.title.slice(0,22) + '...' : item.title}}</div>
-                <div class="item-wrapper">
-                    <img src="{{item.imgUrl}}" />
-                </div>
-            </a>
+  <div class="category-wrapper">
+    <p>Related Items</p>
+    <div
+      *ngFor="let item of dataArray.slice(0, 4)"
+      class="element-shadow related-item"
+    >
+      <div *ngIf="item.internal" routerLink="{{ item.path }}">
+        <div class="title">
+          {{
+            item.title.length > 25
+              ? item.title.slice(0, 22) + '...'
+              : item.title
+          }}
         </div>
+        <div class="item-wrapper">
+          <img src="{{ item.imgUrl }}" />
+        </div>
+      </div>
+      <a *ngIf="!item.internal" href="{{ item.path }}" target="_blank">
+        <div class="title">
+          {{
+            item.title.length > 25
+              ? item.title.slice(0, 22) + '...'
+              : item.title
+          }}
+        </div>
+        <div class="item-wrapper">
+          <img src="{{ item.imgUrl }}" />
+        </div>
+      </a>
     </div>
+  </div>
 </div>

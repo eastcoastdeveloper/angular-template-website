@@ -1,99 +1,133 @@
 <div>
-	<div class="snippet-description">
-		Here's a fun little Angular slider component. I see these often. On a variety of websites. Sometimes called a
-		carousel. There's so many variations of how this can work... so this includes the basics. Spike it a bit to make
-		it your own style. Use an API for the graphics and data. Add smooth transitions or image descriptions. However
-		you decide you modify it, enjoy the feature.
-	</div>
+  <div class="snippet-description">
+    Here's a fun little Angular slider component. I see these often. On a
+    variety of websites. Sometimes called a carousel. There's so many variations
+    of how this can work... so this includes the basics. Spike it a bit to make
+    it your own style. Use an API for the graphics and data. Add smooth
+    transitions or image descriptions. However you decide you modify it, enjoy
+    the feature.
+  </div>
 
-	<div class="wrapper element-shadow">
-		<div class="slider-bg"></div>
-		<div class="tagLine">Top Four AI Books of 2021</div>
-		<div id="slider">
-			<div class="content">
-				<div class="books-wrapper">
-					<div *ngFor="let item of result; let i = index" class="showcased-book">
-						<div *ngIf="item.status">
-							<img src="{{item.url}}" class="element-shadow">
-							<a href="{{item.link}}" target="_blank" class="purchase-btn element-shadow">Purchase
-								Book</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="navigation">
-				<div (click)="prevBook()" class="prev">&#10140;</div>
-				<div (click)="nextBook()" class="next">&#10140;</div>
-			</div>
-		</div>
-		<div class="dots">
-			<input type="radio" [checked]="item.status" name="arrPos" *ngFor="let item of result; let i = index"
-				(click)="changeShowcase(i)">
-		</div>
-	</div>
+  <div class="wrapper element-shadow">
+    <div class="slider-bg"></div>
+    <div class="tagLine">Top Four AI Books of 2021</div>
+    <div id="slider">
+      <div class="content">
+        <div class="books-wrapper">
+          <div
+            *ngFor="let item of result; let i = index"
+            class="showcased-book"
+          >
+            <div *ngIf="item.status">
+              <img src="{{ item.url }}" class="element-shadow" />
+              <a
+                href="{{ item.link }}"
+                target="_blank"
+                class="purchase-btn element-shadow"
+                >Purchase Book</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navigation">
+        <div (click)="prevBook()" class="prev">&#10140;</div>
+        <div (click)="nextBook()" class="next">&#10140;</div>
+      </div>
+    </div>
+    <div class="dots">
+      <input
+        type="radio"
+        [checked]="item.status"
+        name="arrPos"
+        *ngFor="let item of result; let i = index"
+        (click)="changeShowcase(i)"
+      />
+    </div>
+  </div>
 
-	<div class="snippet-description item-margin">
-		<ul>
-			<li>Let's begin with an interface of the data for our Angular slider!</li>
-			<li>This is a mirror of what the data looks like. Fortunately for us, the object is rudimentary. More
-				complex objects result in more complex interfaces. Though there are tools that convert data to
-				interfaces, I prefer writing them myself. Practice, practice, practice!</li>
-		</ul>
-	</div>
-	<div class="code-preview">
-		<pre>
+  <div class="snippet-description item-margin">
+    <ul>
+      <li>Let's begin with an interface of the data for our Angular slider!</li>
+      <li>
+        This is a mirror of what the data looks like. Fortunately for us, the
+        object is rudimentary. More complex objects result in more complex
+        interfaces. Though there are tools that convert data to interfaces, I
+        prefer writing them myself. Practice, practice, practice!
+      </li>
+    </ul>
+  </div>
+  <div class="code-preview">
+    <pre>
 		<code>{{interface}}</code>
 	</pre>
-	</div>
+  </div>
 
-	<div class="snippet-description item-margin">
-		<ul>
-			<li>result is our main array with the afforementioned interface reference.</li>
-			<li>currentIndex is our reference to the currently active book.</li>
-			<li>Set the private _http variable and be sure to add HttpClientModule to the parent module.</li>
-			<li>GET the response and store it in the results variable. There's much more that can be added to this
-				request. Headers, error handling, etc. For the sake of a basic demo, we're not including any of that.
-			</li>
-			<li>changeShowcase resets all the objects' status' values to false. Then sets the incoming value to true.
-			</li>
-			<li>next and prevBook simply retrieve the current index of the original data stream, and reset the status
-				values. We either add via currentIndex++, subtract with currentIndex--, or set it to zero if we reach
-				the end.</li>
-		</ul>
-	</div>
-	<div class="code-preview">
-		<pre>
+  <div class="snippet-description item-margin">
+    <ul>
+      <li>
+        result is our main array with the afforementioned interface reference.
+      </li>
+      <li>currentIndex is our reference to the currently active book.</li>
+      <li>
+        Set the private _http variable and be sure to add HttpClientModule to
+        the parent module.
+      </li>
+      <li>
+        GET the response and store it in the results variable. There's much more
+        that can be added to this request. Headers, error handling, etc. For the
+        sake of a basic demo, we're not including any of that.
+      </li>
+      <li>
+        changeShowcase resets all the objects' status' values to false. Then
+        sets the incoming value to true.
+      </li>
+      <li>
+        next and prevBook simply retrieve the current index of the original data
+        stream, and reset the status values. We either add via currentIndex++,
+        subtract with currentIndex--, or set it to zero if we reach the end.
+      </li>
+    </ul>
+  </div>
+  <div class="code-preview">
+    <pre>
 		<code>{{typescript}}</code>
 	</pre>
-	</div>
+  </div>
 
-	<div class="snippet-description item-margin">
-		<ul>
-			<li>All very basic Angular here. The main thing to take note of is the ngIf attribute (item.status). When we
-				loop over the data stream, we're saying, only show images that have a status of true. The dots at the
-				bottom are similar in that we use item.status.</li>
-		</ul>
-	</div>
-	<div class="code-preview">
-		<pre>
+  <div class="snippet-description item-margin">
+    <ul>
+      <li>
+        All very basic Angular here. The main thing to take note of is the ngIf
+        attribute (item.status). When we loop over the data stream, we're
+        saying, only show images that have a status of true. The dots at the
+        bottom are similar in that we use item.status.
+      </li>
+    </ul>
+  </div>
+  <div class="code-preview">
+    <pre>
 		<code>{{markup}}</code>
 	</pre>
-	</div>
+  </div>
 
-	<div class="snippet-description item-margin">
-		Easy peasy styling...
-	</div>
-	<div class="code-preview">
-		<pre>
+  <div class="snippet-description item-margin">Easy peasy styling...</div>
+  <div class="code-preview">
+    <pre>
 		<code>{{scss}}</code>
 	</pre>
-	</div>
+  </div>
 
-	<div class="snippet-description item-margin">
-		There's so much we can add here. Transitions between the imagery. We can extend the 'hit state' so each arrow is
-		the full height of the region. We can add a description to each book and display it underneath. We could add a
-		star rating powered by Spring Boot so users of this carousel could rate the books. The list goes on. Check out
-		my Angular slider repo or <a
-			href="https://stackblitz.com/edit/javascript-slider?file=src%2Fapp%2Fapp.component.ts" target="_blank">live
-			code example.</a>
-	</div>
+  <div class="snippet-description item-margin">
+    There's so much we can add here. Transitions between the imagery. We can
+    extend the 'hit state' so each arrow is the full height of the region. We
+    can add a description to each book and display it underneath. We could add a
+    star rating powered by Spring Boot so users of this carousel could rate the
+    books. The list goes on. Check out my Angular slider repo or
+    <a
+      href="https://stackblitz.com/edit/javascript-slider?file=src%2Fapp%2Fapp.component.ts"
+      target="_blank"
+      >live code example.</a
+    >
+  </div>
+</div>
