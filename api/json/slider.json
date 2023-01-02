@@ -1,0 +1,32 @@
+{
+  "sliderData": [
+    {
+      "title": "Driven: The Race to Create the Autonomous Car",
+      "author": "Alex Davies",
+      "status": true,
+      "url": "../../../../../../assets/img/slider-driven.jpg",
+      "link": "https://www.amazon.com/Driven-Race-Create-Autonomous-Car/dp/1501199439"
+    },
+    {
+      "title": "If Then",
+      "author": "Jill Lepore",
+      "status": false,
+      "url": "../../../../../../assets/img/slider-if-then.jpg",
+      "link": "https://www.amazon.com/If-Then-Simulmatics-Corporation-Invented/dp/1631496107"
+    },
+    {
+      "title": "The Hype Machine",
+      "author": "Sinan Aral",
+      "status": false,
+      "url": "../../../../../../assets/img/slider-the-hype.jpg",
+      "link": "https://www.amazon.com/Hype-Machine-Disrupts-Elections-Health/dp/0525574514/ref=sr_1_1?crid=1X6B1YO06FR1M&dchild=1&keywords=the+hype+machine&qid=1623709586&s=books&sprefix=the+hype+m%2Cstripbooks%2C224&sr=1-1"
+    },
+    {
+      "title": "Predict and Surveil",
+      "author": "Sarah Brayne",
+      "status": false,
+      "url": "../../../../../../assets/img/slider-predict.jpg",
+      "link": "https://www.amazon.com/Predict-Surveil-Discretion-Future-Policing/dp/0190684097/ref=sr_1_1?dchild=1&keywords=predict+and+surveil&qid=1623709612&s=books&sr=1-1"
+    }
+  ]
+}
