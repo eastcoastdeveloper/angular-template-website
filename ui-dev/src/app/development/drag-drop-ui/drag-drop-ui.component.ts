@@ -17,7 +17,7 @@ export class DragDropUiComponent {
   pageDataObject: PageDataObject = {
     title: 'JavaScript Drag and Drop',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2022',
+    updatedOn: 'Jan 3, 2023',
     repoTitle: 'javascript-drag-and-drop',
     repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
     category: 'projects',

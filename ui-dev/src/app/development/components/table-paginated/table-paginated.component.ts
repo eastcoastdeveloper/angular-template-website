@@ -13,7 +13,7 @@ export class TablePaginatedComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Data Table',
     publishedOn: 'Aug 1, 2022',
-    updatedOn: 'Jan 3, 2022',
+    updatedOn: 'Jan 3, 2023',
     repoTitle: 'angular-data-table',
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
@@ -35,6 +35,8 @@ export class TablePaginatedComponent implements OnInit {
   ngOnInit(): void {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
+
+    // Only Call if Not Cached
     this._http.get<CarsInterface[]>('/api/table-paginated').subscribe((res) => {
       this.cars = res;
       this.masterArray = this.cars.slice();

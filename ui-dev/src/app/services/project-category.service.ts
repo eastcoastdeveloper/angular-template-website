@@ -64,6 +64,8 @@ export class ProjectCategoryService {
     const httpOptions = {
       headers: new HttpHeaders()
     };
+
+    // Only Call if Not Cached
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
         `/api/category/?type=${type}`,

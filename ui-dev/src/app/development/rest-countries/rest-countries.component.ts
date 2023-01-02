@@ -12,7 +12,7 @@ export class RestCountriesComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'REST Countries',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2022',
+    updatedOn: 'Jan 3, 2023',
     repoTitle: 'rest-countries',
     repoLink:
       'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',

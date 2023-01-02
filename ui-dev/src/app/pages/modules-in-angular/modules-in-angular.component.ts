@@ -15,7 +15,7 @@ export class ModulesInAngularComponent implements OnInit, OnDestroy {
   pageDataObject: PageDataObject = {
     title: 'Modules in Angular',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2022',
+    updatedOn: 'Jan 3, 2023',
     repoTitle: 'modules-in-angular',
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-routing-between-modules',

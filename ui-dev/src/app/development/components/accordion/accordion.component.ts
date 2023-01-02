@@ -15,7 +15,7 @@ export class AccordionComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Accordion',
     publishedOn: 'Sept 29, 2022',
-    updatedOn: 'Jan 3, 2022',
+    updatedOn: 'Jan 3, 2023',
     repoTitle: 'angular-accordion',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
     category: '',

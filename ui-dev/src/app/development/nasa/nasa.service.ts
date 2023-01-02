@@ -1,14 +1,14 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, Subject } from "rxjs";
-import { map } from "rxjs/operators";
-import { DataModel } from "./nasa.model";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DataModel } from './nasa.model';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class NasaSearchService {
-  chosenDate: any = "";
+  chosenDate: any = '';
   result: any = {};
   history: {}[] = [];
   datePickerStatus: boolean = false;
@@ -26,17 +26,17 @@ export class NasaSearchService {
   history$ = this.historySource.asObservable();
   dataPickerCurrentVal = this.datePickerSource.asObservable();
 
-  url: string = "https://api.nasa.gov/planetary/apod";
-  key: string = "lNDAlgsfTbQIuCybMOJaKKKdz5tEg1XYem5fydJm";
-  count: string = "15";
-  explanation: string = "";
-  title: string = "";
+  url: string = 'https://api.nasa.gov/planetary/apod';
+  key: string = 'lNDAlgsfTbQIuCybMOJaKKKdz5tEg1XYem5fydJm';
+  count: string = '15';
+  explanation: string = '';
+  title: string = '';
 
   constructor(private _http: HttpClient) {
     this.model = {
       explanation: this.explanation,
       hdurl: this.url,
-      title: this.title,
+      title: this.title
     };
   }
 
@@ -59,12 +59,13 @@ export class NasaSearchService {
     return this.searchSubject.asObservable();
   }
 
+  // Only Call if Not Cached
   fetchData(date: string) {
     this._http
       .get<DataModel[]>(
-        "https://api.nasa.gov/planetary/apod?api_key=" +
+        'https://api.nasa.gov/planetary/apod?api_key=' +
           this.key +
-          "&date=" +
+          '&date=' +
           date
       )
       .pipe(

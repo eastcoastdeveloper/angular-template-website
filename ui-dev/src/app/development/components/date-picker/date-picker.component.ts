@@ -1,45 +1,45 @@
-import { Component, OnInit } from "@angular/core";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { Component, OnInit } from '@angular/core';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "[app-date-picker]",
-  templateUrl: "./date-picker.component.html",
-  styleUrls: ["./date-picker.component.scss"],
+  selector: '[app-date-picker]',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.scss']
 })
 export class DatePickerComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "Angular Date Picker",
-    publishedOn: "Oct 1, 2022",
-    updatedOn: "Jan 3, 2022",
-    repoTitle: "angular-date-picker",
+    title: 'Angular Date Picker',
+    publishedOn: 'Oct 1, 2022',
+    updatedOn: 'Jan 3, 2023',
+    repoTitle: 'angular-date-picker',
     repoLink:
-      "https://github.com/eastcoastdeveloper/datepicker-angular-component",
-    category: "",
+      'https://github.com/eastcoastdeveloper/datepicker-angular-component',
+    category: '',
     views: 28,
-    forks: 0,
+    forks: 0
   };
   calendarVisible: boolean = false;
   private d: any = new Date();
-  readonly weekdays: string[] = ["S", "M", "T", "W", "T", "F", "S"];
+  readonly weekdays: string[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   readonly months: string[] = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
   ];
   years: number[] = [
     1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
     2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
-    2020, 2021, 2022,
+    2020, 2021, 2022
   ];
   year: any = this.d.getFullYear();
   monthIndex: any = this.d.getMonth();
@@ -76,7 +76,7 @@ export class DatePickerComponent implements OnInit {
         value:
           i >= firstDayOfMonth && i < emptyCells + lastDayOfMonth
             ? dayIndex++
-            : null,
+            : null
       });
     }
   }
@@ -138,15 +138,15 @@ export class DatePickerComponent implements OnInit {
 
   getValue() {
     let returnValue;
-    if (this.currentDate === "") {
-      returnValue = "Calendar Inactive";
+    if (this.currentDate === '') {
+      returnValue = 'Calendar Inactive';
     }
     if (this.currentDate > this.selectedDate) {
       returnValue =
-        this.months[this.monthIndex] + " " + this.currentDay + ", " + this.year;
+        this.months[this.monthIndex] + ' ' + this.currentDay + ', ' + this.year;
     }
     if (this.currentDate < this.selectedDate) {
-      returnValue = "Future Date";
+      returnValue = 'Future Date';
     }
     return returnValue;
   }

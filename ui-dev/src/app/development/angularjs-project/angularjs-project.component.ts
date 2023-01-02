@@ -1,22 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectListService } from "src/app/services/project-list.service";
+import { Component, OnInit } from '@angular/core';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "app-angularjs-project",
-  templateUrl: "./angularjs-project.component.html",
-  styleUrls: ["./angularjs-project.component.scss"],
+  selector: 'app-angularjs-project',
+  templateUrl: './angularjs-project.component.html',
+  styleUrls: ['./angularjs-project.component.scss']
 })
 export class AngularjsProjectComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: "AngularJS Project",
-    publishedOn: "Oct 16, 2017",
-    updatedOn: "Jan 3, 2022",
-    repoTitle: "angularjs-project",
-    repoLink: "https://github.com/eastcoastdeveloper/angularjs-project",
-    category: "",
+    title: 'AngularJS Project',
+    publishedOn: 'Oct 16, 2017',
+    updatedOn: 'Jan 3, 2023',
+    repoTitle: 'angularjs-project',
+    repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
+    category: '',
     views: 1935,
-    forks: 0,
+    forks: 0
   };
 
   controller: string;
