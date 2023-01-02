@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AccordionComponentInterface } from '../../interfaces/accordion.interface';
+import { CodeSamplesInterface } from 'src/app/interfaces/code-samples.interface';
 
 @Component({
   selector: 'app-right-column',
@@ -8,15 +8,16 @@ import { AccordionComponentInterface } from '../../interfaces/accordion.interfac
   styleUrls: ['./right-column.component.scss']
 })
 export class RightColumnComponent implements OnInit {
-  accordionData: AccordionComponentInterface[] = [];
+  accordionData: CodeSamplesInterface[] = [];
 
   @ViewChild('accordionParent') accordionParent!: ElementRef;
 
   constructor(private _http: HttpClient) {}
 
   ngOnInit(): void {
+    // Only Call if Not Cached
     this._http
-      .get<AccordionComponentInterface[]>('assets/json/accordion.json')
+      .get<CodeSamplesInterface[]>('/api/code-samples')
       .subscribe((res) => {
         this.accordionData = res;
       });

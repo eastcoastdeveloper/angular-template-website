@@ -1,56 +1,81 @@
 <div class="right-column-cmp">
-    <div class="contact-form element-shadow">
-        <p>Subscribe to get new projects<br>and posts!</p>
-        <form action="https://submit-form.com/jHAoxlLO">
+  <div class="contact-form element-shadow">
+    <p>Subscribe to get new projects<br />and posts!</p>
+    <form action="https://submit-form.com/jHAoxlLO">
+      <input
+        type="hidden"
+        name="_redirect"
+        value="https://frontenddevelopment.tech/form-confirmation"
+      />
 
-            <input type="hidden" name="_redirect" value="https://frontenddevelopment.tech/form-confirmation" />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email address"
+        required=""
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
 
-            <input type="email" id="email" name="email" placeholder="Email address" required="" />
-            <button type="submit">Send</button>
-        </form>
+  <div class="social-icons">
+    <div>
+      <a href="https://stackblitz.com/@eastcoastdeveloper" target="_blank">
+        <img class="stackblitz" src="../../../assets/img/stackblitz.png" />
+      </a>
     </div>
-
-    <div class="social-icons">
-        <div>
-            <a href="https://stackblitz.com/@eastcoastdeveloper" target="_blank">
-                <img class="stackblitz" src="../../../assets/img/stackblitz.png" />
-            </a>
-        </div>
-        <div>
-            <a href="https://codepen.io/eastcoastdeveloper/pens/popular?grid_type=list" target="_blank">
-                <img class="codepen" src="../../../assets/img/codepen.png" />
-            </a>
-        </div>
-        <div>
-            <a href="https://github.com/eastcoastdeveloper?tab=repositories" target="_blank">
-                <img class="git" src="../../../assets/img/git.png" />
-            </a>
-        </div>
-        <div>
-            <a href="https://flickr.com/photos/nodulldays/" target="_blank">
-                <img class="flickr" src="../../../assets/img/flickr.png" />
-            </a>
-        </div>
+    <div>
+      <a
+        href="https://codepen.io/eastcoastdeveloper/pens/popular?grid_type=list"
+        target="_blank"
+      >
+        <img class="codepen" src="../../../assets/img/codepen.png" />
+      </a>
     </div>
+    <div>
+      <a
+        href="https://github.com/eastcoastdeveloper?tab=repositories"
+        target="_blank"
+      >
+        <img class="git" src="../../../assets/img/git.png" />
+      </a>
+    </div>
+    <div>
+      <a href="https://flickr.com/photos/nodulldays/" target="_blank">
+        <img class="flickr" src="../../../assets/img/flickr.png" />
+      </a>
+    </div>
+  </div>
 
-    <div #accordionParent class="accordion-wrapper element-shadow">
-        <div class="data-block" *ngFor="let item of accordionData; let i = index;">
-            <p>{{ item.name }}</p>
-            <div class="hidden-content show-content">
-                <ul class="code-samples">
-                    <li *ngFor="let listElems of item.content; let j = index">
-                        <div class="title" style="grid-area: title;">{{ listElems.title }}</div>
-                        <div>
-                            <a href="{{ listElems.code }}" target="_blank" style="grid-area: code">code</a>
-                        </div>
-                        <div *ngIf="listElems.viewProject != null">
-                            <a href="{{ listElems.viewProject }}" target="_blank" style="grid-area: project">view
-                                project</a>
-                        </div>
-                    </li>
-                </ul>
-
+  <div #accordionParent class="accordion-wrapper element-shadow">
+    <div class="data-block">
+      <p>Code Samples</p>
+      <div class="hidden-content show-content">
+        <ul class="code-samples">
+          <li *ngFor="let listElems of accordionData; let j = index">
+            <div class="title" style="grid-area: title">
+              {{ listElems.title }}
             </div>
-        </div>
+            <div>
+              <a
+                href="{{ listElems.code }}"
+                target="_blank"
+                style="grid-area: code"
+                >code</a
+              >
+            </div>
+            <div *ngIf="listElems.viewProject != null">
+              <a
+                href="{{ listElems.viewProject }}"
+                target="_blank"
+                style="grid-area: project"
+                >view project</a
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>

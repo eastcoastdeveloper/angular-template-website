@@ -30,16 +30,6 @@
   grid-area: code;
 }
 
-// @media screen and (max-width: 1300px) {
-//   .right-column-cmp {
-//     position: unset;
-//     grid-template-columns: repeat(3, calc(33.3% - 13px));
-//     width: 100%;
-//     grid-template-areas: 'signup social code';
-//     grid-column-gap: 20px;
-//   }
-// }
-
 @media screen and (max-width: 1200px) {
   .right-column-cmp {
     position: unset;
