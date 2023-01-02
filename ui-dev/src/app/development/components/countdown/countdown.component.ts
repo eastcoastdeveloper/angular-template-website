@@ -3,28 +3,28 @@ import {
   Component,
   ElementRef,
   OnInit,
-  ViewChild,
-} from "@angular/core";
-import { PageDataObject } from "src/app/interfaces/pageDataInterface";
-import { ProjectsListInterface } from "src/app/interfaces/projects-list.interface";
-import { ProjectListService } from "src/app/services/project-list.service";
+  ViewChild
+} from '@angular/core';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: "countdown",
-  templateUrl: "./countdown.component.html",
-  styleUrls: ["./countdown.component.scss"],
+  selector: 'countdown',
+  templateUrl: './countdown.component.html',
+  styleUrls: ['./countdown.component.scss']
 })
 export class CountdownComponent implements OnInit, AfterViewInit {
   pageDataObject: PageDataObject = {
-    title: "Angular Countdown Timer",
-    publishedOn: "Oct 1, 2022",
-    updatedOn: "Jan 3, 2022",
-    repoTitle: "angular-countdown-timer",
+    title: 'Angular Countdown Timer',
+    publishedOn: 'Oct 1, 2022',
+    updatedOn: 'Jan 3, 2023',
+    repoTitle: 'angular-countdown-timer',
     repoLink:
-      "https://github.com/eastcoastdeveloper/angular-countdown-timer-component",
-    category: "",
+      'https://github.com/eastcoastdeveloper/angular-countdown-timer-component',
+    category: '',
     views: 11060,
-    forks: 851,
+    forks: 851
   };
 
   projectDetails?: ProjectsListInterface;
@@ -33,35 +33,35 @@ export class CountdownComponent implements OnInit, AfterViewInit {
 
   private date: any;
   private now: any;
-  private targetDate: any = new Date(2022, 12, 1);
+  private targetDate: any = new Date(2023, 5, 11);
   private targetTime: any = this.targetDate.getTime();
 
   private difference: number;
   private months: Array<string> = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
   ];
   currentTime: any =
     this.months[this.targetDate.getMonth()] +
-    " " +
+    ' ' +
     this.targetDate.getDate() +
-    ", " +
+    ', ' +
     this.targetDate.getFullYear();
 
-  @ViewChild("days", { static: true }) days: ElementRef;
-  @ViewChild("hours", { static: true }) hours: ElementRef;
-  @ViewChild("minutes", { static: true }) minutes: ElementRef;
-  @ViewChild("seconds", { static: true }) seconds: ElementRef;
+  @ViewChild('days', { static: true }) days: ElementRef;
+  @ViewChild('hours', { static: true }) hours: ElementRef;
+  @ViewChild('minutes', { static: true }) minutes: ElementRef;
+  @ViewChild('seconds', { static: true }) seconds: ElementRef;
 
   constructor(private _projectListService: ProjectListService) {}
 
