@@ -40,8 +40,9 @@ export class SliderComponent implements OnInit, OnDestroy {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
+    // Only Call if Not Cached
     this._http
-      .get<SliderInterface[]>('assets/json/slider.json')
+      .get<SliderInterface[]>('/api/slider')
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.result = val;
