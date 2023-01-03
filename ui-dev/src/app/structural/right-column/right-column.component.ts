@@ -1,18 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewChecked
+} from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { CodeSamplesInterface } from 'src/app/interfaces/code-samples.interface';
+import { ProjectListService } from 'src/app/services/project-list.service';
+import { WindowWidthService } from 'src/app/services/window-width.service';
 
 @Component({
   selector: 'app-right-column',
   templateUrl: './right-column.component.html',
   styleUrls: ['./right-column.component.scss']
 })
-export class RightColumnComponent implements OnInit {
+export class RightColumnComponent implements OnInit, AfterViewChecked {
   accordionData: CodeSamplesInterface[] = [];
-
+  private unsubscribe$ = new Subject<boolean>();
+  threeColumnLayout?: boolean;
+  cornerStone?: boolean;
+  windowWidth?: number;
   @ViewChild('accordionParent') accordionParent!: ElementRef;
 
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+    private _projectListService: ProjectListService,
+    private _windowWidthService: WindowWidthService
+  ) {}
 
   ngOnInit(): void {
     // Only Call if Not Cached
@@ -20,6 +36,21 @@ export class RightColumnComponent implements OnInit {
       .get<CodeSamplesInterface[]>('/api/code-samples')
       .subscribe((res) => {
         this.accordionData = res;
+      });
+
+    this._projectListService.pageDataObjectSubject
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.threeColumnLayout = val.threeColumnLayout;
+        this.cornerStone = val.cornerStone;
+      });
+  }
+
+  ngAfterViewChecked(): void {
+    this._windowWidthService.currentWidth$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.windowWidth = val;
       });
   }
 }

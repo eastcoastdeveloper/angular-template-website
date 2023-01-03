@@ -17,7 +17,9 @@ export class D3BarGraphComponent implements OnInit {
       'https://github.com/eastcoastdeveloper/datepicker-angular-component',
     category: '',
     views: 28,
-    forks: 0
+    forks: 0,
+    threeColumnLayout: true,
+    cornerStone: false
   };
 
   constructor(private _projectListService: ProjectListService) {}

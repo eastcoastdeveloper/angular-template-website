@@ -22,7 +22,8 @@ export class DragDropUiComponent {
     repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
     category: 'projects',
     views: 219,
-    forks: 3
+    forks: 3,
+    cornerStone: false
   };
 
   protected markup: string;

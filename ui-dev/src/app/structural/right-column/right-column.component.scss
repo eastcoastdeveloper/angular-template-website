@@ -65,6 +65,20 @@
 }
 
 @media screen and (max-width: 1300px) {
+  .two-column-layout {
+    position: fixed !important;
+    width: 300px !important;
+    grid-template-columns: none !important;
+    grid-template-areas:
+      'signup'
+      'social'
+      'code' !important;
+
+    .social-icons {
+      width: 275px !important;
+      grid-template-columns: repeat(2, calc(50% - 8px)) !important;
+    }
+  }
   .right-column-cmp {
     position: unset;
     grid-template-columns: repeat(2, calc(50% - 10px));

@@ -7,4 +7,6 @@ export class PageDataObject {
   category?: string;
   views?: number;
   forks?: number;
+  threeColumnLayout?: boolean;
+  cornerStone?: boolean;
 }

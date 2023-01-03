@@ -1,4 +1,15 @@
-<div class="right-column-cmp">
+<div
+  class="right-column-cmp"
+  *ngIf="windowWidth != undefined"
+  [ngClass]="
+    !threeColumnLayout &&
+    cornerStone &&
+    windowWidth! < 1300 &&
+    windowWidth > 1200
+      ? 'two-column-layout'
+      : ''
+  "
+>
   <div class="contact-form element-shadow">
     <p>Subscribe to get new projects<br />and posts!</p>
     <form action="https://submit-form.com/jHAoxlLO">

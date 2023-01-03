@@ -11,7 +11,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 })
 export class CornerstoneAppsComponent implements OnInit {
   pageDataObject: PageDataObject = {
-    title: 'Front End Development'
+    title: 'Front End Development',
+    cornerStone: true
   };
   appsArray: any;
 

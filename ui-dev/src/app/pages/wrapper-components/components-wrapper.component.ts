@@ -2,14 +2,12 @@ import {
   AfterViewChecked,
   ChangeDetectorRef,
   Component,
-  DoCheck,
   OnDestroy,
   OnInit
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { WindowWidthService } from 'src/app/services/window-width.service';
-import { Location } from '@angular/common';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { RelatedComponentsService } from 'src/app/services/related-components.service';
 
@@ -19,11 +17,11 @@ import { RelatedComponentsService } from 'src/app/services/related-components.se
   styleUrls: ['./components-wrapper.component.scss']
 })
 export class ComponentsWrapperComponent
-  implements OnInit, DoCheck, OnDestroy, AfterViewChecked
+  implements OnInit, OnDestroy, AfterViewChecked
 {
   private unsubscribe$: Subject<boolean> = new Subject<boolean>();
   compsArray: ProjectsListInterface[] = [];
-  threeColumnLayout: boolean = false;
+  threeColumnLayout?: boolean;
   devMenuStatus?: boolean;
   windowWidth: number;
   pageTitle?: string;
@@ -33,8 +31,7 @@ export class ComponentsWrapperComponent
     private _relatedComponentsService: RelatedComponentsService,
     private _windowWidthService: WindowWidthService,
     private _cd: ChangeDetectorRef,
-    private _projectListService: ProjectListService,
-    private _location: Location
+    private _projectListService: ProjectListService // private _location: Location
   ) {
     // Category Wrapper Related Items
     this._relatedComponentsService.init(this.cmpsArray, 'components');
@@ -43,16 +40,6 @@ export class ComponentsWrapperComponent
       .subscribe((val) => {
         this.cmpsArray = val;
       });
-  }
-
-  ngDoCheck(): void {
-    // Cornerstone Layout
-    if (this._location.path() === '/ui-components/website-features') {
-      this.pageTitle = 'UI Components';
-      this.threeColumnLayout = false;
-    } else {
-      this.threeColumnLayout = true;
-    }
   }
 
   ngOnInit(): void {
@@ -68,6 +55,7 @@ export class ComponentsWrapperComponent
     this._projectListService.pageDataObjectSubject
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
+        this.threeColumnLayout = val.threeColumnLayout;
         this.pageTitle = val.title;
       });
 

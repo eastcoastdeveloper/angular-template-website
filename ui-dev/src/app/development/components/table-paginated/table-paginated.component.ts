@@ -19,7 +19,9 @@ export class TablePaginatedComponent implements OnInit {
       'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
     category: '',
     views: 6622,
-    forks: 190
+    forks: 190,
+    threeColumnLayout: true,
+    cornerStone: false
   };
 
   masterArray: CarsInterface[] = [];

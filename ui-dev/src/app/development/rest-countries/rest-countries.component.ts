@@ -18,7 +18,8 @@ export class RestCountriesComponent implements OnInit {
       'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
     category: '',
     views: 388,
-    forks: 3
+    forks: 3,
+    cornerStone: false
   };
 
   windowWidthSubscription: Subscription;

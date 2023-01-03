@@ -24,7 +24,9 @@ export class CountdownComponent implements OnInit, AfterViewInit {
       'https://github.com/eastcoastdeveloper/angular-countdown-timer-component',
     category: '',
     views: 11060,
-    forks: 851
+    forks: 851,
+    threeColumnLayout: true,
+    cornerStone: false
   };
 
   projectDetails?: ProjectsListInterface;

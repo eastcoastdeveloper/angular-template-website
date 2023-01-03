@@ -16,7 +16,8 @@ export class AngularjsProjectComponent implements OnInit {
     repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
     category: '',
     views: 1935,
-    forks: 0
+    forks: 0,
+    cornerStone: false
   };
 
   controller: string;

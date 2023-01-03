@@ -21,7 +21,8 @@ export class ModulesInAngularComponent implements OnInit, OnDestroy {
       'https://github.com/eastcoastdeveloper/angular-routing-between-modules',
     category: '',
     views: 2126,
-    forks: 112
+    forks: 112,
+    cornerStone: false
   };
 
   constructor(

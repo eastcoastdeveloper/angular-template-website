@@ -17,7 +17,9 @@ export class DatePickerComponent implements OnInit {
       'https://github.com/eastcoastdeveloper/datepicker-angular-component',
     category: '',
     views: 28,
-    forks: 0
+    forks: 0,
+    threeColumnLayout: true,
+    cornerStone: false
   };
   calendarVisible: boolean = false;
   private d: any = new Date();

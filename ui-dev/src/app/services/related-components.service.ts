@@ -9,8 +9,8 @@ import { ProjectCategoryService } from './project-category.service';
 })
 export class RelatedComponentsService implements OnDestroy {
   relatedItemsSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
-  relatedItems: ProjectsListInterface[] = [];
   private unsubscribe$ = new Subject<boolean>();
+  relatedItems: ProjectsListInterface[] = [];
   arrayIndex: ProjectsListInterface;
 
   constructor(

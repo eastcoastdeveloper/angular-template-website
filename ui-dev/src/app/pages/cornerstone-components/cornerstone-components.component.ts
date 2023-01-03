@@ -14,7 +14,9 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<boolean>();
   pageDataObject: PageDataObject = {
-    title: 'Website Features'
+    title: 'Website Features',
+    threeColumnLayout: false,
+    cornerStone: true
   };
 
   cmpsArray: ProjectsListInterface[] = [];

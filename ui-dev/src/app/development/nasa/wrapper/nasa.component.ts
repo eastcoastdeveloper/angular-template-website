@@ -21,7 +21,8 @@ export class NasaComponent implements OnInit {
     repoLink: '',
     category: '',
     views: 0,
-    forks: 0
+    forks: 0,
+    cornerStone: false
   };
 
   history!: any[];

@@ -28,7 +28,9 @@ export class SliderComponent implements OnInit, OnDestroy {
     repoLink: 'https://github.com/eastcoastdeveloper/angular-basic-carousel',
     category: 'components',
     views: 677,
-    forks: 8
+    forks: 8,
+    threeColumnLayout: true,
+    cornerStone: false
   };
 
   constructor(

@@ -20,7 +20,9 @@ export class AccordionComponent implements OnInit {
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
     category: '',
     views: 672,
-    forks: 18
+    forks: 18,
+    threeColumnLayout: true,
+    cornerStone: false
   };
 
   accordionData: AccordionComponentInterface[] = [];
