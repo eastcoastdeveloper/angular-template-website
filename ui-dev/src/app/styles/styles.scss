@@ -1,5 +1,6 @@
-@import "./colors.scss";
-@import "./reset.scss";
+@import './colors.scss';
+@import './reset.scss';
+@import './code.scss';
 
 html {
   background-color: $white;
@@ -74,6 +75,12 @@ a {
   top: 20px;
 }
 
+.image-wrapper {
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
 .screen-btn {
   right: 108px;
   top: 12px;
@@ -105,9 +112,15 @@ a {
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .item-last-child {
-    margin-bottom: 30px;
+@media screen and (max-width: 1300px) {
+  .page-content .right-column {
+    position: unset;
+    width: unset;
+    height: unset;
+    right: unset;
+    top: unset;
+    grid-area: rightColumn;
+    margin-top: 10px;
   }
 }
 

@@ -8,35 +8,92 @@
     'signup'
     'social'
     'code';
-}
-.right-column-cmp > div:first-child {
-  grid-area: signup;
-  width: 100%;
-  box-sizing: border-box;
-}
-.right-column-cmp .accordion-wrapper .code-samples li > div:first-child {
-  grid-area: title;
-}
-.right-column-cmp .accordion-wrapper .code-samples li > div:nth-child(2) a {
-  grid-area: code;
-}
-.right-column-cmp .accordion-wrapper .code-samples li > div:last-child a {
-  grid-area: project;
-}
-.right-column-cmp > div:nth-child(2) {
-  grid-area: social;
-}
-.right-column-cmp > div:last-child {
-  grid-area: code;
+  > div:first-child {
+    grid-area: signup;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .social-icons {
+    display: grid;
+    grid-area: social;
+    grid-template-columns: repeat(2, calc(50% - 8px));
+    width: 275px;
+    margin: 20px auto;
+    grid-gap: 15px;
+
+    > div {
+      text-align: center;
+      display: flex;
+    }
+
+    > div a {
+      margin: auto;
+    }
+    > div .stackblitz {
+      width: 100px;
+    }
+    > div .codepen {
+      width: 115px;
+    }
+    > div .git {
+      width: 65px;
+    }
+    > div .flickr {
+      width: 75px;
+    }
+  }
+
+  .accordion-wrapper {
+    .data-block .show-content {
+      max-height: 150px !important;
+    }
+    .code-samples li {
+      > div:first-child {
+        grid-area: title;
+      }
+      > div:nth-child(2) a {
+        grid-area: code;
+      }
+      div:last-child a {
+        grid-area: project;
+      }
+      > div:last-child {
+        grid-area: code;
+      }
+    }
+  }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
   .right-column-cmp {
     position: unset;
-    grid-template-columns: repeat(3, calc(33.3% - 13px));
+    grid-template-columns: repeat(2, calc(50% - 10px));
     width: 100%;
-    grid-template-areas: 'signup social code';
-    grid-column-gap: 20px;
+    grid-template-areas:
+      'social social'
+      'signup code';
+    grid-gap: 20px;
+    > div:first-child {
+      max-width: unset;
+    }
+    .social-icons {
+      width: 100%;
+      grid-template-columns: repeat(4, calc(25% - 12px));
+    }
+  }
+  .social-icons {
+    grid-gap: 0;
+    width: 100%;
+    > div {
+      img {
+        width: 100% !important;
+        padding: 0 15px;
+        box-sizing: border-box;
+        max-height: 25px;
+        max-width: 150px;
+        display: block;
+      }
+    }
   }
 }
 
@@ -44,26 +101,25 @@
   .right-column-cmp {
     grid-template-columns: repeat(2, calc(50% - 10px));
     grid-template-areas: 'social social' 'signup code';
-    border-top: 1px solid #313b3f;
     grid-column-gap: 20px;
     display: grid;
     height: unset;
-    padding-top: 8px;
-  }
-  .right-column-cmp .contact-form {
-    box-sizing: border-box;
-    max-width: none;
-    width: 100%;
-  }
-  .right-column-cmp .accordion-wrapper {
-    margin: 0;
-  }
-  .right-column-cmp .social-icons {
-    grid-template-columns: repeat(4, auto);
-    grid-column-gap: 30px;
-    margin: 20px auto;
-    display: grid;
-    width: auto;
+    .contact-form {
+      box-sizing: border-box;
+      max-width: none;
+      width: 100%;
+    }
+    .accordion-wrapper {
+      margin: 0;
+    }
+    .social-icons {
+      margin-top: 0;
+      > div {
+        img {
+          max-height: 20px;
+        }
+      }
+    }
   }
 }
 
@@ -73,11 +129,21 @@
     grid-template-columns: 100%;
     grid-column-gap: 0;
     grid-row-gap: 20px;
-  }
-  .right-column-cmp .social-icons {
-    grid-template-columns: repeat(2, auto);
-    margin-bottom: 0;
-    grid-column-gap: 30px;
-    grid-row-gap: 25px;
+    .social-icons {
+      grid-template-columns: repeat(2, auto);
+      margin-bottom: 0;
+      grid-column-gap: 30px;
+      grid-row-gap: 25px;
+      .stackblitz,
+      .codepen {
+        width: 125px;
+      }
+      .git {
+        width: 70px;
+      }
+      .flickr {
+        width: 80px;
+      }
+    }
   }
 }

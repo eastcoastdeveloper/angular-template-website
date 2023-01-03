@@ -90,30 +90,18 @@ export class CountdownComponent implements OnInit, AfterViewInit {
     this.seconds.nativeElement.innerText = 60 - this.date.getSeconds();
   }
 
-  appTypeScript: string = `
-// app.component.ts
+  typescript: string = `// app.component.ts
 date: any;
 now: any;
 targetDate: any = new Date(2022, 12, 1);
 targetTime: any = this.targetDate.getTime();
 difference: number;
-months: Array<string> = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+months: Array<string> = ["January", "February", "March", "April",
+"May", "June", "July", "August", "September", "October", "November", "December"];
 
 // Template literals is ideal for this scenario
-currentTime: any = this.months[this.targetDate.getMonth()] + this.targetDate.getDate() + "," + this.targetDate.getFullYear();
+currentTime: any = this.months[this.targetDate.getMonth()] +
+' ' + this.targetDate.getDate() + ', ' + this.targetDate.getFullYear();
 
 @ViewChild("days", { static: true }) days: ElementRef;
   @ViewChild("hours", { static: true }) hours: ElementRef;
@@ -140,8 +128,7 @@ currentTime: any = this.months[this.targetDate.getMonth()] + this.targetDate.get
     this.seconds.nativeElement.innerText = 60 - this.date.getSeconds();
   }`;
 
-  styling: string = `
-// app.component.scss
+  styling: string = `// app.component.scss
 .count-down-timer {
   box-shadow: 2px 6px 9px 2px rgb(0 0 0 / 20%);
   text-align: center;
@@ -149,23 +136,17 @@ currentTime: any = this.months[this.targetDate.getMonth()] + this.targetDate.get
   color: white;
   border-radius: 6px;
   padding: 10px;
-
-  >p {
-    margin: 5px 0 15px 0;
-  }
+    > p { margin: 5px 0 15px 0; }
 
   .wrapper {
-    .description,
-    .times {
+    .description, .times {
       display: grid;
       grid-template-columns: repeat(4, calc(25% - 8px));
       grid-column-gap: 10px;
     }
 
     .description {
-      >p {
-        font: normal 14px sans-serif;
-      }
+      > p { font: normal 14px sans-serif; }
     }
 
     .times {
@@ -177,8 +158,7 @@ currentTime: any = this.months[this.targetDate.getMonth()] + this.targetDate.get
   }
 }`;
 
-  markup: string = `
-// app.component.html
+  markup: string = `// app.component.html
 <div class="count-down-timer">
   <p>Countdown to {{currentTime}}</p>
   <div class="wrapper">

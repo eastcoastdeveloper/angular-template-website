@@ -1,92 +1,96 @@
 <div id="table-component" class="element-shadow">
-	<div class="table-details">
-		<span>Popular Muscle Cars</span>
-		<span *ngIf="cars.length > 0" class="total-items">{{ cars.length }} items</span>
-		<div class="search-box">
-			<input [(ngModel)]="enteredSearchValue" (keyup)="applyFilter(enteredSearchValue)" placeholder="Search a make or model" />
-		</div>
-	</div>
-	<table>
-		<thead>
-			<tr>
-				<th class="pl-15">Year</th>
-				<th>Make</th>
-				<th>Model</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngFor="let car of cars | paginate: { itemsPerPage: 8, currentPage: p }">
-				<td class="pl-15">{{car.year}}</td>
-				<td>{{car.make}}</td>
-				<td>{{car.model}}</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="pagination">
-		<pagination-controls (pageChange)="p = $event"></pagination-controls>
-	</div>
+  <div class="table-details">
+    <span>Popular Muscle Cars</span>
+    <span *ngIf="cars.length > 0" class="total-items"
+      >{{ cars.length }} items</span
+    >
+    <div class="search-box">
+      <input
+        [(ngModel)]="enteredSearchValue"
+        (keyup)="applyFilter(enteredSearchValue)"
+        placeholder="Search a make or model"
+      />
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th class="pl-15">Year</th>
+        <th>Make</th>
+        <th>Model</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let car of cars | paginate : { itemsPerPage: 8, currentPage: p }
+        "
+      >
+        <td class="pl-15">{{ car.year }}</td>
+        <td>{{ car.make }}</td>
+        <td>{{ car.model }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </div>
 
 <p class="snippet-description item-margin">
-	Creating an Angular data table can be daunting if you're not sure where to begin. Check out the code below to get you
-	up and running quick! As most everything these days is powered by endpoints, this example uses JSON mock data to
-	emulate a response. Please see the below JSON.
+  Creating an Angular data table can be daunting if you're not sure where to
+  begin. Check out the code below to get you up and running quick! As most
+  everything these days is powered by endpoints, this example uses JSON mock
+  data to emulate a response. Please see the below JSON.
 </p>
-<div class="code-preview">
-	<pre>
-		<code>{{json}}</code>
-	</pre>
-</div>
+
+<pre><code [highlight]="json" [lineNumbers]="true"></code></pre>
 
 <p class="snippet-description item-margin">
-	Create a representation of the data via an interface.
+  Create a representation of the data via an interface.
 </p>
-<div class="code-preview">
-	<pre>
-		<code>{{carsInterface}}</code>
-	</pre>
-</div>
+
+<pre><code [highlight]="interface" [lineNumbers]="true"></code></pre>
 
 <div class="snippet-description item-margin">
-	<ul>
-		<li>Create an array for the incoming data.</li>
-		<li>Apply the CarsResponse data type.</li>
-		<li>p is indicative of the current paginated page.</li>
-		<li>Reference the httpClient in the constructor then request the data.</li>
-		<li>tableDataReq() fetches the response with the usual observable suspects of next, error, and complete.</li>
-		<li>Subscribe to retrieve the request and set it to the cars array.</li>
-	</ul>
-</div>
-<div class="code-preview">
-	<pre>
-		<code>{{appTypeScript}}</code>
-	</pre>
+  <ul>
+    <li>Create an array for the incoming data.</li>
+    <li>Apply the CarsResponse data type.</li>
+    <li>p is indicative of the current paginated page.</li>
+    <li>Reference the httpClient in the constructor then request the data.</li>
+    <li>
+      tableDataReq() fetches the response with the usual observable suspects of
+      next, error, and complete.
+    </li>
+    <li>Subscribe to retrieve the request and set it to the cars array.</li>
+  </ul>
 </div>
 
+<pre><code [highlight]="typescript" [lineNumbers]="true"></code></pre>
+
 <div class="snippet-description item-margin">
-	Loop over the cars array populating year, make, and model. Set the number of items per page followed by the current
-	page. Please note however, using let i = index the for loop does not successfully track the index. Indices are
-	reset every page. To circumvent this, you could of course add the index to the JSON or extrapolate the indice from
-	the backend. Perhaps a more succinct method would be to use the afforementioned i var, then simply multiple it by
-	the current page.
+  Loop over the cars array populating year, make, and model. Set the number of
+  items per page followed by the current page. Please note however, using let i
+  = index the for loop does not successfully track the index. Indices are reset
+  every page. To circumvent this, you could of course add the index to the JSON
+  or extrapolate the indice from the backend. Perhaps a more succinct method
+  would be to use the afforementioned i var, then simply multiple it by the
+  current page.
 </div>
-<div class="code-preview">
-	<pre>
-		<code>{{markup}}</code>
-	</pre>
-</div>
-<p class="snippet-description item-margin">
-	Beautify the component with SCSS!
-</p>
-<div class="code-preview">
-	<pre>
-		<code>{{styling}}</code>
-	</pre>
-</div>
-<br>
+
+<pre><code [highlight]="markup" [lineNumbers]="true"></code></pre>
+
+<p class="snippet-description item-margin">Beautify the component with SCSS!</p>
+
+<pre><code [highlight]="styling" [lineNumbers]="true"></code></pre>
+
 <div class="snippet-description item-last-child">
-	There's an infinite of ways to accomplish this. I've used this method many times in a variety of projects. It's
-	always straightforward, flexible, and easy to customize. If you're met with a challenge at any point, check out the
-	<a href="https://stackblitz.com/edit/angular-8-table-pagination" target="_blank">Angular Data Table Stackblitz
-		demo.</a>. Thanks for reading. Have a great day!
+  There's an infinite of ways to accomplish this. I've used this method many
+  times in a variety of projects. It's always straightforward, flexible, and
+  easy to customize. If you're met with a challenge at any point, check out the
+  <a
+    href="https://stackblitz.com/edit/angular-8-table-pagination"
+    target="_blank"
+    >Angular Data Table Stackblitz demo.</a
+  >. Thanks for reading. Have a great day!
 </div>

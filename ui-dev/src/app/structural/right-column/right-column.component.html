@@ -54,22 +54,14 @@
       <div class="hidden-content show-content">
         <ul class="code-samples">
           <li *ngFor="let listElems of accordionData; let j = index">
-            <div class="title" style="grid-area: title">
+            <div class="title">
               {{ listElems.title }}
             </div>
             <div>
-              <a
-                href="{{ listElems.code }}"
-                target="_blank"
-                style="grid-area: code"
-                >code</a
-              >
+              <a href="{{ listElems.code }}" target="_blank">code</a>
             </div>
             <div *ngIf="listElems.viewProject != null">
-              <a
-                href="{{ listElems.viewProject }}"
-                target="_blank"
-                style="grid-area: project"
+              <a href="{{ listElems.viewProject }}" target="_blank"
                 >view project</a
               >
             </div>

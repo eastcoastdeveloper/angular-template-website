@@ -1,0 +1,62 @@
+@import './colors.scss';
+
+pre {
+  display: flex;
+  border-radius: 5px;
+  margin: 20px 0;
+  word-wrap: break-word;
+  background-color: $oceanBlue;
+  overflow-x: auto;
+  color: $white;
+  padding-right: 10px;
+
+  code {
+    flex: 1;
+    line-height: 1.5em;
+    font: normal 12px/22px monaco, Consolas, Lucida Console, monospace !important;
+    min-height: 100%;
+    padding: 1em 1.2em;
+    letter-spacing: 0.5px;
+
+    &.hljs-line-numbers {
+      padding: 0 !important;
+    }
+  }
+}
+
+/** Line numbers styles */
+.hljs {
+  padding: 10px;
+  transition: border ease 1s;
+}
+
+.hljs-ln {
+  padding: 8px 0;
+
+  tr {
+    &:first-child td {
+      padding-top: 8px !important;
+    }
+
+    &:last-child td {
+      padding-bottom: 8px !important;
+    }
+  }
+}
+
+/* for block of numbers */
+td.hljs-ln-numbers {
+  user-select: none;
+  text-align: center;
+  border-right: 1px solid $white;
+  background-color: $greyBlack;
+  color: $yellowGold;
+  vertical-align: top;
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+/* for block of code */
+td.hljs-ln-code {
+  padding-left: 8px !important;
+}

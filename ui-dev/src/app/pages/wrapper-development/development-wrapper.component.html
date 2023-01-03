@@ -1,24 +1,27 @@
 <div class="page-content">
+  <div class="details">
+    <h1 class="page-title">{{ pageTitle }}</h1>
+    <app-category-navigation
+      *ngIf="windowWidth > 650"
+    ></app-category-navigation>
+  </div>
 
-    <div class="details">
-        <h1 class="page-title">{{pageTitle}}</h1>
-        <app-category-navigation *ngIf="windowWidth > 650"></app-category-navigation>
+  <main
+    [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'"
+  >
+    <div class="left-column">
+      <app-post-details *ngIf="threeColumnLayout"></app-post-details>
+      <router-outlet></router-outlet>
     </div>
 
-    <main [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'">
+    <div *ngIf="threeColumnLayout" class="middle-column">
+      <app-related-components
+        [dataArray]="developmentArray"
+      ></app-related-components>
+    </div>
 
-        <div class="left-column">
-            <app-post-details *ngIf="threeColumnLayout"></app-post-details>
-            <router-outlet></router-outlet>
-        </div>
-
-        <div *ngIf="threeColumnLayout" class="middle-column">
-            <app-related-components [dataArray]="developmentArray"></app-related-components>
-        </div>
-
-        <div class="right-column">
-            <app-right-column></app-right-column>
-        </div>
-
-    </main>
+    <div class="right-column">
+      <app-right-column></app-right-column>
+    </div>
+  </main>
 </div>

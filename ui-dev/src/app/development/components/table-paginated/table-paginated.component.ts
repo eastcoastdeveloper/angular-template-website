@@ -60,138 +60,36 @@ export class TablePaginatedComponent implements OnInit {
     }
   }
 
-  json: string = `
-  // cars.json
+  json: string = `// cars.json
   [
-    {
-      "year": "1967",
-      "make": "Pontiac",
-      "model": "GTO"
-    },
-    {
-      "year": "1967",
-      "make": "Pontiac",
-      "model": "Firebird"
-    },
-    {
-      "year": "1967",
-      "make": "Chevrolet",
-      "model": "Malibu SS 396"
-    },
-    {
-      "year": "1967",
-      "make": "Chevrolet",
-      "model": "Camaro SS"
-    },
-    {
-      "year": "1967",
-      "make": "Chevrolet",
-      "model": "Camaro Z/28"
-    },
-    {
-      "year": "1967",
-      "make": "Chevrolet",
-      "model": "RS"
-    },
-    {
-      "year": "1967",
-      "make": "Chevrolet",
-      "model": "Nova SS"
-    },
-    {
-      "year": "1967",
-      "make": "Oldsmobile",
-      "model": "442"
-    },
-    {
-      "year": "1967",
-      "make": "Buick",
-      "model": "Gran Sport"
-    },
-    {
-      "year": "1967",
-      "make": "Ford",
-      "model": "Mustang GT"
-    },
-    {
-      "year": "1967",
-      "make": "Ford",
-      "model": "Mustang GTA"
-    },
-    {
-      "year": "1967",
-      "make": "Ford",
-      "model": "Fairlane GTA"
-    },
-    {
-      "year": "1967",
-      "make": "Shelby",
-      "model": "Cobra"
-    },
-    {
-      "year": "1967",
-      "make": "Shebly",
-      "model": "Mustang GT350"
-    },
-    {
-      "year": "1967",
-      "make": "Shelby",
-      "model": "GT500"
-    },
-    {
-      "year": "1967",
-      "make": "Mercury",
-      "model": "Cougar Special"
-    },
-    {
-      "year": "1967",
-      "make": "Mercury",
-      "model": "Cyclone GT"
-    },
-    {
-      "year": "1967",
-      "make": "Mercury",
-      "model": "427 Comet"
-    },
-    {
-      "year": "1967",
-      "make": "Plymouth",
-      "model": "Barracudda Formula S"
-    },
-    {
-      "year": "1967",
-      "make": "Plymouth GTX",
-      "model": "GTO"
-    },
-    {
-      "year": "1967",
-      "make": "Dodge",
-      "model": "Dart GT"
-    },
-    {
-      "year": "1967",
-      "make": "Dodge Dart GTS",
-      "model": "GTO"
-    },
-    {
-      "year": "1967",
-      "make": "Dodge",
-      "model": "Charger"
-    },
-    {
-      "year": "1967",
-      "make": "Dodge",
-      "model": "Coronet R/T"
-    },
-    {
-      "year": "1967",
-      "make": "Dodge",
-      "model": "Coronet 500 Hemi"
-    }
+    { "year": "1967", "make": "Pontiac",        "model": "GTO" },
+    { "year": "1967", "make": "Pontiac",        "model": "Firebird" },
+    { "year": "1967", "make": "Chevrolet",      "model": "Malibu SS 396" },
+    { "year": "1967", "make": "Chevrolet",      "model": "Camaro SS" },
+    { "year": "1967", "make": "Chevrolet",      "model": "Camaro Z/28" },
+    { "year": "1967", "make": "Chevrolet",      "model": "RS" },
+    { "year": "1967", "make": "Chevrolet",      "model": "Nova SS" },
+    { "year": "1967", "make": "Oldsmobile",     "model": "442" },
+    { "year": "1967", "make": "Buick",          "model": "Gran Sport" },
+    { "year": "1967", "make": "Ford",           "model": "Mustang GT" },
+    { "year": "1967", "make": "Ford",           "model": "Mustang GTA" },
+    { "year": "1967", "make": "Ford",           "model": "Fairlane GTA" },
+    { "year": "1967", "make": "Shelby",         "model": "Cobra" },
+    { "year": "1967", "make": "Shebly",         "model": "Mustang GT350" },
+    { "year": "1967", "make": "Shelby",         "model": "GT500" },
+    { "year": "1967", "make": "Mercury",        "model": "Cougar Special" },
+    { "year": "1967", "make": "Mercury",        "model": "Cyclone GT" },
+    { "year": "1967", "make": "Mercury",        "model": "427 Comet" },
+    { "year": "1967", "make": "Plymouth",       "model": "Barracudda Formula S" },
+    { "year": "1967", "make": "Plymouth GTX",   "model": "GTO" },
+    { "year": "1967", "make": "Dodge",          "model": "Dart GT" },
+    { "year": "1967", "make": "Dodge Dart GTS", "model": "GTO" },
+    { "year": "1967", "make": "Dodge", "model": "Charger" },
+    { "year": "1967", "make": "Dodge", "model": "Coronet R/T" },
+    { "year": "1967", "make": "Dodge", "model": "Coronet 500 Hemi" }
   ]`;
 
-  appModule: string = `
-  // app.module
+  appModule: string = `// app.module
   import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -207,8 +105,7 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 `;
 
-  appTypeScript: string = `
-// app.component.ts
+  typescript: string = `// app.component.ts
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { tap } from 'rxjs';
@@ -243,15 +140,13 @@ export class AppComponent {
   }
 }`;
 
-  carsInterface: string = `
-export interface CarsResponse {
+  interface: string = `export interface CarsResponse {
   year: string;
   make: string;
   model: string;
 }`;
 
-  styling: string = `
-// app.component.scss
+  styling: string = `// app.component.scss
 #table-component {
   font: normal 14px sans-serif;
   margin: 15px auto 0 auto;
@@ -345,8 +240,7 @@ export interface CarsResponse {
   }
 }`;
 
-  markup: string = `
-// app.component.html
+  markup: string = `// app.component.html
 <div id="table-component">
   <div class="table-details">
     <span>Popular Muscle Cars</span>

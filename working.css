@@ -49,9 +49,6 @@
   border-right: 1px solid rgba(49, 59, 63, 0.9);
 }
 
-.active-category {
-  color: #d9a74a;
-}
 .active-link {
   color: #d9a74a !important;
 }
@@ -155,9 +152,6 @@
 .category-menu .category-list li a {
   color: white;
 }
-code {
-  font: normal 12px/20px monaco, Consolas, Lucida Console, monospace !important;
-}
 .code-preview {
   margin-top: 25px;
   padding: 0 10px;
@@ -236,6 +230,7 @@ code {
   margin: 0;
   padding: 10px 0 10px 10px;
   font: normal 14px sans-serif;
+  border-bottom: 1px solid white;
 }
 .data-block .count {
   top: 0;
@@ -243,7 +238,7 @@ code {
 }
 .data-block ul {
   list-style-type: none;
-  background-color: #457b9d;
+  background-color: #03658c;
   padding: 0px;
   margin: 0;
   line-height: 25px;
@@ -366,11 +361,11 @@ p {
   display: inline-block;
   color: #313b3f;
 }
-.page-content .details .breadcrumbs {
+/* .page-content .details .breadcrumbs {
   float: right;
   font: normal 15px sans-serif;
   display: flex;
-}
+} */
 .active-btn {
   color: #d9a74a;
   background-color: #313b3f;
@@ -421,9 +416,9 @@ p {
 .page-content .full-width .left-column {
   width: 100% !important;
 }
-pre {
+/* pre {
   overflow: auto;
-}
+} */
 .project-specs {
   font: normal 13px sans-serif;
   float: right;
@@ -526,21 +521,6 @@ a.snippet-description,
   text-decoration: underline;
   cursor: pointer;
 }
-.social-icons > div a {
-  margin: auto;
-}
-.social-icons > div .stackblitz {
-  width: 100px;
-}
-.social-icons > div .codepen {
-  width: 115px;
-}
-.social-icons > div .git {
-  width: 65px;
-}
-.social-icons > div .flickr {
-  width: 75px;
-}
 #skills {
   list-style-type: unset;
   background-color: #313b3f;
@@ -553,17 +533,7 @@ a.snippet-description,
   display: block;
   padding: 5px 10px 5px 0;
 }
-.social-icons {
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - 8px));
-  width: 275px;
-  margin: 20px auto;
-  grid-gap: 15px;
-}
-.social-icons > div {
-  text-align: center;
-  display: flex;
-}
+
 .visibility-none {
   visibility: hidden;
 }
@@ -597,10 +567,6 @@ a.snippet-description,
     grid-column-gap: 25px;
   }
 
-  .page-content .right-column {
-    margin: 25px 0 10px 0;
-  }
-
   .page-content .three-column-layout .left-column {
     margin-right: 0;
     width: 100%;
@@ -613,14 +579,6 @@ a.snippet-description,
     width: 100%;
     margin: 0;
   }
-  .page-content .right-column {
-    position: unset;
-    width: unset;
-    height: unset;
-    right: unset;
-    top: unset;
-    grid-area: rightColumn;
-  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -632,15 +590,6 @@ a.snippet-description,
     grid-template-areas:
       "leftColumn"
       "rightColumn";
-  }
-  .accordion-wrapper .data-block .show-content {
-    max-height: 150px !important;
-  }
-  .social-icons {
-    width: 100%;
-  }
-  .social-icons > div .codepen {
-    width: 95px;
   }
 }
 
@@ -698,21 +647,18 @@ a.snippet-description,
   .filter-items .standard-btn {
     padding: 5px 8px;
   }
-  #header {
-    height: 50px;
-  }
   .mobile-menu {
     left: 20px;
   }
   #mobile-menu {
     display: none;
   }
-  .page-content .details .breadcrumbs {
+  /* .page-content .details .breadcrumbs {
     position: absolute;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-  }
+  } */
   .post-details .top-row {
     margin-bottom: 15px;
   }
@@ -736,7 +682,6 @@ a.snippet-description,
   .page-content .right-column {
     margin: 0;
   }
-
   .page-content .two-column-layout {
     width: calc(100% - 45px);
     margin: 0 auto;
@@ -750,7 +695,6 @@ a.snippet-description,
     height: unset;
     width: 100%;
   }
-
   .sidebar-elements {
     display: block;
   }
@@ -760,7 +704,6 @@ a.snippet-description,
   #mobile-menu {
     display: block;
   }
-
   .mobile-title {
     display: block;
   }
@@ -772,18 +715,6 @@ a.snippet-description,
   }
 }
 
-@media screen and (max-width: 550px) {
-  .social-icons .stackblitz,
-  .social-icons .codepen {
-    width: 125px;
-  }
-  .social-icons .git {
-    width: 70px;
-  }
-  .social-icons .flickr {
-    width: 80px;
-  }
-}
 @media screen and (max-width: 450px) {
   .page-content .details .page-title {
     font-size: 0.9em;

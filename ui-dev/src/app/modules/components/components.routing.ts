@@ -1,69 +1,70 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { ComponentsWrapperComponent } from "../../pages/wrapper-components/components-wrapper.component";
-import { TablePaginatedComponent } from "../../development/components/table-paginated/table-paginated.component";
-import { AccordionComponent } from "../../development/components/accordion/accordion.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ComponentsWrapperComponent } from '../../pages/wrapper-components/components-wrapper.component';
+import { TablePaginatedComponent } from '../../development/components/table-paginated/table-paginated.component';
+import { AccordionComponent } from '../../development/components/accordion/accordion.component';
 // import { CategoryMenuComponent } from "src/app/development/components/category-menu/category-menu.component";
-import { CountdownComponent } from "../../development/components/countdown/countdown.component";
-import { DatePickerComponent } from "src/app/development/components/date-picker/date-picker.component";
-import { DynamicSidebarComponent } from "../../development/components/dynamic-sidebar/dynamic-sidebar.component";
-import { SliderComponent } from "src/app/development/components/slider/slider.component";
-import { D3BarGraphComponent } from "../../development/components/d3-bar-graph/d3-bar-graph.component";
-import { HtmlTableComponent } from "../../development/components/html-table/html-table.component";
+import { CountdownComponent } from '../../development/components/countdown/countdown.component';
+import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';
+import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
+import { SliderComponent } from 'src/app/development/components/slider/slider.component';
+import { D3BarGraphComponent } from '../../development/components/d3-bar-graph/d3-bar-graph.component';
+import { HtmlTableComponent } from '../../development/components/html-table/html-table.component';
+import { HighlightModule } from 'ngx-highlightjs';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: ComponentsWrapperComponent,
     children: [
-      { path: "", redirectTo: "website-features", pathMatch: "full" },
+      { path: '', redirectTo: 'website-features', pathMatch: 'full' },
       {
-        path: "website-features",
+        path: 'website-features',
         loadChildren: () =>
           import(
             `../cornerstone-components/cornerstone-components.module`
-          ).then((m) => m.CornerstoneComponentsModule),
+          ).then((m) => m.CornerstoneComponentsModule)
       },
       {
-        path: "angular-data-table",
-        component: TablePaginatedComponent,
+        path: 'angular-data-table',
+        component: TablePaginatedComponent
       },
       {
-        path: "accordion-component",
-        component: AccordionComponent,
+        path: 'accordion-component',
+        component: AccordionComponent
       },
       {
-        path: "angular-countdown-timer",
-        component: CountdownComponent,
+        path: 'angular-countdown-timer',
+        component: CountdownComponent
       },
       {
-        path: "angular-date-picker",
-        component: DatePickerComponent,
+        path: 'angular-date-picker',
+        component: DatePickerComponent
       },
       {
-        path: "angular-dynamic-sidebar",
-        component: DynamicSidebarComponent,
+        path: 'angular-dynamic-sidebar',
+        component: DynamicSidebarComponent
       },
       {
-        path: "angular-slider",
-        component: SliderComponent,
+        path: 'angular-slider',
+        component: SliderComponent
       },
       {
-        path: "table-in-html",
+        path: 'table-in-html',
         component: HtmlTableComponent
       },
       {
         path: 'd3-bar-chart',
         component: D3BarGraphComponent
       },
-      { path: "**", redirectTo: "website-features" },
-    ],
-  },
+      { path: '**', redirectTo: 'website-features' }
+    ]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forChild(routes), HighlightModule],
+  exports: [RouterModule]
 })
 export class ComponentsRoutingModule {}
 

@@ -4,7 +4,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {
   CornerstoneAppsRoutingModule,
-  cornerstoneAppsComponents,
+  cornerstoneAppsComponents
 } from './cornerstone-apps.routing';
 
 @NgModule({
@@ -14,6 +14,6 @@ import {
     RouterModule,
     SharedModule,
     CornerstoneAppsRoutingModule
-  ],
+  ]
 })
 export class CornerstoneAppsModule {}
