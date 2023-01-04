@@ -4,7 +4,6 @@ import { SharedModule } from '../shared/shared.module';
 import { AppsRoutingModule, appsComponents } from './apps.routing';
 import { RouterModule } from '@angular/router';
 import { RightColumnModule } from '../shared/right-column.module';
-import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [appsComponents],
@@ -13,8 +12,7 @@ import { HighlightModule } from 'ngx-highlightjs';
     SharedModule,
     RouterModule,
     AppsRoutingModule,
-    RightColumnModule,
-    HighlightModule
+    RightColumnModule
   ]
 })
 export class AppsModule {}

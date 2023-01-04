@@ -33,10 +33,7 @@
       <img src="{{ item.imgUrl }}" alt="{{ item.altText }}" />
     </div>
 
-    <div
-      *ngIf="!item.internal && item.stackblitz"
-      class="project-img element-shadow"
-    >
+    <div *ngIf="!item.internal" class="project-img element-shadow">
       <a href="{{ item.path }}" target="_blank">
         <img src="{{ item.imgUrl }}" alt="{{ item.altText }}" />
       </a>

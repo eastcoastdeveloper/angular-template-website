@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HighlightModule } from 'ngx-highlightjs';
 import { InPageNavigationComponent } from 'src/app/development/components/in-page-navigation/in-page-navigation.component';
 import { ServicesComponent } from 'src/app/development/components/services/services.component';
 import { DevelopmentWrapper } from 'src/app/pages/wrapper-development/development-wrapper.component';
@@ -39,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), HighlightModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class DevelopmentRoutingModule {}

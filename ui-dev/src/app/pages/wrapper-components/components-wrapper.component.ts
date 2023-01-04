@@ -30,8 +30,8 @@ export class ComponentsWrapperComponent
   constructor(
     private _relatedComponentsService: RelatedComponentsService,
     private _windowWidthService: WindowWidthService,
-    private _cd: ChangeDetectorRef,
-    private _projectListService: ProjectListService // private _location: Location
+    private _projectListService: ProjectListService,
+    private _cd: ChangeDetectorRef
   ) {
     // Category Wrapper Related Items
     this._relatedComponentsService.init(this.cmpsArray, 'components');

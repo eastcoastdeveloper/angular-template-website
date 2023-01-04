@@ -19,13 +19,14 @@ export class InPageNavigationComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'In Page Navigation',
     publishedOn: 'Nov 7, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'in-page-navigation',
     repoLink: 'https://github.com/eastcoastdeveloper/in-page-navigation',
     category: 'development',
     views: 87,
     forks: 0,
-    cornerStone: false
+    cornerStone: false,
+    threeColumnLayout: true
   };
 
   markup: string;
@@ -95,7 +96,8 @@ export class InPageNavigationComponent implements OnInit {
   }
 
   private renderCode() {
-    this.markup = `<div id="module-name">
+    this.markup = `
+<div id="module-name">
   <section
     *ngFor="let item of [].constructor(sectionLength);
     let i = index" [ngClass]="{ 'display-none': currentSection != i }">
@@ -153,7 +155,8 @@ export class InPageNavigationComponent implements OnInit {
   </div>
 </div>`;
 
-    this.style = `#module-name {
+    this.style = `
+#module-name {
   height: 300px;
   border-radius: 6px;
   margin-top: 25px;
@@ -214,9 +217,7 @@ export class InPageNavigationComponent implements OnInit {
   }
 }
 
-.display-none {
-  display: none;
-}
+.display-none { display: none; }
 
 .btn-group {
   position: absolute;
@@ -256,7 +257,8 @@ export class InPageNavigationComponent implements OnInit {
   }
 }`;
 
-    this.typescript = `import { ChangeDetectorRef, Component, ElementRef,
+    this.typescript = `
+  import { ChangeDetectorRef, Component, ElementRef,
   QueryList, ViewChild, ViewChildren, } from '@angular/core';
 
 @Component({

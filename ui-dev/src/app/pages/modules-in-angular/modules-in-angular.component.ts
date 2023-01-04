@@ -15,14 +15,15 @@ export class ModulesInAngularComponent implements OnInit, OnDestroy {
   pageDataObject: PageDataObject = {
     title: 'Modules in Angular',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'modules-in-angular',
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-routing-between-modules',
     category: '',
     views: 2126,
     forks: 112,
-    cornerStone: false
+    cornerStone: true,
+    threeColumnLayout: false
   };
 
   constructor(

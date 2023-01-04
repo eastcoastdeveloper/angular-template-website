@@ -1,5 +1,5 @@
 export class PageDataObject {
-  title: string;
+  title?: string;
   publishedOn?: string;
   updatedOn?: string;
   repoTitle?: string;

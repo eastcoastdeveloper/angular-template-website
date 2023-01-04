@@ -11,13 +11,14 @@ export class AngularjsProjectComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'AngularJS Project',
     publishedOn: 'Oct 16, 2017',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'angularjs-project',
     repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
     category: '',
     views: 1935,
     forks: 0,
-    cornerStone: false
+    cornerStone: true,
+    threeColumnLayout: false
   };
 
   controller: string;
@@ -33,7 +34,8 @@ export class AngularjsProjectComponent implements OnInit {
   }
 
   private renderCode() {
-    this.controller = `angular.module("vikingApp").controller("homeController", function ($scope) {
+    this.controller = `
+angular.module("vikingApp").controller("homeController", function ($scope) {
     $scope.code = "";
     // YOUTUBE VIDEO URL
     $scope.optObj = [
@@ -426,7 +428,8 @@ export class AngularjsProjectComponent implements OnInit {
             };
         }
     );`;
-    this.directives = `angular.module("vikingApp").directive("itineraries", function ($http) {
+    this.directives = `
+angular.module("vikingApp").directive("itineraries", function ($http) {
     return {
         // ITINERARIES SLIDER TEMPLATE
         templateUrl: "pages/itineraries.html",

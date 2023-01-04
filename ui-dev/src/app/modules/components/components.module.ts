@@ -9,7 +9,6 @@ import {
   componentsComponents
 } from './components.routing';
 import { RightColumnModule } from '../shared/right-column.module';
-import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [componentsComponents],
@@ -20,8 +19,7 @@ import { HighlightModule } from 'ngx-highlightjs';
     SharedModule,
     NgxPaginationModule,
     ComponentsRoutingModule,
-    RightColumnModule,
-    HighlightModule
+    RightColumnModule
   ],
   exports: [NgxPaginationModule]
 })

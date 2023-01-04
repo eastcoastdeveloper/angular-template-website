@@ -23,7 +23,7 @@ export class SliderComponent implements OnInit, OnDestroy {
   pageDataObject: PageDataObject = {
     title: 'Angular Slider',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'angular-slider',
     repoLink: 'https://github.com/eastcoastdeveloper/angular-basic-carousel',
     category: 'components',
@@ -42,12 +42,14 @@ export class SliderComponent implements OnInit, OnDestroy {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
-    // Only Call if Not Cached
     this._http
-      .get<SliderInterface[]>('/api/slider')
+      .get('./assets/json/slider.json')
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.result = val;
+        let arr = Object.values(val)[0];
+        for (let i = 0; i < arr.length; i++) {
+          this.result.push(arr[i]);
+        }
       });
     this.renderCode();
   }
@@ -93,19 +95,19 @@ export class SliderComponent implements OnInit, OnDestroy {
     // typescript-slider.component.html
 
     <div class="wrapper">
-    <div class="slider-bg"></div>
-    <div class="tagLine">Top Four AI Books of 2021</div>
-    <div id="slider">
-      <div class="content">
-        <div class="books-wrapper">
-          <div *ngFor="let item of result; let i = index" class="showcased-book">
-            <div *ngIf="item.status">
-              <img src="{{item.url}}">
-              <a href="{{item.link}}" target="_blank" class="purchase-btn">Purchase Book</a>
+      <div class="slider-bg"></div>
+      <div class="tagLine">Top Four AI Books of 2021</div>
+      <div id="slider">
+        <div class="content">
+          <div class="books-wrapper">
+            <div *ngFor="let item of result; let i = index" class="showcased-book">
+              <div *ngIf="item.status">
+                <img src="{{item.url}}">
+                <a href="{{item.link}}" target="_blank" class="purchase-btn">Purchase Book</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <div class="navigation">
         <div (click)="prevBook()" class="prev">&lt;</div>
         <div (click)="nextBook()" class="next">&gt;</div>
@@ -113,10 +115,10 @@ export class SliderComponent implements OnInit, OnDestroy {
     </div>
     <div class="dots">
       <input type="radio"
-             [checked]="item.status"
-             name="arrPos"
-             *ngFor="let item of result; let i = index"
-            (click)="changeShowcase(i)">
+        [checked]="item.status"
+        name="arrPos"
+        *ngFor="let item of result; let i = index"
+        (click)="changeShowcase(i)">
     </div>
   </div>`;
 
@@ -259,9 +261,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 
       getCurrentIndex() {
         for (var i = 0; i < this.result.length; i++) {
-          if (this.result[i].status) {
-            this.currentIndex = i;
-          }
+          if (this.result[i].status) this.currentIndex = i;
         }
       }
 

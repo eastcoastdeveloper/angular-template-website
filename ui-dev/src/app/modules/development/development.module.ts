@@ -8,7 +8,6 @@ import {
 } from './development.routing';
 import { RightColumnModule } from '../shared/right-column.module';
 import { SharedModule } from '../shared/shared.module';
-import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   declarations: [developmentComponents],
@@ -18,8 +17,7 @@ import { HighlightModule } from 'ngx-highlightjs';
     FormsModule,
     SharedModule,
     DevelopmentRoutingModule,
-    RightColumnModule,
-    HighlightModule
+    RightColumnModule
   ],
   exports: []
 })

@@ -22,13 +22,14 @@ export class MovieAppComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'OMDB API — Movie & TV Search',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: '',
     repoLink: '',
     category: '',
     views: 0,
     forks: 0,
-    cornerStone: false
+    cornerStone: true,
+    threeColumnLayout: false
   };
 
   constructor(
@@ -41,10 +42,12 @@ export class MovieAppComponent implements OnInit {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
-  // //Return all episodes by using just the "Season" parameter: http://www.omdbapi.com/?t=Game of Thrones&Season=1
+  // Return all episodes by using just the "Season" parameter:
+  // http://www.omdbapi.com/?t=Game of Thrones&Season=1
   queryOne: string = '?t=Game of Thrones&Season=1';
 
-  // //Season+Episode search parameters added: http://www.omdbapi.com/?t=Game of Thrones&Season=1&Episode=1
+  // Season+Episode search parameters added:
+  // http://www.omdbapi.com/?t=Game of Thrones&Season=1&Episode=1
   queryTwo: string = '?t=Game of Thrones&Season=1&Episode=2';
 
   titleQuery: string = '?t=The Godfather';

@@ -11,8 +11,6 @@ import { FooterComponent } from './structural/footer/footer.component';
 import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 import { WindowRef } from './windowRef';
 import { LoadingInterceptor } from './guards/loading.interceptor';
-import { ExternalLinkComponent } from './development/components/external-link/external-link.component';
-import { HighlightOptions, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 @NgModule({
   imports: [
@@ -29,8 +27,7 @@ import { HighlightOptions, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     HeaderComponent,
     FooterComponent,
     appRoutingComponents,
-    FormConfirmationComponent,
-    ExternalLinkComponent
+    FormConfirmationComponent
   ],
   providers: [
     HttpClientModule,
@@ -39,19 +36,6 @@ import { HighlightOptions, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true
-    },
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: <HighlightOptions>{
-        lineNumbers: true,
-        coreLibraryLoader: () => import('highlight.js/lib/core'),
-        lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
-        languages: {
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          css: () => import('highlight.js/lib/languages/css'),
-          xml: () => import('highlight.js/lib/languages/xml')
-        }
-      }
     }
   ],
   bootstrap: [AppComponent]

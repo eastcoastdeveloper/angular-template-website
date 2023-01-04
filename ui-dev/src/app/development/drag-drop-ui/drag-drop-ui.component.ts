@@ -17,13 +17,14 @@ export class DragDropUiComponent {
   pageDataObject: PageDataObject = {
     title: 'JavaScript Drag and Drop',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'javascript-drag-and-drop',
     repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
     category: 'projects',
     views: 219,
     forks: 3,
-    cornerStone: false
+    cornerStone: true,
+    threeColumnLayout: false
   };
 
   protected markup: string;
@@ -57,7 +58,8 @@ export class DragDropUiComponent {
     this.snippetFour = `[{active: false}, {active: false}, {active: false}, {active: false}, ...]`;
     this.snippetFive = `{active: true}`;
 
-    this.json = `{
+    this.json = `
+  {
     "unsortedItems": [
       { "items": [
           { "name": "Orange"     },
@@ -116,11 +118,13 @@ export class DragDropUiComponent {
     ]
   }`;
 
-    this.interface = `export class ItemResponse {
+    this.interface = `
+  export class ItemResponse {
     [index: number]: { items: { name: string }[] };
   }`;
 
-    this.typescript = `items: { title: string }[] = [];
+    this.typescript = `
+items: { title: string }[] = [];
 groupItem: string;
 groupIndex: any;
 result: any = [];
@@ -314,92 +318,82 @@ removeInputs() {
 }
 }`;
 
-    this.markup = `<div class="wrapper">
-<header [ngClass]="{ 'border-btm': items.length > 0 }">
-  <p>Drag-Drop UI</p>
-  <small>&mdash;&nbsp;&nbsp;No Libraries or Packages&nbsp;&nbsp;&mdash;</small>
-  <div class="add-btn">Add Directory</div>
-  <div class="add-new">
-    <input
-      placeholder="Add directory name"
-      #newDirectory
-      [(ngModel)]="itemTitle"
-      (keydown)="getKeyCode($event)"/>
-    <button (click)="itemAdded()">Add</button>
-  </div>
-</header>
-<div
-  class="selected-content"
-  [ngClass]="{ hasDirectories: items.length > 0 }">
+    this.markup = `
+<div class="wrapper">
+  <header [ngClass]="{ 'border-btm': items.length > 0 }">
+    <p>Drag-Drop UI</p>
+    <small>&mdash;&nbsp;&nbsp;No Libraries or Packages&nbsp;&nbsp;&mdash;</small>
+    <div class="add-btn">Add Directory</div>
+    <div class="add-new">
+      <input
+        placeholder="Add directory name"
+        #newDirectory
+        [(ngModel)]="itemTitle"
+        (keydown)="getKeyCode($event)"/>
+      <button (click)="itemAdded()">Add</button>
+    </div>
+  </header>
   <div
-    class="child-container"
-    *ngFor="let item of items;
-    let i = index" id="{{ 'group' + i }}">
-    <hr />
-    <p class="group-index">{{ items[i].title }}</p>
-    <div class="delete" (click)="deleteItem(i)">
-      <i>&times;</i>
-      <div class="faux-btn"></div>
-    </div>
-    <div class="drop-zone">
-      <p class="ddText">Drag & Drop</p>
-    </div>
-    <div class="toggle-block">
-      <p *ngIf="uploadedCount[i] != undefined && uploadedCount[i].length > 0">
-        {{ uploadedCount[i].length }} Items
-      </p>
-      <ul class="dragged-items"></ul>
-      <span
-        (click)="toggleBlock(i)"
-        class="arrow"
-        *ngIf="uploadedCount[i] != undefined && uploadedCount[i].length > 0">
-        &#9660;
-      </span>
-    </div>
-  </div>
-</div>
-<div class="add-btn group">Add Group Item</div>
-<div class="add-new mr-20">
-  <input
-    placeholder="Add group item"
-    (keydown)="addGroupKeyCode($event)"
-    [(ngModel)]="itemName"
-    #newGroup
-    class="mt-10"/>
-  <button (click)="addGroup()" class="mt-10">Add</button>
-</div>
-<div class="unsorted">
-  <div *ngFor="let items of result; let i = index">
-    <div
-      *ngFor="let type of result[i].items; let j = index"
-      draggable="true"
-      (dragstart)="dragStartHandler($event)"
-      (dragend)="dragEndHandler($event)"
-      #typeName
-      [attr.data-group]="i"
-      [attr.data-name]="j"
-    >
-      <div>
-        <p>{{ type.name }}</p>
-        <span>&times;</span>
-        <div class="delete-item" (click)="deleteName(i, j)"></div>
+    class="selected-content"
+    [ngClass]="{ hasDirectories: items.length > 0 }">
+    <div class="child-container" *ngFor="let item of items; let i = index" id="{{ 'group' + i }}">
+      <hr />
+      <p class="group-index">{{ items[i].title }}</p>
+      <div class="delete" (click)="deleteItem(i)">
+        <i>&times;</i>
+        <div class="faux-btn"></div>
       </div>
-    </div>
-    <div class="add-new-name" *ngIf="result[i].items.length > 0">
-      <span (click)="addNamedItem(i)">&#43;</span>
-      <div class="add-new" *ngIf="addNewItem[i].active">
-        <input
-          placeholder="Add new item"
-          [(ngModel)]="groupItem"
-          (keydown)="addNewItemField($event, i)"/>
-        <button (click)="pushNamedItem(i)">Add</button>
+      <div class="drop-zone"><p class="ddText">Drag & Drop</p></div>
+      <div class="toggle-block">
+        <p *ngIf="uploadedCount[i] != undefined && uploadedCount[i].length > 0">
+          {{ uploadedCount[i].length }} Items
+        </p>
+        <ul class="dragged-items"></ul>
+        <span (click)="toggleBlock(i)" class="arrow"
+          *ngIf="uploadedCount[i] != undefined && uploadedCount[i].length > 0">
+          &#9660;
+        </span>
       </div>
     </div>
   </div>
-</div>
+  <div class="add-btn group">Add Group Item</div>
+  <div class="add-new mr-20">
+    <input placeholder="Add group item" (keydown)="addGroupKeyCode($event)" [(ngModel)]="itemName" #newGroup class="mt-10"/>
+    <button (click)="addGroup()" class="mt-10">Add</button>
+  </div>
+  <div class="unsorted">
+    <div *ngFor="let items of result; let i = index">
+      <div
+        *ngFor="let type of result[i].items; let j = index"
+        draggable="true"
+        (dragstart)="dragStartHandler($event)"
+        (dragend)="dragEndHandler($event)"
+        #typeName
+        [attr.data-group]="i"
+        [attr.data-name]="j"
+      >
+        <div>
+          <p>{{ type.name }}</p>
+          <span>&times;</span>
+          <div class="delete-item" (click)="deleteName(i, j)"></div>
+        </div>
+      </div>
+      <div class="add-new-name" *ngIf="result[i].items.length > 0">
+        <span (click)="addNamedItem(i)">&#43;</span>
+        <div class="add-new" *ngIf="addNewItem[i].active">
+          <input
+            placeholder="Add new item"
+            [(ngModel)]="groupItem"
+            (keydown)="addNewItemField($event, i)"/>
+          <button (click)="pushNamedItem(i)">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`;
 
-    this.scss = `.wrapper {
+    this.scss = `
+.wrapper {
   font-family: Lato;
   background-color: lightgrey;
   max-width: 1000px;

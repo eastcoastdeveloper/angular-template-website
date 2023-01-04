@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ExternalLinkComponent } from './development/components/external-link/external-link.component';
 import { WeatherComponent } from './development/weather/weather.component';
 import { RedirectGuard } from './guards/redirect.guard';
 import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
@@ -38,30 +37,6 @@ const routes: Routes = [
     loadChildren: () =>
       import(`./modules/about/about.module`).then((m) => m.AboutPageModule)
   },
-  // {
-  //   path: "d3-bar-chart",
-  //   canActivate: [RedirectGuard],
-  //   component: ExternalLinkComponent,
-  //   data: {
-  //     externalUrl: "https://frontenddevelopment.tech/components/d3-bar-chart/",
-  //   },
-  // },
-  // {
-  //   path: "table-in-html",
-  //   canActivate: [RedirectGuard],
-  //   component: ExternalLinkComponent,
-  //   data: {
-  //     externalUrl: "https://frontenddevelopment.tech/components/table-in-html/",
-  //   },
-  // },
-  {
-    path: 'inquire',
-    canActivate: [RedirectGuard],
-    component: ExternalLinkComponent,
-    data: {
-      externalUrl: 'https://frontenddevelopment.tech/contact/inquire.html'
-    }
-  },
   {
     path: 'javascript-projects',
     loadChildren: () =>
@@ -83,6 +58,5 @@ export class AppRoutingModule {}
 
 export const appRoutingComponents = [
   WeatherComponent,
-  FormConfirmationComponent,
-  ExternalLinkComponent
+  FormConfirmationComponent
 ];

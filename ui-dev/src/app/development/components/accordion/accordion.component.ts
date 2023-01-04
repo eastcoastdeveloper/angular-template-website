@@ -15,7 +15,7 @@ export class AccordionComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Accordion',
     publishedOn: 'Sept 29, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'angular-accordion',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
     category: '',
@@ -52,12 +52,14 @@ export class AccordionComponent implements OnInit {
       { charset: 'UTF-8' }
     ]);
 
-    // Only Call if Not Cached
     this._http
-      .get<AccordionComponentInterface[]>('/api/accordion')
+      .get('./assets/json/accordion.json')
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res) => {
-        this.accordionData = res;
+        let arr = Object.values(res)[0];
+        for (let i = 0; i < arr.length; i++) {
+          this.accordionData.push(arr[i]);
+        }
       });
   }
 
@@ -84,7 +86,8 @@ export class AccordionComponent implements OnInit {
     }
   }
 
-  json: string = `[
+  json: string = `
+[
   { "name": "Experience",
     "content": [
       { "item": "UI Development"          },
@@ -157,7 +160,8 @@ export class AccordionComponent implements OnInit {
     ]}
 ]`;
 
-  typescript: string = `import { HttpClient } from '@angular/common/http';
+  typescript: string = `
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccordionData } from './accordion.interface';
 
@@ -213,18 +217,20 @@ export class AppComponent implements OnInit {
   }
 }`;
 
-  interface: string = `export interface AccordionData {
-  content: {
-    item?: string;
-    title?: string;
-    code?: string;
-    viewProject?: string;
-    link?: string;
-  }[];
-  name: string;
+  interface: string = `
+  export interface AccordionData {
+    content: {
+      item?: string;
+      title?: string;
+      code?: string;
+      viewProject?: string;
+      link?: string;
+    }[];
+    name: string;
 }`;
 
-  scss: string = `$black: #313b3f;
+  scss: string = `
+$black: #313b3f;
 $blue: #25aae1;
 $white: #eff3f6;
 $yellow: #d9a74a;
@@ -317,7 +323,8 @@ $yellow: #d9a74a;
   z-index: 1;
 }`;
 
-  markup: string = `<div #accordionParent class="accordion-wrapper">
+  markup: string = `
+<div #accordionParent class="accordion-wrapper">
   <div class="data-block" *ngFor="let item of accordionData; let i = index">
     <p (click)="toggleSection($event, i)">{{ item.name }}</p>
     <p class="count">{{ item.content.length }}</p>

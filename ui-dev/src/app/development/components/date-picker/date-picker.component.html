@@ -110,11 +110,11 @@
       yet easier than maintaining Material in my opinion.
     </li>
   </ul>
-
-  <pre
-    class="element-shadow"
-    (click)="closeCalendar()"
-  ><code [highlight]="typescript" [lineNumbers]="true"></code></pre>
+  <div class="code-preview" (click)="closeCalendar()">
+    <pre>
+		<code>{{typescript}}</code>
+	</pre>
+  </div>
 
   <div class="snippet-description item-margin">
     <ul>
@@ -135,17 +135,21 @@
       </li>
     </ul>
   </div>
-
-  <pre
-    class="element-shadow"
-  ><code [highlight]="markup" [lineNumbers]="true"></code></pre>
+  <div class="code-preview">
+    <pre>
+		<code>{{markup}}</code>
+	</pre>
+  </div>
 
   <div class="snippet-description item-margin">Styling...</div>
 
-  <pre
-    class="element-shadow"
-  ><code [highlight]="scss" [lineNumbers]="true"></code></pre>
+  <div class="code-preview">
+    <pre>
+		<code>{{scss}}</code>
+	</pre>
+  </div>
 
+  <br />
   <div class="snippet-description item-last-child">
     <a
       href="https://stackblitz.com/edit/datepicker-angular-component?file=src%2Fapp%2Fdate-picker%2Fdate-picker.component.ts"

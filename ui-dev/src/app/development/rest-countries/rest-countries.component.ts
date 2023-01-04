@@ -12,14 +12,14 @@ export class RestCountriesComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'REST Countries',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'rest-countries',
     repoLink:
       'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
     category: '',
     views: 388,
     forks: 3,
-    cornerStone: false
+    cornerStone: true
   };
 
   windowWidthSubscription: Subscription;
@@ -35,7 +35,8 @@ export class RestCountriesComponent implements OnInit {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
-    this.markup = `<div id="countries">
+    this.markup = `
+    <div id="countries">
     <div class="content">
         <div class="grid" [ngClass]="{ 'no-interaction': !userInteraction }">
             <div class="countries-wrapper">
@@ -125,7 +126,8 @@ export class RestCountriesComponent implements OnInit {
     </div>
 </div>`;
 
-    this.scss = `::ng-deep img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive {
+    this.scss = `
+::ng-deep img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive {
   width: 35px !important;
   height: 40px !important;
 }
@@ -370,7 +372,8 @@ export class RestCountriesComponent implements OnInit {
   position: relative;
 }`;
 
-    this.typescript = `import { Component, OnInit } from '@angular/core';
+    this.typescript = `
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import { icon, latLng, Map, MapOptions, Marker, tileLayer, map } from 'leaflet';
@@ -498,7 +501,8 @@ export class AppComponent implements OnInit {
   }
 }`;
 
-    this.model = `export class RESTCountryModel {
+    this.model = `
+  export class RESTCountryModel {
   public altSpellings?: Array<{ index: string }>;
   public area?: number;
   public capital?: string;
@@ -546,7 +550,8 @@ export class AppComponent implements OnInit {
   }
 }`;
 
-    this.module = `import { NgModule } from '@angular/core';
+    this.module = `
+    import { NgModule } from '@angular/core';
     import { BrowserModule } from '@angular/platform-browser';
     import { FormsModule } from '@angular/forms';
     import { AppComponent } from './app.component';

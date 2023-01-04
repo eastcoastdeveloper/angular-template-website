@@ -16,7 +16,7 @@
 </div>
 
 <div class="js-drag-drop element-shadow">
-  <img src="assets/components-grid/js-drag-drop.jpg" />
+  <img src="assets/projects-grid/js-drag-drop.jpg" />
 </div>
 
 <div class="snippet-description item-margin">
@@ -25,18 +25,20 @@
   be deterred simply because you may be most comfortable in React or Vue. This
   is the data that populates the UI.
 </div>
-
-<pre
-  class="element-shadow"
-><code [highlight]="json" [lineNumbers]="true"></code></pre>
+<div class="code-preview">
+  <pre>
+		    <code>{{json}}</code>
+	    </pre>
+</div>
 
 <div class="snippet-description item-margin">
   Create an interface of the data.
 </div>
-
-<pre
-  class="element-shadow"
-><code [highlight]="interface" [lineNumbers]="true"></code></pre>
+<div class="code-preview">
+  <pre>
+		    <code>{{interface}}</code>
+	    </pre>
+</div>
 
 <div class="snippet-description item-margin">
   app.component.ts
@@ -92,21 +94,20 @@
     <li>draggedElement is the HTML element in full.</li>
   </ul>
 </div>
-
-<pre
-  class="element-shadow"
-><code [highlight]="typescript" [lineNumbers]="true"></code></pre>
+<div class="code-preview">
+  <pre>
+		<code>{{typescript}}</code>
+	</pre>
+</div>
 
 <div class="snippet-description item-margin">app.component.scss</div>
+<div class="code-preview">
+  <pre>
+		    <code>{{scss}}</code>
+	    </pre>
+</div>
 
-<pre
-  class="element-shadow"
-><code [highlight]="markup" [lineNumbers]="true"></code></pre>
-
-<pre
-  class="element-shadow"
-><code [highlight]="scss" [lineNumbers]="true"></code></pre>
-
+<br />
 <div class="snippet-description item-last-child">
   There's no way around it. If you're creating a UI like this without a library,
   it's gonna be complex. Plus, factoring in POST requests at every drop like my

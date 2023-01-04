@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HighlightModule } from 'ngx-highlightjs';
 import { AngularjsProjectComponent } from 'src/app/development/angularjs-project/angularjs-project.component';
 import { AppsWrapperComponent } from '../../pages/wrapper-apps/apps-wrapper.component';
 
@@ -63,7 +62,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), HighlightModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AppsRoutingModule {}

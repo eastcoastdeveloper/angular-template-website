@@ -17,12 +17,12 @@ import { WindowWidthService } from 'src/app/services/window-width.service';
   styleUrls: ['./right-column.component.scss']
 })
 export class RightColumnComponent implements OnInit, AfterViewChecked {
-  accordionData: CodeSamplesInterface[] = [];
+  @ViewChild('accordionParent') accordionParent!: ElementRef;
   private unsubscribe$ = new Subject<boolean>();
+  accordionData: CodeSamplesInterface[] = [];
   threeColumnLayout?: boolean;
   cornerStone?: boolean;
   windowWidth?: number;
-  @ViewChild('accordionParent') accordionParent!: ElementRef;
 
   constructor(
     private _http: HttpClient,
@@ -31,12 +31,12 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    // Only Call if Not Cached
-    this._http
-      .get<CodeSamplesInterface[]>('/api/code-samples')
-      .subscribe((res) => {
-        this.accordionData = res;
-      });
+    this._http.get('./assets/json/code-samples.json').subscribe((res) => {
+      let arr = Object.values(res)[0];
+      for (let i = 0; i < arr.length; i++) {
+        this.accordionData.push(arr[i]);
+      }
+    });
 
     this._projectListService.pageDataObjectSubject
       .pipe(takeUntil(this.unsubscribe$))

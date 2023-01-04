@@ -1,9 +1,12 @@
 <div class="page-content">
-    <div class="details">
-        <h1 id="project-list-title" class="page-title">{{activeCategory === '' ? 'Web Technologies' : activeCategory}}
-        </h1>
-        <app-category-navigation *ngIf="windowWidth > 650"></app-category-navigation>
-        <!-- <ul class="filter-items" *ngIf="windowWidth > 605">
+  <div class="details">
+    <h1 id="project-list-title" class="page-title">
+      {{ activeCategory === '' ? 'Web Technologies' : activeCategory }}
+    </h1>
+    <app-category-navigation
+      *ngIf="windowWidth > 650"
+    ></app-category-navigation>
+    <!-- <ul class="filter-items" *ngIf="windowWidth > 605">
             <li class="standard-btn" (click)="filterItems('')" [ngClass]="{'is-active':activeCategory === '' }">All</li>
 
             <li class="standard-btn" (click)="filterItems('projects')"
@@ -20,20 +23,17 @@
             <li class="standard-btn" (click)="mostViews('forks')" [ngClass]="{'is-active':activeCategory === 'forks' }">
                 Forks</li>
         </ul> -->
+  </div>
+  <main class="two-column-layout">
+    <div class="left-column">
+      <app-projects-list-content
+        [dataArray]="projectsArray"
+      ></app-projects-list-content>
+      <app-pagination [totalPages]="3"></app-pagination>
     </div>
-    <main class="two-column-layout">
 
-        <div class="left-column">
-            <app-projects-list-content [dataArray]="projectsArray"></app-projects-list-content>
-            <app-pagination [totalPages]="3"></app-pagination>
-        </div>
-
-        <div class="right-column">
-            <app-right-column></app-right-column>
-        </div>
-
-    </main>
-    <!-- <div *ngIf="projectsArray.length < 1" loader>
-        <app-loader></app-loader>
-    </div> -->
+    <div class="right-column">
+      <app-right-column></app-right-column>
+    </div>
+  </main>
 </div>

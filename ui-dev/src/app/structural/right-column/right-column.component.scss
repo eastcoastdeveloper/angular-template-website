@@ -93,6 +93,7 @@
     .social-icons {
       width: 100%;
       grid-template-columns: repeat(4, calc(25% - 12px));
+      margin-top: 0;
     }
   }
   .social-icons {
@@ -128,11 +129,6 @@
     }
     .social-icons {
       margin-top: 0;
-      > div {
-        img {
-          max-height: 20px;
-        }
-      }
     }
   }
 }

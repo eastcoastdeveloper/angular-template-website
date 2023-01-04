@@ -13,7 +13,7 @@ export class DynamicSidebarComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Dynamic Sidebar',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'angular-dynamic-sidebar',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar',
     category: '',
@@ -24,7 +24,8 @@ export class DynamicSidebarComponent implements OnInit {
   };
 
   result: SidebarInterface[] = [];
-  markup: string = `<div id="sidebar" class="dark-blue-bg">
+  markup: string = `
+<div id="sidebar" class="dark-blue-bg">
   <div class="group" *ngFor="let item of result; let i = index">
     <a *ngIf="item.submenu.length" (click)="ddToggle(i)" class="light-blue-bg">
         {{ item.linkText }}
@@ -47,7 +48,8 @@ export class DynamicSidebarComponent implements OnInit {
   <div class="right-border"></div>
 </div>`;
 
-  scss: string = `#sidebar {
+  scss: string = `
+  #sidebar {
     height: 100%;
     font: normal 11pt sans-serif;
     padding-top: 50px;
@@ -109,14 +111,16 @@ export class DynamicSidebarComponent implements OnInit {
     top: 50px;
   }`;
 
-  model: string = `export class SidebarModel {
+  model: string = `
+  export class SidebarModel {
     linkText: string;
     parentLink: string;
     menu: boolean;
     submenu: { childtext: string; link: string }[];
   }`;
 
-  typescript: string = `import { HttpClient } from '@angular/common/http';
+  typescript: string = `
+  import { HttpClient } from '@angular/common/http';
   import { Component } from '@angular/core';
   import { SidebarModel } from './sidebar.model';
   
@@ -127,7 +131,6 @@ export class DynamicSidebarComponent implements OnInit {
   })
   export class SidebarComponent {
     result: SidebarModel[] = [];
-  
     constructor(private _http: HttpClient) {
       this._http.get<SidebarModel[]>(
         'assets/sidebar.json').subscribe((res) => {
@@ -140,56 +143,45 @@ export class DynamicSidebarComponent implements OnInit {
     }
   }`;
 
-  json: string = `[
-  { "linkText": "About",
-    "parentLink": "/about",
-    "menu": false,
-    "submenu": [] },
-  { linkText": "AngularJS SPA",
-    "parentLink": "/angularjs-spa",
-    "menu": false,
-    "submenu": [] },
-  { "linkText": "Codepens",
-    "parentLink": "",
-    "menu": false,
-    "submenu": [
-      { "childtext": "Link 1",
-        "link": "https://codepen.io/UX_Dev/live/5c88e99d0e9a03834dc2d113c24f9daa" },
-      { "childtext": "Link 2",
-        "link": "https://codepen.io/UX_Dev/pen/LmxqKa" },
-      { "childtext": "Link 3",
-        "link": "https://codepen.io/UX_Dev/pen/yzejjQ" },
-      { "childtext": "Link 4",
-        "link": "https://codepen.io/UX_Dev/pen/xoLQrY" },
-      { "childtext": "Link 5",
-        "link": "https://codepen.io/UX_Dev/pen/2788684ea795e215e9dff54bd5abc66b" }
-    ]
+  json: string = `
+[
+  { "linkText": "About", "parentLink": "/about", "menu": false, "submenu": [] },
+  { linkText": "AngularJS SPA", "parentLink": "/angularjs-spa", "menu": false, "submenu": [] },
+  { "linkText": "Codepens", "parentLink": "", "menu": false,
+      "submenu": [
+        { "childtext": "Link 1",
+          "link": "https://codepen.io/UX_Dev/live/5c88e99d0e9a03834dc2d113c24f9daa" },
+        { "childtext": "Link 2",
+          "link": "https://codepen.io/UX_Dev/pen/LmxqKa" },
+        { "childtext": "Link 3",
+          "link": "https://codepen.io/UX_Dev/pen/yzejjQ" },
+        { "childtext": "Link 4",
+          "link": "https://codepen.io/UX_Dev/pen/xoLQrY" },
+        { "childtext": "Link 5",
+          "link": "https://codepen.io/UX_Dev/pen/2788684ea795e215e9dff54bd5abc66b" }
+      ]
   },
-  { "linkText": "Navigation",
-    "parentLink": "",
-    "menu": false,
-    "submenu": [
-      { "childtext": "Pure CSS Menu",
-        "link": "https://codepen.io/UX_Dev/pen/VMwxmQ" },
-      { "childtext": "User Selection",
-        "link": "https://codepen.io/UX_Dev/live/ZXYLyV" },
-      { "childtext": "In Page Navigation",
-        "link": "https://codepen.io/UX_Dev/pen/JjogojN" },
-      { "childtext": "Progress Navigation Bar",
-        "link": "https://codepen.io/UX_Dev/pen/xXOapm" }
-    ]
+  { "linkText": "Navigation", "parentLink": "", "menu": false,
+      "submenu": [
+        { "childtext": "Pure CSS Menu",
+          "link": "https://codepen.io/UX_Dev/pen/VMwxmQ" },
+        { "childtext": "User Selection",
+          "link": "https://codepen.io/UX_Dev/live/ZXYLyV" },
+        { "childtext": "In Page Navigation",
+          "link": "https://codepen.io/UX_Dev/pen/JjogojN" },
+        { "childtext": "Progress Navigation Bar",
+          "link": "https://codepen.io/UX_Dev/pen/xXOapm" }
+      ]
   },
-  { "linkText": "Angular 8",
-    "parentLink": "",
-    "menu": false,
-    "submenu": [
-      { "childtext": "Nested Routing",
-        "link": "https://stackblitz.com/edit/angular-8-nested-routing" },
-      { "childtext": "Modular Routing",
-        "link": "https://stackblitz.com/edit/module-to-module-routing" },
-      { "childtext": "JSON Line Chart",
-        "link": "https://stackblitz.com/edit/line-chart-component-json" }
-    ]
+  { "linkText": "Angular 8", "parentLink": "", "menu": false,
+      "submenu": [
+        { "childtext": "Nested Routing",
+          "link": "https://stackblitz.com/edit/angular-8-nested-routing" },
+        { "childtext": "Modular Routing",
+          "link": "https://stackblitz.com/edit/module-to-module-routing" },
+        { "childtext": "JSON Line Chart",
+          "link": "https://stackblitz.com/edit/line-chart-component-json" }
+      ]
   }
 ]`;
 
@@ -202,12 +194,12 @@ export class DynamicSidebarComponent implements OnInit {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
-    // Only Call if Not Cached
-    this._http
-      .get<SidebarInterface[]>('/api/dynamic-sidebar')
-      .subscribe((res) => {
-        this.result = res;
-      });
+    this._http.get('./assets/json/dynamic-sidebar.json').subscribe((res) => {
+      let arr = Object.values(res)[0];
+      for (let i = 0; i < arr.length; i++) {
+        this.result.push(arr[i]);
+      }
+    });
   }
 
   ddToggle(i: number) {

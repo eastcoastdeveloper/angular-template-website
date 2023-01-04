@@ -13,7 +13,7 @@ export class TablePaginatedComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Data Table',
     publishedOn: 'Aug 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'angular-data-table',
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
@@ -39,8 +39,11 @@ export class TablePaginatedComponent implements OnInit {
     this._projectListService.changePageDataObject(this.pageDataObject);
 
     // Only Call if Not Cached
-    this._http.get<CarsInterface[]>('/api/table-paginated').subscribe((res) => {
-      this.cars = res;
+    this._http.get('./assets/json/table-paginated.json').subscribe((res) => {
+      let arr = Object.values(res)[0];
+      for (let i = 0; i < arr.length; i++) {
+        this.cars.push(arr[i]);
+      }
       this.masterArray = this.cars.slice();
     });
   }
@@ -62,37 +65,39 @@ export class TablePaginatedComponent implements OnInit {
     }
   }
 
-  json: string = `// cars.json
+  json: string = `
+  // cars.json
   [
-    { "year": "1967", "make": "Pontiac",        "model": "GTO" },
-    { "year": "1967", "make": "Pontiac",        "model": "Firebird" },
-    { "year": "1967", "make": "Chevrolet",      "model": "Malibu SS 396" },
-    { "year": "1967", "make": "Chevrolet",      "model": "Camaro SS" },
-    { "year": "1967", "make": "Chevrolet",      "model": "Camaro Z/28" },
-    { "year": "1967", "make": "Chevrolet",      "model": "RS" },
-    { "year": "1967", "make": "Chevrolet",      "model": "Nova SS" },
-    { "year": "1967", "make": "Oldsmobile",     "model": "442" },
-    { "year": "1967", "make": "Buick",          "model": "Gran Sport" },
-    { "year": "1967", "make": "Ford",           "model": "Mustang GT" },
-    { "year": "1967", "make": "Ford",           "model": "Mustang GTA" },
-    { "year": "1967", "make": "Ford",           "model": "Fairlane GTA" },
-    { "year": "1967", "make": "Shelby",         "model": "Cobra" },
-    { "year": "1967", "make": "Shebly",         "model": "Mustang GT350" },
-    { "year": "1967", "make": "Shelby",         "model": "GT500" },
-    { "year": "1967", "make": "Mercury",        "model": "Cougar Special" },
-    { "year": "1967", "make": "Mercury",        "model": "Cyclone GT" },
-    { "year": "1967", "make": "Mercury",        "model": "427 Comet" },
-    { "year": "1967", "make": "Plymouth",       "model": "Barracudda Formula S" },
-    { "year": "1967", "make": "Plymouth GTX",   "model": "GTO" },
-    { "year": "1967", "make": "Dodge",          "model": "Dart GT" },
+    { "year": "1967", "make": "Pontiac", "model": "GTO" },
+    { "year": "1967", "make": "Pontiac", "model": "Firebird" },
+    { "year": "1967", "make": "Chevrolet", "model": "Malibu SS 396" },
+    { "year": "1967", "make": "Chevrolet", "model": "Camaro SS" },
+    { "year": "1967", "make": "Chevrolet", "model": "Camaro Z/28" },
+    { "year": "1967", "make": "Chevrolet", "model": "RS" },
+    { "year": "1967", "make": "Chevrolet", "model": "Nova SS" },
+    { "year": "1967", "make": "Oldsmobile", "model": "442" },
+    { "year": "1967", "make": "Buick", "model": "Gran Sport" },
+    { "year": "1967", "make": "Ford", "model": "Mustang GT" },
+    { "year": "1967", "make": "Ford", "model": "Mustang GTA" },
+    { "year": "1967", "make": "Ford", "model": "Fairlane GTA" },
+    { "year": "1967", "make": "Shelby", "model": "Cobra" },
+    { "year": "1967", "make": "Shebly", "model": "Mustang GT350" },
+    { "year": "1967", "make": "Shelby", "model": "GT500" },
+    { "year": "1967", "make": "Mercury", "model": "Cougar Special" },
+    { "year": "1967", "make": "Mercury", "model": "Cyclone GT" },
+    { "year": "1967", "make": "Mercury", "model": "427 Comet" },
+    { "year": "1967", "make": "Plymouth", "model": "Barracudda Formula S" },
+    { "year": "1967", "make": "Plymouth GTX", "model": "GTO" },
+    { "year": "1967", "make": "Dodge", "model": "Dart GT" },
     { "year": "1967", "make": "Dodge Dart GTS", "model": "GTO" },
     { "year": "1967", "make": "Dodge", "model": "Charger" },
     { "year": "1967", "make": "Dodge", "model": "Coronet R/T" },
     { "year": "1967", "make": "Dodge", "model": "Coronet 500 Hemi" }
   ]`;
 
-  appModule: string = `// app.module
-  import { NgModule } from '@angular/core';
+  appModule: string = `
+// app.module
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -107,7 +112,8 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 `;
 
-  typescript: string = `// app.component.ts
+  typescript: string = `
+// app.component.ts
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { tap } from 'rxjs';
@@ -142,13 +148,15 @@ export class AppComponent {
   }
 }`;
 
-  interface: string = `export interface CarsResponse {
-  year: string;
-  make: string;
-  model: string;
+  interface: string = `
+export interface CarsResponse {
+    year: string;
+    make: string;
+    model: string;
 }`;
 
-  styling: string = `// app.component.scss
+  styling: string = `
+// app.component.scss
 #table-component {
   font: normal 14px sans-serif;
   margin: 15px auto 0 auto;
@@ -173,9 +181,7 @@ export class AppComponent {
     border-collapse: collapse;
 
     tr {
-      td:first-child {
-        padding-left: 10px;
-      }
+      td:first-child { padding-left: 10px; }
     }
 
     td {
@@ -183,9 +189,7 @@ export class AppComponent {
       font-size: 13px;
     }
 
-    thead {
-      font-size: 14px;
-
+    thead { font-size: 14px;
       th {
         border-bottom: 1px solid black;
         text-align: left;
@@ -193,9 +197,7 @@ export class AppComponent {
       }
     }
 
-    .pl-15 {
-      padding-left: 15px;
-    }
+    .pl-15 { padding-left: 15px; }
 
     tbody {
       td {
@@ -242,7 +244,8 @@ export class AppComponent {
   }
 }`;
 
-  markup: string = `// app.component.html
+  markup: string = `
+// app.component.html
 <div id="table-component">
   <div class="table-details">
     <span>Popular Muscle Cars</span>
@@ -271,6 +274,5 @@ export class AppComponent {
   <div class="pagination">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
-</div>
-`;
+</div>`;
 }

@@ -7,6 +7,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { ScrollToTopService } from 'src/app/services/scroll-to-top.service';
 import { WindowWidthService } from 'src/app/services/window-width.service';
@@ -25,6 +26,11 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   activeCategory: string = '';
   filteredArray: any = [];
   windowWidth: number;
+
+  pageDataObject: PageDataObject = {
+    threeColumnLayout: false,
+    cornerStone: true
+  };
 
   constructor(
     private _projectListService: ProjectListService,
@@ -49,6 +55,8 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       .subscribe((val) => {
         this.projectsArray = val;
       });
+
+    this._projectListService.changePageDataObject(this.pageDataObject);
 
     this._changeDetection.detectChanges();
   }

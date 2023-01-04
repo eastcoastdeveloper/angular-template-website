@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HighlightAutoResult } from 'ngx-highlightjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
@@ -9,17 +8,17 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   styleUrls: ['./html-table.component.scss']
 })
 export class HtmlTableComponent implements OnInit {
-  // Code
-  response: HighlightAutoResult;
-  typescript = `var headers = Array.from(document.querySelectorAll('.headers > div')),
-  search = document.getElementById('search-field'),
-  caret = document.querySelector('.caret'),
-  body = document.querySelector('.body'),
-  filterType = null,
-  filtered = null,
-  data = null,
-  markup = '',
-  str = '';
+  typescript = `
+  // TypeScript
+  var headers = Array.from(document.querySelectorAll('.headers > div')),
+      search = document.getElementById('search-field'),
+      caret = document.querySelector('.caret'),
+      body = document.querySelector('.body'),
+      filterType = null,
+      filtered = null,
+      data = null,
+      markup = '',
+      str = '';
 
 /* Search & Filter */
 search.addEventListener('keyup', () => {
@@ -69,11 +68,9 @@ function comparison(key, order = 'ascending') {
   return (a, b) => {
     const varA = typeof a[key] === 'string' ? a[key].toUpperCase() : a[key];
     const varB = typeof b[key] === 'string' ? b[key].toUpperCase() : b[key];
-
     let comparison = 0;
-    if (varA > varB) {
-      comparison = 1;
-    } else if (varA < varB) {
+    if (varA > varB) comparison = 1;
+    else if (varA < varB) {
       comparison = -1;
     }
     return order === 'descending' ? comparison * -1 : comparison;
@@ -86,7 +83,6 @@ function sortColumn(e) {
   filterType = e.target.innerHTML.toLowerCase();
   data.sort(comparison(filterType));
   populateTable(data);
-
   caret != undefined ? caret.remove() : '';
   caret = document.createElement('span');
   caret.classList.add('caret');
@@ -108,7 +104,9 @@ function sortColumn(e) {
   });
 })();`;
 
-  markup = `<div id="html-table">
+  markup = `
+// HTML
+<div id="html-table">
   <div class="search">
     <h4>Smart Phones List</h4>
     <input id="search-field" type="text" placeholder="Search ..." />
@@ -123,9 +121,16 @@ function sortColumn(e) {
   <div class="body"></div>
 </div>`;
 
-  style = `#html-table {
-    min-width: 650px;
-  }
+  style = `
+  CSS:
+  #html-table { min-width: 650px; }
+  main { overflow-x: auto; }
+  .search input::placeholder { font: normal 13px sans-serif; }
+  .headers > div { padding: 5px 10px; }
+  .tble-cells { white-space: nowrap; }
+  .tble-rows:nth-child(odd) { background-color: lightgrey; }
+  .tble-cells { padding: 5px 10px; }
+
   .search {
     display: flex;
     padding: 0 10px;
@@ -152,33 +157,14 @@ function sortColumn(e) {
     outline: none;
   }
   
-  .search input::placeholder {
-    font: normal 13px sans-serif;
-  }
-  
-  main {
-    overflow-x: auto;
-  }
-  .headers,
-  .tble-rows {
+  .headers, .tble-rows {
     display: grid;
     grid-template-columns: repeat(5, 20%);
   }
-  .tble-rows:nth-child(odd) {
-    background-color: lightgrey;
-  }
-  .tble-cells {
-    padding: 5px 10px;
-  }
+
   .headers {
     font-weight: 600;
     cursor: pointer;
-  }
-  .headers > div {
-    padding: 5px 10px;
-  }
-  .tble-cells {
-    white-space: nowrap;
   }
   
   #html-table {
@@ -189,6 +175,7 @@ function sortColumn(e) {
     max-width: 768px;
     margin: 50px auto 0 auto;
   }
+
   .caret {
     transform: rotate(180deg);
     display: inline-block;
@@ -199,7 +186,7 @@ function sortColumn(e) {
   pageDataObject: PageDataObject = {
     title: 'Table in HTML',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 3, 2023',
+    updatedOn: 'Jan 5, 2023',
     repoTitle: 'angular-date-picker',
     repoLink:
       'https://github.com/eastcoastdeveloper/datepicker-angular-component',

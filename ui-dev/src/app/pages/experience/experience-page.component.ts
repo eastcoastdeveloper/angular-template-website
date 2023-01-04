@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { ProjectListService } from 'src/app/services/project-list.service';
 import { WindowWidthService } from 'src/app/services/window-width.service';
 
 @Component({
@@ -10,8 +12,15 @@ import { WindowWidthService } from 'src/app/services/window-width.service';
 export class ExperiencePageComponent implements OnInit, OnDestroy {
   windowWidth: number;
   private unsubscribe$ = new Subject<boolean>();
+  pageDataObject: PageDataObject = {
+    cornerStone: true,
+    threeColumnLayout: false
+  };
 
-  constructor(private _windowWidth: WindowWidthService) {}
+  constructor(
+    private _windowWidth: WindowWidthService,
+    private _projectListService: ProjectListService
+  ) {}
 
   ngOnInit(): void {
     this._windowWidth.currentWidth$
@@ -19,6 +28,8 @@ export class ExperiencePageComponent implements OnInit, OnDestroy {
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
+
+    this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnDestroy(): void {

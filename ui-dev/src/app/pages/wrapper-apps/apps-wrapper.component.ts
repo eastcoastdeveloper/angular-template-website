@@ -2,7 +2,6 @@ import {
   AfterViewChecked,
   ChangeDetectorRef,
   Component,
-  DoCheck,
   OnDestroy,
   OnInit
 } from '@angular/core';
@@ -11,7 +10,6 @@ import { NasaSearchService } from 'src/app/development/nasa/nasa.service';
 import { WindowWidthService } from 'src/app/services/window-width.service';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { Location } from '@angular/common';
 import { RelatedComponentsService } from 'src/app/services/related-components.service';
 
 @Component({
@@ -19,7 +17,7 @@ import { RelatedComponentsService } from 'src/app/services/related-components.se
   templateUrl: './apps-wrapper.component.html'
 })
 export class AppsWrapperComponent
-  implements OnInit, AfterViewChecked, OnDestroy, DoCheck
+  implements OnInit, AfterViewChecked, OnDestroy
 {
   private unsubscribe$ = new Subject<boolean>();
   appsArray: ProjectsListInterface[] = [];
@@ -32,8 +30,7 @@ export class AppsWrapperComponent
     private _windowWidthService: WindowWidthService,
     private _projectListService: ProjectListService,
     private _nasaService: NasaSearchService,
-    private _cd: ChangeDetectorRef,
-    private _location: Location
+    private _cd: ChangeDetectorRef
   ) {
     // Category Wrapper Related Items
     this._relatedComponentsService.init(this.appsArray, 'projects');
@@ -42,19 +39,6 @@ export class AppsWrapperComponent
       .subscribe((val) => {
         this.appsArray = val;
       });
-  }
-
-  ngDoCheck(): void {
-    // Cornerstone Layout
-    if (
-      this._location.path() ===
-      '/web-development-projects/front-end-development'
-    ) {
-      this.pageTitle = 'Front End Development';
-      this.threeColumnLayout = false;
-    } else {
-      this.threeColumnLayout = true;
-    }
   }
 
   ngOnInit(): void {
@@ -83,6 +67,7 @@ export class AppsWrapperComponent
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.pageTitle = val.title;
+        this.threeColumnLayout = val.threeColumnLayout;
       });
 
     this._cd.detectChanges();

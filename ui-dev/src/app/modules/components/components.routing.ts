@@ -3,14 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ComponentsWrapperComponent } from '../../pages/wrapper-components/components-wrapper.component';
 import { TablePaginatedComponent } from '../../development/components/table-paginated/table-paginated.component';
 import { AccordionComponent } from '../../development/components/accordion/accordion.component';
-// import { CategoryMenuComponent } from "src/app/development/components/category-menu/category-menu.component";
 import { CountdownComponent } from '../../development/components/countdown/countdown.component';
 import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';
 import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
 import { SliderComponent } from 'src/app/development/components/slider/slider.component';
 import { D3BarGraphComponent } from '../../development/components/d3-bar-graph/d3-bar-graph.component';
 import { HtmlTableComponent } from '../../development/components/html-table/html-table.component';
-import { HighlightModule } from 'ngx-highlightjs';
 
 const routes: Routes = [
   {
@@ -63,7 +61,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), HighlightModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ComponentsRoutingModule {}
@@ -72,7 +70,6 @@ export const componentsComponents = [
   ComponentsWrapperComponent,
   TablePaginatedComponent,
   AccordionComponent,
-  // CategoryMenuComponent,
   CountdownComponent,
   DynamicSidebarComponent,
   DatePickerComponent,

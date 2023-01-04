@@ -11,15 +11,22 @@
       <app-footer></app-footer>
     </div>
   </div>
-  <div *ngIf="600 > width" id="mobile-menu" [ngClass]="{'show-mobile-nav':sidebarStatus}">
+  <div
+    *ngIf="600 > width"
+    id="mobile-menu"
+    [ngClass]="{ 'show-mobile-nav': sidebarStatus }"
+  >
     <nav (click)="closeMobileNav()">
       <div routerLink="/">Home</div>
-      <div routerLink="web-development-projects/front-end-development">Projects</div>
+      <div routerLink="web-development-projects/front-end-development">
+        Projects
+      </div>
       <div routerLink="ui-components/website-features">Components</div>
-      <div routerLink="web-application-development/learn-to-code">Development</div>
+      <div routerLink="web-application-development/learn-to-code">
+        Development
+      </div>
       <div routerLink="front-end-dev-resume">Experience</div>
       <div routerLink="front-end-developer">About</div>
-      <div (click)="navigateToContact()">Contact</div>
     </nav>
   </div>
 </div>
