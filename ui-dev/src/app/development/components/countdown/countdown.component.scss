@@ -46,3 +46,17 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  @import '../../../styles/colors.scss';
+
+  .count-down-timer {
+    .wrapper {
+      .times {
+        p {
+          font: normal 40px courier, sans-serif;
+        }
+      }
+    }
+  }
+}

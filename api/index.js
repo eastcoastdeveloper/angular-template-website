@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
+const helmet = require('helmet');
 const port = process.env.PORT || 8080;
 const projectData = require('./projects.json');
+
+app.use(helmet());
 
 // GET All Projects
 function paginatedResults(model) {
@@ -37,6 +40,7 @@ app.get('/api/category', categoryResults(projectData), (req, res) => {
   res.json(res.categoryResults);
 })
 
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+app.listen(port, (err) => {
+  if (err) { console.log(err); }
+  else { console.log(`listening on port ${port}`); }
 })

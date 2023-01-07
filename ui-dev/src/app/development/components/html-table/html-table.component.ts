@@ -9,7 +9,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 })
 export class HtmlTableComponent implements OnInit {
   typescript = `
-  // TypeScript
+  // JavaScript
   var headers = Array.from(document.querySelectorAll('.headers > div')),
       search = document.getElementById('search-field'),
       caret = document.querySelector('.caret'),

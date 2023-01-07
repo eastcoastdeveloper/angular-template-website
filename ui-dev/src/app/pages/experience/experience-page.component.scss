@@ -39,7 +39,6 @@
       margin-top: 10px;
       padding-left: 20px;
 
-
       li {
         span {
           font-weight: 100;
@@ -59,7 +58,7 @@
       }
 
       tr:nth-child(odd) {
-        background-color: rgba(0, 0, 0, .1);
+        background-color: rgba(0, 0, 0, 0.1);
 
         td:first-child {
           border-top-left-radius: 6px;
@@ -88,12 +87,6 @@
   }
 }
 
-@media screen and (max-width: 1050px) {
-  #experience-page {
-    margin: 10px 20px 20px 20px;
-  }
-}
-
 @media screen and (max-width: 675px) {
   #experience-page {
     .history-block {
@@ -104,7 +97,7 @@
     }
 
     .history-block:nth-child(odd) {
-      background-color: rgba(0, 0, 0, .1);
+      background-color: rgba(0, 0, 0, 0.1);
       padding: 10px;
       border-radius: 6px;
     }

@@ -37,13 +37,6 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
         this.accordionData.push(arr[i]);
       }
     });
-
-    this._projectListService.pageDataObjectSubject
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((val) => {
-        this.threeColumnLayout = val.threeColumnLayout;
-        this.cornerStone = val.cornerStone;
-      });
   }
 
   ngAfterViewChecked(): void {
@@ -52,5 +45,14 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
       .subscribe((val) => {
         this.windowWidth = val;
       });
+
+    // this._projectListService.pageDataObjectSubject
+    //   .pipe(takeUntil(this.unsubscribe$))
+    //   .subscribe((val) => {
+    //     this.threeColumnLayout = val.threeColumnLayout;
+    //     this.cornerStone = val.cornerStone;
+    //     console.log(this.threeColumnLayout);
+    //     console.log(this.cornerStone);
+    //   });
   }
 }

@@ -20,6 +20,7 @@
 
     .related-item {
       margin: 0 auto;
+      position: relative;
       outline: none;
       cursor: pointer;
       overflow: hidden;
@@ -28,8 +29,17 @@
       display: grid;
       grid-template-rows: 25px auto;
 
+      span {
+        width: 20px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        img {
+          width: 100%;
+        }
+      }
+
       .title {
-        margin-bottom: 4px;
         color: $greyBlack;
         background-color: $white;
         padding: 5px;
@@ -64,8 +74,7 @@
         .item-wrapper {
           img {
             display: block;
-            height: 100%;
-            width: 100%;
+            height: 120px;
           }
         }
       }
@@ -79,6 +88,14 @@
       grid-template-columns: repeat(2, calc(50% - 11px));
       grid-template-rows: repeat(2, 125px);
       grid-gap: 20px;
+      > div {
+        .item-wrapper {
+          img {
+            height: auto;
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

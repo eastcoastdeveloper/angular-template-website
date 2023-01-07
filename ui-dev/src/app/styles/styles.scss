@@ -28,6 +28,10 @@ a {
   color: $white;
 }
 
+.mb-5 {
+  margin-bottom: 5px;
+}
+
 .project-intro {
   overflow: hidden;
   border-radius: 6px;
@@ -77,7 +81,10 @@ a {
 .image-wrapper {
   border-radius: 4px;
   overflow: hidden;
-  margin: 20px 0 25px 0;
+  margin: 20px 0;
+  img {
+    width: 100%;
+  }
 }
 
 .screen-btn {
@@ -183,6 +190,16 @@ a {
       grid-template-columns: calc(100% - 360px) 300px;
       padding: 0 20px;
       grid-column-gap: 20px;
+      .right-column-cmp {
+        grid-template-columns: repeat(1, 100%);
+        grid-template-areas:
+          'social'
+          'signup'
+          'code';
+        .social-icons {
+          grid-template-columns: repeat(2, calc(50% - 10px)) !important;
+        }
+      }
     }
     .three-column-layout {
       width: calc(100% - 40px);
@@ -193,7 +210,6 @@ a {
       grid-template-columns: calc(100% - 265px) 240px;
       padding: 0 20px;
       grid-column-gap: 25px;
-      grid-row-gap: 25px;
       .left-column {
         margin-right: 0;
         width: 100%;
@@ -205,6 +221,9 @@ a {
         position: unset;
         width: 100%;
         margin: 0;
+      }
+      .social-three-column {
+        margin-bottom: 30px;
       }
     }
   }
@@ -222,6 +241,19 @@ a {
     grid-template-areas:
       'leftColumn'
       'rightColumn';
+
+    .right-column-cmp {
+      grid-template-columns: repeat(1, 50%);
+      grid-template-areas:
+        'social social'
+        'signup code';
+      .social-icons {
+        grid-template-columns: repeat(3, calc(33.3% - 13px)) !important;
+      }
+    }
+    .social-two-column {
+      margin: 45px 0 35px 0;
+    }
   }
 }
 
@@ -245,7 +277,6 @@ a {
       width: calc(100% - 40px);
       display: grid;
       padding: 0 20px;
-      grid-row-gap: 35px;
 
       .left-column {
         margin: 0 auto;
@@ -258,7 +289,11 @@ a {
         width: calc(100% - 60px);
         background-color: $oceanBlue;
         color: $white;
+        margin: 20px 0 35px 0;
         border-radius: 6px;
+      }
+      .social-three-column {
+        margin: 35px 0 15px 0;
       }
     }
   }
@@ -304,7 +339,7 @@ a {
   }
   .page-content {
     height: calc(100% - 95px);
-    margin: 60px 0 0 0;
+    margin: 40px 0 0 0;
   }
 
   .page-content .details {
@@ -354,6 +389,20 @@ a {
   }
   .show-mobile-close-btn {
     display: block !important;
+  }
+  .page-content {
+    .two-column-layout {
+      .right-column-cmp {
+        grid-template-areas:
+          'social'
+          'signup'
+          'code';
+        grid-template-columns: 100% !important;
+        .social-icons {
+          grid-template-columns: repeat(2, 50%) !important;
+        }
+      }
+    }
   }
 }
 

@@ -1,131 +1,131 @@
-<div class="rest-intro">
-  <div class="snippet-description">
-    REST Countries is a neat endpoint that provides the list of countries shown
-    in the selection pane. Additionally, it provides capital names, flag
-    imagery, population, native and region names. It also provides geographical
-    data. The geographical data is then coupled with Leaflet's mapping
-    abilities. The endpoints' additional data is shared with Leaflet on
-    click.<br /><br />&nbsp;<a href="https://leafletjs.com/" target="_blank"
-      >Leaflet</a
-    >
-    is an interactive mapping solution akin to Google Maps, but provides devs an
-    onslaught of options. And unlike Google Maps, there's no need for a Gmail
-    account and API key. Only caveat is Leaflet is a library that takes some
-    getting used to.<br /><br />
-    The below app extracts the
-    <a href="https://restcountries.com/" target="_blank">REST Countries</a>
-    country geographical output and sends it to Leaflet. In turn, we're able to
-    quickly cycle through the countries list, locating the central point of each
-    selection. The retrieved countries are however unordered so I added sort
-    functionality.<br /><br />
-    One challenge I did encounter was how to fit all the data in the UI, in
-    every screen size. There's simply so many items to display with little
-    screen real estate. Written in TypeScript.
+<div class="rest-wrapper">
+  <div class="rest-intro">
+    <div class="snippet-description">
+      REST Countries is a neat endpoint that provides the list of countries
+      shown in the selection pane. Additionally, it provides capital names, flag
+      imagery, population, native and region names. It also provides
+      geographical data. The geographical data is then coupled with Leaflet's
+      mapping abilities. The endpoints' additional data is shared with Leaflet
+      on click.<br /><br />&nbsp;<a
+        href="https://leafletjs.com/"
+        target="_blank"
+        >Leaflet</a
+      >
+      is an interactive mapping solution akin to Google Maps, but provides devs
+      an onslaught of options. And unlike Google Maps, there's no need for a
+      Gmail account and API key. Only caveat is Leaflet is a library that takes
+      some getting used to.<br /><br />
+      The below app extracts the
+      <a href="https://restcountries.com/" target="_blank">REST Countries</a>
+      country geographical output and sends it to Leaflet. In turn, we're able
+      to quickly cycle through the countries list, locating the central point of
+      each selection. The retrieved countries are however unordered so I added
+      sort functionality.<br /><br />
+      One challenge I did encounter was how to fit all the data in the UI, in
+      every screen size. There's simply so many items to display with little
+      screen real estate. Written in TypeScript.
+    </div>
   </div>
-</div>
 
-<div class="rest-countries element-shadow">
-  <img src="assets/projects-grid/rest-countries-L.jpg" />
-</div>
+  <div class="rest-countries element-shadow">
+    <img src="assets/projects-grid/rest-countries-L.jpg" />
+  </div>
 
-<div class="snippet-description item-margin">
-  rest-countries.model.ts
-  <ul>
-    <li>
-      This file declares the data we receive from the REST Countries endpoint.
-    </li>
-    <li>? marks define, optional. Followed by their data types.</li>
-    <li>
-      There's several TypeScript formats I've seen in developer environments,
-      but this is the format I chose for this project.
-    </li>
-  </ul>
-</div>
+  <div class="snippet-description item-margin">
+    rest-countries.model.ts
+    <ul>
+      <li>
+        This file declares the data we receive from the REST Countries endpoint.
+      </li>
+      <li>? marks define, optional. Followed by their data types.</li>
+      <li>
+        There's several TypeScript formats I've seen in developer environments,
+        but this is the format I chose for this project.
+      </li>
+    </ul>
+  </div>
 
-<div class="code-preview">
-  <pre>
-		    <code>{{model}}</code>
-	    </pre>
-</div>
+  <div class="code-preview">
+    <pre><code>{{model}}</code></pre>
+  </div>
 
-<div class="snippet-description item-margin">
-  app.component.ts
-  <ul>
-    <li>Notice the third and fourth Leaflet import statements.</li>
-    <li>
-      mapOptions sets the center point of the map once it loads. It also sets
-      the zoom degree and the type of tile layer.
-    </li>
-    <li>
-      countryName, capitalCity, nativeName, population, longitude, latitude, and
-      flag capture the endpoints keys.
-    </li>
-    <li>
-      countriesError is a boolean that's used in the event REST Countries fails.
-    </li>
-    <li>countriesData holds the full list of countries.</li>
-    <li>Below this.countriesData = data, the list is sorted alphabetically.</li>
-    <li>Map options are initialized via this.initializeMapOptions();</li>
-    <li>onMapReady is a Leaflet map method related to initialization.</li>
-    <li>selectItem is the countries click event.</li>
-    <li>setDetails updates the data in the countries popup.</li>
-    <li>formatNumber formats the population.</li>
-  </ul>
-</div>
-<div class="code-preview">
-  <pre>
-		    <code>{{typescript}}</code>
-	    </pre>
-</div>
+  <div class="snippet-description item-margin">
+    app.component.ts
+    <ul>
+      <li>Notice the third and fourth Leaflet import statements.</li>
+      <li>
+        mapOptions sets the center point of the map once it loads. It also sets
+        the zoom degree and the type of tile layer.
+      </li>
+      <li>
+        countryName, capitalCity, nativeName, population, longitude, latitude,
+        and flag capture the endpoints keys.
+      </li>
+      <li>
+        countriesError is a boolean that's used in the event REST Countries
+        fails.
+      </li>
+      <li>countriesData holds the full list of countries.</li>
+      <li>
+        Below this.countriesData = data, the list is sorted alphabetically.
+      </li>
+      <li>Map options are initialized via this.initializeMapOptions();</li>
+      <li>onMapReady is a Leaflet map method related to initialization.</li>
+      <li>selectItem is the countries click event.</li>
+      <li>setDetails updates the data in the countries popup.</li>
+      <li>formatNumber formats the population.</li>
+    </ul>
+  </div>
 
-<div class="snippet-description item-margin">
-  app.component.html
-  <ul>
-    <li>
-      Loop over the countries data while utilizing the index, as a param in the
-      neighboring event handler.
-    </li>
-    <li>The actual map is simply one line.</li>
-    <li>All that's left is the countries popup.</li>
-    <li>Followed by the UI error shall the endpoint become unavailable.</li>
-  </ul>
-</div>
-<div class="code-preview">
-  <pre>
-		<code>{{markup}}</code>
-	</pre>
-</div>
+  <div class="code-preview">
+    <pre><code>{{typescript}}</code></pre>
+  </div>
 
-<div class="snippet-description item-margin">app.component.scss</div>
-<div class="code-preview">
-  <pre>
-		    <code>{{scss}}</code>
-	    </pre>
-</div>
+  <div class="snippet-description item-margin">
+    app.component.html
+    <ul>
+      <li>
+        Loop over the countries data while utilizing the index, as a param in
+        the neighboring event handler.
+      </li>
+      <li>The actual map is simply one line.</li>
+      <li>All that's left is the countries popup.</li>
+      <li>Followed by the UI error shall the endpoint become unavailable.</li>
+    </ul>
+  </div>
 
-<div class="snippet-description item-margin">
-  app.module.ts
-  <ul>
-    <li>
-      Nearly everything here is pretty routine aside from the Leaflet import.
-    </li>
-  </ul>
-</div>
-<div class="code-preview">
-  <pre>
-		<code>{{module}}</code>
-	</pre>
-</div>
+  <div class="code-preview">
+    <pre><code>{{markup}}</code></pre>
+  </div>
 
-<br />
-<div class="snippet-description item-last-child">
-  There's literally endless options as to how something like this can be laid
-  out and made functional. Regardless, the ultimate goal was to create a
-  relatively simple rendition of two APIs playing well together. Check out the
-  REST Countries
-  <a
-    href="https://stackblitz.com/edit/rest-countries-leaflet-map?file=src%2Fapp%2Fapp.component.ts"
-    target="_blank"
-    >code sample here</a
-  >.
+  <div class="snippet-description item-margin">app.component.scss</div>
+
+  <div class="code-preview">
+    <pre><code>{{scss}}</code></pre>
+  </div>
+
+  <div class="snippet-description item-margin">
+    app.module.ts
+    <ul>
+      <li>
+        Nearly everything here is pretty routine aside from the Leaflet import.
+      </li>
+    </ul>
+  </div>
+
+  <div class="code-preview">
+    <pre><code>{{module}}</code></pre>
+  </div>
+
+  <div class="snippet-description">
+    There's literally endless options as to how something like this can be laid
+    out and made functional. Regardless, the ultimate goal was to create a
+    relatively simple rendition of two APIs playing well together. Check out the
+    REST Countries
+    <a
+      href="https://stackblitz.com/edit/rest-countries-leaflet-map?file=src%2Fapp%2Fapp.component.ts"
+      target="_blank"
+      >code sample here</a
+    >.
+  </div>
 </div>

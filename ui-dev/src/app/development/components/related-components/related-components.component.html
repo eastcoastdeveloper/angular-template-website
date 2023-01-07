@@ -1,6 +1,6 @@
 <div class="related-items">
   <div class="category-wrapper">
-    <p>Related Items</p>
+    <p *ngIf="windowWidth! > 992">Related Items</p>
     <div
       *ngFor="let item of dataArray.slice(0, 4)"
       class="element-shadow related-item"
@@ -18,6 +18,9 @@
         </div>
       </div>
       <a *ngIf="!item.internal" href="{{ item.path }}" target="_blank">
+        <span>
+          <img src="../../../../assets/img/new-tab.png" />
+        </span>
         <div class="title">
           {{
             item.title.length > 25

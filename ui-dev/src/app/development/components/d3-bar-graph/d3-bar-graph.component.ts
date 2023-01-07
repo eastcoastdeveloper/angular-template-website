@@ -34,7 +34,8 @@ export class D3BarGraphComponent implements OnInit {
   }
 
   renderCode() {
-    this.markup = `#graph-wrapper {
+    this.markup = `
+#graph-wrapper {
   min-height: 300px;
   max-width: 750px;
   margin: 0 auto;
@@ -51,15 +52,16 @@ line { display: none;    }
     <svg></svg>
 </div>`;
 
-    this.javascript = `var parentDiv = document.getElementById('graph-wrapper'),
-  svg = d3.select('svg'),
-  svgWidth = parentDiv.offsetWidth,
-  svgHeight = parentDiv.offsetHeight,
-  margin = { top: 20, right: 30, bottom: 30, left: 60 },
-  innerWidth = svgWidth - margin.left - margin.right,
-  innerHeight = svgHeight - margin.top - margin.bottom,
-  colors = ['#D65076', '#45B8AC', '#EFC050', '#5B5EA6', '#9B2335'],
-  aspect = svgWidth / svgHeight;
+    this.javascript = `
+var parentDiv = document.getElementById('graph-wrapper'),
+    svg = d3.select('svg'),
+    svgWidth = parentDiv.offsetWidth,
+    svgHeight = parentDiv.offsetHeight,
+    margin = { top: 20, right: 30, bottom: 30, left: 60 },
+    innerWidth = svgWidth - margin.left - margin.right,
+    innerHeight = svgHeight - margin.top - margin.bottom,
+    colors = ['#D65076', '#45B8AC', '#EFC050', '#5B5EA6', '#9B2335'],
+    aspect = svgWidth / svgHeight;
 
 function renderData(data) {
   var xScale = d3
