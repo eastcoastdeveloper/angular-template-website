@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { CodeSamplesInterface } from 'src/app/interfaces/code-samples.interface';
-import { ProjectListService } from 'src/app/services/project-list.service';
 import { WindowWidthService } from 'src/app/services/window-width.service';
 
 @Component({
@@ -24,9 +23,15 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
   cornerStone?: boolean;
   windowWidth?: number;
 
+  stackblitz: string = '../../../assets/img/logo_stackblitz.png';
+  flickr: string = '../../../assets/img/logo_flickr.png';
+  git: string = '../../../assets/img/logo_git.png';
+  codepen: string = '../../../assets/img/logo_codepen.png';
+  instagram: string = '../../../assets/img/logo_instagram.png';
+  fredrickJaxx: string = '../../../assets/img/logo_FJ.png';
+
   constructor(
     private _http: HttpClient,
-    private _projectListService: ProjectListService,
     private _windowWidthService: WindowWidthService
   ) {}
 
@@ -45,14 +50,5 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
       .subscribe((val) => {
         this.windowWidth = val;
       });
-
-    // this._projectListService.pageDataObjectSubject
-    //   .pipe(takeUntil(this.unsubscribe$))
-    //   .subscribe((val) => {
-    //     this.threeColumnLayout = val.threeColumnLayout;
-    //     this.cornerStone = val.cornerStone;
-    //     console.log(this.threeColumnLayout);
-    //     console.log(this.cornerStone);
-    //   });
   }
 }

@@ -64,6 +64,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.currentRoute = data.url;
         this._sidebarService.changeRoute(this.currentRoute);
         this._scrollToTop.scrollToTop();
+        this._sidebarService.changeValue(false);
       }
     });
   }
@@ -87,7 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.height = event.target.innerHeight;
     this.isMobile = this.width < this.mobileWidth;
     this._windowService.changeValue(this.width);
-    this._sidebarService.changeValue(false);
+    this.width > 605 ? this._sidebarService.changeValue(false) : '';
   }
 
   ngOnDestroy() {

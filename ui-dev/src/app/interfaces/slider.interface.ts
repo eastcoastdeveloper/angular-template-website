@@ -4,4 +4,5 @@ export class SliderInterface {
   status: boolean;
   url: string;
   link: string;
+  altText: string;
 }

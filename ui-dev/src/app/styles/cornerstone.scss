@@ -34,7 +34,7 @@
     outline: none;
   }
 
-  h2 {
+  h1 {
     font: bold 1.15em sans-serif;
     margin-bottom: 10px;
     color: $greyBlack;
@@ -50,13 +50,13 @@
 
 @media screen and (max-width: 1200px) {
   .cornerstone {
-    margin-bottom: 30px;
+    margin-bottom: 45px;
   }
 }
 
 @media screen and (max-width: 1150px) {
   .cornerstone {
-    h2 {
+    h1 {
       font-size: 1.095em;
     }
   }
@@ -72,7 +72,7 @@
       max-width: 80%;
     }
 
-    h2 {
+    h1 {
       font-size: 1em;
       padding: 0;
     }

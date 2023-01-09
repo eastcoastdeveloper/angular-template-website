@@ -103,9 +103,15 @@
   }
 }
 
-@media screen and (max-width: 750px) {
-  #module-name {
-    margin: 10px;
+@media screen and (max-width: 1300px) {
+  .in-page-project-descr {
+    margin-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .in-page-project-descr {
+    margin-bottom: 5px;
   }
 }
 

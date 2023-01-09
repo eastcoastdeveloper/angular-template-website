@@ -87,6 +87,12 @@
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .left-column {
+    margin-bottom: 45px;
+  }
+}
+
 @media screen and (max-width: 675px) {
   #experience-page {
     .history-block {

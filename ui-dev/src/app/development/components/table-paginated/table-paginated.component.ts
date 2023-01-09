@@ -13,7 +13,7 @@ export class TablePaginatedComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Data Table',
     publishedOn: 'Aug 1, 2022',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-data-table',
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-8-table-pagination',

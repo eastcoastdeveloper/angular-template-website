@@ -11,12 +11,12 @@ import { ScrollToTopService } from 'src/app/services/scroll-to-top.service';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  currentUrl!: string;
+  unsubscribe$: Subject<boolean> = new Subject<boolean>();
   menuOpen: boolean = false;
   sidebarStatus!: boolean;
+  currentUrl!: string;
   screenSize!: number;
   currentFilter: any;
-  unsubscribe$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private _scrollToTopService: ScrollToTopService,
@@ -27,11 +27,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.sideBarService.urlVal$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((currentVal) => {
-        this.currentUrl = currentVal;
-      });
     this.windowWidth.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => (this.screenSize = currentVal));
@@ -42,13 +37,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.sidebarStatus = currentVal;
       });
   }
-
-  // externalClick() {
-  //   this.devMenu.closeMenu();
-  //   if (this._router.url.includes("nasa")) {
-  //     this.nasaSearchService.changeDatePickerVal(false);
-  //   }
-  // }
 
   toggleMobileNav() {
     this.sidebarStatus = !this.sidebarStatus;

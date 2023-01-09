@@ -18,7 +18,7 @@ export class CountdownComponent implements OnInit, AfterViewInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Countdown Timer',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-countdown-timer',
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-countdown-timer-component',
@@ -79,7 +79,7 @@ export class CountdownComponent implements OnInit, AfterViewInit {
       this.difference = this.difference / (1000 * 60 * 60 * 24);
       !isNaN(this.days.nativeElement.innerText)
         ? (this.days.nativeElement.innerText = Math.floor(this.difference))
-        : (this.days.nativeElement.innerHTML = `<img src="https://i.gifer.com/VAyR.gif" />`);
+        : (this.days.nativeElement.innerHTML = `<span class="days-loading">loading</span>`);
     }, 1000);
   }
 

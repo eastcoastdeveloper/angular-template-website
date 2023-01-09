@@ -1,183 +1,73 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
 
 @Component({
   selector: 'app-website-examples',
   templateUrl: './website-examples.component.html',
   styleUrls: ['./website-examples.component.scss']
 })
-export class WebsiteExamplesComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
+export class WebsiteExamplesComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Website Examples',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: '',
     repoLink: '',
     category: '',
     views: 0,
-    forks: 0
+    forks: 0,
+    threeColumnLayout: true,
+    cornerStone: true
   };
 
-  @ViewChild('description') description!: ElementRef;
-  @ViewChild('projectLink') projectLink!: ElementRef;
-  @ViewChild('mainImage') mainImage!: ElementRef;
-  @ViewChild('thumbs') thumbs!: ElementRef;
+  conseqtaSampleFour: string =
+    '../../../assets/projects-grid/conseqta-sample-4.png';
 
-  buttonArray: string[] = ['Software Co.', 'Finance App'];
-  activeGallery: string = this.buttonArray[0];
-  winWidthSubscription: Subscription = new Subscription();
-  currentIndex: number = 0;
-  windowWidth!: number;
+  conseqtaSampleThree: string =
+    '../../../assets/projects-grid/conseqta-sample-3.jpg';
 
-  softwareCoArray: any = [
-    {
-      image: '../../../assets/projects-grid/website-examples.jpg',
-      description:
-        "Fully responsive website I developed based on provided designs. Though the UI's built with native JS, it functions like a SPA via partials. Partical animation is pure JS canvas—no libraries.",
-      url: 'https://www.conseqta.com/'
-    },
-    {
-      image: '../../../assets/projects-grid/conseqta-sample-1.jpg',
-      description:
-        'An image gallery on desktop turned accordion on mobile. I created it to take JSON data and is reusable like a web component.',
-      url: 'https://www.conseqta.com/'
-    },
-    {
-      image: '../../../assets/projects-grid/conseqta-sample-2.jpg',
-      description:
-        "An onslaught of text and images that're vastly transformed between desktop and mobile.",
-      url: 'https://www.conseqta.com/'
-    },
-    {
-      image: '../../../assets/projects-grid/conseqta-sample-3.jpg',
-      description:
-        "I developed this responsive, JSON powered, auto playing gallery of image galleries to showcase the company's products.",
-      url: 'https://www.conseqta.com/'
-    }
+  conseqtaSampleTwo: string =
+    '../../../assets/projects-grid/conseqta-sample-2.jpg';
+
+  findashSampleOne: string = '../../../assets/projects-grid/findash-1.jpg';
+  findashSampleTwo: string = '../../../assets/projects-grid/findash-2.jpg';
+  findashSampleThree: string = '../../../assets/projects-grid/findash-3.jpg';
+  techblog: string = '../../../assets/projects-grid/tech-blog.jpg';
+
+  images = [
+    this.conseqtaSampleFour,
+    this.conseqtaSampleThree,
+    this.conseqtaSampleTwo,
+    this.findashSampleOne,
+    this.findashSampleTwo,
+    this.findashSampleThree,
+    this.techblog
   ];
+  loadedItems: number = 0;
 
-  finDashArray: any = [
-    {
-      image: '../../../assets/projects-grid/findash-1.jpg',
-      description:
-        'I was the Sr. Developer on this massive Angular application. This slide shows JSON graph components sharing data, and controlled with the date selectors above. Below is a filterable, JSON, paginatined table. Modify the table by the filter icon by hiding/showing rows and/or dragging to reorder the table column sequence.',
-      url: 'https://conseqta-financial-dashboard-web.conseqta.io/'
-    },
-    {
-      image: '../../../assets/projects-grid/findash-2.jpg',
-      description:
-        'A date range component I developed. Accessible by clicking the filter, then the date range in the popup.',
-      url: 'https://conseqta-financial-dashboard-web.conseqta.io/vendor-main-landing'
-    },
-    {
-      image: '../../../assets/projects-grid/findash-3.jpg',
-      description:
-        "This is the sass product home UI displaying mock data of a company's budget at a glance. Select 1W, 1M, 3M, or 1 year to get relative budget analysis, entirely or categorically. Category (Commitments, Obligations, and Expenditures) links lead to a more in depth analysis. Filter paginated table data, adjust table view settings, and view additional graphical data in the bottom left.",
-      url: 'https://conseqta-financial-dashboard-web.conseqta.io/'
-    },
-    {
-      image: '../../../assets/projects-grid/findash-4.jpg',
-      description:
-        'An up close view of the table filter component used on a variety of pages throughout the app.',
-      url: 'https://conseqta-financial-dashboard-web.conseqta.io/'
-    },
-    {
-      image: '../../../assets/projects-grid/findash-5.jpg',
-      description:
-        'Site wide, filterable search UI set up to connect to a backend.',
-      url: 'https://conseqta-financial-dashboard-web.conseqta.io/search'
-    },
-    {
-      image: '../../../assets/projects-grid/findash-6.jpg',
-      description:
-        'Check out one of the many sidebars accessible by clicking the info icon (i) in the top right.',
-      url: 'https://conseqta-financial-dashboard-web.conseqta.io/vendor-contract-details'
+  loadImages() {
+    for (let i = 0; i < this.images.length; i++) {
+      let img = new Image();
+      img.onload = () => {
+        this.loaded(this.images[i]);
+      };
+      img.src = this.images[i];
     }
-  ];
+  }
 
-  dataArray: any[] = this.softwareCoArray;
+  loaded(img: string) {
+    this.loadedItems++;
+    console.log(this.loadedItems);
+    if (this.images.length == this.loadedItems) {
+    }
+  }
 
-  constructor(
-    private _windowWidthService: WindowWidthService,
-    private _projectListService: ProjectListService
-  ) {}
+  constructor(private _projectListService: ProjectListService) {}
 
   ngOnInit(): void {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
-
-    this.winWidthSubscription =
-      this._windowWidthService.currentWidth$.subscribe((val) => {
-        this.windowWidth = val;
-      });
-  }
-
-  ngAfterViewInit(): void {
-    this.description.nativeElement.innerHTML = this.dataArray[0].description;
-
-    if (this.windowWidth > 950) {
-      this.thumbs.nativeElement.style =
-        'grid-template-rows: repeat(' + this.dataArray.length + ', 100px)';
-    }
-  }
-
-  activeSite(evt: any) {
-    this.activeGallery = evt.target.innerText;
-    if (this.activeGallery === 'Software Co.')
-      this.dataArray = this.softwareCoArray.slice();
-    if (this.activeGallery === 'Finance App')
-      this.dataArray = this.finDashArray.slice();
-    this.changeSlideText(0);
-  }
-
-  changeMainImg(index: number) {
-    this.currentIndex = index;
-    this.mainImage.nativeElement.src = this.dataArray[index].image;
-    this.changeSlideText(index);
-    this.changeProjectLink(index);
-  }
-
-  changeSlideText(index: number) {
-    this.description.nativeElement.innerHTML =
-      this.dataArray[index].description;
-    this.changeProjectLink(index);
-  }
-
-  changeProjectLink(index: number) {
-    this.currentIndex = index;
-    this.projectLink.nativeElement.setAttribute(
-      'href',
-      this.dataArray[index].url
-    );
-  }
-
-  nextSlide() {
-    this.currentIndex >= this.dataArray.length - 1
-      ? (this.currentIndex = 0)
-      : this.currentIndex++;
-    this.changeMainImg(this.currentIndex);
-  }
-
-  previousSlide() {
-    this.currentIndex === 0
-      ? (this.currentIndex = this.dataArray.length - 1)
-      : this.currentIndex--;
-    this.changeMainImg(this.currentIndex);
-  }
-
-  ngOnDestroy(): void {
-    this.winWidthSubscription.unsubscribe();
+    this.loadImages();
   }
 }

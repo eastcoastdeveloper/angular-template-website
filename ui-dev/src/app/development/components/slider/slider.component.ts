@@ -23,7 +23,7 @@ export class SliderComponent implements OnInit, OnDestroy {
   pageDataObject: PageDataObject = {
     title: 'Angular Slider',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-slider',
     repoLink: 'https://github.com/eastcoastdeveloper/angular-basic-carousel',
     category: 'components',

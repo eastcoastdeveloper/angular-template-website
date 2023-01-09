@@ -1,34 +1,150 @@
-<div id="product-gallery">
-  <div class="gallery-nav">
-    <span
-      class="standard-btn"
-      *ngFor="let btn of buttonArray"
-      (click)="activeSite($event)"
-      [ngClass]="{ 'is-active': activeGallery === btn }"
-      >{{ btn }}</span
-    >
-  </div>
-  <div #websiteExamples class="gallery">
-    <div class="main-image">
-      <img #mainImage src="{{ dataArray[0].image }}" />
-      <div class="project-description">
-        <p #description></p>
-        <a #projectLink target="_blank" class="standard-btn is-active"
-          >&#x2192; View Features</a
-        >
-      </div>
+<div id="website-examples">
+  <div class="project">
+    <div class="site-details">
+      <h2>Conseqta.com</h2>
+      <a href="https://www.conseqta.com/" target="_blank">visit site</a>
     </div>
-    <div #thumbs class="thumbs" *ngIf="windowWidth > 950">
-      <div
-        *ngFor="let img of dataArray; let i = index"
-        (click)="changeMainImg(i)"
+    <span>Software Company</span>
+
+    <p class="site-description">
+      I build this site in full based on provided mocks. Though developed with
+      native HTML5, CSS, and JS, it functions like a single page app. Every page
+      uses numerous web components that persist or populate new data. At the
+      time of deployment, it scored a 100% on a Google Speed Test. Highlights
+      include an image gallery template that detects the page and populates the
+      appropriate JSON data. I built a canvas particle animation on the home
+      page followed by a product gallery which is a gallery of galleries. The
+      website does not use libraries, packages or frameworks. As with most apps
+      I develop, this too has a custom rigorous responsive system. A notable
+      feature among my website examples.
+    </p>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
+      </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Digital transformation engineered for the future with a green animated reactor taking particles."
+        [src]="conseqtaSampleFour"
+      />
+    </div>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
+      </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Product image gallery showcasing company features, services, and products."
+        [src]="conseqtaSampleThree"
+      />
+    </div>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
+      </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Apache Kafka cluster monitoring showing graphs monitoring API status."
+        [src]="conseqtaSampleTwo"
+      />
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="site-details">
+      <h2>Financial Dashboard</h2>
+      <a
+        href="https://conseqta-financial-dashboard-web.conseqta.io/"
+        target="_blank"
+        >visit site</a
       >
-        <img src="{{ img.image }}" />
+    </div>
+    <span>SaaS Product</span>
+
+    <p class="site-description">
+      I was the lead Angular developer on this massive app. It utilizes a
+      tremendous amount of chart and UI components. With the help of an
+      abundance of RxJS methods, data is loaded and shared in a variety of ways.
+      Highlights include a calendar component akin to Google Flights with start
+      and end dates. The top tier navigation radically transforms itself in
+      addition to every layout between screen sizes. The app is extremely
+      frontend heavy with over a dozen streams of JSON data. I managed the app
+      while training two other developers. Guiding and rewriting their code
+      throughout the process.
+    </p>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
       </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Analytical user interface with line and doughnut graph, a paginated data table and dropdowns"
+        [src]="findashSampleOne"
+      />
+    </div>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
+      </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Date range calendar with analytical interface in the background."
+        [src]="findashSampleTwo"
+      />
+    </div>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
+      </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Company departments represented by line graph with a doughnut chart and table for department spending."
+        [src]="findashSampleThree"
+      />
     </div>
   </div>
-  <div class="mobile-navigation" *ngIf="windowWidth < 951">
-    <div class="previous" (click)="previousSlide()">&larr;</div>
-    <div class="next" (click)="nextSlide()">&rarr;</div>
+
+  <div class="project">
+    <div class="site-details">
+      <h2>FredrickJaxx.is</h2>
+      <a href="https://fredrickjaxx.is/" target="_blank">visit site</a>
+    </div>
+    <span>Tech Blog</span>
+
+    <p class="site-description">
+      After years of developing a keen interest in data, AI, security, and
+      modern technologies, I began writing about it. Each post is 1800 - 2500
+      words. I monitor security through a variety of methods. This Wordpress
+      blog contains a growing number of posts I've written on the modern tech
+      age. I've modified the template and plugins. Optimized numerous segments
+      in a variety of ways and continue working on thereof. It's allowed me to
+      learn about AI, privacy, and security, while fulfilling my love of reading
+      and writing. Unique among website examples due to extensive research.
+    </p>
+
+    <div class="img-wrapper element-shadow">
+      <div *ngIf="images.length !== loadedItems" class="img-loading">
+        <span>Loading...</span>
+      </div>
+      <img
+        *ngIf="images.length == loadedItems"
+        alt="Online privacy browsers post heading with browser icons. Showing top half of page."
+        [src]="techblog"
+      />
+    </div>
   </div>
+  <p class="availability">
+    Check back in the near future as this list will undoubtedly grow. In fact,
+    I'm currently developing a MEAN stack site with a login, permissions, and
+    commenting abilities. If you're currently in need of an app (small or
+    large), please do not hesitate to reach out and inquire. Additionally,
+    frontenddevelopment.tech can of course be added to this list of website
+    examples.
+  </p>
 </div>

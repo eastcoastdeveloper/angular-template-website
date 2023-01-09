@@ -13,7 +13,7 @@ export class DynamicSidebarComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'Angular Dynamic Sidebar',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-dynamic-sidebar',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar',
     category: '',

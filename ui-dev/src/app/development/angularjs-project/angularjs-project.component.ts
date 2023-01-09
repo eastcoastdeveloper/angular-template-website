@@ -11,7 +11,7 @@ export class AngularjsProjectComponent implements OnInit {
   pageDataObject: PageDataObject = {
     title: 'AngularJS Project',
     publishedOn: 'Oct 16, 2017',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: 'angularjs-project',
     repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
     category: '',

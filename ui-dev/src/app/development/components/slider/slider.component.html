@@ -19,7 +19,11 @@
             class="showcased-book"
           >
             <div *ngIf="item.status">
-              <img src="{{ item.url }}" class="element-shadow" />
+              <img
+                src="{{ item.url }}"
+                class="element-shadow"
+                alt="{{ item.altText }}"
+              />
               <a
                 href="{{ item.link }}"
                 target="_blank"

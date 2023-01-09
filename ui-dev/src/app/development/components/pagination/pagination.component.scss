@@ -2,7 +2,7 @@
 
 .pagination {
   position: relative;
-  margin: 40px 0 30px 0;
+  margin: 45px 0 30px 0;
   height: 24px;
 
   .selections {
@@ -93,20 +93,8 @@
   }
 }
 
-// @media screen and (max-width: 1200px) {
-//   .pagination {
-//     margin: 40px 0 5px 0;
-//   }
-// }
-
-// @media screen and (max-width: 992px) {
-//   .pagination {
-//     margin: 50px 0 20px 0;
-//   }
-// }
-
-// @media screen and (max-width: 450px) {
-//   .pagination {
-//     margin: 55px 0 25px 0;
-//   }
-// }
+@media screen and (max-width: 1200px) {
+  .pagination {
+    margin: 45px 0 60px 0;
+  }
+}

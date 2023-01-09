@@ -12,22 +12,44 @@
 #header {
   position: fixed;
   top: 0;
-  background-color: #313b3f;
+  background-color: $greyBlack;
   z-index: 9999;
   transition: all 0.3s;
 }
 
 #content {
-  background-color: #ffffff;
+  background-color: $white;
   margin-top: 70px;
+  .router-wrapper {
+    overflow: auto;
+  }
 }
 
-.router-wrapper {
-  overflow: auto;
-}
-
-@media screen and (max-width:605px) {
-  #mobile-menu {
-    height: calc(100% - 51px);
+#mobile-menu {
+  background-color: $greyBlack;
+  left: calc(-100% - 15px);
+  transition: left 0.2s;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  nav {
+    font: normal 20px sans-serif;
+    color: $white;
+    margin: 10px 0 0 20px;
+    line-height: 35px;
+    padding-top: 40px;
+    ul {
+      list-style-type: none;
+      li {
+        outline: none;
+        cursor: pointer;
+      }
+    }
+    > div {
+      outline: none;
+      cursor: pointer;
+    }
   }
 }

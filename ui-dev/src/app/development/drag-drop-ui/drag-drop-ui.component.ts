@@ -17,14 +17,14 @@ export class DragDropUiComponent {
   pageDataObject: PageDataObject = {
     title: 'JavaScript Drag and Drop',
     publishedOn: 'Oct 1, 2022',
-    updatedOn: 'Jan 5, 2023',
+    updatedOn: 'Jan 10, 2023',
     repoTitle: 'javascript-drag-and-drop',
     repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
     category: 'projects',
     views: 219,
     forks: 3,
     cornerStone: true,
-    threeColumnLayout: false
+    threeColumnLayout: true
   };
 
   protected markup: string;

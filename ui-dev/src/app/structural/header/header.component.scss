@@ -1,6 +1,9 @@
+@import '../../styles/colors.scss';
+
 .app-header {
+  position: relative;
   height: 70px;
-  h2 {
+  .site-header {
     color: #d9a74a;
     margin: 0;
     font: bold 30px sans-serif;
@@ -12,8 +15,9 @@
     position: absolute;
     top: 34px;
   }
-  h2 + span {
+  .site-header + span {
     color: #d9a74a;
+    position: absolute;
     font: normal 18px sans-serif;
     text-transform: uppercase;
     font-style: italic;
@@ -22,6 +26,7 @@
   }
   nav {
     float: right;
+    position: relative;
     transform: translateY(-50%);
     top: 50%;
     display: grid;
@@ -29,6 +34,20 @@
     font: normal 14px sans-serif;
     grid-column-gap: 20px;
     margin-right: 20px;
+    .mock-link {
+      cursor: pointer;
+      outline: none;
+
+      span {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        font-size: 15px;
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
   .url {
     float: left;
@@ -41,6 +60,7 @@
   }
   .logo {
     width: 100px;
+    position: relative;
     margin-left: 10px;
     top: 50%;
     transition: transform 0.3s;
@@ -50,47 +70,29 @@
     float: left;
     display: none;
   }
-}
-
-.app-header,
-.app-header nav,
-.app-header nav #dropdown-component,
-.app-header nav .mock-link span,
-.app-header nav .mock-link a,
-.app-header .logo,
-.app-header .url {
-  position: relative;
-}
-
-.app-header nav #dropdown-component .menu-wrapper,
-.app-header h2,
-.app-header h2 + span {
-  position: absolute;
-}
-
-.app-header nav .mock-link {
-  cursor: pointer;
-  outline: none;
-}
-
-.app-header nav .mock-link span,
-.app-header nav .mock-link a {
-  top: 50%;
-  transform: translateY(-50%);
-  display: block;
-  font-size: 15px;
-  color: white;
-  text-decoration: none;
-}
-
-.mobile-title {
-  color: #d9a74a;
-  font: normal 20px sans-serif;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px;
-  display: none;
-  position: absolute;
+  .mobile-menu-icon {
+    position: absolute;
+    cursor: pointer;
+    color: $white;
+    left: 10px;
+    .menu-open {
+      font-size: 40px;
+    }
+    .menu-close {
+      font-size: 26px;
+      transform: translate(8px, 11px);
+      display: block;
+    }
+  }
+  .mobile-title {
+    color: #d9a74a;
+    font: normal 20px sans-serif;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    display: none;
+    position: absolute;
+  }
 }
 
 @media only screen and (max-width: 1150px) {
@@ -115,13 +117,11 @@
 }
 
 @media only screen and (max-width: 605px) {
-  .app-header .logo {
-    width: 75px;
-    margin-left: 60px;
-    transform: translateY(-46%);
-  }
-
-  .app-header nav {
-    display: none;
+  .app-header {
+    .logo {
+      width: 75px;
+      margin-left: 60px;
+      transform: translateY(-46%);
+    }
   }
 }
