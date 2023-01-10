@@ -39,11 +39,8 @@ export class TablePaginatedComponent implements OnInit {
     this._projectListService.changePageDataObject(this.pageDataObject);
 
     // Only Call if Not Cached
-    this._http.get('./assets/json/table-paginated.json').subscribe((res) => {
-      let arr = Object.values(res)[0];
-      for (let i = 0; i < arr.length; i++) {
-        this.cars.push(arr[i]);
-      }
+    this._http.get<CarsInterface[]>(`/api/table-paginated`).subscribe((res) => {
+      this.cars = res;
       this.masterArray = this.cars.slice();
     });
   }

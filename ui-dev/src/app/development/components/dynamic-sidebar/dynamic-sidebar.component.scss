@@ -46,7 +46,7 @@
         right: 10px;
         color: white;
         font-size: 10px;
-        transform: translateY(-50%);
+        transform: translateY(-50%) rotate(-90deg);
       }
     }
 
@@ -88,5 +88,5 @@
 }
 
 .rotate-caret {
-  transform: translateY(-50%) rotate(90deg) !important;
+  transform: translateY(-50%) rotate(0deg) !important;
 }

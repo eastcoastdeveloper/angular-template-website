@@ -8,6 +8,7 @@ app.use(helmet());
 
 
 
+app.use('/api/table-paginated', require('./routes/table-paginated'));
 app.use('/api/dynamic-sidebar-component', require('./routes/dynamic-sidebar'));
 app.use('/api/slider-component', require('./routes/slider'));
 app.use('/api/accordion-component', require('./routes/accordion'));
