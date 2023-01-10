@@ -24,91 +24,134 @@ export class DynamicSidebarComponent implements OnInit {
   };
 
   result: SidebarInterface[] = [];
+  expandAll: boolean = false;
   markup: string = `
-<div id="sidebar" class="dark-blue-bg">
-  <div class="group" *ngFor="let item of result; let i = index">
-    <a *ngIf="item.submenu.length" (click)="ddToggle(i)" class="light-blue-bg">
-        {{ item.linkText }}
-      </a>
-    <a
-      *ngIf="!item.submenu.length"
-      (click)="ddToggle(i)"
-      routerLink="{{ item.parentLink }}"
-      class="light-blue-bg">
-      {{ item.linkText }}
-    </a>
-    <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
-      <ul *ngFor="let menu of result[i].submenu">
-        <li>
-          <a href="{{ menu.link }}" target="_blank">{{ menu.childtext }}</a>
-        </li>
-      </ul>
+  <div id="dynamic-sidebar">
+  <span class="expand-all" (click)="toggleAll()">{{
+    !expandAll ? 'Expand All' : 'Close All'
+  }}</span>
+  <div class="wrapper element-shadow">
+    <div class="group" *ngFor="let item of result; let i = index">
+      <a
+        *ngIf="item.submenu.length"
+        (click)="ddToggle(i)"
+        class="light-blue-bg"
+        >{{ item.linkText }}</a
+      >
+      <a
+        *ngIf="!item.submenu.length"
+        (click)="ddToggle(i)"
+        class="light-blue-bg"
+        >{{ item.linkText }}</a
+      >
+      <div
+        *ngIf="item.submenu.length"
+        class="caret"
+        [ngClass]="{ 'rotate-caret': item.menu }"
+      >
+        &#x25B6;
+      </div>
+      <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
+        <ul *ngFor="let menu of result[i].submenu">
+          <li>
+            <a>{{ menu.childtext }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-  <div class="right-border"></div>
 </div>`;
 
   scss: string = `
-  #sidebar {
-    height: 100%;
+  #dynamic-sidebar {
     font: normal 11pt sans-serif;
-    padding-top: 50px;
     box-sizing: border-box;
     position: relative;
-
-    .group {
-      border-bottom: 1px solid black;
-      overflow: hidden;
-
-      > a {
-        color: white;
-        padding: 7px 0 6px 20px;
-        display: block;
-        cursor: pointer;
-      }
+  
+    .expand-all {
+      font-size: 12px;
+      text-align: right;
+      display: block;
+      margin-bottom: 5px;
+      margin-right: 15px;
+      cursor: pointer;
     }
-
-    .sub-menu {
-      transition: max-height 0.5s;
-      max-height: 0;
-
-      ul {
-        margin: 0;
-        padding: 0;
+  
+    .wrapper {
+      border-radius: 6px;
+      > div:first-child {
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
       }
-
-      li {
-        list-style-type: none;
-        background-color: #161a26;
-        font: normal 10pt sans-serif;
-        line-height: 19px;
-        letter-spacing: 0.1pt;
-
-        a {
-          color: white;
+  
+      > div:last-child {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+  
+      .group {
+        border-bottom: 1px solid $greyBlack;
+        overflow: hidden;
+        position: relative;
+  
+        > a {
+          color: $white;
           padding: 7px 0 6px 20px;
-          text-decoration: none;
-          cursor: pointer;
           display: block;
+          cursor: pointer;
+          background-color: $oceanBlue;
         }
-
-        &:hover {
-          background-color: #03658c;
-          color: #ffffff;
+  
+        .caret {
+          position: absolute;
+          transition: transform ease-out 0.2s;
+          top: 15px;
+          right: 10px;
+          color: white;
+          font-size: 10px;
+          transform: translateY(-50%);
+        }
+      }
+  
+      .sub-menu {
+        transition: max-height 0.2s;
+        max-height: 0;
+  
+        ul {
+          margin: 0;
+          padding: 0;
+        }
+  
+        li {
+          list-style-type: none;
+          background-color: $greyBlack;
+          font: normal 10pt sans-serif;
+          line-height: 19px;
+          letter-spacing: 0.1pt;
+  
+          a {
+            color: $white;
+            padding: 7px 0 6px 20px;
+            text-decoration: none;
+            cursor: pointer;
+            display: block;
+          }
+  
+          &:hover {
+            background-color: $oceanBlue;
+            color: $white;
+          }
         }
       }
     }
   }
   
-  .show-menu { max-height: 1000px !important; }
-
-  .right-border {
-    background-color: #03658c;
-    position: absolute;
-    width: 1px;
-    height: calc(100% - 50px);
-    right: 0;
-    top: 50px;
+  .show-menu {
+    max-height: 1000px !important;
+  }
+  
+  .rotate-caret {
+    transform: translateY(-50%) rotate(90deg) !important;
   }`;
 
   model: string = `
@@ -131,6 +174,7 @@ export class DynamicSidebarComponent implements OnInit {
   })
   export class SidebarComponent {
     result: SidebarModel[] = [];
+    expandAll: boolean = false;
     constructor(private _http: HttpClient) {
       this._http.get<SidebarModel[]>(
         'assets/sidebar.json').subscribe((res) => {
@@ -140,6 +184,13 @@ export class DynamicSidebarComponent implements OnInit {
   
     ddToggle(i: number) {
       this.result[i].menu = !this.result[i].menu;
+    }
+
+    toggleAll() {
+      this.expandAll = !this.expandAll;
+      for (var i = 0; i < this.result.length; i++) {
+        this.result[i].menu = this.expandAll;
+      }
     }
   }`;
 
@@ -194,15 +245,21 @@ export class DynamicSidebarComponent implements OnInit {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
-    this._http.get('./assets/json/dynamic-sidebar.json').subscribe((res) => {
-      let arr = Object.values(res)[0];
-      for (let i = 0; i < arr.length; i++) {
-        this.result.push(arr[i]);
-      }
-    });
+    this._http
+      .get<SidebarInterface[]>(`/api/dynamic-sidebar-component`)
+      .subscribe((res) => {
+        this.result = res;
+      });
   }
 
   ddToggle(i: number) {
     this.result[i].menu = !this.result[i].menu;
+  }
+
+  toggleAll() {
+    this.expandAll = !this.expandAll;
+    for (var i = 0; i < this.result.length; i++) {
+      this.result[i].menu = this.expandAll;
+    }
   }
 }

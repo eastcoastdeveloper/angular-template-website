@@ -50,17 +50,14 @@ export class WebsiteExamplesComponent implements OnInit {
     for (let i = 0; i < this.images.length; i++) {
       let img = new Image();
       img.onload = () => {
-        this.loaded(this.images[i]);
+        this.loaded();
       };
       img.src = this.images[i];
     }
   }
 
-  loaded(img: string) {
+  loaded() {
     this.loadedItems++;
-    console.log(this.loadedItems);
-    if (this.images.length == this.loadedItems) {
-    }
   }
 
   constructor(private _projectListService: ProjectListService) {}

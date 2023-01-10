@@ -6,6 +6,14 @@ const projectData = require('./projects.json');
 
 app.use(helmet());
 
+
+
+app.use('/api/dynamic-sidebar-component', require('./routes/dynamic-sidebar'));
+app.use('/api/slider-component', require('./routes/slider'));
+app.use('/api/accordion-component', require('./routes/accordion'));
+
+
+
 // GET All Projects
 function paginatedResults(model) {
   return (req, res, next) => {

@@ -4,58 +4,80 @@
   font: normal 11pt sans-serif;
   box-sizing: border-box;
   position: relative;
-  border-radius: 6px;
 
-  > div:first-child {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+  .expand-all {
+    font-size: 12px;
+    text-align: right;
+    display: block;
+    margin-bottom: 5px;
+    margin-right: 15px;
+    cursor: pointer;
   }
 
-  > div:last-child {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-  }
-
-  .group {
-    border-bottom: 1px solid $greyBlack;
-    overflow: hidden;
-
-    > a {
-      color: $white;
-      padding: 7px 0 6px 20px;
-      display: block;
-      cursor: pointer;
-      background-color: $oceanBlue;
-    }
-  }
-
-  .sub-menu {
-    transition: max-height 0.5s;
-    max-height: 0;
-
-    ul {
-      margin: 0;
-      padding: 0;
+  .wrapper {
+    border-radius: 6px;
+    > div:first-child {
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
     }
 
-    li {
-      list-style-type: none;
-      background-color: $greyBlack;
-      font: normal 10pt sans-serif;
-      line-height: 19px;
-      letter-spacing: 0.1pt;
+    > div:last-child {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
 
-      a {
+    .group {
+      border-bottom: 1px solid $greyBlack;
+      overflow: hidden;
+      position: relative;
+
+      > a {
         color: $white;
         padding: 7px 0 6px 20px;
-        text-decoration: none;
-        cursor: pointer;
         display: block;
+        cursor: pointer;
+        background-color: $oceanBlue;
       }
 
-      &:hover {
-        background-color: $oceanBlue;
-        color: $white;
+      .caret {
+        position: absolute;
+        transition: transform ease-out 0.2s;
+        top: 15px;
+        right: 10px;
+        color: white;
+        font-size: 10px;
+        transform: translateY(-50%);
+      }
+    }
+
+    .sub-menu {
+      transition: max-height 0.2s;
+      max-height: 0;
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style-type: none;
+        background-color: $greyBlack;
+        font: normal 10pt sans-serif;
+        line-height: 19px;
+        letter-spacing: 0.1pt;
+
+        a {
+          color: $white;
+          padding: 7px 0 6px 20px;
+          text-decoration: none;
+          cursor: pointer;
+          display: block;
+        }
+
+        &:hover {
+          background-color: $oceanBlue;
+          color: $white;
+        }
       }
     }
   }
@@ -63,4 +85,8 @@
 
 .show-menu {
   max-height: 1000px !important;
+}
+
+.rotate-caret {
+  transform: translateY(-50%) rotate(90deg) !important;
 }

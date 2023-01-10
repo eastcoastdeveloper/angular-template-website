@@ -53,13 +53,10 @@ export class AccordionComponent implements OnInit {
     ]);
 
     this._http
-      .get('./assets/json/accordion.json')
+      .get<AccordionComponentInterface[]>(`/api/accordion-component`)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res) => {
-        let arr = Object.values(res)[0];
-        for (let i = 0; i < arr.length; i++) {
-          this.accordionData.push(arr[i]);
-        }
+        this.accordionData = res;
       });
   }
 

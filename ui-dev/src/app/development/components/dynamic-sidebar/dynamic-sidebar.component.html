@@ -7,26 +7,38 @@
   <br /><br />
 </div>
 
-<div id="dynamic-sidebar" class="element-shadow">
-  <div class="group" *ngFor="let item of result; let i = index">
-    <a
-      *ngIf="item.submenu.length"
-      (click)="ddToggle(i)"
-      class="light-blue-bg"
-      >{{ item.linkText }}</a
-    >
-    <a
-      *ngIf="!item.submenu.length"
-      (click)="ddToggle(i)"
-      class="light-blue-bg"
-      >{{ item.linkText }}</a
-    >
-    <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
-      <ul *ngFor="let menu of result[i].submenu">
-        <li>
-          <a>{{ menu.childtext }}</a>
-        </li>
-      </ul>
+<div id="dynamic-sidebar">
+  <span class="expand-all" (click)="toggleAll()">{{
+    !expandAll ? 'Expand All' : 'Close All'
+  }}</span>
+  <div class="wrapper element-shadow">
+    <div class="group" *ngFor="let item of result; let i = index">
+      <a
+        *ngIf="item.submenu.length"
+        (click)="ddToggle(i)"
+        class="light-blue-bg"
+        >{{ item.linkText }}</a
+      >
+      <a
+        *ngIf="!item.submenu.length"
+        (click)="ddToggle(i)"
+        class="light-blue-bg"
+        >{{ item.linkText }}</a
+      >
+      <div
+        *ngIf="item.submenu.length"
+        class="caret"
+        [ngClass]="{ 'rotate-caret': item.menu }"
+      >
+        &#x25B6;
+      </div>
+      <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
+        <ul *ngFor="let menu of result[i].submenu">
+          <li>
+            <a>{{ menu.childtext }}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

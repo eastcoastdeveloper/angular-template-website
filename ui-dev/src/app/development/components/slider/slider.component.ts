@@ -42,14 +42,21 @@ export class SliderComponent implements OnInit, OnDestroy {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
+    // this._http
+    //   .get('./assets/json/slider.json')
+    //   .pipe(takeUntil(this.unsubscribe$))
+    //   .subscribe((val) => {
+    //     let arr = Object.values(val)[0];
+    //     for (let i = 0; i < arr.length; i++) {
+    //       this.result.push(arr[i]);
+    //     }
+    //   });
+
     this._http
-      .get('./assets/json/slider.json')
+      .get<SliderInterface[]>(`./api/slider-component`)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        let arr = Object.values(val)[0];
-        for (let i = 0; i < arr.length; i++) {
-          this.result.push(arr[i]);
-        }
+        this.result = val;
       });
     this.renderCode();
   }
