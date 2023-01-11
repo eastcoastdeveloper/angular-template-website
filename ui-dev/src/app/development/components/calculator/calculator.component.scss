@@ -36,7 +36,7 @@
 
   .disable-btn {
     pointer-events: none;
-    opacity: .3;
+    opacity: 0.3;
   }
 
   .double-width {
@@ -46,7 +46,7 @@
   button {
     border-radius: 0;
     outline: none;
-    border: 1px solid rgba(256, 256, 256, .75);
+    border: 1px solid rgba(256, 256, 256, 0.75);
     font-size: 1.5rem;
     cursor: pointer;
 

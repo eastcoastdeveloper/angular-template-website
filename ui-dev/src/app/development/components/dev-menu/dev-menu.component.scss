@@ -4,7 +4,7 @@
   box-shadow: 1px 2px 5px 3px rgb(0 0 0 / 30%);
   display: grid;
   grid-template-columns: 145px auto;
-  background-color: rgba(49, 59, 63, .95);
+  background-color: rgba(49, 59, 63, 0.95);
   color: #eff3f6;
   font: normal 14px sans-serif;
   border-radius: 5px;
@@ -22,7 +22,6 @@
   }
 
   .sub-category {
-
     a,
     span {
       padding: 0 5px;

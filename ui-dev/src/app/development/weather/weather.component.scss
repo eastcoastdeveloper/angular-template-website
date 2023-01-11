@@ -14,7 +14,7 @@ main {
   max-width: 500px;
   position: relative;
 
-  >div:not(error-message) {
+  > div:not(error-message) {
     padding-top: 30px;
   }
 
@@ -87,8 +87,7 @@ button {
   bottom: 0 !important;
 }
 
-@media screen and (max-width:545px) {
-
+@media screen and (max-width: 545px) {
   main {
     margin-left: 20px;
     margin-right: 20px;
