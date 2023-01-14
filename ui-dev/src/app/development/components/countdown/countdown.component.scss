@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import '../../../styles/page-style.scss';
 
 .count-down-timer {
   text-align: center;
@@ -75,8 +75,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  @import '../../../styles/colors.scss';
-
   .count-down-timer {
     .wrapper {
       .times {

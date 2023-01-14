@@ -1,7 +1,7 @@
 <div class="cornerstone">
   <div
     class="project"
-    *ngFor="let item of dataArray"
+    *ngFor="let item of dataArray; let i = index"
     routerLink="{{ item.path }}"
   >
     <h1>{{ item.title }}</h1>

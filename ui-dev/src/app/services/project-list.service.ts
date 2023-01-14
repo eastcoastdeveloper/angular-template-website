@@ -24,6 +24,8 @@ export class ProjectListService {
 
   // Main Array
   projectArray: ProjectsListInterface[] = [];
+
+  projectsWithJSON: { projectName: [] }[] = [];
   pagesFetched: number[] = [];
 
   constructor(
@@ -33,7 +35,7 @@ export class ProjectListService {
 
   // Check for Cache (Called Once OnInit in ProjectList Cmpt)
   isThereCache(pageNum: number, limit: number) {
-    const storage = this._localStorageService.getData('prjs');
+    const storage = this._localStorageService.getData('prjx');
     this.projectArray = [];
 
     // There IS Cache
@@ -66,7 +68,7 @@ export class ProjectListService {
   saveNewlyCachedData(pageNum: number) {
     this.storageObject[pageNum] = this.projectArray;
     this._localStorageService.saveData(
-      'prjs',
+      'prjx',
       JSON.stringify(this.storageObject)
     );
   }
@@ -99,7 +101,7 @@ export class ProjectListService {
           });
           this.storageObject[pageNum] = this.projectArray;
           this._localStorageService.saveData(
-            'prjs',
+            'prjx',
             JSON.stringify(this.storageObject)
           );
         })
@@ -109,7 +111,39 @@ export class ProjectListService {
       });
   }
 
+  // Called in Every Page to Update Title, Git, Stackblitz, etc.
   changePageDataObject(obj: PageDataObject) {
     this.pageDataObjectSubject.next(obj);
+  }
+
+  // Decipher Whether JSON Powered Projects are Cached
+  individualProjectCacheCheck(projectName: string) {
+    const storage = this._localStorageService.getData('cmpts');
+    this.projectsWithJSON = [];
+
+    // There IS Cache
+    /* if (storage != '') {
+      let parsed = JSON.parse(storage);
+      this.storageObject = parsed;
+
+      // If Requested Page is Cached w/ a Value
+      if (this.storageObject.hasOwnProperty(pageNum)) {
+        this.projectsWithJSON = this.storageObject[pageNum];
+        this.allProjectsSubject.next(this.projectsWithJSON);
+      }
+
+      // Requested Page Called First Time
+      else {
+        new Promise((resolve) => {
+          this.getAllProjects(pageNum, limit);
+          resolve(this.saveNewlyCachedData(pageNum));
+        });
+      }
+    }
+
+    // There's NOTHING Cached
+    else {
+      this.getAllProjects(pageNum, limit);
+    } */
   }
 }

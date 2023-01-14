@@ -10,8 +10,6 @@ export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];
   @Input() pageHeader: string;
 
-  OnInit() {}
-
   formatViews(val: number | bigint) {
     return new Intl.NumberFormat().format(val);
   }

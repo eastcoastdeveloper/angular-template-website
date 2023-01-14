@@ -245,6 +245,12 @@ export class DynamicSidebarComponent implements OnInit {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
 
+    // GET Data or Get From Cache
+    this.fetchDataOrGetCache();
+  }
+
+  fetchDataOrGetCache() {
+    this._projectListService.individualProjectCacheCheck('dynamic-sidebar');
     this._http
       .get<SidebarInterface[]>(`/api/dynamic-sidebar-component`)
       .subscribe((res) => {

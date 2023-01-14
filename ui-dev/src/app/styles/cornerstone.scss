@@ -5,7 +5,7 @@
   grid-template-columns: repeat(2, calc(50% - 22px));
   grid-gap: 40px;
 
-  .project {
+  .project:focus {
     outline: none;
   }
 
@@ -28,10 +28,6 @@
     &:hover {
       transform: scale(0.95);
     }
-  }
-
-  .project-img:focus {
-    outline: none;
   }
 
   h1 {

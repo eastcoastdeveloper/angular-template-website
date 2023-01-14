@@ -1,19 +1,19 @@
-import { Injectable } from "@angular/core";
-import * as CryptoJS from "crypto-js";
-import { ProjectsListInterface } from "../interfaces/projects-list.interface";
+import { Injectable } from '@angular/core';
+import * as CryptoJS from 'crypto-js';
+import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root'
 })
 export class LocalStorageService {
-  key = "prjs";
+  key = 'prjx';
 
   public saveData(key: string, value: string) {
     localStorage.setItem(key, this.encrypt(value));
   }
 
   public getData(key: string) {
-    let data = localStorage.getItem(key) || "";
+    let data = localStorage.getItem(key) || '';
     return this.decrypt(data);
   }
 
