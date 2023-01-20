@@ -1,6 +1,9 @@
 <div class="page-content">
   <div class="details" (click)="pageClickHandler($event)">
     <h1 class="page-title">{{ pageTitle }}</h1>
+    <app-post-details
+      *ngIf="pageTitle != 'Front End Development'"
+    ></app-post-details>
     <app-category-navigation
       *ngIf="windowWidth > 650"
     ></app-category-navigation>
@@ -11,7 +14,6 @@
     (click)="pageClickHandler($event)"
   >
     <div class="left-column">
-      <app-post-details *ngIf="threeColumnLayout"></app-post-details>
       <router-outlet></router-outlet>
     </div>
 

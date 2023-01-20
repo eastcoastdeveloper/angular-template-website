@@ -25,3 +25,13 @@
     margin-right: 5px;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .category-burger-menu {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    font-size: 35px;
+  }
+}

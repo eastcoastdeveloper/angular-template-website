@@ -1,21 +1,19 @@
-<div class="rest-intro">
-  <div class="snippet-description">
-    I used in page navigation frequently while working at a former company. The
-    owners often didn't want new pages for different sections. They didn't even
-    want parameters appended to the url. Such as ?section=2. The result was to
-    create unique methods of showing/ hiding content. This project is one such
-    concept. Yes, it may be more cumbersome than the aforementioned, but
-    development sometimes calls for creative solutions.
-  </div>
-</div>
-<div id="module-name" class="element-shadow">
+<p class="project-text">
+  I used in page navigation frequently while working at a former company. The
+  owners often didn't want new pages for different sections. They didn't even
+  want parameters appended to the url. Such as ?section=2. The result was to
+  create unique methods of showing/ hiding content. This project is one such
+  concept. Yes, it may be more cumbersome than the aforementioned, but
+  development sometimes calls for creative solutions.
+</p>
+
+<div id="module-name" class="element-shadow element-margin-top">
   <section
     *ngFor="let item of [].constructor(sectionLength); let i = index"
     [ngClass]="{ 'display-none': currentSection != i }"
   >
     <div #sections>
       {{ 'Section ' + (i + 1) }}
-
       <div *ngIf="currentSection === 0" class="section-content">
         <div class="group">
           <label for="name">First Name:</label>
@@ -70,32 +68,41 @@
   </div>
 </div>
 
-<div class="snippet-description item-margin">
+<p class="project-text element-margin-top">
   In the TypeScript file below, we retrieve a group of elements. @ViewChildren
   is akin to document.getElementsByClassName. Though it no doubt has many other
   uses. We retrieve the third line of the HTML, denoted by the "#sections"
   reference. Necessary to show & hide them. Next, btnGroup references the group
-  of buttons.<br /><br />
+  of buttons.
+</p>
+
+<p class="project-text element-margin-top">
   This is a very dynamic component. Component in that we could simply pass the
   section count and inject HTML for the content. bar references the progress
   bar. currentSection for the only visible section. The progress array holds the
-  percentage divs.<br /><br />
+  percentage divs.
+</p>
+
+<p class="project-text element-margin-top">
   Math is used to round the percentages. In turn a Math object is needed.
   Created in the constructor. Notice the first line of the ngAfterViewInit
   block. ChangeDetection is used because the values are changed during runtime
   compilation. The length of the bar is set here too. Also in the
   ngAfterViewInit hook grid columns are set, indicative of how many sections
   there are. Set by the sectionLength variable. Yes, set any number of sections,
-  and an equal amount of buttons and sections render.<br /><br />
+  and an equal amount of buttons and sections render.
+</p>
+
+<p class="project-text element-margin-top">
   The navigate fn sets the currentSection and the progress bar width. show &
   hideProgressBar functions adjust the bar opacity and height.
-</div>
+</p>
 
-<div class="code-preview">
+<div class="code-preview element-margin-top">
   <pre><code>{{typescript}}</code></pre>
 </div>
 
-<div class="snippet-description item-margin">
+<p class="project-text element-margin-top">
   The markup below loops over an empty array. We use the constructor keyword to
   initialize the object and pass it the amount of sections. Hiding all but the
   current section via display none. ngIf unfortunately cannot be used on the
@@ -104,17 +111,17 @@
   any number. I'd imagine 2, 3, 4, or 5 is ideal. All of which work beautfully
   with this line. Divide 100 by the amount of sections. Round that number. Then
   multiple it by the section indice.
-</div>
+</p>
 
-<div class="code-preview">
+<div class="code-preview element-margin-top">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<div class="code-preview">
+<div class="code-preview element-margin-top">
   <pre><code>{{style}}</code></pre>
 </div>
 
-<div class="in-page-project-descr">
+<p class="project-text element-margin-top">
   I initially thought section content could be housed in a JSON file, but that's
   far too messy. We always want to create sustainable systems. Using a separate
   file for the content would definitely work. We could even remove the 'Section
@@ -123,4 +130,4 @@
   immensely powerful framework with the ability to do nearly anything imaginable
   in the UI. Fork and customize. Make this in page navigation component your
   own!
-</div>
+</p>

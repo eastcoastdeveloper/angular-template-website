@@ -6,6 +6,7 @@ import { WindowWidthService } from 'src/app/services/window-width.service';
 
 @Component({
   selector: 'app-post-details',
+  styleUrls: ['./post-details.component.scss'],
   templateUrl: './post-details.component.html'
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
@@ -16,7 +17,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   updatedOn?: string;
   repoLink?: string;
   repoTitle?: string;
-  views?: number;
+  views: number;
   forks?: number;
 
   constructor(
@@ -29,10 +30,11 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.publishedOn = val?.publishedOn;
+        // this.pageTitle = val.pageTitle;
         this.updatedOn = val?.updatedOn;
         this.repoTitle = val?.repoTitle;
         this.repoLink = val?.repoLink;
-        this.views = val?.views;
+        this.views = val?.views!;
         this.forks = val?.forks;
       });
 

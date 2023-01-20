@@ -15,7 +15,7 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
   developmentArray: ProjectsListInterface[] = [];
   private unsubscribe$ = new Subject<boolean>();
   pageDataObject: PageDataObject = {
-    title: 'Web Application Development',
+    title: 'Learn to Code',
     cornerStone: true
   };
 

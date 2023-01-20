@@ -23,7 +23,7 @@ export class InPageNavigationComponent implements OnInit {
     repoTitle: 'in-page-navigation',
     repoLink: 'https://github.com/eastcoastdeveloper/in-page-navigation',
     category: 'development',
-    views: 87,
+    views: 104,
     forks: 0,
     cornerStone: false,
     threeColumnLayout: true

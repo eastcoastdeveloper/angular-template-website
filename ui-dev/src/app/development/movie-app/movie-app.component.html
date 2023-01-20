@@ -1,4 +1,4 @@
-<div class="snippet-description">
+<p class="project-text">
   This OMDB API is an example of a data driven UI. Enter a movie or TV show
   (must be exact) and watch the results populate the UI. By means of OMDB's
   endpoint, we're fetching data, and populating it accordingly. Though this
@@ -6,9 +6,13 @@
   JavaScript, this sample's in Angular. If you're familiar with TypeScript, it
   should be no problem. Populate the UI with some content. Then toggle between
   poster and table layout to get the full scope of the interface.
-</div>
+</p>
 
-<div id="movies-app" [ngClass]="{ displayBlock: dataArr.length > 0 }">
+<div
+  id="movies-app"
+  [ngClass]="{ displayBlock: dataArr.length > 0 }"
+  class="element-margin-top"
+>
   <div class="input-fields" [ngClass]="{ hasData: dataArr.length > 0 }">
     <h3 [ngClass]="{ 'title-w-data': dataArr.length > 0 }">
       Search Movies & TV Titles

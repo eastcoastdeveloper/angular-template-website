@@ -27,8 +27,8 @@ export class SliderComponent implements OnInit, OnDestroy {
     repoTitle: 'angular-slider',
     repoLink: 'https://github.com/eastcoastdeveloper/angular-basic-carousel',
     category: 'components',
-    views: 677,
-    forks: 8,
+    views: 804,
+    forks: 10,
     threeColumnLayout: true,
     cornerStone: false
   };
@@ -54,6 +54,10 @@ export class SliderComponent implements OnInit, OnDestroy {
   changeShowcase(i: number) {
     this.resetValues();
     this.result[i].status = true;
+  }
+
+  getSliderImage(index: number) {
+    return this.result[index].url;
   }
 
   nextBook() {

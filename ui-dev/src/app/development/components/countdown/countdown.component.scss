@@ -1,5 +1,12 @@
 @import '../../../styles/page-style.scss';
 
+.intro {
+  margin-top: 20px;
+  ul {
+    margin-top: 15px;
+  }
+}
+
 .count-down-timer {
   text-align: center;
   background-color: $greyBlack;
@@ -64,7 +71,7 @@
 
 @media screen and (max-width: 1300px) {
   .timer-project-descr {
-    margin: 30px 0 43px 0;
+    margin: 25px 0 43px 0;
   }
 }
 

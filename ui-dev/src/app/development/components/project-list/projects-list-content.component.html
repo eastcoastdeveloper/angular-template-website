@@ -6,23 +6,23 @@
   >
     <h1>{{ item.title }}</h1>
 
-    <div
+    <!-- <div
       class="project-specs"
       *ngIf="item.views > 0"
       [ngClass]="item.forks < 1 ? 'two-column' : 'three-column'"
     >
       <span class="stackblitz_logo">
-        <img src="../../../assets/img/stackblitz_logo.png" />
+        <img [src]="stackblitzLogo" />
       </span>
       <span class="views">
-        <img src="../../../assets/img/views-icon.jpg" />
+        <img [src]="stackblitzViews" />
         <span>{{ formatViews(item.views) }}</span>
       </span>
       <span class="forked" *ngIf="item.forks > 0">
-        <img src="../../../assets/img/fork-icon.png" />
+        <img [src]="forkIcon" />
         <span>{{ item.forks }}</span>
       </span>
-    </div>
+    </div> -->
 
     <div
       *ngIf="item.internal"
@@ -30,12 +30,12 @@
       routerLink="{{ item.path }}"
       [state]="item"
     >
-      <img src="{{ item.imgUrl }}" alt="{{ item.altText }}" />
+      <img [src]="getImageUrl(i)" alt="{{ item.altText }}" />
     </div>
 
     <div *ngIf="!item.internal" class="project-img element-shadow">
       <a href="{{ item.path }}" target="_blank">
-        <img src="{{ item.imgUrl }}" alt="{{ item.altText }}" />
+        <img [src]="getImageUrl(i)" alt="{{ item.altText }}" />
       </a>
     </div>
     <p>

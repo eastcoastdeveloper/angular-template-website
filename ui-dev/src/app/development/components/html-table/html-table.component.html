@@ -1,99 +1,87 @@
-<div class="snippet-description">
-  This JSON powered table in HTML is search and sortable. Nimble enough to plug
-  right into an array of projects. There's an onslaught of additional features
-  that can be added here, but I think this's a good foundation. With the current
-  setup we could add pagination and/or expandable rows. Just to name a few.<br /><br />
-</div>
-
-<div class="snippet-description">
-  Let's begin with the markup, which is shockingly simple.
-  <ul>
-    <li>Add the title and input field inside of a parent wrapper.</li>
-    <li>Do the same for the headers.</li>
-    <li>Create an empty section for the body content</li>
-  </ul>
-</div>
-
-<div class="code-preview">
-  <pre><code>{{ markup }}</code></pre>
-</div>
-
-<div>
-  <div class="image-wrapper element-shadow">
-    <img
-      src="../../../../assets/projects-grid/table-html-js.png"
-      alt="Basic table with title, five columns, and a searchbar"
-    />
-  </div>
-
-  <div class="snippet-description">
-    The JavaScript is far more complex. If you're seeking a static table in
-    html, there's plenty of resources for that.
-    <ul>
-      <li>
-        Get the search field followed by the caret&mdash;which is currently non
-        existent. We're gonna add it dynamically. That's the purpose of this
-        line here: caret != undefined ? caret.remove() : ''; sortColumn fn takes
-        says, "If the caret is not undefined, do something. Otherwise, do
-        nothing.
-      </li>
-      <li>body gets the body class. This is where we inject the HTML.</li>
-      <li>
-        filterType retrieves the name of the clicked column to use it for how
-        it's filtered.
-      </li>
-      <li>
-        filtered is an array used to reorganize table rows, when filtered.
-      </li>
-      <li>data is the incoming JSON, and markup is the actual HTML.</li>
-      <li>str is the input field value</li>
-      <li>
-        The first block is a key-up listener on the search field. It rearranges
-        the data by looping over an array of objects, then repopulates the
-        table.
-      </li>
-      <li>
-        To repopulate the data, markup and the body innerHTML are set to empty.
-        We then populate the table, and set the innerHTML to the new order.
-      </li>
-      <li>
-        comparison fn is a fancy way of comparing the key values with one
-        another. Then reordering them.
-      </li>
-      <li>
-        sortColumn fn does a number of things. One such item is it destroys and
-        recreates the caret. We run the populateTable fn again.
-      </li>
-      <!-- <li>
-        The last block imports the JSON: ({"id": 1, "title": "iPhone 9",
-        "price": 549, "brand": "Apple", "category": "smartphones"}).
-      </li> -->
-    </ul>
-  </div>
-
-  <div class="code-preview">
-    <pre><code>{{typescript}}</code></pre>
-  </div>
-
-  <div class="snippet-description item-last-child">
-    There's a million ways to do this. This was my first attempt at the
-    challenge without a framework. Using one would no doubt be a time saver, but
-    I digress. Play around with the code
-    <a
-      href="https://stackblitz.com/edit/table-in-html?file=index.js"
-      target="_blank"
-      >here</a
-    >. Hope you enjoyed this brief explanation of my table in HTML.
-  </div>
-
-  <div class="code-preview">
-    <pre><code>{{style}}</code></pre>
-  </div>
-</div>
-
-<div class="snippet-description social-three-column">
+<p class="project-text">
   This JSON powered table in HTML is search and sortable. Nimble enough to plug
   right into an array of projects. There's an onslaught of additional features
   that can be added here, but I think this's a good foundation. With the current
   setup we could add pagination and/or expandable rows. Just to name a few.
+</p>
+
+<ul class="project-list element-margin-top">
+  <li>Add the title (h4) and input field inside of a parent wrapper.</li>
+  <li>Create the headers nested inside of parent tags as well.</li>
+  <li>Create an empty section for the body content with class 'body'.</li>
+</ul>
+
+<div class="code-preview element-margin-top">
+  <pre><code>{{ markup }}</code></pre>
 </div>
+
+<div class="image-wrapper element-shadow element-margin-top">
+  <img
+    [src]="htmlTableProjectImage"
+    alt="Basic table with title, five columns, and a searchbar"
+  />
+</div>
+
+<ul class="project-list element-margin-top">
+  <li>
+    The first variable gets all the first child divs of parent elements with
+    header class.
+  </li>
+  <li>
+    Get the search field followed by the caret&mdash;which is currently non
+    existent. We're gonna add it dynamically. That's the purpose of caret !=
+    undefined ? caret.remove() : ''; in the sortColumn fn. sortColumn says, "If
+    the caret is not undefined, remove it. Otherwise, do nothing.
+  </li>
+  <li>
+    The body variable represents the body class (table body). This is where we
+    inject the HTML.
+  </li>
+  <li>
+    filterType retrieves the name of the clicked column to use it for how it's
+    filtered.
+  </li>
+  <li>filtered is an array used to reorganize table rows, when filtered.</li>
+  <li>data is the incoming JSON, and markup is the actual HTML.</li>
+  <li>str is the input field value</li>
+  <li>
+    The first block is a key-up listener on the search field. It rearranges the
+    data by looping over an array of objects, then repopulates the table.
+  </li>
+  <li>
+    To repopulate the data, markup and the body innerHTML are set to empty. We
+    then populate the table, and set the innerHTML to the new order.
+  </li>
+  <li>
+    The comparison fn is a fancy way of comparing the key values with one
+    another. Then reordering them.
+  </li>
+  <li>
+    The sortColumn fn does a number of things. One such item is it destroys and
+    recreates the caret. We run the populateTable fn again.
+  </li>
+  <li>The last block imports the JSON.</li>
+</ul>
+
+<div class="code-preview element-margin-top">
+  <pre><code>{{typescript}}</code></pre>
+</div>
+
+<p class="project-text element-margin-top">
+  Styling is fairly straightforward. Nothing to explain here.
+</p>
+
+<div class="code-preview element-margin-top">
+  <pre><code>{{style}}</code></pre>
+</div>
+
+<p class="project-text element-margin-top">
+  There's a million ways to do this. This was my first attempt at the challenge
+  without a framework. Using one would no doubt be a time saver, but I digress.
+  Play around with the code
+  <a
+    href="https://stackblitz.com/edit/table-in-html?file=index.js"
+    target="_blank"
+    >here</a
+  >. Hope you enjoyed this brief explanation of my table in HTML.
+</p>

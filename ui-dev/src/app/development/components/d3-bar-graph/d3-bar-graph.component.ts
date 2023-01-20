@@ -4,12 +4,12 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-d3-bar-graph',
-  templateUrl: './d3-bar-graph.component.html',
-  styleUrls: ['./d3-bar-graph.component.scss']
+  templateUrl: './d3-bar-graph.component.html'
 })
 export class D3BarGraphComponent implements OnInit {
   markup: string = '';
   javascript: string = '';
+  d3ProjectImage: string = '../../../../assets/projects-grid/d3-bar-graph.png';
   pageDataObject: PageDataObject = {
     title: 'D3 Bar Graph',
     publishedOn: 'Oct 1, 2022',
@@ -18,8 +18,8 @@ export class D3BarGraphComponent implements OnInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/datepicker-angular-component',
     category: '',
-    views: 28,
-    forks: 0,
+    views: 315,
+    forks: 6,
     threeColumnLayout: true,
     cornerStone: false
   };

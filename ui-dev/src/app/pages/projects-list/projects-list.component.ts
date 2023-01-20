@@ -22,7 +22,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<boolean>();
   projectsArray: ProjectsListInterface[] = [];
   masterArray: ProjectsListInterface[] = [];
-  activeCategory: string = '';
+  // activeCategory: string = '';
   filteredArray: any = [];
   windowWidth: number;
 

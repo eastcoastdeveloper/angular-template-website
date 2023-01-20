@@ -10,8 +10,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-drag-drop-ui',
-  templateUrl: './drag-drop-ui.component.html',
-  styleUrls: ['./drag-drop-ui.component.scss']
+  templateUrl: './drag-drop-ui.component.html'
 })
 export class DragDropUiComponent {
   pageDataObject: PageDataObject = {
@@ -21,7 +20,7 @@ export class DragDropUiComponent {
     repoTitle: 'javascript-drag-and-drop',
     repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
     category: 'projects',
-    views: 219,
+    views: 253,
     forks: 3,
     cornerStone: true,
     threeColumnLayout: true
@@ -37,6 +36,8 @@ export class DragDropUiComponent {
   protected snippetFive: string;
   protected scss: string;
   protected json: string;
+
+  dragDropImage: string = 'assets/projects-grid/js-drag-drop.jpg';
 
   @ViewChildren('typeName') typeName: QueryList<any>;
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;

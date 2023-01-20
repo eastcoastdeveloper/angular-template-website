@@ -13,6 +13,7 @@ export class AboutPageComponent implements OnInit {
     threeColumnLayout: false
   };
 
+  aboutPicture: string = '../../../../../assets/img/about-photo.jpg';
   constructor(private _projectListService: ProjectListService) {}
 
   ngOnInit() {

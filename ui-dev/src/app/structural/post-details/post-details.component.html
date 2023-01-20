@@ -1,4 +1,4 @@
-<div class="post-details">
+<!-- <div class="post-details">
   <div class="top-row">
     <span class="published-on">Published: {{publishedOn}}</span>
     <div class="git-repo" [ngClass]="{'visibility-none':repoTitle === ''}">
@@ -23,6 +23,37 @@
         <img src="../../../assets/img/fork-icon.png" />
         <span>{{forks}}</span>
       </span>
+    </div>
+  </div>
+</div> -->
+
+<div class="project-details">
+  <div class="specs">
+    <div
+      [ngClass]="views > 0 ? 'specs-and-details' : ''"
+      *ngIf="repoLink != ''"
+      class="git"
+    >
+      <a href="{{ repoLink }}" target="_blank">Repo</a>
+    </div>
+    <div *ngIf="views > 0" class="views-forks">
+      <div class="stackblitz-logo">
+        <div>
+          <img src="../../../assets/img/stackblitz_logo.png" />
+        </div>
+      </div>
+      <div class="views">
+        <div>
+          <img src="../../../assets/img/views-icon.jpg" />
+        </div>
+        <span>{{ formatViews(views) }}</span>
+      </div>
+      <div *ngIf="forks! > 0" class="forks">
+        <div>
+          <img src="../../../assets/img/fork-icon.png" />
+        </div>
+        <span>{{ forks }}</span>
+      </div>
     </div>
   </div>
 </div>

@@ -5,8 +5,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-rest-countries',
-  templateUrl: './rest-countries.component.html',
-  styleUrls: ['./rest-countries.component.scss']
+  templateUrl: './rest-countries.component.html'
 })
 export class RestCountriesComponent implements OnInit {
   pageDataObject: PageDataObject = {
@@ -17,13 +16,15 @@ export class RestCountriesComponent implements OnInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
     category: '',
-    views: 388,
+    views: 427,
     forks: 3,
     threeColumnLayout: true,
     cornerStone: true
   };
 
   windowWidthSubscription: Subscription;
+  restCountriesProjectImage: string =
+    'assets/projects-grid/rest-countries-L.jpg';
   markup: string;
   typescript: string;
   scss: string;

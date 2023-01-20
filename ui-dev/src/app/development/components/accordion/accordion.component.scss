@@ -11,8 +11,8 @@
   position: relative;
 
   p {
-    background-color: $greyBlack;
-    color: $yellowGold;
+    background-color: $oceanBlue;
+    color: $white;
     margin: 0;
     padding: 10px 0 10px 10px;
   }
@@ -43,13 +43,13 @@
       }
     }
 
-    li:nth-child(even) {
-      background-color: rgba(49, 59, 63, 0.8);
+    li {
+      background-color: $greyBlack;
     }
 
-    li:nth-child(odd) {
-      background-color: rgba(49, 59, 63, 0.9);
-    }
+    // li:nth-child(odd) {
+    //   background-color: rgba(49, 59, 63, 0.9);
+    // }
 
     li:hover {
       background-color: $greyBlack;
@@ -67,9 +67,13 @@
   }
 }
 
-.data-block:last-child {
-  border: none;
+.data-block:not(:last-child) {
+  border-bottom: 1px solid $white;
 }
+
+// .data-block:last-child {
+//   border: none;
+// }
 
 .hidden-content {
   overflow: auto;
@@ -81,9 +85,10 @@
   list-style-type: unset;
   background-color: $greyBlack;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(2, 50%);
   line-height: 20px;
-  padding: 20px 0 10px 30px;
+  text-align: center;
+  padding: 10px;
 
   li {
     display: block;

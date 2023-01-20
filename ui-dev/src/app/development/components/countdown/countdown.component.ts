@@ -23,8 +23,8 @@ export class CountdownComponent implements OnInit, AfterViewInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-countdown-timer-component',
     category: '',
-    views: 11060,
-    forks: 851,
+    views: 13198,
+    forks: 942,
     threeColumnLayout: true,
     cornerStone: false
   };
@@ -92,9 +92,7 @@ export class CountdownComponent implements OnInit, AfterViewInit {
     this.seconds.nativeElement.innerText = 60 - this.date.getSeconds();
   }
 
-  typescript: string = `
-// app.component.ts
-date: any;
+  typescript: string = `date: any;
 now: any;
 targetDate: any = new Date(2022, 12, 1);
 targetTime: any = this.targetDate.getTime();
@@ -131,9 +129,7 @@ currentTime: any = this.months[this.targetDate.getMonth()] +
     this.seconds.nativeElement.innerText = 60 - this.date.getSeconds();
   }`;
 
-  styling: string = `
-// app.component.scss
-.count-down-timer {
+  styling: string = `.count-down-timer {
   box-shadow: 2px 6px 9px 2px rgb(0 0 0 / 20%);
   text-align: center;
   background-color: black;
@@ -162,9 +158,7 @@ currentTime: any = this.months[this.targetDate.getMonth()] +
   }
 }`;
 
-  markup: string = `
-// app.component.html
-<div class="count-down-timer">
+  markup: string = `<div class="count-down-timer">
   <p>Countdown to {{currentTime}}</p>
   <div class="wrapper">
     <div class="description">

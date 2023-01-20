@@ -1,69 +1,40 @@
 @import '../../styles/page-style.scss';
 
-#website-examples {
-  .project:first-child {
-    margin-top: 20px;
-  }
-  .project:not(:first-child) {
-    margin-top: 50px;
-  }
-  .project {
-    margin-top: 30px;
-    .site-details {
-      overflow: auto;
-      border-bottom: 1px solid $greyBlack;
-      padding-bottom: 4px;
-      h2 {
-        font: bold 20px sans-serif;
-        float: left;
-        color: $greyBlack;
-      }
-      a {
-        float: right;
-        font: normal 15px sans-serif;
-        background-color: $oceanBlue;
-        font-style: italic;
-        color: $white;
-        padding: 2px 10px;
-        border-radius: 4px;
-      }
-    }
-    .site-details + span {
-      margin: 5px 0;
-      display: block;
-      font: normal 15px sans-serif;
-    }
-    .site-description {
-      font: normal 14px/22px sans-serif;
-      margin: 15px 0 20px 0;
+// .project:not(:first-child) {
+//   margin-top: 50px;
+// }
+.project {
+  .site-details {
+    overflow: auto;
+    border-bottom: 1px solid $greyBlack;
+    padding-bottom: 4px;
+    h2 {
+      font: bold 20px sans-serif;
+      float: left;
       color: $greyBlack;
     }
-
-    .img-wrapper {
-      border-radius: 6px;
-      margin-bottom: 30px;
-      overflow: hidden;
-      img {
-        width: 100%;
-        display: block;
-      }
+    a {
+      float: right;
+      font: normal 15px sans-serif;
+      background-color: $oceanBlue;
+      font-style: italic;
+      color: $white;
+      padding: 2px 10px;
+      border-radius: 4px;
     }
   }
-}
-
-.availability {
-  font: normal 14px/22px sans-serif;
-  margin-bottom: 10px;
-}
-
-@media screen and (max-width: 1300px) {
-  .availability {
-    margin-bottom: 45px;
+  .site-details + span {
+    margin: 5px 0 10px 0;
+    display: block;
+    font: normal 15px sans-serif;
+  }
+  .site-description {
+    font: normal 14px/22px sans-serif;
+    // margin: 15px 0 20px 0;
+    color: $greyBlack;
   }
 }
 
-@media screen and (max-width: 992px) {
-  .availability {
-    margin-bottom: 9px;
-  }
+.project:not(:first-child) .site-details {
+  margin-top: 30px;
 }

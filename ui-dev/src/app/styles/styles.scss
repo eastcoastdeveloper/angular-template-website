@@ -102,9 +102,9 @@ a {
 .image-wrapper {
   border-radius: 4px;
   overflow: hidden;
-  margin: 20px 0;
   img {
     width: 100%;
+    display: block;
   }
 }
 
@@ -164,7 +164,7 @@ a {
   .details {
     position: fixed;
     box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.3);
-    background-color: #fff;
+    background-color: $white;
     left: 0;
     top: 70px;
     padding: 20px;
@@ -173,7 +173,7 @@ a {
 
     .page-title {
       font: bold 1.5em sans-serif;
-      display: inline-block;
+      float: left;
       color: $greyBlack;
     }
   }
@@ -214,8 +214,8 @@ a {
       .right-column-cmp {
         grid-template-columns: repeat(1, 100%);
         grid-template-areas:
-          'social'
           'signup'
+          'socials'
           'code';
         .social-icons {
           grid-template-columns: repeat(2, calc(50% - 10px)) !important;
@@ -354,10 +354,11 @@ a {
 
   .page-content .details {
     top: 50px;
-    padding: 10px 20px;
+    padding: 10px 15px;
   }
   .page-content .details .page-title {
     font-size: 1em;
+    line-height: 30px;
   }
   .page-content .two-column-layout {
     margin: 0;
@@ -415,6 +416,7 @@ a {
 @media screen and (max-width: 450px) {
   .page-content .details .page-title {
     font-size: 0.9em;
+    padding-top: 2px;
   }
 }
 
@@ -458,8 +460,6 @@ a {
 
 .accordion-wrapper {
   overflow: hidden;
-  border-left: 1px solid rgba(49, 59, 63, 0.9);
-  border-right: 1px solid rgba(49, 59, 63, 0.9);
 }
 
 .active-link {
@@ -571,7 +571,6 @@ a {
   background-color: $oceanBlue;
   border: 1px solid $white;
   letter-spacing: 0.5px;
-  margin: 20px 0;
   padding: 15px;
   color: $white;
   pre {
@@ -650,7 +649,6 @@ a {
   margin: 0;
   padding: 10px 0 10px 10px;
   font: normal 14px sans-serif;
-  border-bottom: 1px solid $white;
 }
 .data-block .count {
   top: 0;
@@ -798,37 +796,30 @@ p {
 .show-content {
   max-height: 250px !important;
 }
+
 .sidebar-elements {
   display: none;
 }
-.snippet-description {
+
+.project-text,
+.project-list {
   color: $greyBlack;
   font: normal 14px sans-serif;
   line-height: 22px;
 }
-.snippet-description ul {
+
+.project-list {
   margin-left: 15px;
 }
-.snippet-description .italics {
-  font-style: italic;
-}
-a.snippet-description,
-.snippet-description a {
-  color: $oceanBlue;
-}
-.snippet-description li span {
-  color: $oceanBlue;
-  text-decoration: underline;
-  cursor: pointer;
-}
+
 #skills {
   list-style-type: unset;
   background-color: $greyBlack;
   display: grid;
   grid-template-columns: 50% 50%;
   line-height: 20px;
-  padding: 20px 0 10px 30px;
 }
+
 #skills li {
   display: block;
   padding: 5px 10px 5px 0;
@@ -836,4 +827,8 @@ a.snippet-description,
 
 .visibility-none {
   visibility: hidden;
+}
+
+.element-margin-top {
+  margin-top: 20px;
 }

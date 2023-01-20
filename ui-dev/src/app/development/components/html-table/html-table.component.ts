@@ -4,8 +4,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-html-table',
-  templateUrl: './html-table.component.html',
-  styleUrls: ['./html-table.component.scss']
+  templateUrl: './html-table.component.html'
 })
 export class HtmlTableComponent implements OnInit {
   typescript = `
@@ -104,9 +103,7 @@ function sortColumn(e) {
   });
 })();`;
 
-  markup = `
-// HTML
-<div id="html-table">
+  markup = `<div id="html-table">
   <div class="search">
     <h4>Smart Phones List</h4>
     <input id="search-field" type="text" placeholder="Search ..." />
@@ -183,15 +180,16 @@ function sortColumn(e) {
     margin-left: 5px;
   }`;
 
+  htmlTableProjectImage: string =
+    '../../../../assets/projects-grid/table-html-js.png';
   pageDataObject: PageDataObject = {
     title: 'Table in HTML',
     publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-date-picker',
-    repoLink:
-      'https://github.com/eastcoastdeveloper/datepicker-angular-component',
+    repoLink: 'https://github.com/eastcoastdeveloper/Dynamic-HTML-Table',
     category: '',
-    views: 28,
+    views: 49,
     forks: 0,
     threeColumnLayout: true,
     cornerStone: false

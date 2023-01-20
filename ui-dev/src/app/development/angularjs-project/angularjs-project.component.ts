@@ -4,8 +4,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-angularjs-project',
-  templateUrl: './angularjs-project.component.html',
-  styleUrls: ['./angularjs-project.component.scss']
+  templateUrl: './angularjs-project.component.html'
 })
 export class AngularjsProjectComponent implements OnInit {
   pageDataObject: PageDataObject = {
@@ -15,7 +14,7 @@ export class AngularjsProjectComponent implements OnInit {
     repoTitle: 'angularjs-project',
     repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
     category: '',
-    views: 1935,
+    views: 2015,
     forks: 0,
     cornerStone: true,
     threeColumnLayout: false
@@ -23,6 +22,14 @@ export class AngularjsProjectComponent implements OnInit {
 
   controller: string;
   directives: string;
+
+  angularJSimageOne: string = 'assets/projects-grid/angularjs-project-home.jpg';
+  angularJSimageTwo: string =
+    'assets/projects-grid/angularjs-filtered-table.jpg';
+  angularJSimageThree: string =
+    'assets/projects-grid/angularjs-deck-gallery.jpg';
+  angularJSimageFour: string = 'assets/projects-grid/angularjs-slider-view.jpg';
+  angularJSimageFive: string = 'assets/projects-grid/angularjs-map-view.jpg';
 
   constructor(private _projectListService: ProjectListService) {}
 

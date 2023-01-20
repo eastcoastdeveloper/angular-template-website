@@ -1,6 +1,25 @@
-<div class="category-group">
-    <div routerLink="/javascript-projects" routerLinkActive="active-btn">All</div>
-    <div routerLink="/web-development-projects/front-end-development" routerLinkActive="active-btn">Projects</div>
-    <div routerLink="/ui-components/website-features" routerLinkActive="active-btn">Components</div>
-    <div routerLink="/web-application-development/learn-to-code" routerLinkActive="active-btn">Development</div>
+<div *ngIf="windowWidth! < 993" class="category-burger-menu">
+  <span>&#9776;</span>
+</div>
+
+<div *ngIf="windowWidth! > 992" class="category-group">
+  <div routerLink="/javascript-projects" routerLinkActive="active-btn">All</div>
+  <div
+    routerLink="/web-development-projects/front-end-development"
+    routerLinkActive="active-btn"
+  >
+    Projects
+  </div>
+  <div
+    routerLink="/ui-components/website-features"
+    routerLinkActive="active-btn"
+  >
+    Components
+  </div>
+  <div
+    routerLink="/web-application-development/learn-to-code"
+    routerLinkActive="active-btn"
+  >
+    Development
+  </div>
 </div>

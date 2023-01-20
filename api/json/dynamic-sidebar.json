@@ -212,12 +212,7 @@
       "linkText": "Other",
       "parentLink": "",
       "menu": false,
-      "submenu": [
-        {
-          "childtext": "Banner Template",
-          "link": "https://stackblitz.com/edit/banner-template"
-        }
-      ]
+      "submenu": []
     }
   ]
 }

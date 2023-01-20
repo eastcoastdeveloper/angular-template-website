@@ -1,6 +1,7 @@
 <div class="page-content">
   <div class="details">
     <h1 class="page-title">{{ pageTitle }}</h1>
+    <app-post-details *ngIf="pageTitle != 'Learn to Code'"></app-post-details>
     <app-category-navigation
       *ngIf="windowWidth > 650"
     ></app-category-navigation>
@@ -10,7 +11,6 @@
     [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'"
   >
     <div class="left-column">
-      <app-post-details *ngIf="threeColumnLayout"></app-post-details>
       <router-outlet></router-outlet>
     </div>
 

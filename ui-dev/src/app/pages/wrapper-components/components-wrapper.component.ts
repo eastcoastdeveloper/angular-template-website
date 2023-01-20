@@ -57,6 +57,7 @@ export class ComponentsWrapperComponent
       .subscribe((val) => {
         this.threeColumnLayout = val.threeColumnLayout;
         this.pageTitle = val.title;
+        console.log(val.title);
       });
 
     this._cd.detectChanges();

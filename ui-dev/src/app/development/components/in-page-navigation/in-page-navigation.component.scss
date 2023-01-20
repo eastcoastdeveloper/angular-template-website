@@ -3,7 +3,6 @@
 #module-name {
   height: 300px;
   border-radius: 6px;
-  margin-top: 25px;
   position: relative;
   font-family: sans-serif;
   overflow: hidden;
@@ -61,9 +60,9 @@
   }
 }
 
-.display-none {
-  display: none;
-}
+// .display-none {
+//   display: none;
+// }
 
 .btn-group {
   position: absolute;
@@ -103,17 +102,17 @@
   }
 }
 
-@media screen and (max-width: 1300px) {
-  .in-page-project-descr {
-    margin-bottom: 48px;
-  }
-}
+// @media screen and (max-width: 1300px) {
+//   .in-page-project-descr {
+//     margin-bottom: 48px;
+//   }
+// }
 
-@media screen and (max-width: 992px) {
-  .in-page-project-descr {
-    margin-bottom: 5px;
-  }
-}
+// @media screen and (max-width: 992px) {
+//   .in-page-project-descr {
+//     margin-bottom: 5px;
+//   }
+// }
 
 @media screen and (max-width: 600px) {
   #module-name section > div .section-content {

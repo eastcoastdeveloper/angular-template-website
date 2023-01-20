@@ -69,6 +69,7 @@
       grid-template-columns: repeat(2, calc(50% - 8px)) !important;
     }
   }
+
   .right-column-cmp {
     position: unset;
     grid-template-columns: repeat(2, calc(50% - 10px));
@@ -83,16 +84,13 @@
     }
     .social-icons {
       width: 100%;
+      margin: 0 auto 30px auto;
       grid-template-columns: repeat(3, calc(33.3% - 13px));
     }
   }
   .social-icons {
     grid-gap: 0;
     width: 100%;
-  }
-
-  .right-column-cmp .social-icons {
-    margin: 0 auto 30px auto;
   }
 }
 
