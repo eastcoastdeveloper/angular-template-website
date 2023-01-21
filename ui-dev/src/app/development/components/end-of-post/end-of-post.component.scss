@@ -1,0 +1,45 @@
+@import '../../../styles/page-style.scss';
+
+.end-of-post-icon {
+  margin: 20px auto 40px auto;
+  position: relative;
+  .boxes {
+    margin: 0 auto;
+    border: 5px solid $white;
+    height: 20px;
+    width: 20px;
+    transform: rotate(45deg);
+    overflow: auto;
+    > div {
+      width: 50%;
+      height: 50%;
+    }
+    .top-left {
+      float: left;
+      background-color: $greyBlack;
+    }
+    .top-right {
+      float: left;
+      background-color: $yellowGold;
+    }
+    .bottom-left {
+      float: left;
+      background-color: $yellowGold;
+    }
+    .bottom-right {
+      float: left;
+      background-color: $greyBlack;
+    }
+  }
+  .horizontal-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    top: 50%;
+    height: 1px;
+    width: 300px;
+    background-color: $greyBlack;
+  }
+}

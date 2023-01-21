@@ -289,6 +289,11 @@ a {
     .right-column {
       margin: 0;
     }
+    .two-column-layout {
+      .end-of-post-icon {
+        margin: 20px auto 35px auto;
+      }
+    }
     .three-column-layout {
       grid-template-areas:
         'leftColumn'
@@ -310,11 +315,14 @@ a {
         width: calc(100% - 60px);
         background-color: $oceanBlue;
         color: $white;
-        margin: 20px 0 55px 0;
+        margin: 0 0 55px 0;
         border-radius: 6px;
       }
       .social-three-column {
         margin: 35px 0 15px 0;
+      }
+      .end-of-post-icon {
+        margin: 20px auto 25px auto;
       }
     }
   }

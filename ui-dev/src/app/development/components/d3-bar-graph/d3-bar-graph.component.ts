@@ -34,8 +34,7 @@ export class D3BarGraphComponent implements OnInit {
   }
 
   renderCode() {
-    this.markup = `
-#graph-wrapper {
+    this.markup = `#graph-wrapper {
   min-height: 300px;
   max-width: 750px;
   margin: 0 auto;
@@ -52,8 +51,7 @@ line { display: none;    }
     <svg></svg>
 </div>`;
 
-    this.javascript = `
-var parentDiv = document.getElementById('graph-wrapper'),
+    this.javascript = `var parentDiv = document.getElementById('graph-wrapper'),
     svg = d3.select('svg'),
     svgWidth = parentDiv.offsetWidth,
     svgHeight = parentDiv.offsetHeight,

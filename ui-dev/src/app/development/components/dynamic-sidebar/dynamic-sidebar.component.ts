@@ -25,8 +25,7 @@ export class DynamicSidebarComponent implements OnInit {
 
   result: SidebarInterface[] = [];
   expandAll: boolean = false;
-  markup: string = `
-  <div id="dynamic-sidebar">
+  markup: string = `<div id="dynamic-sidebar">
   <span class="expand-all" (click)="toggleAll()">{{
     !expandAll ? 'Expand All' : 'Close All'
   }}</span>
@@ -62,8 +61,7 @@ export class DynamicSidebarComponent implements OnInit {
   </div>
 </div>`;
 
-  scss: string = `
-  #dynamic-sidebar {
+  scss: string = ` #dynamic-sidebar {
     font: normal 11pt sans-serif;
     box-sizing: border-box;
     position: relative;
@@ -154,16 +152,14 @@ export class DynamicSidebarComponent implements OnInit {
     transform: translateY(-50%) rotate(90deg) !important;
   }`;
 
-  model: string = `
-  export class SidebarModel {
+  model: string = `export class SidebarModel {
     linkText: string;
     parentLink: string;
     menu: boolean;
     submenu: { childtext: string; link: string }[];
   }`;
 
-  typescript: string = `
-  import { HttpClient } from '@angular/common/http';
+  typescript: string = `  import { HttpClient } from '@angular/common/http';
   import { Component } from '@angular/core';
   import { SidebarModel } from './sidebar.model';
   
@@ -194,8 +190,7 @@ export class DynamicSidebarComponent implements OnInit {
     }
   }`;
 
-  json: string = `
-[
+  json: string = `[
   { "linkText": "About", "parentLink": "/about", "menu": false, "submenu": [] },
   { linkText": "AngularJS SPA", "parentLink": "/angularjs-spa", "menu": false, "submenu": [] },
   { "linkText": "Codepens", "parentLink": "", "menu": false,

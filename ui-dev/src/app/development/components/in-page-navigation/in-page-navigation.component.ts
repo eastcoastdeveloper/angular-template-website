@@ -96,8 +96,7 @@ export class InPageNavigationComponent implements OnInit {
   }
 
   private renderCode() {
-    this.markup = `
-<div id="module-name">
+    this.markup = `<div id="module-name">
   <section
     *ngFor="let item of [].constructor(sectionLength);
     let i = index" [ngClass]="{ 'display-none': currentSection != i }">
@@ -155,111 +154,114 @@ export class InPageNavigationComponent implements OnInit {
   </div>
 </div>`;
 
-    this.style = `
-#module-name {
-  height: 300px;
-  border-radius: 6px;
-  margin-top: 25px;
-  position: relative;
-  font-family: sans-serif;
-  overflow: hidden;
-
-  #indicator {
-      background-color: grey-black;
-      height: 3px;
-      position: absolute;
-      bottom: 0;
-      transition: all 0.5s;
-  }
-
-  section {
-      height: 100%;
-      background-color: #ffffff;
-      border: 1px solid grey-black;
+    this.style = `   #module-name {
+      height: 300px;
       border-radius: 6px;
-
-      >div {
+      position: relative;
+      font-family: sans-serif;
+      overflow: hidden;
+    
+      #indicator {
+        background-color: $greyBlack;  /* scss color variable */
+        height: 3px;
+        position: absolute;
+        bottom: 0;
+        transition: all 0.5s;
+      }
+    
+      section {
+        height: 100%;
+        background-color: $white; /* scss color variable */
+        border: 1px solid $greyBlack;
+        border-radius: 6px;
+    
+        > div {
           font-size: 1.5em;
           width: 100%;
           height: 100%;
           text-transform: uppercase;
-          color: grey-black;
+          color: $greyBlack;
           padding: 20px;
           box-sizing: border-box;
-
+    
           .section-content {
-              font: normal 14px sans-serif;
-              text-transform: none;
-              display: grid;
-              grid-template-columns: repeat(3, auto);
-              max-width: 500px;
-              justify-content: center;
-              grid-column-gap: 10px;
-              margin: 40px auto 0 auto;
-
-              label {
-                  display: block;
-                  margin-bottom: 5px;
-              }
-
-              input {
-                  padding: 3px;
-                  color: grey-black;
-                  box-sizing: border-box;
-                  outline: none;
-              }
-
-              input::placeholder {
-                  font: normal 12px sans-serif;
-              }
+            font: normal 14px sans-serif;
+            text-transform: none;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            max-width: 500px;
+            justify-content: center;
+            grid-column-gap: 10px;
+            margin: 40px auto 0 auto;
+    
+            label {
+              display: block;
+              margin-bottom: 5px;
+            }
+    
+            input {
+              padding: 3px;
+              color: $greyBlack; /* scss color variable */
+              box-sizing: border-box;
+              outline: none;
+            }
+    
+            input::placeholder {
+              font: normal 12px sans-serif;
+            }
           }
+        }
       }
-  }
-}
-
-.display-none { display: none; }
-
-.btn-group {
-  position: absolute;
-  bottom: 35px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  display: grid;
-  grid-column-gap: 5px;
-  width: calc(100% - 30px);
-  margin: 0 auto;
-
-  button {
-      padding: 10px 5px;
-      background-color: $oceanBlue;
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      outline: none;
-      cursor: pointer;
-  }
-}
-
-#percent {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  bottom: 3px;
-  font: normal 13px sans-serif;
-
-  >div {
-      width: 33.3%;
+    }
+    
+    .btn-group {
+      position: absolute;
+      bottom: 35px;
+      left: 0;
+      right: 0;
       text-align: center;
-      color: yellow-gold;
-      opacity: 0;
-      transition: opacity 0.5s;
-  }
-}`;
+      display: grid;
+      grid-column-gap: 5px;
+      width: calc(100% - 30px);
+      margin: 0 auto;
+    
+      button {
+        padding: 10px 5px;
+        background-color: $oceanBlue; /* scss color variable */
+        color: $white;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+    
+    #percent {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      bottom: 3px;
+      font: normal 13px sans-serif;
+    
+      > div {
+        width: 33.3%;
+        text-align: center;
+        color: $yellowGold;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+    }
+    
+    @media screen and (max-width: 600px) {
+      #module-name section > div .section-content {
+        grid-template-columns: none;
+        font-size: 12px;
+        margin-top: 5px;
+        grid-template-rows: repeat(3, 55px);
+      }
+    }`;
 
-    this.typescript = `
-  import { ChangeDetectorRef, Component, ElementRef,
-  QueryList, ViewChild, ViewChildren, } from '@angular/core';
+    this.typescript = `import { ChangeDetectorRef, Component, ElementRef, QueryList, ViewChild, ViewChildren, } from '@angular/core';
 
 @Component({
   selector: 'my-app',

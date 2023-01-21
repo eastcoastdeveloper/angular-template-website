@@ -7,9 +7,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './html-table.component.html'
 })
 export class HtmlTableComponent implements OnInit {
-  typescript = `
-  // JavaScript
-  var headers = Array.from(document.querySelectorAll('.headers > div')),
+  typescript = `var headers = Array.from(document.querySelectorAll('.headers > div')),
       search = document.getElementById('search-field'),
       caret = document.querySelector('.caret'),
       body = document.querySelector('.body'),
@@ -118,9 +116,7 @@ function sortColumn(e) {
   <div class="body"></div>
 </div>`;
 
-  style = `
-  CSS:
-  #html-table { min-width: 650px; }
+  style = `  #html-table { min-width: 650px; }
   main { overflow-x: auto; }
   .search input::placeholder { font: normal 13px sans-serif; }
   .headers > div { padding: 5px 10px; }
@@ -135,12 +131,14 @@ function sortColumn(e) {
     position: relative;
     height: 25px;
   }
+
   .search h4 {
     margin: 0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
   }
+  
   .search input {
     position: absolute;
     right: 10px;

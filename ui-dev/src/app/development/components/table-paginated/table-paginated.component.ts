@@ -62,9 +62,7 @@ export class TablePaginatedComponent implements OnInit {
     }
   }
 
-  json: string = `
-  // cars.json
-  [
+  json: string = `[
     { "year": "1967", "make": "Pontiac", "model": "GTO" },
     { "year": "1967", "make": "Pontiac", "model": "Firebird" },
     { "year": "1967", "make": "Chevrolet", "model": "Malibu SS 396" },
@@ -92,9 +90,7 @@ export class TablePaginatedComponent implements OnInit {
     { "year": "1967", "make": "Dodge", "model": "Coronet 500 Hemi" }
   ]`;
 
-  appModule: string = `
-// app.module
-import { NgModule } from '@angular/core';
+  appModule: string = `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -109,9 +105,7 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 `;
 
-  typescript: string = `
-// app.component.ts
-import { HttpClient } from '@angular/common/http';
+  typescript: string = `import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { tap } from 'rxjs';
 import { CarsResponse } from './cars.interface';
@@ -145,16 +139,13 @@ export class AppComponent {
   }
 }`;
 
-  interface: string = `
-export interface CarsResponse {
+  interface: string = `export interface CarsResponse {
     year: string;
     make: string;
     model: string;
 }`;
 
-  styling: string = `
-// app.component.scss
-#table-component {
+  styling: string = `#table-component {
   font: normal 14px sans-serif;
   margin: 15px auto 0 auto;
   border: 1px solid black;
@@ -241,9 +232,7 @@ export interface CarsResponse {
   }
 }`;
 
-  markup: string = `
-// app.component.html
-<div id="table-component">
+  markup: string = `<div id="table-component">
   <div class="table-details">
     <span>Popular Muscle Cars</span>
     <span>Total Vehicles: {{ cars.length }}</span>

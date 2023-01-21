@@ -8,6 +8,7 @@ import { ProjectsListContentComponent } from 'src/app/development/components/pro
 import { PaginationComponent } from 'src/app/development/components/pagination/pagination.component';
 import { CategoryNavigationComponent } from 'src/app/development/components/category-navigation/category-navigation.component';
 import { RelatedComponentsComponent } from 'src/app/development/components/related-components/related-components.component';
+import { EndOfPostComponent } from 'src/app/development/components/end-of-post/end-of-post.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RelatedComponentsComponent } from 'src/app/development/components/relat
     LoaderComponent,
     PaginationComponent,
     CategoryNavigationComponent,
-    RelatedComponentsComponent
+    RelatedComponentsComponent,
+    EndOfPostComponent
   ],
   imports: [CommonModule, RouterModule, RightColumnModule],
   exports: [
@@ -25,7 +27,8 @@ import { RelatedComponentsComponent } from 'src/app/development/components/relat
     LoaderComponent,
     PaginationComponent,
     CategoryNavigationComponent,
-    RelatedComponentsComponent
+    RelatedComponentsComponent,
+    EndOfPostComponent
   ]
 })
 export class SharedModule {}

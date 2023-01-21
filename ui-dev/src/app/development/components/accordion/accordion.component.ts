@@ -83,8 +83,7 @@ export class AccordionComponent implements OnInit {
     }
   }
 
-  json: string = `
-[
+  json: string = `[
   { "name": "Experience",
     "content": [
       { "item": "UI Development"          },
@@ -157,8 +156,7 @@ export class AccordionComponent implements OnInit {
     ]}
 ]`;
 
-  typescript: string = `
-import { HttpClient } from '@angular/common/http';
+  typescript: string = `import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccordionData } from './accordion.interface';
 
@@ -214,8 +212,7 @@ export class AppComponent implements OnInit {
   }
 }`;
 
-  interface: string = `
-  export interface AccordionData {
+  interface: string = `export interface AccordionData {
     content: {
       item?: string;
       title?: string;
@@ -226,8 +223,7 @@ export class AppComponent implements OnInit {
     name: string;
 }`;
 
-  scss: string = `
-$black: #313b3f;
+  scss: string = `$black: #313b3f;
 $blue: #25aae1;
 $white: #eff3f6;
 $yellow: #d9a74a;
@@ -320,8 +316,7 @@ $yellow: #d9a74a;
   z-index: 1;
 }`;
 
-  markup: string = `
-<div #accordionParent class="accordion-wrapper">
+  markup: string = `<div #accordionParent class="accordion-wrapper">
   <div class="data-block" *ngFor="let item of accordionData; let i = index">
     <p (click)="toggleSection($event, i)">{{ item.name }}</p>
     <p class="count">{{ item.content.length }}</p>

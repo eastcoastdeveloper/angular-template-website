@@ -154,8 +154,7 @@ export class DatePickerComponent implements OnInit {
   }
 
   private renderCode() {
-    this.markup = `
-<div id="calendar-component">
+    this.markup = `<div id="calendar-component">
   <input
     type="text" placeholder="Select a date..."
     (focus)="openCalendar()"
@@ -203,8 +202,7 @@ export class DatePickerComponent implements OnInit {
   </div>
 </div>`;
 
-    this.scss = `
-  #calendar-component {
+    this.scss = `#calendar-component {
   position: relative;
   max-width: 250px;
   margin: 0 auto;
@@ -358,8 +356,7 @@ export class DatePickerComponent implements OnInit {
   color: white !important;
 }`;
 
-    this.typescript = `
-import { Component, OnInit } from '@angular/core';
+    this.typescript = `import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: '[app-calendar]',

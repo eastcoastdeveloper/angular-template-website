@@ -92,10 +92,7 @@ export class SliderComponent implements OnInit, OnDestroy {
   }
 
   private renderCode() {
-    this.markup = `
-    // typescript-slider.component.html
-
-    <div class="wrapper">
+    this.markup = `    <div class="wrapper">
       <div class="slider-bg"></div>
       <div class="tagLine">Top Four AI Books of 2021</div>
       <div id="slider">
@@ -123,10 +120,7 @@ export class SliderComponent implements OnInit, OnDestroy {
     </div>
   </div>`;
 
-    this.scss = `
-  // typescript-slider.component.scss
-
-  #slider {
+    this.scss = `#slider {
     position: relative;
     width: 100%;
     margin: auto;
@@ -216,10 +210,7 @@ export class SliderComponent implements OnInit, OnDestroy {
     > div { cursor: pointer; }
   }`;
 
-    this.typescript = `
-    // typescript-slider.component.ts
-
-    import { HttpClient } from '@angular/common/http';
+    this.typescript = `    import { HttpClient } from '@angular/common/http';
     import { Component } from '@angular/core';
     import { DataInterface } from './data.interface';
 
@@ -273,10 +264,7 @@ export class SliderComponent implements OnInit, OnDestroy {
       }
     }`;
 
-    this.interface = `
-    // typescript-slider.interface.ts
-    
-    export class DataInterface {
+    this.interface = `export class DataInterface {
       title: string;
       author: string;
       status: boolean;

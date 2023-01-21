@@ -59,8 +59,7 @@ export class DragDropUiComponent {
     this.snippetFour = `[{active: false}, {active: false}, {active: false}, {active: false}, ...]`;
     this.snippetFive = `{active: true}`;
 
-    this.json = `
-  {
+    this.json = `  {
     "unsortedItems": [
       { "items": [
           { "name": "Orange"     },
@@ -119,13 +118,11 @@ export class DragDropUiComponent {
     ]
   }`;
 
-    this.interface = `
-  export class ItemResponse {
+    this.interface = ` export class ItemResponse {
     [index: number]: { items: { name: string }[] };
   }`;
 
-    this.typescript = `
-items: { title: string }[] = [];
+    this.typescript = `items: { title: string }[] = [];
 groupItem: string;
 groupIndex: any;
 result: any = [];
@@ -177,17 +174,21 @@ collectDropZones() {
     document.querySelectorAll('.child-container .drop-zone')
   );
   this.directoryElements.forEach((val: any, i: number) => {
+    
     // Drag Leave Event
     val.addEventListener('dragleave', () => {
       this.removeActiveDropZone(val);
     });
+
     // Drag Over Event
     val.addEventListener('dragover', (e: any) => {
       e.preventDefault();
       val.classList.add('drag-zone-active');
     });
+
     // Drop Event
     val.addEventListener('drop', (e: any) => {
+
       // Kill Other Events
       e.stopImmediatePropagation();
       this.removeActiveDropZone(val);
@@ -319,8 +320,7 @@ removeInputs() {
 }
 }`;
 
-    this.markup = `
-<div class="wrapper">
+    this.markup = `<div class="wrapper">
   <header [ngClass]="{ 'border-btm': items.length > 0 }">
     <p>Drag-Drop UI</p>
     <small>&mdash;&nbsp;&nbsp;No Libraries or Packages&nbsp;&nbsp;&mdash;</small>
@@ -393,8 +393,7 @@ removeInputs() {
   </div>
 </div>`;
 
-    this.scss = `
-.wrapper {
+    this.scss = `.wrapper {
   font-family: Lato;
   background-color: lightgrey;
   max-width: 1000px;
