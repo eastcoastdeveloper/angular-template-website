@@ -186,7 +186,7 @@ function sortColumn(e) {
     updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-date-picker',
     repoLink: 'https://github.com/eastcoastdeveloper/Dynamic-HTML-Table',
-    category: '',
+    category: 'components',
     views: 49,
     forks: 0,
     threeColumnLayout: true,

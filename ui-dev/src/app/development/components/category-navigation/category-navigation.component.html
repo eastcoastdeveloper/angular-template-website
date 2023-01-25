@@ -1,5 +1,29 @@
-<div *ngIf="windowWidth! < 993" class="category-burger-menu">
-  <span>&#9776;</span>
+<span class="hamburger-icon" (click)="menuOpen = !menuOpen">&#9776;</span>
+<div
+  class="fly-out-menu"
+  *ngIf="windowWidth! < 993"
+  [ngClass]="{ 'open-menu': !menuOpen }"
+>
+  <div class="wrapper">
+    <nav>
+      <span (click)="loadCategory('projects')">Projects</span>
+      <span (click)="loadCategory('components')">Components</span>
+      <span (click)="loadCategory('development')">Development</span>
+    </nav>
+    <div class="category-content">
+      <div class="scroller">
+        <div
+          *ngFor="let item of dataArray"
+          class="category-item element-shadow"
+        >
+          <p>{{ item.title }}</p>
+          <div (click)="navigateToURL(item)" class="thumb">
+            <img [src]="item.imgUrl" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="windowWidth! > 992" class="category-group">

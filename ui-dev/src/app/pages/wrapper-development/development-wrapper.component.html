@@ -3,7 +3,8 @@
     <h1 class="page-title">{{ pageTitle }}</h1>
     <app-post-details *ngIf="pageTitle != 'Learn to Code'"></app-post-details>
     <app-category-navigation
-      *ngIf="windowWidth > 650"
+      *ngIf="windowWidth > 605"
+      [categoryType]="'development'"
     ></app-category-navigation>
   </div>
 

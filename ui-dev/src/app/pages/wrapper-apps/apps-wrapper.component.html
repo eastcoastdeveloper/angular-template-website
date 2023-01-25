@@ -5,7 +5,8 @@
       *ngIf="pageTitle != 'Front End Development'"
     ></app-post-details>
     <app-category-navigation
-      *ngIf="windowWidth > 650"
+      *ngIf="windowWidth > 605"
+      [categoryType]="'projects'"
     ></app-category-navigation>
   </div>
 

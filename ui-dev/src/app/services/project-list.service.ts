@@ -113,7 +113,7 @@ export class ProjectListService {
 
   // Called in Every Page to Update Title, Git, Stackblitz, etc.
   changePageDataObject(obj: PageDataObject) {
-    this.pageDataObjectSubject.next(obj);
+    return this.pageDataObjectSubject.next(obj);
   }
 
   // Decipher Whether JSON Powered Projects are Cached
