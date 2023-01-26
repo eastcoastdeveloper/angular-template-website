@@ -1,4 +1,9 @@
-<span class="hamburger-icon" (click)="menuOpen = !menuOpen">&#9776;</span>
+<span
+  *ngIf="windowWidth! < 993"
+  class="hamburger-icon"
+  (click)="menuOpen = !menuOpen"
+  >&#9776;</span
+>
 <div
   class="fly-out-menu"
   *ngIf="windowWidth! < 993"
