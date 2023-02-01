@@ -50,10 +50,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.sideBarService.changeValue(this.sidebarStatus);
   }
 
-  navigateToContact() {
-    window.location.href = 'https://frontenddevelopment.tech/inquire.html';
-  }
-
   ngOnDestroy(): void {
     this.unsubscribe$.next(true);
     this.unsubscribe$.complete();

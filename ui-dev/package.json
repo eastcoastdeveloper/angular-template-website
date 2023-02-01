@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --quiet --fix",
-    "format": "npx prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --write"
+    "format": "npx prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --write",
+    "dev": "nodemon index",
+    "start:server": "nodemon server.js"
   },
   "private": true,
   "dependencies": {
@@ -24,8 +26,6 @@
     "crypto-js": "^4.1.1",
     "express": "^4.18.2",
     "highlightjs-line-numbers.js": "^2.8.0",
-    "leaflet-routing-machine": "^3.2.12",
-    "ngx-highlightjs": "^7.0.1",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -46,6 +46,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "nodemon": "^2.0.20",
     "prettier": "^2.8.1",
     "typescript": "~4.8.4"
   }

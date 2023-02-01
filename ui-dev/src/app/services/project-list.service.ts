@@ -21,7 +21,7 @@ export class ProjectListService {
   );
 
   storageObject: LocalStorageInterface = new LocalStorageInterface();
-
+  projectsURL: string = `/api/javascript-projects/`;
   // Main Array
   projectArray: ProjectsListInterface[] = [];
 
@@ -82,7 +82,7 @@ export class ProjectListService {
     // Only Call if Not Cached
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
-        `/api/javascript-projects/?page=${pageNum}?&limit=${pageLimit}`,
+        this.projectsURL + `?page=${pageNum}?&limit=${pageLimit}`,
         httpOptions
       )
       .pipe(
@@ -120,30 +120,5 @@ export class ProjectListService {
   individualProjectCacheCheck(projectName: string) {
     const storage = this._localStorageService.getData('cmpts');
     this.projectsWithJSON = [];
-
-    // There IS Cache
-    /* if (storage != '') {
-      let parsed = JSON.parse(storage);
-      this.storageObject = parsed;
-
-      // If Requested Page is Cached w/ a Value
-      if (this.storageObject.hasOwnProperty(pageNum)) {
-        this.projectsWithJSON = this.storageObject[pageNum];
-        this.allProjectsSubject.next(this.projectsWithJSON);
-      }
-
-      // Requested Page Called First Time
-      else {
-        new Promise((resolve) => {
-          this.getAllProjects(pageNum, limit);
-          resolve(this.saveNewlyCachedData(pageNum));
-        });
-      }
-    }
-
-    // There's NOTHING Cached
-    else {
-      this.getAllProjects(pageNum, limit);
-    } */
   }
 }

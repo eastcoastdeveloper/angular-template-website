@@ -58,30 +58,23 @@
     position: relative;
     height: 70px;
   }
-  .logo {
-    width: 100px;
-    position: relative;
-    margin-left: 10px;
-    top: 50%;
-    transition: transform 0.3s;
-    transform: translateY(-50%);
-    cursor: pointer;
-    outline: none;
-    float: left;
-    display: none;
-  }
+
   .mobile-menu-icon {
     position: absolute;
     cursor: pointer;
     color: $white;
-    left: 10px;
+    right: 0;
+    height: 50px;
+    width: 50px;
+    display: flex;
     .menu-open {
+      margin: auto;
       font-size: 40px;
+      transform: translateY(-1.5px);
     }
     .menu-close {
       font-size: 26px;
-      transform: translate(8px, 11px);
-      display: block;
+      margin: auto;
     }
   }
   .mobile-title {
@@ -95,33 +88,25 @@
   }
 }
 
-@media only screen and (max-width: 1150px) {
-  .app-header .url {
-    display: none;
-  }
-  .app-header .logo {
-    display: block;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .app-header {
     height: 50px;
-  }
-  .app-header .logo {
-    width: 75px;
+    .url {
+      width: 325px;
+      height: 50px;
+    }
+    .site-header {
+      top: 25px;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+    .site-header + span {
+      left: 275px;
+      top: 18.5px;
+      font-size: 14px;
+    }
   }
   .app-header nav {
     display: flex;
-  }
-}
-
-@media only screen and (max-width: 605px) {
-  .app-header {
-    .logo {
-      width: 75px;
-      margin-left: 60px;
-      transform: translateY(-46%);
-    }
   }
 }

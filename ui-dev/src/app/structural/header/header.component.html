@@ -1,10 +1,7 @@
 <header class="app-header">
-  <div *ngIf="screenSize > 1150" class="url" routerLink="/">
+  <div class="url" routerLink="/">
     <div class="site-header">Front End Development</div>
     <span>.tech</span>
-  </div>
-  <div *ngIf="screenSize < 1151" class="logo" routerLink="/">
-    <img src="../../../assets/img/logo.png" />
   </div>
   <nav *ngIf="screenSize > 605">
     <div class="mock-link" routerLink="javascript-projects">
@@ -16,9 +13,6 @@
     <div class="mock-link" routerLink="front-end-developer">
       <span routerLinkActive="is-active">About</span>
     </div>
-    <!-- <div class="mock-link">
-            <a href="https://www.frontenddevelopment.tech/contact/inquire.html">Contact</a>
-        </div> -->
   </nav>
   <div class="mobile-title">FrontendDev</div>
   <div

@@ -47,10 +47,6 @@
       background-color: $greyBlack;
     }
 
-    // li:nth-child(odd) {
-    //   background-color: rgba(49, 59, 63, 0.9);
-    // }
-
     li:hover {
       background-color: $greyBlack;
     }
@@ -70,10 +66,6 @@
 .data-block:not(:last-child) {
   border-bottom: 1px solid $white;
 }
-
-// .data-block:last-child {
-//   border: none;
-// }
 
 .hidden-content {
   overflow: auto;

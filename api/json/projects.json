@@ -224,7 +224,7 @@
       "title": "Angular Event Emitter",
       "imgUrl": "../../assets/projects-grid/angular-event-emitter.jpg",
       "description": "Angular event emitter illustrated via three components. Interact with a data table component and send the click event to the parent. Then share that same click event with a Chart JS area chart. Great example of one of the many ways to share data,",
-      "path": "https://stackblitz.com/edit/angular-share-component-data?file=src%2Fapp%2Fapp.component.ts",
+      "path": "https://stackblitz.com/edit/angular-eventemitter-example",
       "altText": "Angular event emitter showcased between an area chart and table. Click table rows and watch the area chart reflect the table values.",
       "stackblitz": true,
       "internal": null,
