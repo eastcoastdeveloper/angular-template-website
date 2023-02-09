@@ -76,13 +76,16 @@
 </div>
 
 <p class="project-text element-margin-top">
-  Let's begin with the data for the Accordion Component. In a real world
-  environment, this would of course be a stream from an endpoint. Depending on
-  which version of Angular you're on, you may need to modify the JSON. In some
-  versions, named objects don't seem to play well with the framework.
+  This basic Angular accordion is set up to have multiple layouts. Each of which
+  can be easily configured to apply in any group. The code is super simple as
+  it's akin to basic JavaScript class toggling. Not really much to it here, but
+  can certainly be used as a solid component. The number of items on the far
+  right is the amount of objects being piped into each group. So, yes&mdash;this
+  is JSON powered, acquired via a conventional http GET.
 </p>
 
-<div class="code-preview element-margin-top">
+<h2>Imported Data</h2>
+<div class="code-preview">
   <pre><code>{{json}}</code></pre>
 </div>
 
@@ -92,14 +95,27 @@
   all values exist in each layout.
 </p>
 
-<div class="code-preview element-margin-top">
+<h2>Create the Interface</h2>
+<div class="code-preview">
   <pre><code>{{interface}}</code></pre>
 </div>
 
-<ul class="project-text element-margin-top">
+<p class="project-text element-margin-top">
+  For those of you unfamiliar with this, it's a representation of the payload.
+  Not possible in JavaScript, but one of the core pieces of TypeScript and
+  abundant in other languages such as Java and frameworks such as Spring and
+  .NET. The type is checked at run time vs compile time. You may see interfaces
+  prefixed with T, such as TAccordionData to help denote a valid type for future
+  developers. Moreoever this could certainly be considered a best practice in
+  some environments as an interface or model called T is simply not intuitive
+  enough.
+</p>
+
+<h2>Angular Accordion Component</h2>
+<ul class="project-list">
   <li>
     In the TypeScript file, we begin with an empty array set to the interface
-    data type.
+    type.
   </li>
   <li>Capture the parent element.</li>
   <li>
@@ -126,33 +142,47 @@
   <pre><code>{{typescript}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
-  Most of this is pretty basic. The main take away here are the ul blocks with
-  ngIf directives. The numbers correspond to the data which have different
-  layouts.
+<h2>Lean Markup</h2>
+<p class="project-text">
+  The markup is essentially one giant HTML block with settings for each section.
+  Notice the ngFor directive at the very top. I've seen markup get pretty messy
+  and often times have unnessary tags, parents, and children. Usually written by
+  devs that have no interest in the frontend in my experience. So, regardless of
+  the frontend task, keep the markup as lean as possible. Each section is
+  initialized with a double loop indicative of the payload.
 </p>
 
 <div class="code-preview element-margin-top">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
-  Apply the scss styling. I love nesting like this. It makes things so clean and
-  easy to isolate.
+<h2>Apply the Styling</h2>
+<p class="project-text">
+  The scss variables at the top are no doubt housed in another file, then
+  imported. This of course allows us to change the entire color palette in one
+  fell swoop. As mentioned on other pages, I use nesting to compartmentalize
+  tyling blocks. Looks cleaner, easier to read, and definitely a safer bet. I
+  must say, even while working on high profile projects&mdash;I notice devs
+  writting inline styles. Please, avoid this at all cost! It's inflexible and
+  definitely frowned upon.
 </p>
 
 <div class="code-preview element-margin-top">
   <pre><code>{{scss}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
-  You could use this to send and receive data or click events. You could even
-  transform this to basic HTML or React if necessary. Regardless, this is useful
-  feature to add to any desktop or mobile app. If you're met with a challenge at
-  any point, check out the
+<h2>In Conclusion</h2>
+<p class="project-text">
+  Regardless of the project, components like these are always helpful in
+  organizing the UI for any screen size. Making components like this clean,
+  maleable, and easy to maintain are crucial. At my current place of employment,
+  there's archaic code. Features without documentation or comments. There's
+  basic components that don't work or are unresponsive. But I digress. Hope you
+  found this post useful. <span class="attention-arrow">&#x2190;</span>
   <a
+    class="external-link"
     href="https://stackblitz.com/edit/angular-accordion-json?file=src%2Fapp%2Fapp.component.ts"
     target="_blank"
     >Accordion Component Stackblitz demo.</a
-  >. Hope you found this useful.
+  >.
 </p>

@@ -4,13 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build",
+    "build": "ng build --aot --build-optimizer --common-chunk --vendor-chunk --named-chunks",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --quiet --fix",
     "format": "npx prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --write",
-    "dev": "nodemon index",
-    "start:server": "nodemon server.js"
+    "dev": "nodemon index"
   },
   "private": true,
   "dependencies": {

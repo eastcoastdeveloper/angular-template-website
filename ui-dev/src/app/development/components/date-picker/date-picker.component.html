@@ -59,14 +59,15 @@
 <p class="project-text element-margin-top" (click)="closeCalendar()">
   I created this Angular datepicker to have as a standalone component. A feature
   to easily add into projects as needed. I arrived at this decision after taking
-  unnessary time configure everything that Material needs. I've done this
+  unnessary time to configure everything that Material needs. I've done this
   several times&mdash;for a date picker. Much of what the library supplies can
   be developed as custom features. Custom features vs needing to conform to the
   library's demands. The TypeScript file below has a number of moving parts.
   Once we get past the first function however, it's not as complex.
 </p>
 
-<ul class="project-list element-margin-top" (click)="closeCalendar()">
+<h2>How it Works</h2>
+<ul class="project-list" (click)="closeCalendar()">
   <li>
     calendarVisible is the variable that determines if the component is open or
     closed. Whether it's in the DOM, or removed.
@@ -84,20 +85,20 @@
   </li>
   <li>yearsMenu the same as monthsMenu.</li>
   <li>
-    In calculateStartEndDate fn, we loop over 42 indices. With seven days in a
-    week multiplied by six potential weeks in a month, there's 42 possible days.
-    One month may begin on a Saturday, end on Sunday&mdash;spanning six weeks.
-    If the first day of the month is greater than one of the 42, add empty
-    cells. Then push those values to the array. So, the 42 slots may look like:
+    In the calculateStartEndDate fn, we loop over 42 indices. With seven days in
+    a week multiplied by six potential weeks in a month, there's 42 possible
+    days. One month may begin on a Saturday, end on Sunday&mdash;spanning six
+    weeks. If the first day of the month is greater than one of the 42, add
+    empty cells. Then push those values to the array.
   </li>
   <li>
-    firstLastDays fn gets the first and last day of the month respectively, then
-    passes them into the previous fn.
+    The firstLastDays fn gets the first and last day of the month respectively,
+    then passes them into the previous fn.
   </li>
   <li>selectDay(), selectYear(), and selectMonth() are similar.</li>
   <li>showMonths() toggle the months menu while closing the years menu.</li>
   <li>
-    checkForFutureDate() flags to the user, "hey, you're selecting a future
+    checkForFutureDate() flags to the user, "Hey, you're selecting a future
     date".
   </li>
   <li>
@@ -110,36 +111,46 @@
   <pre><code>{{typescript}}</code></pre>
 </div>
 
-<ul class="project-list element-margin-top">
-  <li>
-    The only semi unrecognizable part of the input should be the value. Which
-    simply lays out the date, already retrieved.
-  </li>
-  <li>monthsMenu is visible only if, and loops over the months.</li>
-  <li>As does yearsMenu.</li>
-  <li>weekdays are constant. Looping over the days.</li>
-  <li>
-    The all-days-skeleton block applies a dynamic class and populates the
-    calendar the
-  </li>
-</ul>
+<h2>Angular Date Picker Markup</h2>
+<p class="project-text">
+  The only semi unrecognizable part of the input should be the value. Which
+  simply lays out the date, already retrieved. monthsMenu is visible only if
+  it's open, then loops over the months array. As does yearsMenu. weekdays are
+  constant. showMonths() opens the months menu. selectDay() at the end passes
+  the day as an argument. In the TypeScript, the incoming day is then set to
+  currentDay. checkForFutureDate() fires which creates a new date.
+</p>
 
 <div class="code-preview element-margin-top">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">Styling...</p>
+<p class="project-text element-margin-top">
+  Styling is what it is. Nothing overly complicated here if you know CSS. The
+  nesting aspect is a feature of scss and allows for wonderful organization of
+  styling blocks. Only caveat is updating said styles in media queries requires
+  the same ordering of nested elements. If > div looks foreign to you, it's
+  simply referencing all divs that are first descendents. Grandchildren are not
+  captured.
+</p>
 
 <div class="code-preview element-margin-top">
   <pre><code>{{scss}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
+<h2>Wrapping Up</h2>
+<p class="project-text">
+  <span class="attention-arrow">&#x2190;</span>
   <a
+    class="external-link"
     href="https://stackblitz.com/edit/datepicker-angular-component?file=src%2Fapp%2Fdate-picker%2Fdate-picker.component.ts"
     target="_blank"
     >If you get stuck, check out the live demo.</a
   >. I really hope these explanations helped you understand this component. My
-  objective here was to give something back to the developer community. Hope
-  I've succeeded in providing a valuable Angular datepicker!
+  objective here, as always is to give something back to the developer
+  community. Development is tough. And yes, there's some great learning
+  resources available in every medium. Other times we find code that's either
+  outdated, not compatible with our environment, or simply doesn't work. My goal
+  here is provide solutions and features that are regularly updated and
+  improved. Hope I've succeeded in providing a valuable Angular datepicker!
 </p>

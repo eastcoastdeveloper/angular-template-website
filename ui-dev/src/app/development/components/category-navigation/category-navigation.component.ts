@@ -27,7 +27,6 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.categoryType);
     this._windowWidth.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {

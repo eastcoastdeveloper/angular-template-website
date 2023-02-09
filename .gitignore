@@ -2,3 +2,4 @@ node_modules/
 ui-dev/dist
 .DS_Store
 .angular
+api/.env

@@ -86,12 +86,12 @@ export class AccordionComponent implements OnInit {
   json: string = `[
   { "name": "Experience",
     "content": [
-      { "item": "UI Development"          },
-      { "item": "Frontend Development"    },
-      { "item": "Single Page Apps"        },
+      { "item": "UI Development"                },
+      { "item": "Frontend Development"      },
+      { "item": "Single Page Apps"             },
       { "item": "HTML5, CSS, JS & JSON"   },
-      { "item": "Data Driven Development" },
-      { "item": "Manage Small Teams"      }
+      { "item": "Data Driven Development"  },
+      { "item": "Manage Small Teams"         }
     ]},
   { "name": "Skills",
     "content": [

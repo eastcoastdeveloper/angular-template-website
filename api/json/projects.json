@@ -1,6 +1,16 @@
 {
   "data": [
     {
+      "title": "Angular Countdown Timer",
+      "imgUrl": "../../assets/projects-grid/angular-countdown-timer.jpg",
+      "description": "Angular countdown timer component with very minimal code. Plug it into any Angular project. Easily customize style or add milliseconds. Great feature to use in advertisements.",
+      "path": "/ui-components/angular-countdown-timer",
+      "altText": "Angular countdown timer component. Countdown with days, hours, minutes, and seconds. Written in TypeScript.",
+      "stackblitz": false,
+      "internal": true,
+      "category": "components"
+    },
+    {
       "title": "APOD NASA Gov",
       "imgUrl": "../../assets/projects-grid/apod-nasa-gov.jpg",
       "description": "APOD NASA Gov is NASA's Photo of the Day API. This Angular app w/ numerous components pings the endpoint to populate the DOM. A service connects them all. Access records dating back to 1995.",
@@ -39,16 +49,6 @@
       "stackblitz": false,
       "internal": true,
       "category": "projects"
-    },
-    {
-      "title": "Angular Countdown Timer",
-      "imgUrl": "../../assets/projects-grid/angular-countdown-timer.jpg",
-      "description": "Angular countdown timer component with very minimal code. Plug it into any Angular project. Easily customize style or add milliseconds. Great feature to use in advertisements.",
-      "path": "/ui-components/angular-countdown-timer",
-      "altText": "Angular countdown timer component. Countdown with days, hours, minutes, and seconds. Written in TypeScript.",
-      "stackblitz": false,
-      "internal": true,
-      "category": "components"
     },
     {
       "title": "Angular Date Picker",

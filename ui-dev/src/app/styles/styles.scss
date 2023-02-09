@@ -13,6 +13,23 @@ a {
   text-decoration: none;
 }
 
+.attention-arrow {
+  transform: rotate(-180deg);
+  display: inline-block;
+  font-size: 14px;
+  color: red;
+}
+
+h2 {
+  margin: 20px 0 5px 0;
+  font: 600 20px sans-serif;
+  color: $greyBlack;
+}
+
+.external-link {
+  color: $oceanBlue;
+}
+
 .greyBlack {
   background-color: $greyBlack;
   color: $white;
@@ -426,6 +443,9 @@ a {
     font-size: 0.9em;
     padding-top: 2px;
   }
+  h2 {
+    font-size: 18px;
+  }
 }
 
 .category-menu,
@@ -567,13 +587,14 @@ a {
   color: $white;
 }
 .code-preview {
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.35);
-  font: normal 12px/19px sans-serif;
+  box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 35%);
+  font: normal 13px/20px sans-serif;
   background-color: $oceanBlue;
   border: 1px solid $white;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.75px;
   padding: 15px;
   color: $white;
+  font-weight: 300;
   pre {
     overflow-x: auto;
   }

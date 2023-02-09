@@ -1,17 +1,13 @@
 @import '../../styles/page-style.scss';
 
-// .project:not(:first-child) {
-//   margin-top: 50px;
-// }
 .project {
   .site-details {
     overflow: auto;
     border-bottom: 1px solid $greyBlack;
     padding-bottom: 4px;
     h2 {
-      font: bold 20px sans-serif;
       float: left;
-      color: $greyBlack;
+      margin: 0 0 5px 0;
     }
     a {
       float: right;
@@ -30,7 +26,6 @@
   }
   .site-description {
     font: normal 14px/22px sans-serif;
-    // margin: 15px 0 20px 0;
     color: $greyBlack;
   }
 }

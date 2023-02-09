@@ -16,18 +16,24 @@
   </div>
 </div>
 
+<h2>How it's Built</h2>
+<p class="project-text">
+  I created this Angular countdown timer because it's often difficult to find
+  exactly what you need. Whether it's a Angular or React component. A spcific
+  service. Or an Axios GET request with error handling that doesn't cause 500
+  errors by default.
+</p>
+
 <p class="project-text element-margin-top">
-  Sometimes I'm amazed how much developers can accomplish in such few lines of
-  code. No frameworks or libraries, just code in a native language. I think this
-  is one of those times. Here's a neat component, done so with minimal code.
-  Begin by setting the variables.
+  Regardless, I'm often amazed how much developers can accomplish in such few
+  lines of code. No frameworks or libraries, just code in a native language. I
+  think this is one of those times. Here's a neat component&mdash;done so with
+  minimal code.
 </p>
 
 <ul class="project-list element-margin-top">
-  <li>
-    Basic date reference followed by the current time, denoted via
-    this.date.getTime().
-  </li>
+  <li>Begin by setting the variables.</li>
+  <li>Basic date reference followed by the current time.</li>
   <li>targetDate is of course the desired date to countdown from.</li>
   <li>targetTime is the numeric version of the date.</li>
   <li>difference is then subtracted by now (numerically).</li>
@@ -42,20 +48,23 @@
   </li>
   <li>
     We're using basic ViewChild to retrieve the DOM elements, which are then
-    populated w/ values.
+    populated w/ values. Some may argue Angular's Renderer2 would be a better
+    approach due to potential injection sinks. So this may change in a future
+    version.
   </li>
   <li>
     ngAfterViewInit is used because ViewChild elements do not become available
     at early life cycle hooks.
   </li>
   <li>
-    The isNaN bit is pertinent because days is NaN before it's calculated. So
-    unless you want NaN showing in the UI, use the ternary.
+    The isNaN bit is pertinent because days is not a number before it's
+    calculated. So unless you want NaN showing in the UI, use the ternary at the
+    end of the ngAfterViewInit hook block.
   </li>
   <li>
     In this hook, we call a repeating fn every 1 second. It updates the
-    difference bwtween then and now and divides it by a series to make it
-    readable/presentable.
+    difference bwtween then and now and divides it by an equation to make it
+    readable/ presentable.
   </li>
   <li>
     tickTock() creates a new date, and updates the aforementioned values. That's
@@ -63,21 +72,36 @@
   </li>
 </ul>
 
+<h2>Angular Countdown Timer Typescript</h2>
+<p class="project-text">
+  If you're familiar with Angular this shouldn't be foreign to you. If it is
+  though, feel free to ping me. Always happy to explain code. Regardless,
+  understand the code. It's not so much about the sytax but moreso about the the
+  concept. Building and applying conceptually makes us better developers. In
+  turn, it becomes easier to learn new languages because we apply concepts. Then
+  simply piece them together.
+</p>
 <div class="code-preview element-margin-top">
   <pre><code>{{typescript}}</code></pre>
 </div>
 
 <p class="project-text element-margin-top">
-  The markup is a rudimentary warpper with two rows of elements.
+  The markup is a rudimentary wrapper with two rows of elements. #days, #hours,
+  #minutes, and #seconds receive their prospective values.
 </p>
 
 <div class="code-preview element-margin-top">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">Styling is nothing revolutionary.</p>
+<p class="project-text element-margin-top">
+  Styling is nothing revolutionary. I've certainly encountered devs though
+  who've never nested scss. I enjoy it because it enables strict isolation.
+  Encapsulation in nature if you will.
+</p>
 
-<div class="code-preview element-margin-top">
+<h2>Styling and Conclusion</h2>
+<div class="code-preview">
   <pre><code>{{styling}}</code></pre>
 </div>
 
@@ -86,7 +110,9 @@
   perhaps the ability to change the time zone, in turn updating the time.
   Regardless, customize it to suit your needs. As always, if you get stuck or
   need a working version, check out my
+  <span class="attention-arrow">&#x2190;</span>
   <a
+    class="external-link"
     href="https://stackblitz.com/edit/angular-countdown-timer-component?file=src%2Fapp%2Fapp.component.ts"
     target="_blank"
     >Angular countdown timer</a
