@@ -19,8 +19,8 @@ export class AccordionComponent implements OnInit {
     repoTitle: 'angular-accordion',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
     category: '',
-    views: 769,
-    forks: 18,
+    views: 821,
+    forks: 20,
     threeColumnLayout: true,
     cornerStone: false
   };

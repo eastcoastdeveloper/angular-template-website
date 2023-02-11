@@ -20,7 +20,7 @@ export class DragDropUiComponent {
     repoTitle: 'javascript-drag-and-drop',
     repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
     category: 'projects',
-    views: 253,
+    views: 271,
     forks: 3,
     cornerStone: true,
     threeColumnLayout: true

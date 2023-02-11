@@ -18,7 +18,7 @@ export class TablePaginatedComponent implements OnInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
     category: '',
-    views: 6668,
+    views: 6671,
     forks: 191,
     threeColumnLayout: true,
     cornerStone: false

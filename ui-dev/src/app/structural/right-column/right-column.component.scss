@@ -34,21 +34,17 @@
   }
 
   .accordion-wrapper {
-    .data-block .show-content {
-      max-height: 150px !important;
+    .data-block {
+      p {
+        border-bottom: 1px solid $white;
+      }
+      .show-content {
+        max-height: 150px !important;
+      }
     }
     .code-samples li {
-      > div:first-child {
+      > div {
         grid-area: title;
-      }
-      > div:nth-child(2) a {
-        grid-area: code;
-      }
-      div:last-child a {
-        grid-area: project;
-      }
-      > div:last-child {
-        grid-area: code;
       }
     }
   }

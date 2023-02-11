@@ -5,4 +5,5 @@ export class SliderInterface {
   url: string;
   link: string;
   altText: string;
+  description: string;
 }

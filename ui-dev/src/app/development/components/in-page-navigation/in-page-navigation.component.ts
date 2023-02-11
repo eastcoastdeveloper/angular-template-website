@@ -23,7 +23,7 @@ export class InPageNavigationComponent implements OnInit {
     repoTitle: 'in-page-navigation',
     repoLink: 'https://github.com/eastcoastdeveloper/in-page-navigation',
     category: 'development',
-    views: 104,
+    views: 110,
     forks: 0,
     cornerStone: false,
     threeColumnLayout: true
@@ -33,6 +33,7 @@ export class InPageNavigationComponent implements OnInit {
   typescript: string;
   style: string;
 
+  @ViewChildren('percentages') percentages: QueryList<ElementRef>;
   @ViewChildren('sections') sections: QueryList<ElementRef>;
   @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
   @ViewChild('bar', { static: false }) bar: ElementRef;
@@ -42,7 +43,6 @@ export class InPageNavigationComponent implements OnInit {
 
   barLinkWidth = 0;
   currentSection = 0;
-  progress: any = [];
   Math: any;
 
   constructor(
@@ -63,9 +63,7 @@ export class InPageNavigationComponent implements OnInit {
 
   ngAfterViewInit() {
     this._cd.detectChanges();
-    this.progress = Array.prototype.slice.call(
-      document.querySelectorAll('#percent > div')
-    );
+
     this.barLinkWidth = 100 / this.sections.length;
     this.bar.nativeElement.setAttribute(
       'style',
@@ -83,76 +81,81 @@ export class InPageNavigationComponent implements OnInit {
 
   showProgressBar() {
     this.bar.nativeElement.style.height = '22px';
-    for (var i = 0; i < this.progress.length; i++) {
-      this.progress[i].style.opacity = 1;
-    }
+    this.percentages.forEach((val) => {
+      val.nativeElement.style.opacity = 1;
+    });
   }
 
   hideProgressBar() {
     this.bar.nativeElement.style.height = '3px';
-    for (var i = 0; i < this.progress.length; i++) {
-      this.progress[i].style.opacity = 0;
-    }
+    this.percentages.forEach((val) => {
+      val.nativeElement.style.opacity = 0;
+    });
   }
 
   private renderCode() {
-    this.markup = `<div id="module-name">
-  <section
-    *ngFor="let item of [].constructor(sectionLength);
-    let i = index" [ngClass]="{ 'display-none': currentSection != i }">
-      <div #sections>{{'Section ' + (i + 1)}}</div>
-
-      (Injectable Content)
-      // Section 1 Content
-      <div *ngIf="currentSection === 0" class="section-content">
+    this.markup = `<div id="module-name" class="element-shadow element-margin-top">
+    <section
+      *ngFor="let item of [].constructor(sectionLength)"
+    >
+      <div #sections>
+        {{ 'Section ' + (currentSection + 1) }}
+        <div *ngIf="currentSection === 0" class="section-content">
           <div class="group">
-              <label for="name">First Name:</label>
-              <input type="text" placeholder="Enter a name" id="name" />
+            <label for="name">First Name:</label>
+            <input type="text" placeholder="Enter a name" id="name" />
           </div>
           <div class="group">
-              <label for="occupation">Occupation:</label>
-              <input type="text" placeholder="Your occupation" id="occupation" />
+            <label for="occupation">Occupation:</label>
+            <input type="text" placeholder="Your occupation" id="occupation" />
           </div>
           <div class="group">
-              <label for="title">Title:</label>
-              <input type="text" placeholder="Your title" id="title" />
+            <label for="title">Title:</label>
+            <input type="text" placeholder="Your title" id="title" />
           </div>
+        </div>
+    
+        <div *ngIf="currentSection === 1" class="section-content">
+          <div class="group">
+            <label for="city">City:</label>
+            <input type="text" placeholder="Your city" id="city" />
+          </div>
+          <div class="group">
+            <label for="state">State:</label>
+            <input type="text" placeholder="Your state" id="state" />
+          </div>
+          <div class="group">
+            <label for="zip">Zip Code:</label>
+            <input type="text" placeholder="Your zip code" id="zip" />
+          </div>
+        </div>
+    
+        <div *ngIf="currentSection === 2" class="section-content">Results...</div>
       </div>
-
-      // Section 2 Content
-      <div *ngIf="currentSection === 1" class="section-content">
-          <div class="group">
-              <label for="city">City:</label>
-              <input type="text" placeholder="Your city" id="city" />
-          </div>
-          <div class="group">
-              <label for="state">State:</label>
-              <input type="text" placeholder="Your state" id="state" />
-          </div>
-          <div class="group">
-              <label for="zip">Zip Code:</label>
-              <input type="text" placeholder="Your zip code" id="zip" />
-          </div>
+    </section>
+    <div id="indicator" #bar></div>
+    <div id="percent">
+      <div
+        #percentages
+        *ngFor="let percent of [].constructor(sectionLength); let i = index"
+      >
+        {{ Math.round((100 / sectionLength) * (i + 1)) + '%' }}
       </div>
-
-      // Section 3 Content
-      <div *ngIf="currentSection === 2" class="section-content">
-          Results...
-      </div>
-  </section>
-  
-  <div id="indicator" #bar></div>
-  <div id="percent">
-      <div *ngFor="let percent of [].constructor(sectionLength); let i = index">
-          {{ Math.round((100 / sectionLength) * (i + 1)) + '%' }}
-      </div>
-  </div>
-  <div class="btn-group" #btnGroup (mouseover)="showProgressBar()" (mouseout)="hideProgressBar()">
-      <button *ngFor="let btn of [].constructor(sectionLength); let i = index" (click)="navigate(i)">
-          {{ 'Section ' + (i + 1) }}
+    </div>
+    <div
+      class="btn-group"
+      #btnGroup
+      (mouseover)="showProgressBar()"
+      (mouseout)="hideProgressBar()"
+    >
+      <button
+        *ngFor="let btn of [].constructor(sectionLength); let i = index"
+        (click)="navigate(i)"
+      >
+        {{ 'Section ' + (i + 1) }}
       </button>
-  </div>
-</div>`;
+    </div>
+    </div>`;
 
     this.style = `   #module-name {
       height: 300px;
@@ -162,7 +165,7 @@ export class InPageNavigationComponent implements OnInit {
       overflow: hidden;
     
       #indicator {
-        background-color: $greyBlack;  /* scss color variable */
+        background-color: #313b3f;
         height: 3px;
         position: absolute;
         bottom: 0;
@@ -171,8 +174,8 @@ export class InPageNavigationComponent implements OnInit {
     
       section {
         height: 100%;
-        background-color: $white; /* scss color variable */
-        border: 1px solid $greyBlack;
+        background-color: #FFFFFF;
+        border: 1px solid #313b3f;
         border-radius: 6px;
     
         > div {
@@ -180,7 +183,7 @@ export class InPageNavigationComponent implements OnInit {
           width: 100%;
           height: 100%;
           text-transform: uppercase;
-          color: $greyBlack;
+          color: #313b3f;
           padding: 20px;
           box-sizing: border-box;
     
@@ -201,7 +204,7 @@ export class InPageNavigationComponent implements OnInit {
     
             input {
               padding: 3px;
-              color: $greyBlack; /* scss color variable */
+              color: #313b3f;
               box-sizing: border-box;
               outline: none;
             }
@@ -227,8 +230,8 @@ export class InPageNavigationComponent implements OnInit {
     
       button {
         padding: 10px 5px;
-        background-color: $oceanBlue; /* scss color variable */
-        color: $white;
+        background-color: #03658c;
+        color: #FFFFFF;
         border: none;
         border-radius: 6px;
         outline: none;
@@ -246,7 +249,7 @@ export class InPageNavigationComponent implements OnInit {
       > div {
         width: 33.3%;
         text-align: center;
-        color: $yellowGold;
+        color: #d9a74a;
         opacity: 0;
         transition: opacity 0.5s;
       }
@@ -261,59 +264,72 @@ export class InPageNavigationComponent implements OnInit {
       }
     }`;
 
-    this.typescript = `import { ChangeDetectorRef, Component, ElementRef, QueryList, ViewChild, ViewChildren, } from '@angular/core';
-
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-})
-
-export class AppComponent {
-  @ViewChildren('sections') sections: QueryList<ElementRef>;
-  @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
-  @ViewChild('bar', { static: false }) bar: ElementRef;
-
-  // SET TO ANY AMOUNT!
-  sectionLength = 3;
-
-  barLinkWidth = 0;
-  currentSection = 0;
-  progress: any = [];
-  Math: any;
-
-  constructor(private _cd: ChangeDetectorRef) {
-    this.Math = Math;
-  }
-
-  ngAfterViewInit() {
-    this._cd.detectChanges();
-    this.progress = Array.prototype.slice.call(document.querySelectorAll('#percent > div'));
-    this.barLinkWidth = 100 / this.sections.length;
-    this.bar.nativeElement.setAttribute('style', 'width:' + this.barLinkWidth + '%');
-    this.btnGroup.nativeElement.style.gridTemplateColumns =
-      'repeat(' + this.sectionLength + ', auto)';
-  }
-
-  navigate(sectionIndex: number) {
-    this.currentSection = sectionIndex;
-    this.bar.nativeElement.style.width =
-      this.barLinkWidth * (sectionIndex + 1) + '%';
-  }
-
-  showProgressBar() {
-    this.bar.nativeElement.style.height = '22px';
-    for (var i = 0; i < this.progress.length; i++) {
-      this.progress[i].style.opacity = 1;
-    }
-  }
-
-  hideProgressBar() {
-    this.bar.nativeElement.style.height = '3px';
-    for (var i = 0; i < this.progress.length; i++) {
-      this.progress[i].style.opacity = 0;
-    }
-  }
-}`;
+    this.typescript = `import {
+      ChangeDetectorRef,
+      Component,
+      ElementRef,
+      QueryList,
+      ViewChild,
+      ViewChildren
+    } from '@angular/core';
+    
+    @Component({
+      selector: 'my-app',
+      templateUrl: './app.component.html',
+      styleUrls: ['./app.component.scss'],
+    })
+    export class AppComponent {
+      markup: string;
+      typescript: string;
+      style: string;
+    
+      @ViewChildren('percentages') percentages: QueryList<ElementRef>;
+      @ViewChildren('sections') sections: QueryList<ElementRef>;
+      @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
+      @ViewChild('bar', { static: false }) bar: ElementRef;
+    
+      // SET TO ANY AMOUNT!
+      sectionLength = 3;
+    
+      barLinkWidth = 0;
+      currentSection = 0;
+      Math: any;
+    
+      constructor(private _cd: ChangeDetectorRef) {
+        this.Math = Math;
+      }
+    
+      ngAfterViewInit() {
+        this._cd.detectChanges();
+    
+        this.barLinkWidth = 100 / this.sections.length;
+        this.bar.nativeElement.setAttribute(
+          'style',
+          'width:' + this.barLinkWidth + '%'
+        );
+        this.btnGroup.nativeElement.style.gridTemplateColumns =
+          'repeat(' + this.sectionLength + ', auto)';
+      }
+    
+      navigate(sectionIndex: number) {
+        this.currentSection = sectionIndex;
+        this.bar.nativeElement.style.width =
+          this.barLinkWidth * (sectionIndex + 1) + '%';
+      }
+    
+      showProgressBar() {
+        this.bar.nativeElement.style.height = '22px';
+        this.percentages.forEach((val) => {
+          val.nativeElement.style.opacity = 1;
+        });
+      }
+    
+      hideProgressBar() {
+        this.bar.nativeElement.style.height = '3px';
+        this.percentages.forEach((val) => {
+          val.nativeElement.style.opacity = 0;
+        });
+      }
+    }`;
   }
 }

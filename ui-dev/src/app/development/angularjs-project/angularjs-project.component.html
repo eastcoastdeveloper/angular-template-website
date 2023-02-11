@@ -4,18 +4,20 @@
   could add to their website as a standalone application. At the time, the only
   way consumers could explore the decks was by downloading a PDF. I sought out
   to do more. In turn, bringing a better user experience to the client.
+  <span class="attention-arrow">&#x2190;</span>
   <a
     class="external-link"
     href="https://codepen.io/eastcoastdeveloper/project/full/ZgbdLb"
     target="_blank"
     >View a working demo</a
-  >, or explore the code on CodePen:
+  >, or explore
+  <span class="attention-arrow">&#x2190;</span>
   <a
     class="external-link"
     href="https://codepen.io/eastcoastdeveloper/project/editor/ZgbdLb"
     target="_blank"
-    >AngularJS Project</a
-  >
+    >the code on CodePen</a
+  >.
 </p>
 
 <div class="image-wrapper element-shadow element-margin-top">
@@ -25,34 +27,27 @@
   />
 </div>
 
-<p class="project-text element-margin-top">
+<h2>AngularJS Project Directives</h2>
+<p class="project-text">
   Being pressed for time, and without the leisure to create and revise a mock, I
-  simply used one file for numerous controllers (below). Loading was taken care
-  of quite well with a custom AngularJS loader. I created an image and video
-  gallery template with a custom directive, then passed each the appropriate
-  details. Though the data should've been housed in a JSON file, I found this to
-  be a clean method.
+  simply used one file for numerous controllers. Loading was taken care of quite
+  well with a custom loader. I created an image and video gallery template with
+  a custom directive. These are the five directives I created. The last three
+  are for image galleries and the YouTube player. There's 10 pages with image
+  galleries. Each page has 3-5 image galleries. So there's 30-50 image galleries
+  all powered by the same directive/ template.
 </p>
-
-<div class="code-preview element-margin-top">
-  <pre><code>{{controller}}</code></pre>
-</div>
-
-<div class="image-wrapper element-shadow element-margin-top">
-  <img
-    [src]="angularJSimageTwo"
-    alt="Table that sorts and filters data with row clicks and a search field."
-  />
-</div>
 
 <p class="project-text element-margin-top">
-  These are the five directives I created. The last three are for image
-  galleries and the YouTube player. There's 10 pages with image galleries. Each
-  page has 3-5 image galleries. So there's 30-50 image galleries all powered by
-  the same directive/ template.
+  In Angular 2+, directives are quite different. There's component directives.
+  Structural and attribute directives. As a whole, they're known as classes used
+  for adding new behavior to template elements. More specifically, they're
+  functions found by the compiler used to extend the wherewithal of HTML. Think
+  of them as modifers. Beyond the three types of directives, we can also create
+  our own.
 </p>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{directives}}</code></pre>
 </div>
 
@@ -63,21 +58,8 @@
   />
 </div>
 
-<div class="image-wrapper element-shadow element-margin-top">
-  <img
-    [src]="angularJSimageFour"
-    alt="Navigate through itineraries and trip information inside a lightbox."
-  />
-</div>
-
-<div class="image-wrapper element-shadow element-margin-top">
-  <img
-    [src]="angularJSimageFive"
-    alt="Enter a city to get current temperature and the location displayed on a map."
-  />
-</div>
-
-<p class="project-text element-margin-top">
+<h2>Final Thoughts</h2>
+<p class="project-text">
   Regardless of whether the project is an archaic or thriving framework, it's
   the architecture that matters. How it's built. How the features are divided
   up. Harnessing templates, properly sharing data, and loading assets for
@@ -88,8 +70,8 @@
 
 <p class="project-text element-margin-top">
   Just recently for instance, I discovered a coworker trying to query the DOM
-  via getElementById. He had no idea what life cycle hooks are. He was unaware
-  of
+  via getElementById, in an Angular micro frontend. He had no idea what life
+  cycle hooks are. He was unaware of
   <a
     class="external-link"
     href="https://angular.io/api/core/ViewChild"

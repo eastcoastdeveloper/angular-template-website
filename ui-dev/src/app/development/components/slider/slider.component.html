@@ -1,37 +1,46 @@
 <p class="project-text">
-  Here's a fun little Angular slider component. I see these often. On a variety
-  of websites. Sometimes called a carousel. There's so many variations of how
-  this can work... so this includes the basics. Spike it a bit to make it your
-  own style. Use an API for the graphics and data. Add smooth transitions or
-  image descriptions. However you decide you modify it, enjoy the feature.
+  This basic Angular slider component is maleable, responsive, and dynamic.
+  Sometimes called a carousel too. There's so many variations of how this can
+  work. Use an API for the graphics and data. Add smooth transitions or image
+  descriptions. However you decide you modify it, enjoy the feature.
 </p>
 
 <div class="wrapper element-shadow element-margin-top">
   <div class="slider-bg"></div>
-  <div class="tagLine">Top Four AI Books of 2021</div>
+  <div class="tagLine">Top Four AI Books of 2023</div>
   <div id="slider">
     <div class="content">
-      <div class="books-wrapper">
-        <div *ngFor="let item of result; let i = index" class="showcased-book">
-          <div *ngIf="item.status">
-            <img
-              [src]="getSliderImage(i)"
-              class="element-shadow"
-              alt="{{ item.altText }}"
-            />
+      <div *ngIf="loaded" class="books-wrapper">
+        <img
+          onerror="this.onerror=null;this.src='../../../../../assets/img/git_logo.png'"
+          [src]="getSliderImage(currentIndex)"
+          class="element-shadow"
+          alt="{{ result[currentIndex].altText }}"
+        />
+        <div
+          class="product-info"
+          [ngClass]="{ 'show-product-info': productInfo }"
+        >
+          {{ result[currentIndex].description }}
+        </div>
+        <div class="purchase-info">
+          <div>
             <a
-              href="{{ item.link }}"
+              href="{{ result[currentIndex].link }}"
               target="_blank"
               class="purchase-btn element-shadow"
               >Purchase Book</a
             >
+            <div (click)="productInfo = !productInfo" class="info-wrapper">
+              <span>i</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="navigation">
-      <div (click)="prevBook()" class="prev">&#10140;</div>
-      <div (click)="nextBook()" class="next">&#10140;</div>
+      <div (click)="prevBook()" class="prev"><span>&#10140;</span></div>
+      <div (click)="nextBook()" class="next"><span>&#10140;</span></div>
     </div>
   </div>
   <div class="dots">
@@ -45,77 +54,93 @@
   </div>
 </div>
 
-<ul class="project-list element-margin-top">
-  <li>Let's begin with an interface of the data for our Angular slider!</li>
-  <li>
-    This is a mirror of what the data looks like. Fortunately for us, the object
-    is rudimentary. More complex objects result in more complex interfaces.
-    Though there are tools that convert data to interfaces, I prefer writing
-    them myself. Practice, practice, practice!
-  </li>
-</ul>
+<h2>Interface and TypeScript</h2>
+<p class="project-text">
+  This is a mirror of what the data looks like. Interfaces&mdash;were designed
+  to describe object shapes and check for necessary keys. They're virtual
+  structures that exist solely in TypeScript at run time. Not thereafter simply
+  because JavaScript doesn't have such a feature. Fortunately for us, the object
+  is rudimentary. More complex objects result in more complex interfaces. Though
+  there are tools that convert data to interfaces, I prefer writing them myself.
+</p>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{interface}}</code></pre>
 </div>
 
 <ul class="project-list element-margin-top">
   <li>
-    result is our main array with the afforementioned interface reference.
+    unsubscribe is a private variable because no other class needs to know about
+    it. We use it to end the subscription when the component life cycle is
+    finished. This is denoted by the ngOnDestroy hook at the bottom.
   </li>
-  <li>currentIndex is our reference to the currently active book.</li>
+  <li>result is our main array with the aforementioned interface reference.</li>
+  <li>currentIndex is our indice/ reference to the currently active book.</li>
+  <li>productInfo is whether the book description is shown or not</li>
   <li>
     Set the private _http variable and be sure to add HttpClientModule to the
     parent module.
   </li>
-  <li>
-    GET the response and store it in the results variable. There's much more
-    that can be added to this request. Headers, error handling, etc. For the
-    sake of a basic demo, we're not including any of that.
-  </li>
+  <li>GET the response and store it in the results variable.</li>
   <li>
     changeShowcase resets all the objects' status' values to false. Then sets
     the incoming value to true.
   </li>
   <li>
     next and prevBook simply retrieve the current index of the original data
-    stream, and reset the status values. We either add via currentIndex++,
-    subtract with currentIndex--, or set it to zero if we reach the end.
+    stream, and reset the status values. Both of which are set via
+    currentIndex++, subtract with currentIndex--, or set it to zero if we reach
+    the end.
   </li>
 </ul>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{typescript}}</code></pre>
 </div>
 
-<ul class="project-list element-margin-top">
-  <li>
-    All very basic Angular here. The main thing to take note of is the ngIf
-    attribute (item.status). When we loop over the data stream, we're saying,
-    only show images that have a status of true. The dots at the bottom are
-    similar in that we use item.status.
-  </li>
-</ul>
+<h2>Angular Slider Markup & Style</h2>
+<p class="project-text">
+  The meat and potatoes are housed inside the slider ID element. If things are
+  loaded, we show content. And if the image is not found, we add a new path to
+  the image src element. All attributes come from the data stream.
+</p>
 
-<div class="code-preview element-margin-top">
+<p class="project-text element-margin-top">
+  Show the book description if productInfo is true. There's a click function
+  with the logic built right into the markup. I did this because it's one simple
+  variable toggle. Below that are the next and previous buttons. Both of which
+  use the currentIndex variable. Below that are the radio buttons with a for
+  loop. So, if we have more books, these will grow automatically.
+</p>
+
+<div class="code-preview">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">Easy peasy styling...</p>
+<p class="project-text element-margin-top">
+  The styling has an auto generated gradient at the top with extra browser
+  support. The purchaseInfo class is one big nested object for organizational
+  purposes. Inside of the dots class, we're changing the color of the radio
+  buttons with accent. productInfo is the black overlay that slides in and out.
+</p>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{scss}}</code></pre>
 </div>
 
-<p class="project-list element-margin-top">
-  There's so much we can add here. Transitions between the imagery. We can
-  extend the 'hit state' so each arrow is the full height of the region. We can
-  add a description to each book and display it underneath. We could add a star
-  rating powered by Spring Boot so users of this carousel could rate the books.
-  The list goes on. Check out my Angular slider repo or
+<h2>In Conclusion</h2>
+<p class="project-text">
+  There's so much more we can add here. Transitions between the imagery. We can
+  add a description to each book and display it underneath vs on the book. We
+  could add a star rating powered by Spring Boot so users of this carousel could
+  rate the books. Or, we could even add params to the GET request. Send it to an
+  Express backend to fetch the data. Regardless, I hope you found this usefull
+  and can use it in future projects. As is or customized to your liking. The
+  list goes on. Check out my Angular Slider
+  <span class="attention-arrow">&#x2190;</span>
   <a
     class="external-link"
-    href="https://stackblitz.com/edit/javascript-slider?file=src%2Fapp%2Fapp.component.ts"
+    href="https://stackblitz.com/edit/angular-slider-json?file=src%2Fapp%2Fapp.component.ts"
     target="_blank"
     >live code example.</a
   >

@@ -16,7 +16,7 @@ export class RestCountriesComponent implements OnInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
     category: '',
-    views: 427,
+    views: 445,
     forks: 3,
     threeColumnLayout: true,
     cornerStone: true

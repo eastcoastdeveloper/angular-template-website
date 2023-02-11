@@ -9,6 +9,12 @@ body {
   background-color: rgba(211, 211, 211, 0.2);
 }
 
+blockquote {
+  font: italic 14px sans-serif;
+  line-height: 20px;
+  color: $greyBlack;
+}
+
 a {
   text-decoration: none;
 }
@@ -17,6 +23,7 @@ a {
   transform: rotate(-180deg);
   display: inline-block;
   font-size: 14px;
+  margin-right: 3px;
   color: red;
 }
 
@@ -448,6 +455,9 @@ h2 {
   }
 }
 
+/* ############################ */
+/*             REVISE           */
+/* ############################ */
 .category-menu,
 .data-block .count,
 .mobile-title {
@@ -587,6 +597,7 @@ h2 {
   color: $white;
 }
 .code-preview {
+  margin-top: 10px;
   box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 35%);
   font: normal 13px/20px sans-serif;
   background-color: $oceanBlue;

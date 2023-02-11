@@ -65,14 +65,8 @@
         <ul class="code-samples">
           <li *ngFor="let listElems of accordionData; let j = index">
             <div class="title">
-              {{ listElems.title }}
-            </div>
-            <div>
-              <a href="{{ listElems.code }}" target="_blank">code</a>
-            </div>
-            <div *ngIf="listElems.viewProject != null">
-              <a href="{{ listElems.viewProject }}" target="_blank"
-                >view project</a
+              <a href="{{ listElems.code }}" target="_blank">
+                {{ listElems.title }}</a
               >
             </div>
           </li>

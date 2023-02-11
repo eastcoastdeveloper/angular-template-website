@@ -1,19 +1,14 @@
 <p class="project-text">
   I used in page navigation frequently while working at a former company. The
   owners often didn't want new pages for different sections. They didn't even
-  want parameters appended to the url. Such as ?section=2. The result was to
-  create unique methods of showing/ hiding content. This project is one such
-  concept. Yes, it may be more cumbersome than the aforementioned, but
-  development sometimes calls for creative solutions.
+  want parameters appended to the url. The result was to create unique methods
+  of showing/ hiding content. This project is one such concept.
 </p>
 
 <div id="module-name" class="element-shadow element-margin-top">
-  <section
-    *ngFor="let item of [].constructor(sectionLength); let i = index"
-    [ngClass]="{ 'display-none': currentSection != i }"
-  >
+  <section *ngFor="let item of [].constructor(sectionLength)">
     <div #sections>
-      {{ 'Section ' + (i + 1) }}
+      {{ 'Section ' + (currentSection + 1) }}
       <div *ngIf="currentSection === 0" class="section-content">
         <div class="group">
           <label for="name">First Name:</label>
@@ -49,7 +44,10 @@
   </section>
   <div id="indicator" #bar></div>
   <div id="percent">
-    <div *ngFor="let percent of [].constructor(sectionLength); let i = index">
+    <div
+      #percentages
+      *ngFor="let percent of [].constructor(sectionLength); let i = index"
+    >
       {{ Math.round((100 / sectionLength) * (i + 1)) + '%' }}
     </div>
   </div>
@@ -68,19 +66,18 @@
   </div>
 </div>
 
-<p class="project-text element-margin-top">
+<h2>Create the Class</h2>
+<p class="project-text">
   In the TypeScript file below, we retrieve a group of elements. @ViewChildren
-  is akin to document.getElementsByClassName. Though it no doubt has many other
-  uses. We retrieve the third line of the HTML, denoted by the "#sections"
-  reference. Necessary to show & hide them. Next, btnGroup references the group
-  of buttons.
+  is akin to document.get... Though it no doubt has many other uses. We retrieve
+  the third line of the HTML, denoted by the "#sections" reference. Necessary to
+  show & hide them. Next, btnGroup references the group of buttons.
 </p>
 
 <p class="project-text element-margin-top">
-  This is a very dynamic component. Component in that we could simply pass the
-  section count and inject HTML for the content. bar references the progress
-  bar. currentSection for the only visible section. The progress array holds the
-  percentage divs.
+  Here, we simply pass the section count and add HTML for the content. bar
+  references the progress bar. currentSection for the only visible section.
+  percentages holds the percentage divs.
 </p>
 
 <p class="project-text element-margin-top">
@@ -98,36 +95,48 @@
   hideProgressBar functions adjust the bar opacity and height.
 </p>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{typescript}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
+<h2>Add the Markup</h2>
+<p class="project-text">
   The markup below loops over an empty array. We use the constructor keyword to
   initialize the object and pass it the amount of sections. Hiding all but the
-  current section via display none. ngIf unfortunately cannot be used on the
-  same line as Angular restricts one template binding per element. Add the
-  section headline. The progress bar equation is a clever way of accommodating
-  any number. I'd imagine 2, 3, 4, or 5 is ideal. All of which work beautfully
-  with this line. Divide 100 by the amount of sections. Round that number. Then
-  multiple it by the section indice.
+  current section. ngIf unfortunately cannot be used on the same line as Angular
+  restricts one template binding per element. Add the section headline. The
+  progress bar equation is a way of accommodating any number. I'd imagine 2, 3,
+  or 4 is ideal. All of which work beautfully with this line. Divide 100 by the
+  amount of sections. Round that number. Then multiple it by the section indice.
 </p>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<div class="code-preview element-margin-top">
+<h2>Wrap it Up</h2>
+<p class="project-text">
+  Using a separate file for the content would definitely work. We could even
+  remove the 'Section 1' and include that in the section content. Form groups
+  would work here too. Images, endpoints, etc. Whatever you decide to do, go for
+  it. Angular is an immensely powerful framework with the ability to do nearly
+  anything imaginable in the UI. Add the CSS below.
+</p>
+<div class="code-preview">
   <pre><code>{{style}}</code></pre>
 </div>
 
 <p class="project-text element-margin-top">
-  I initially thought section content could be housed in a JSON file, but that's
-  far too messy. We always want to create sustainable systems. Using a separate
-  file for the content would definitely work. We could even remove the 'Section
-  1' and include that in that section content. Form groups would work here.
-  Images, endpoints, etc. Whatever you decide to do, go for it. Angular is an
-  immensely powerful framework with the ability to do nearly anything imaginable
-  in the UI. Fork and customize. Make this in page navigation component your
-  own!
+  I guess the most important take away here is this is a maleable feature that
+  can be used when your boss or the client has an unusual request. This worked
+  particularly well for me when I was working at a startup and I was more often
+  than not pressed for time. Yeah, I could've found a library or some
+  pre-written solution, but being able to code a custom, viable feature is
+  rewarding. Fork and customize. Make this
+  <span class="attention-arrow">&#x2190;</span>
+  <a
+    class="external-link"
+    href="https://stackblitz.com/edit/in-page-navigation?file=src%2Fapp%2Fapp.component.ts"
+    >in page navigation component your own!</a
+  >
 </p>

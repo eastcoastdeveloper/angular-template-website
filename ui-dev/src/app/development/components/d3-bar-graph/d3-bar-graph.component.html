@@ -8,41 +8,72 @@
 <div class="image-wrapper element-shadow element-margin-top">
   <img
     [src]="d3ProjectImage"
-    alt="Colorful horizontal bar graph with vertical and horizontal values."
+    alt="Colorful horizontal bar chart with vertical and horizontal values."
   />
 </div>
 
-<div class="code-preview element-margin-top">
+<h2>Markup and Styling</h2>
+<p class="project-text">
+  Nothing over the top with the CSS. Pretty generic stuff. At the bottom though,
+  notice the SVG tag wrapped in the graph-wrapper. That's what we're targeting.
+  The SVG is the entire graph.
+</p>
+
+<p class="project-text element-margin-top">
+  If you're unfamiliar with D3, it's a data visualization library. One that's
+  quite complex in nature. There's even a project called NVD3 written over D3 to
+  simplify the features. My opinion is, if you're gonna learn NVD3, you may as
+  well learn the underlying library itself. I've found it to be easier to use in
+  some versions of Angular than others.
+</p>
+
+<p class="project-text element-margin-top">
+  And once you get the hang of it, a pleasure to work with outside of
+  frameworks. Which is unfortunately not too frequently. The complexity however
+  gives devs fine grain control over literally everything imaginable. So
+  learning it definitely has it's advantages. Namely in the era of data
+  visualization UIs we're currently in.
+</p>
+<div class="code-preview">
   <pre><code>{{markup}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
+<h2>D3 Bar Chart Script</h2>
+<p class="project-text">
   After retrieving the element with the select method, we can draw shapes with
   append(). Notice .append used multiple times in this d3 bar chart. Append then
-  modifies the element by chaining methods. Similiar to jQuery. What's more, is
-  we manipulate the DOM similar to many other libraries. Here however, animation
-  occurs between values.
+  modifies the element by chaining methods. Similiar to archaic jQuery. What's
+  more, is we manipulate the DOM similar to many other libraries. Here however,
+  animation occurs between values.
 </p>
 
 <p class="project-text element-margin-top">
   Harnessing D3's real power however comes in when we introduce data. Done so
   either by an array or an external file. D3 will draw a shape for every point
   in the data set. Similar to RxJSs' observables' three methods of next, error,
-  and complete, D3 has enter, update, and exit. Enter occurs on shape
+  and complete... D3 has enter, update, and exit. Enter occurs on shape
   initialization. The update method occurs when there's changes to the data set,
   giving devs the ability to react to changes. To no surprise, D3 also provides
   methods to listen for events, such as mouseover on tool tips for instance.
 </p>
 
-<div class="code-preview element-margin-top">
+<div class="code-preview">
   <pre><code>{{javascript}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">
+<h2>Final Thoughts</h2>
+<p class="project-text">
   I think I seriously found D3 more confusing (initially) than Angular. I was
   new to data visualization libraries and techniques. Where we work and what we
   build no doubt defines us as developers. Developing data driven visualizations
   has no doubt made me a far better UI developer. After the uphill battle, I
   found the lib to be powerful, maleable, and quite unique. Regardless of where
-  you're at in your career, take some time and build a D3 bar chart.
+  you're at in your career, take some time and build a
+  <span class="attention-arrow">&#x2190;</span>
+  <a
+    class="external-link"
+    href="https://stackblitz.com/edit/d3-bar-chart?file=script.js"
+    target="_blank"
+    >D3 bar chart</a
+  >.
 </p>

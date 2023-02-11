@@ -8,14 +8,21 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 })
 export class HtmlTableComponent implements OnInit {
   typescript = `var headers = Array.from(document.querySelectorAll('.headers > div')),
-      search = document.getElementById('search-field'),
-      caret = document.querySelector('.caret'),
-      body = document.querySelector('.body'),
-      filterType = null,
-      filtered = null,
-      data = null,
-      markup = '',
-      str = '';
+  search = document.getElementById('search-field'),
+  clear = document.querySelector('.clear'),
+  caret = document.querySelector('.caret'),
+  body = document.querySelector('.body'),
+  filterType = null,
+  filtered = null,
+  data = null,
+  markup = '',
+  str = '';
+
+clear.addEventListener('click', () => {
+  search.value = '';
+  populateTable(data);
+  clear.classList.remove('enable-clear');
+});
 
 /* Search & Filter */
 search.addEventListener('keyup', () => {
@@ -33,6 +40,7 @@ search.addEventListener('keyup', () => {
           filtered.push(x);
           populateTable(filtered);
         }
+        clear.classList.add('enable-clear');
       });
     }
   } else populateTable(data);
@@ -65,21 +73,23 @@ function comparison(key, order = 'ascending') {
   return (a, b) => {
     const varA = typeof a[key] === 'string' ? a[key].toUpperCase() : a[key];
     const varB = typeof b[key] === 'string' ? b[key].toUpperCase() : b[key];
+
     let comparison = 0;
-    if (varA > varB) comparison = 1;
-    else if (varA < varB) {
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
       comparison = -1;
     }
     return order === 'descending' ? comparison * -1 : comparison;
   };
 }
 
-/* Filter Type & Caret Positioning */
 function sortColumn(e) {
   let index = null;
   filterType = e.target.innerHTML.toLowerCase();
   data.sort(comparison(filterType));
   populateTable(data);
+
   caret != undefined ? caret.remove() : '';
   caret = document.createElement('span');
   caret.classList.add('caret');
@@ -88,62 +98,60 @@ function sortColumn(e) {
   e.target.appendChild(caret);
 }
 
-/* Import JSON */
 (async () => {
-  fetch('json url')
-    .then((response) => response.json())
-    .then((json) => {
-      data = json;
-      populateTable(data);
-    for (var i = 0; i < headers.length; i++) {
-      headers[i].addEventListener('click', sortColumn);
-    }
+  const { default: json } = await import('path-to-json', {
+    assert: { type: 'json' },
   });
+  data = json.products;
+  populateTable(data);
+  for (var i = 0; i < headers.length; i++) {
+    headers[i].addEventListener('click', sortColumn);
+  }
 })();`;
 
-  markup = `<div id="html-table">
-  <div class="search">
-    <h4>Smart Phones List</h4>
-    <input id="search-field" type="text" placeholder="Search ..." />
+  markup = `<main>
+  <div id="html-table">
+    <div class="masthead">
+      <h4>Smart Phones List</h4>
+      <div class="search">
+        <input id="search-field" type="text" placeholder="Search ..." />
+        <span class="clear">&#x2715</span>
+      </div>
+    </div>
+    <div class="headers">
+      <div>ID</div>
+      <div>Brand</div>
+      <div>Category</div>
+      <div>Title</div>
+      <div>Price</div>
+    </div>
+    <div class="body"></div>
   </div>
-  <div class="headers">
-    <div>ID</div>
-    <div>Brand</div>
-    <div>Category</div>
-    <div>Title</div>
-    <div>Price</div>
-  </div>
-  <div class="body"></div>
-</div>`;
+  </main>`;
 
-  style = `  #html-table { min-width: 650px; }
-  main { overflow-x: auto; }
-  .search input::placeholder { font: normal 13px sans-serif; }
-  .headers > div { padding: 5px 10px; }
-  .tble-cells { white-space: nowrap; }
-  .tble-rows:nth-child(odd) { background-color: lightgrey; }
-  .tble-cells { padding: 5px 10px; }
-
-  .search {
-    display: flex;
+  style = `html,
+  body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  #html-table {
+    min-width: 650px;
+  }
+  .masthead {
+    display: grid;
     padding: 0 10px;
     margin: 10px 0;
-    position: relative;
+    grid-template-columns: calc(100% - 200px) 200px;
     height: 25px;
   }
-
-  .search h4 {
+  .masthead h4 {
     margin: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    line-height: 25px;
   }
-  
-  .search input {
-    position: absolute;
-    right: 10px;
+  .masthead input {
     height: 100%;
-    width: 200px;
+    width: 100%;
     font: normal 14px sans-serif;
     display: block;
     box-sizing: border-box;
@@ -152,14 +160,55 @@ function sortColumn(e) {
     outline: none;
   }
   
-  .headers, .tble-rows {
+  .masthead .search {
+    width: 200px;
+    position: relative;
+  }
+  
+  .masthead .clear {
+    border: 1px solid black;
+    display: none;
+    border-radius: 3px;
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    padding: 1px 3px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  
+  .enable-clear {
+    display: block !important;
+  }
+  
+  .masthead input::placeholder {
+    font: normal 13px sans-serif;
+  }
+  
+  main {
+    overflow-x: auto;
+  }
+  .headers,
+  .tble-rows {
     display: grid;
     grid-template-columns: repeat(5, 20%);
   }
-
+  .tble-rows:nth-child(odd) {
+    background-color: lightgrey;
+  }
+  .tble-cells {
+    padding: 5px 10px;
+  }
   .headers {
     font-weight: 600;
     cursor: pointer;
+  }
+  .headers > div {
+    padding: 5px 10px;
+  }
+  .tble-cells {
+    white-space: nowrap;
   }
   
   #html-table {
@@ -170,13 +219,45 @@ function sortColumn(e) {
     max-width: 768px;
     margin: 50px auto 0 auto;
   }
-
   .caret {
     transform: rotate(180deg);
     display: inline-block;
     font-size: 10px;
     margin-left: 5px;
-  }`;
+  }
+  footer {
+    position: absolute;
+    background-color: #313b3f;
+    color: #d9a74a;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    font: normal 14px sans-serif;
+    bottom: 0;
+  }
+  .website {
+    font: normal 14px sans-serif;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    letter-spacing: 0.5px;
+    display: block;
+    cursor: pointer;
+    background-color: #313b3f;
+    padding: 10px;
+    overflow: auto;
+  }
+  .website a {
+    text-decoration: none;
+    color: #d9a74a;
+    float: right;
+  }
+  .website span {
+    color: #d9a74a;
+  }
+  `;
 
   htmlTableProjectImage: string =
     '../../../../assets/projects-grid/table-html-js.png';
@@ -187,7 +268,7 @@ function sortColumn(e) {
     repoTitle: 'angular-date-picker',
     repoLink: 'https://github.com/eastcoastdeveloper/Dynamic-HTML-Table',
     category: 'components',
-    views: 49,
+    views: 74,
     forks: 0,
     threeColumnLayout: true,
     cornerStone: false
