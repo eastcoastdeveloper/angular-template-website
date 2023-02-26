@@ -1,6 +1,11 @@
 @import './page-style.scss';
 @import './reset.scss';
 
+@font-face {
+  font-family: 'SourceCodePro';
+  src: url('../../assets/fonts/SourceCodePro-Regular.ttf');
+}
+
 html {
   background-color: $white;
 }
@@ -216,7 +221,7 @@ h2 {
 /* ############################ */
 /*            1300              */
 /* ############################ */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1300px), screen and (max-height: 760px) {
   .page-content {
     .right-column {
       position: unset;
@@ -290,7 +295,7 @@ h2 {
     .right-column-cmp {
       grid-template-columns: repeat(1, 50%);
       grid-template-areas:
-        'social social'
+        'socials socials'
         'signup code';
       .social-icons {
         grid-template-columns: repeat(3, calc(33.3% - 13px)) !important;
@@ -430,7 +435,7 @@ h2 {
     .two-column-layout {
       .right-column-cmp {
         grid-template-areas:
-          'social'
+          'socials'
           'signup'
           'code';
         grid-template-columns: 100% !important;
@@ -505,6 +510,7 @@ h2 {
   background-color: $greyBlack;
   height: 35px;
   margin-top: 25px;
+  position: relative;
 }
 #app-footer > div {
   text-align: center;
@@ -599,7 +605,8 @@ h2 {
 .code-preview {
   margin-top: 10px;
   box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 35%);
-  font: normal 13px/20px sans-serif;
+  font: normal 13px/20px 'SourceCodePro', sans-serif;
+
   background-color: $oceanBlue;
   border: 1px solid $white;
   letter-spacing: 0.75px;
@@ -726,9 +733,9 @@ h2 {
 .element-shadow {
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.35);
 }
-.full-project {
-  padding-bottom: 25px;
-}
+// .full-project {
+//   padding-bottom: 25px;
+// }
 .hidden-content {
   overflow: auto;
   max-height: 0;
@@ -830,9 +837,9 @@ p {
   max-height: 250px !important;
 }
 
-.sidebar-elements {
-  display: none;
-}
+// .sidebar-elements {
+//   display: none;
+// }
 
 .project-text,
 .project-list {
@@ -858,9 +865,9 @@ p {
   padding: 5px 10px 5px 0;
 }
 
-.visibility-none {
-  visibility: hidden;
-}
+// .visibility-none {
+//   visibility: hidden;
+// }
 
 .element-margin-top {
   margin-top: 20px;

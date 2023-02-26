@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { LocalStorageInterface } from '../interfaces/localStorage.interface';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 import { PageDataObject } from '../interfaces/pageDataInterface';
 import { LocalStorageService } from './local-storage.service';
@@ -12,6 +11,7 @@ import { LocalStorageService } from './local-storage.service';
 export class ProjectListService {
   // Subject Shares Data w/ Component
   allProjectsSubject = new BehaviorSubject<ProjectsListInterface[]>([]);
+  totalItemsSubject = new BehaviorSubject<number>(0);
   categorySubject = new BehaviorSubject<ProjectsListInterface[]>([]);
 
   // Page Data Object Initialization
@@ -20,7 +20,6 @@ export class ProjectListService {
     this.pageDataObject
   );
 
-  storageObject: LocalStorageInterface = new LocalStorageInterface();
   projectsURL: string = `/api/javascript-projects/`;
   // Main Array
   projectArray: ProjectsListInterface[] = [];
@@ -41,12 +40,13 @@ export class ProjectListService {
     // There IS Cache
     if (storage != '') {
       let parsed = JSON.parse(storage);
-      this.storageObject = parsed;
+      this._localStorageService.storageObject = parsed;
 
       // If Requested Page is Cached w/ a Value
-      if (this.storageObject.hasOwnProperty(pageNum)) {
-        this.projectArray = this.storageObject[pageNum];
+      if (this._localStorageService.storageObject.hasOwnProperty(pageNum)) {
+        this.projectArray = this._localStorageService.storageObject[pageNum];
         this.allProjectsSubject.next(this.projectArray);
+        console.log(this._localStorageService.storageObject);
       }
 
       // Requested Page Called First Time
@@ -66,10 +66,10 @@ export class ProjectListService {
 
   // Cache GET Request
   saveNewlyCachedData(pageNum: number) {
-    this.storageObject[pageNum] = this.projectArray;
+    this._localStorageService.storageObject[pageNum] = this.projectArray;
     this._localStorageService.saveData(
       'prjx',
-      JSON.stringify(this.storageObject)
+      JSON.stringify(this._localStorageService.storageObject)
     );
   }
 
@@ -95,30 +95,39 @@ export class ProjectListService {
                 val.cached = true;
               });
             }
+            if (currentVal === 'totalItems') {
+              this.totalItemsSubject.next(
+                Math.ceil(responseData['totalItems'] / 10)
+              );
+            }
           });
           allProjects.map((val) => {
             this.projectArray.push(val);
           });
-          this.storageObject[pageNum] = this.projectArray;
+          this._localStorageService.storageObject[pageNum] = this.projectArray;
           this._localStorageService.saveData(
             'prjx',
-            JSON.stringify(this.storageObject)
+            JSON.stringify(this._localStorageService.storageObject)
           );
+          console.log(this._localStorageService.storageObject);
         })
       )
       .subscribe(() => {
-        this.allProjectsSubject.next(this.storageObject[pageNum]);
+        this.allProjectsSubject.next(
+          this._localStorageService.storageObject[pageNum]
+        );
       });
   }
 
   // Called in Every Page to Update Title, Git, Stackblitz, etc.
   changePageDataObject(obj: PageDataObject) {
+    console.log(obj);
     return this.pageDataObjectSubject.next(obj);
   }
 
   // Decipher Whether JSON Powered Projects are Cached
-  individualProjectCacheCheck(projectName: string) {
-    const storage = this._localStorageService.getData('cmpts');
-    this.projectsWithJSON = [];
-  }
+  // individualProjectCacheCheck(projectName: string) {
+  //   const storage = this._localStorageService.getData('cmpts');
+  //   this.projectsWithJSON = [];
+  // }
 }

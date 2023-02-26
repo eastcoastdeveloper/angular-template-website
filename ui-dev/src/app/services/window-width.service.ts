@@ -2,16 +2,25 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class WindowWidthService {
   someWidth: number = window.innerWidth;
+  someHeight: number = window.innerHeight;
 
   private winWidthSource = new BehaviorSubject(this.someWidth);
-  currentWidth$ = this.winWidthSource.asObservable();
+  private winHeightSource = new BehaviorSubject(this.someWidth);
 
-  changeValue(newValue: number) {
+  currentWidth$ = this.winWidthSource.asObservable();
+  currentHeight$ = this.winHeightSource.asObservable();
+
+  changeWidth(newValue: number) {
     this.winWidthSource.next(newValue);
+    return newValue;
+  }
+
+  changeHeight(newValue: number) {
+    this.winHeightSource.next(newValue);
     return newValue;
   }
 }

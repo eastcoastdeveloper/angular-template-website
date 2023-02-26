@@ -24,6 +24,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   masterArray: ProjectsListInterface[] = [];
   // activeCategory: string = '';
   filteredArray: any = [];
+  totalItems: number = 0;
   windowWidth: number;
 
   pageDataObject: PageDataObject = {
@@ -52,6 +53,13 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.projectsArray = val;
+        console.log(this.projectsArray);
+      });
+
+    this._projectListService.totalItemsSubject
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((count) => {
+        this.totalItems = count;
       });
 
     this._projectListService.changePageDataObject(this.pageDataObject);

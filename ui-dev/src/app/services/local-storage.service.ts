@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
+import { LocalStorageInterface } from '../interfaces/localStorage.interface';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 
 @Injectable({
@@ -7,6 +8,8 @@ import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 })
 export class LocalStorageService {
   key = 'prjx';
+  // storageObject: LocalStorageInterface = new LocalStorageInterface();
+  storageObject: LocalStorageInterface = new LocalStorageInterface();
 
   public saveData(key: string, value: string) {
     localStorage.setItem(key, this.encrypt(value));
@@ -33,6 +36,38 @@ export class LocalStorageService {
     return CryptoJS.AES.decrypt(txtToDecrypt, this.key).toString(
       CryptoJS.enc.Utf8
     );
+  }
+
+  // Check for Cache (Called Once OnInit in ProjectList Cmpt)
+  isThereCache(title: string) {
+    const storage = this.getData('prjx');
+    // this.projectArray = [];
+
+    // // There IS Cache
+    if (storage != '') {
+      let parsed = JSON.parse(storage);
+      this.storageObject = parsed;
+
+      let result = Object.values(this.storageObject),
+        newArray: ProjectsListInterface[] = [];
+
+      for (var i = 0; i < result.length; i++) {
+        result[i].forEach((value: ProjectsListInterface) => {
+          newArray.push(value);
+        });
+      }
+
+      newArray.forEach((currentValue) => {
+        if (currentValue.title === title) {
+          console.log(currentValue);
+        }
+      });
+    }
+
+    // There's NOTHING Cached
+    else {
+      return null;
+    }
   }
 
   // Populate Page Content

@@ -4,9 +4,11 @@
   display: grid;
   position: fixed;
   width: 300px;
+  grid-template-columns: repeat(1, 100%);
+  grid-row-gap: 20px;
   grid-template-areas:
     'signup'
-    'social'
+    'socials'
     'code';
   > div:first-child {
     grid-area: signup;
@@ -15,7 +17,7 @@
   }
   .social-icons {
     display: grid;
-    grid-area: social;
+    grid-area: socials;
     grid-template-columns: repeat(2, calc(50% - 10px));
     margin: 20px auto;
     grid-gap: 20px;
@@ -34,6 +36,7 @@
   }
 
   .accordion-wrapper {
+    grid-area: code;
     .data-block {
       p {
         border-bottom: 1px solid $white;
@@ -50,7 +53,7 @@
   }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1300px), screen and (max-height: 760px) {
   .two-column-layout {
     position: fixed !important;
     width: 300px !important;
@@ -80,7 +83,7 @@
     }
     .social-icons {
       width: 100%;
-      margin: 0 auto 30px auto;
+      margin: 0 auto 20px auto;
       grid-template-columns: repeat(3, calc(33.3% - 13px));
     }
   }
@@ -104,6 +107,17 @@
     }
     .accordion-wrapper {
       margin: 0;
+    }
+    // .social-icons {
+    //   margin: 0 auto 20px 0;
+    // }
+  }
+}
+
+@media screen and (max-width: 605px) {
+  .right-column-cmp {
+    .social-icons {
+      margin: 0 auto 20px 0;
     }
   }
 }

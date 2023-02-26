@@ -7,10 +7,12 @@ function paginatedResults(model) {
       const page = parseInt(req.query.page);
       const limit = parseInt(req.query.limit);
       const startIndex = (page - 1) * limit;
+      const totalItems = model.data.length;
       const endIndex = page * limit;
       const results = {};
-  
+
       results.results = model.data.slice(startIndex, endIndex);
+      results.totalItems = model.data.length;
       res.paginatedResults = results;
       next();
     }

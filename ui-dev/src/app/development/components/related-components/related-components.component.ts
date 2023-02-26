@@ -12,6 +12,7 @@ export class RelatedComponentsComponent implements OnInit, OnDestroy {
   @Input() dataArray: ProjectsListInterface[] = [];
   unsubscribe$ = new Subject<boolean>();
   windowWidth?: number;
+  windowHeight?: number;
 
   constructor(private _windowWidth: WindowWidthService) {}
 
@@ -20,6 +21,12 @@ export class RelatedComponentsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.windowWidth = val;
+      });
+
+    this._windowWidth.currentHeight$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.windowHeight = val;
       });
   }
 

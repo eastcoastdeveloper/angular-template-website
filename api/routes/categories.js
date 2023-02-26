@@ -13,7 +13,7 @@ function categoryResults(model) {
   }
 
 router.get('/', categoryResults(projectData), (req, res) => {
-    res.json(res.categoryResults);
+  res.json(res.categoryResults);
 })
 
 module.exports = router;

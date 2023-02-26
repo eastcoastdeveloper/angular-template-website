@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { SliderInterface } from 'src/app/interfaces/slider.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -10,9 +8,52 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
-  result: SliderInterface[] = [];
+export class SliderComponent implements OnInit {
+  result: SliderInterface[] = [
+    {
+      title: 'Driven: The Race to Create the Autonomous Car',
+      author: 'Alex Davies',
+      status: true,
+      url: '../../assets/img/slider-driven.jpg',
+      link: 'https://www.amazon.com/Driven-Race-Create-Autonomous-Car/dp/1501199439',
+      altText: 'Yellow book cover with tire tracks.',
+      description:
+        'The self-driving car has been one of the most vaunted technological breakthroughs of recent years. But early promises that these autonomous vehicles would soon be on the roads have proven premature. Alex Davies follows the twists and turns of the story from its origins to today.'
+    },
+    {
+      title: 'If Then',
+      author: 'Jill Lepore',
+      status: false,
+      url: '../../assets/img/slider-if-then.jpg',
+      link: 'https://www.amazon.com/If-Then-Simulmatics-Corporation-Invented/dp/1631496107',
+      altText:
+        'Modern design, cream background, thin blocks in motion; title, author, NY Times quote;',
+      description:
+        'A revelatory account of the Cold War origins of the data-mad, algorithmic twenty-first century, from the author of the acclaimed international bestseller These Truths.'
+    },
+    {
+      title: 'The Hype Machine',
+      author: 'Sinan Aral',
+      status: false,
+      url: '../../assets/img/slider-the-hype.jpg',
+      link: 'https://www.amazon.com/Hype-Machine-Disrupts-Elections-Health/dp/0525574514/ref=sr_1_1?crid=1X6B1YO06FR1M&dchild=1&keywords=the+hype+machine&qid=1623709586&s=books&sprefix=the+hype+m%2Cstripbooks%2C224&sr=1-1',
+      altText:
+        'White square shaped book with hype in capitals and a blue smudge in the background',
+      description:
+        'A landmark insider’s tour of how social media affects our decision-making and shapes our world in ways both useful and dangerous, with critical insights into the social media trends of the 2020 election and beyond '
+    },
+    {
+      title: 'Predict and Surveil',
+      author: 'Sarah Brayne',
+      status: false,
+      url: '../../assets/img/slider-predict.jpg',
+      link: 'https://www.amazon.com/Predict-Surveil-Discretion-Future-Policing/dp/0190684097/ref=sr_1_1?dchild=1&keywords=predict+and+surveil&qid=1623709612&s=books&sr=1-1',
+      altText:
+        'Birds eye view of people spread out and a red sqaure around a targeted small group.',
+      description:
+        'The scope of criminal justice surveillance has expanded rapidly in recent decades. At the same time, the use of big data has spread across a range of fields, including finance, politics, healthcare, and marketing.'
+    }
+  ];
   currentIndex: number = 0;
   markup: string;
   productInfo: boolean = false;
@@ -34,23 +75,13 @@ export class SliderComponent implements OnInit, OnDestroy {
     cornerStone: false
   };
 
-  constructor(
-    private _http: HttpClient,
-    private _projectListService: ProjectListService
-  ) {}
+  constructor(private _projectListService: ProjectListService) {}
 
   ngOnInit() {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
-
-    this._http
-      .get<SliderInterface[]>(`./api/slider-component`)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((val) => {
-        this.result = val;
-        this.getSliderImage(this.currentIndex);
-      });
     this.renderCode();
+    this.getSliderImage(this.currentIndex);
   }
 
   changeShowcase(i: number) {
@@ -421,10 +452,5 @@ export class SliderComponent implements OnInit, OnDestroy {
       url: string;
       link: string;
 }`;
-  }
-
-  ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
-    this.unsubscribe$.complete();
   }
 }

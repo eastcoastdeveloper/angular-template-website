@@ -3,5 +3,4 @@ export class SidebarInterface {
   parentLink: string;
   menu: boolean;
   submenu: { childtext: string; link: string }[];
-  length: number;
 }

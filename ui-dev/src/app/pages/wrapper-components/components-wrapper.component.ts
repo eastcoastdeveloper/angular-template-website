@@ -24,6 +24,7 @@ export class ComponentsWrapperComponent
   threeColumnLayout?: boolean;
   devMenuStatus?: boolean;
   windowWidth: number;
+  windowHeight: number;
   pageTitle?: string;
   cmpsArray: any;
 
@@ -48,6 +49,12 @@ export class ComponentsWrapperComponent
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
+      });
+
+    this._windowWidthService.currentHeight$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((currentVal) => {
+        this.windowHeight = currentVal;
       });
   }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CarsInterface } from '../../../interfaces/table-paginated.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
@@ -24,25 +23,143 @@ export class TablePaginatedComponent implements OnInit {
     cornerStone: false
   };
 
-  masterArray: CarsInterface[] = [];
-  cars: CarsInterface[] = [];
+  cars: CarsInterface[] = [
+    {
+      year: '1967',
+      make: 'Pontiac',
+      model: 'GTO'
+    },
+    {
+      year: '1967',
+      make: 'Pontiac',
+      model: 'Firebird'
+    },
+    {
+      year: '1967',
+      make: 'Chevrolet',
+      model: 'Malibu SS 396'
+    },
+    {
+      year: '1967',
+      make: 'Chevrolet',
+      model: 'Camaro SS'
+    },
+    {
+      year: '1967',
+      make: 'Chevrolet',
+      model: 'Camaro Z/28'
+    },
+    {
+      year: '1967',
+      make: 'Chevrolet',
+      model: 'RS'
+    },
+    {
+      year: '1967',
+      make: 'Chevrolet',
+      model: 'Nova SS'
+    },
+    {
+      year: '1967',
+      make: 'Oldsmobile',
+      model: '442'
+    },
+    {
+      year: '1967',
+      make: 'Buick',
+      model: 'Gran Sport'
+    },
+    {
+      year: '1967',
+      make: 'Ford',
+      model: 'Mustang GT'
+    },
+    {
+      year: '1967',
+      make: 'Ford',
+      model: 'Mustang GTA'
+    },
+    {
+      year: '1967',
+      make: 'Ford',
+      model: 'Fairlane GTA'
+    },
+    {
+      year: '1967',
+      make: 'Shelby',
+      model: 'Cobra'
+    },
+    {
+      year: '1967',
+      make: 'Shebly',
+      model: 'Mustang GT350'
+    },
+    {
+      year: '1967',
+      make: 'Shelby',
+      model: 'GT500'
+    },
+    {
+      year: '1967',
+      make: 'Mercury',
+      model: 'Cougar Special'
+    },
+    {
+      year: '1967',
+      make: 'Mercury',
+      model: 'Cyclone GT'
+    },
+    {
+      year: '1967',
+      make: 'Mercury',
+      model: '427 Comet'
+    },
+    {
+      year: '1967',
+      make: 'Plymouth',
+      model: 'Barracudda S'
+    },
+    {
+      year: '1967',
+      make: 'Plymouth GTX',
+      model: 'GTO'
+    },
+    {
+      year: '1967',
+      make: 'Dodge',
+      model: 'Dart GT'
+    },
+    {
+      year: '1967',
+      make: 'Dodge Dart GTS',
+      model: 'GTO'
+    },
+    {
+      year: '1967',
+      make: 'Dodge',
+      model: 'Charger'
+    },
+    {
+      year: '1967',
+      make: 'Dodge',
+      model: 'Coronet R/T'
+    },
+    {
+      year: '1967',
+      make: 'Dodge',
+      model: 'Coronet 500 Hemi'
+    }
+  ];
+
+  masterArray: CarsInterface[] = this.cars.slice();
   windowWidth: number;
   p: any;
 
-  constructor(
-    private _http: HttpClient,
-    private _projectListService: ProjectListService
-  ) {}
+  constructor(private _projectListService: ProjectListService) {}
 
   ngOnInit(): void {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
-
-    // Only Call if Not Cached
-    this._http.get<CarsInterface[]>(`/api/table-paginated`).subscribe((res) => {
-      this.cars = res;
-      this.masterArray = this.cars.slice();
-    });
   }
 
   enteredSearchValue: string = '';

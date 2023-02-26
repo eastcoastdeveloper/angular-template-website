@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
   sidebarStatus: boolean;
   width: number = window.innerWidth;
-  height: number = window.innerWidth;
+  height: number = window.innerHeight;
   mobileWidth: number = 760;
   currentRoute: string;
 
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Reset Window Width Service
   ngAfterViewInit() {
-    this._windowService.changeValue(window.innerWidth);
+    this._windowService.changeWidth(window.innerWidth);
   }
 
   closeMobileNav() {
@@ -87,8 +87,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.width = event.target.innerWidth;
     this.height = event.target.innerHeight;
     this.isMobile = this.width < this.mobileWidth;
-    this._windowService.changeValue(this.width);
+    this._windowService.changeWidth(this.width);
+    this._windowService.changeHeight(this.height);
     this.width > 605 ? this._sidebarService.changeValue(false) : '';
+    console.log(this.height);
   }
 
   ngOnDestroy() {

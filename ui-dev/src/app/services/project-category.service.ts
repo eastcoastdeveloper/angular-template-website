@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map } from 'rxjs';
-import { CachedObject } from '../interfaces/cached-object';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 import { LocalStorageService } from './local-storage.service';
 
@@ -10,18 +9,6 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class ProjectCategoryService {
   categorySubject = new BehaviorSubject<ProjectsListInterface[]>([]);
-
-  cachedObject: CachedObject = {
-    projects: {
-      value: []
-    },
-    components: {
-      value: []
-    },
-    development: {
-      value: []
-    }
-  };
 
   constructor(
     private _http: HttpClient,
@@ -36,20 +23,34 @@ export class ProjectCategoryService {
 
   // Call Category API
   configureCategory(type: string) {
-    const categoryQuery = this._localStorageService.getData('cats');
+    const categoryQuery = this._localStorageService.getData('prjx');
 
     // Something is Cached
     if (categoryQuery != '') {
-      this.cachedObject = JSON.parse(categoryQuery);
+      this._localStorageService.storageObject = JSON.parse(categoryQuery);
 
-      // Send To Component (Page is Refreshed)
-      if (this.cachedObject[type].value.length > 0) {
-        this.categorySubject.next(this.cachedObject[type].value);
+      //result: (page 1: array, page 2: array)
+      let result = Object.values(this._localStorageService.storageObject),
+        allItems: ProjectsListInterface[] = [],
+        categoryArray: ProjectsListInterface[] = [];
+
+      // allItems: All values combined (projects, components, & development) into one array
+      for (var i = 0; i < result.length; i++) {
+        result[i].forEach((value: ProjectsListInterface) => {
+          allItems.push(value);
+        });
       }
 
-      // Category is Not Cached
-      if (this.cachedObject[type].value.length === 0) {
-        this.fetchCategory(type);
+      // Extract items in category
+      allItems.forEach((currentValue) => {
+        if (currentValue.category === type) {
+          categoryArray.push(currentValue);
+        }
+      });
+
+      // Do items exist in this category?
+      if (categoryArray.length > 0) {
+        this.categorySubject.next(categoryArray);
       }
     }
 
@@ -59,13 +60,13 @@ export class ProjectCategoryService {
     }
   }
 
+  // Called if there's NO Cache
   fetchCategory(type: string) {
     let allCategories: ProjectsListInterface[] = [];
     const httpOptions = {
       headers: new HttpHeaders()
     };
 
-    // Only Call if Not Cached
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(
         `/api/category/?type=${type}`,
@@ -80,32 +81,25 @@ export class ProjectCategoryService {
           });
           allCategories.map((val) => {
             allCategories.push(val);
-
-            // Remove Duplicates
-            const filteredCategories = this.removeDuplicateObjectFromArray(
-              allCategories,
-              'title'
-            );
-
-            // Set CachedObject Array Values
-            if (type === 'projects')
-              this.cachedObject.projects.value = filteredCategories;
-            if (type === 'components')
-              this.cachedObject.components.value = filteredCategories;
-            if (type === 'development')
-              this.cachedObject.development.value = filteredCategories;
           });
-
-          this._localStorageService.saveData(
-            'cats',
-            JSON.stringify(this.cachedObject)
-          );
-
           return allCategories;
         })
       )
-      .subscribe(() => {
-        this.categorySubject.next(this.cachedObject[type].value);
+      .subscribe((data) => {
+        const filteredCategories = this.removeDuplicateObjectFromArray(
+          data,
+          'title'
+        );
+
+        /*
+          Subscribed to in:
+            category-navigation cmpt
+            cornerstone-apps cmpt
+            cornerstone-components cmpt
+            cornerstone-development cmpt
+            related-components cmpt
+        */
+        this.categorySubject.next(filteredCategories);
       });
   }
 }

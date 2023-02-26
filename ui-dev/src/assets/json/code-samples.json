@@ -119,10 +119,6 @@
     {
       "title": "Angular Calculator",
       "code": "https://stackblitz.com/edit/angular-calculator-component?file=src%2Fmain.ts"
-    },
-    {
-      "title": "Text Animation",
-      "code": "https://stackblitz.com/edit/css-text-animation?file=index.html"
     }
   ]
 }
