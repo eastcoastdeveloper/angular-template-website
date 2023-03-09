@@ -1,12 +1,12 @@
+export class SubmenuInterface {
+  title?: string;
+  code?: string;
+  viewProject?: string;
+  item?: string;
+  link?: string;
+}
+
 export class AccordionComponentInterface {
   name: string;
-  content: [
-    {
-      title: string;
-      code: string;
-      viewProject: string;
-      item: string;
-      link: string;
-    }
-  ];
+  content: SubmenuInterface[];
 }

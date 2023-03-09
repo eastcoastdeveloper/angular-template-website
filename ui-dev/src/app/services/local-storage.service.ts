@@ -7,9 +7,19 @@ import { ProjectsListInterface } from '../interfaces/projects-list.interface';
   providedIn: 'root'
 })
 export class LocalStorageService {
-  key = 'prjx';
-  // storageObject: LocalStorageInterface = new LocalStorageInterface();
-  storageObject: LocalStorageInterface = new LocalStorageInterface();
+  key = 'frontenddev';
+  storage: LocalStorageInterface = {
+    all: {},
+    projects: {},
+    cmp: {},
+    dev: {},
+    totals: {
+      all: undefined,
+      prj: undefined,
+      cmp: undefined,
+      dev: undefined
+    }
+  };
 
   public saveData(key: string, value: string) {
     localStorage.setItem(key, this.encrypt(value));
@@ -40,22 +50,22 @@ export class LocalStorageService {
 
   // Check for Cache (Called Once OnInit in ProjectList Cmpt)
   isThereCache(title: string) {
-    const storage = this.getData('prjx');
+    const storage = this.getData('frontenddev');
     // this.projectArray = [];
 
     // // There IS Cache
     if (storage != '') {
       let parsed = JSON.parse(storage);
-      this.storageObject = parsed;
+      this.storage = parsed;
 
-      let result = Object.values(this.storageObject),
+      let result = Object.values(this.storage),
         newArray: ProjectsListInterface[] = [];
 
-      for (var i = 0; i < result.length; i++) {
-        result[i].forEach((value: ProjectsListInterface) => {
-          newArray.push(value);
-        });
-      }
+      // for (var i = 0; i < result.length; i++) {
+      //   result[i].forEach((value: ProjectsListInterface) => {
+      //     newArray.push(value);
+      //   });
+      // }
 
       newArray.forEach((currentValue) => {
         if (currentValue.title === title) {

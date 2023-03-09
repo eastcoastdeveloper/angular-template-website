@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 // import { icon, latLng, Map, MapOptions, Marker, tileLayer } from 'leaflet';
 import { Subscription } from 'rxjs';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 // declare let L;
 
 @Component({
@@ -39,10 +39,10 @@ export class WeatherComponent {
   // constructor(
   //   private http: HttpClient,
   //   // private _childRoutes: ChildRoutesService,
-  //   private _windowWidth: WindowWidthService
+  //   private _globalFeatures: GlobalFeaturesService
   // ) {}
   // ngOnInit(): void {
-  //   // this.windowWidthSubscription = this._windowWidth.currentWidth$.subscribe(
+  //   // this.windowWidthSubscription = this._globalFeatures.currentWidth$.subscribe(
   //   //   (currentVal) => {
   //   //     this.windowWidth = currentVal;
   //   //   }

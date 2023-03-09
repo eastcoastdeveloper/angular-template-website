@@ -34,9 +34,9 @@
     </div>
 
     <div *ngIf="!item.internal" class="project-img element-shadow">
-      <a href="{{ item.path }}" target="_blank">
+      <span (click)="navigateToPage(item.path)">
         <img [src]="getImageUrl(i)" alt="{{ item.altText }}" />
-      </a>
+      </span>
     </div>
     <p>
       {{ item.description }}

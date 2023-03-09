@@ -34,7 +34,7 @@
       *ngIf="repoLink != ''"
       class="git"
     >
-      <a href="{{ repoLink }}" target="_blank">Repo</a>
+      <span class="external-link" (click)="navigateToPage()">Repo</span>
     </div>
     <div *ngIf="views > 0" class="views-forks">
       <div class="stackblitz-logo">

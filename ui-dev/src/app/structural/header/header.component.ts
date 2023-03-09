@@ -1,9 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { WindowWidthService } from '../../services/window-width.service';
+import { GlobalFeaturesService } from '../../services/global-features.service';
 import { SideBarService } from '../../services/sidebar-service';
 import { Subject, takeUntil } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
-import { ScrollToTopService } from 'src/app/services/scroll-to-top.service';
 
 @Component({
   selector: 'app-header',
@@ -19,8 +18,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentFilter: any;
 
   constructor(
-    private _scrollToTopService: ScrollToTopService,
-    private windowWidth: WindowWidthService,
+    private _globalFeatures: GlobalFeaturesService,
+    private windowWidth: GlobalFeaturesService,
     public sideBarService: SideBarService,
     private _renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
@@ -42,7 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.sidebarStatus = !this.sidebarStatus;
     if (this.sidebarStatus) {
       this._renderer.addClass(this.document.body, 'overflow-hidden');
-      this._scrollToTopService.scrollToTop();
+      this._globalFeatures.scrollToTop();
     }
     if (!this.sidebarStatus) {
       this._renderer.removeAttribute(this.document.body, 'class');

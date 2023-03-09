@@ -1,5 +1,6 @@
 <div class="page-content">
   <div class="details">
+    <app-back-button-navigation></app-back-button-navigation>
     <h1 class="page-title">{{ pageTitle }}</h1>
 
     <app-post-details
@@ -21,7 +22,7 @@
     </div>
 
     <div class="middle-column" *ngIf="threeColumnLayout">
-      <app-related-components [dataArray]="cmpsArray"></app-related-components>
+      <app-related-components [type]="'cmp'"></app-related-components>
     </div>
 
     <div class="right-column">

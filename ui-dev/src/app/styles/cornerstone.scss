@@ -2,8 +2,8 @@
 
 .cornerstone {
   display: grid;
-  grid-template-columns: repeat(2, calc(50% - 22px));
-  grid-gap: 40px;
+  grid-template-columns: repeat(2, calc(50% - 10px));
+  grid-gap: 20px;
 
   .project:focus {
     outline: none;

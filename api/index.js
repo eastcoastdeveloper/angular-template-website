@@ -6,9 +6,7 @@ const helmet = require('helmet');
 
 app.use(helmet());
 
-app.use('/api/category', require('./routes/categories'));
 app.use('/api/javascript-projects', require('./routes/javascript-projects'));
-app.use('/api/accordion-component', require('./routes/accordion'));
 
 app.listen(port, (err) => {
     if (err) { console.log(err); }

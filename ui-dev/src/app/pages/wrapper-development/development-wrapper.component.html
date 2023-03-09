@@ -1,5 +1,6 @@
 <div class="page-content">
   <div class="details">
+    <app-back-button-navigation></app-back-button-navigation>
     <h1 class="page-title">{{ pageTitle }}</h1>
     <app-post-details *ngIf="pageTitle != 'Learn to Code'"></app-post-details>
     <app-category-navigation
@@ -17,9 +18,7 @@
     </div>
 
     <div *ngIf="threeColumnLayout" class="middle-column">
-      <app-related-components
-        [dataArray]="developmentArray"
-      ></app-related-components>
+      <app-related-components [type]="'dev'"></app-related-components>
     </div>
 
     <div class="right-column">

@@ -1,10 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AccordionComponentInterface } from 'src/app/interfaces/accordion.interface';
 import { Meta } from '@angular/platform-browser';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
-import { Subject, takeUntil } from 'rxjs';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
   selector: 'accordion',
@@ -12,6 +11,9 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./accordion.component.scss']
 })
 export class AccordionComponent implements OnInit {
+  @ViewChild('accordionParent', { static: false }) accordionParent: ElementRef;
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/angular-accordion-json?file=src%2Fapp%2Fapp.component.ts';
   pageDataObject: PageDataObject = {
     title: 'Angular Accordion',
     publishedOn: 'Sept 29, 2022',
@@ -25,21 +27,235 @@ export class AccordionComponent implements OnInit {
     cornerStone: false
   };
 
-  accordionData: AccordionComponentInterface[] = [];
-  private unsubscribe$ = new Subject<boolean>();
-
-  @ViewChild('accordionParent', { static: false }) accordionParent: ElementRef;
+  accordionData: AccordionComponentInterface[] = [
+    {
+      name: 'Experience',
+      content: [
+        {
+          item: 'UI Development'
+        },
+        {
+          item: 'Frontend Development'
+        },
+        {
+          item: 'Angular 2+'
+        },
+        {
+          item: 'React'
+        },
+        {
+          item: 'AngularJS'
+        },
+        {
+          item: 'HTML5, CSS, JS & JSON'
+        },
+        {
+          item: 'Data Driven Development'
+        },
+        {
+          item: 'Manage Small Teams'
+        },
+        {
+          item: 'Planning & Deadlines'
+        },
+        {
+          item: 'Jira & Git'
+        },
+        {
+          item: 'ChartJS & D3'
+        },
+        {
+          item: "Wordpress & Custom CMS's"
+        },
+        {
+          item: 'Custom Data Structures'
+        },
+        {
+          item: 'Backend Integration w/ Endpoints'
+        },
+        {
+          item: 'Company Branding'
+        },
+        {
+          item: 'Rich Media & Advertising'
+        },
+        {
+          item: 'Client Facing Experience'
+        }
+      ]
+    },
+    {
+      name: 'Skills',
+      content: [
+        {
+          title: 'HTML5'
+        },
+        {
+          title: 'CSS'
+        },
+        {
+          title: 'Sass'
+        },
+        {
+          title: 'JavaScript'
+        },
+        {
+          title: 'TypeScript'
+        },
+        {
+          title: 'AngularJS'
+        },
+        {
+          title: 'Angular 7-10'
+        },
+        {
+          title: 'JSON'
+        },
+        {
+          title: 'Wordpress'
+        },
+        {
+          title: 'Photoshop'
+        },
+        {
+          title: 'Illustrator'
+        },
+        {
+          title: 'After Effects'
+        }
+      ]
+    },
+    {
+      name: 'Codepens',
+      content: [
+        {
+          title: 'HTML5 Video Player',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/LmxqKa',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/LmxqKa'
+        },
+        {
+          title: 'JavaScript Tabs',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/yzejjQ',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/yzejjQ'
+        },
+        {
+          title: 'Responsive Carousel',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/WyxvbP',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/WyxvbP'
+        },
+        {
+          title: '3D Animation',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/jGYXYy',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/jGYXYy'
+        },
+        {
+          title: 'Banner w/ Date Code',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/RLLmZL',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/RLLmZL'
+        },
+        {
+          title: 'jQuery User Selection',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/ZXYLyV',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/ZXYLyV'
+        },
+        {
+          title: 'Open Weather Map',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/aVJQVJ',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/aVJQVJ'
+        },
+        {
+          title: 'In Page Navigation',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/JjogojN',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/JjogojN'
+        },
+        {
+          title: 'In Page Navigation',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/JjogojN',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/live/JjogojN'
+        },
+        {
+          title: 'D3 Bar Chart',
+          code: 'https://codepen.io/eastcoastdeveloper/pen/MWbwPzm',
+          viewProject: 'https://codepen.io/eastcoastdeveloper/full/MWbwPzm'
+        }
+      ]
+    },
+    {
+      name: 'Codepen Projects',
+      content: [
+        {
+          title: 'AngularJS SPA',
+          code: 'https://codepen.io/eastcoastdeveloper/project/editor/ZgbdLb',
+          viewProject:
+            'https://codepen.io/eastcoastdeveloper/project/full/ZgbdLb'
+        }
+      ]
+    },
+    {
+      name: 'Stackblitz',
+      content: [
+        {
+          title: 'Drag & Drop UI',
+          code: 'https://stackblitz.com/edit/drag-and-drop-javascript',
+          viewProject: 'https://drag-and-drop-javascript.stackblitz.io/'
+        },
+        {
+          title: 'Banner Template',
+          code: 'https://stackblitz.com/edit/banner-template',
+          viewProject: 'https://banner-template.stackblitz.io/'
+        },
+        {
+          title: 'Accordion',
+          code: 'https://stackblitz.com/edit/angular-accordion-json',
+          viewProject: 'https://angular-accordion-json.stackblitz.io/'
+        },
+        {
+          title: 'D3 Chart',
+          code: 'https://stackblitz.com/edit/d3-bar-chart',
+          viewProject: 'https://d3-bar-chart.stackblitz.io/'
+        },
+        {
+          title: 'Doughnut Chart w/ Countdown',
+          code: 'https://stackblitz.com/edit/doughnut-chart-component',
+          viewProject: 'https://doughnut-chart-component.stackblitz.io/'
+        },
+        {
+          title: 'Rest Countries',
+          code: 'https://stackblitz.com/edit/rest-countries-leaflet-map',
+          viewProject: 'https://rest-countries-leaflet-map.stackblitz.io/'
+        },
+        {
+          title: 'Custom Line Chart',
+          code: 'https://stackblitz.com/edit/chart-with-js',
+          viewProject: 'https://chart-with-js.stackblitz.io/'
+        },
+        {
+          title: 'Slider',
+          code: 'https://stackblitz.com/edit/angular-8-table-pagination',
+          viewProject: 'https://angular-8-table-pagination.stackblitz.io/'
+        }
+      ]
+    },
+    {
+      name: 'Posts',
+      content: [
+        {
+          title: 'UX Design All Star Tips',
+          link: 'https://codepen.io/eastcoastdeveloper/post/ux-design-description-gotchas-all-star-tips'
+        }
+      ]
+    }
+  ];
 
   constructor(
-    private _http: HttpClient,
     private _metaTagService: Meta,
-    private _projectListService: ProjectListService
-  ) {}
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this._metaTagService.addTags([
       {
         name: 'keywords',
@@ -51,13 +267,6 @@ export class AccordionComponent implements OnInit {
       { name: 'date', content: '2022-11-31', scheme: 'YYYY-MM-DD' },
       { charset: 'UTF-8' }
     ]);
-
-    this._http
-      .get<AccordionComponentInterface[]>(`/api/accordion-component`)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((res) => {
-        this.accordionData = res;
-      });
   }
 
   // Toggle Accordion
@@ -81,6 +290,10 @@ export class AccordionComponent implements OnInit {
         allGroups[j].classList.remove('show-content');
       }
     }
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   json: string = `[

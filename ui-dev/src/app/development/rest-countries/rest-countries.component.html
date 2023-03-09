@@ -7,8 +7,8 @@
 </p>
 
 <p class="project-text element-margin-top">
-  <a class="external-link" href="https://leafletjs.com/" target="_blank"
-    >Leaflet</a
+  <span class="external-link" (click)="navigateToPage(urlLeaflet)"
+    >Leaflet</span
   >
   is an interactive mapping solution akin to Google Maps, but provides devs an
   onslaught of options. And unlike Google Maps, there's no need for a Gmail
@@ -19,17 +19,14 @@
 
 <p class="project-text element-margin-top">
   The below app extracts the
-  <a class="external-link" href="https://restcountries.com/" target="_blank"
-    >REST Countries</a
+  <span class="external-link" (click)="navigateToPage(urlRestCountries)"
+    >REST Countries</span
   >
   country geographical output and sends it to Leaflet. In turn, we're able to
   quickly cycle through the countries list, locating the central point of each
   selection. <span class="attention-arrow">&#x2190;</span> Check out the
-  <a
-    class="external-link"
-    href="https://rest-countries-leaflet-map.stackblitz.io/"
-    target="_blank"
-    >working version here</a
+  <span class="external-link" (click)="navigateToPage(urlStackblitz)"
+    >working version here</span
   >.
 </p>
 
@@ -93,10 +90,7 @@
 <p class="project-text element-margin-top">
   Regardless, the ultimate goal was to create a relatively simple rendition of
   two APIs playing well together. Check out the REST Countries
-  <a
-    class="external-link"
-    href="https://stackblitz.com/edit/rest-countries-leaflet-map?file=src%2Fapp%2Fapp.component.ts"
-    target="_blank"
+  <a class="external-link" (click)="navigateToPage(urlRestCountries)"
     >code sample here</a
   >.
 </p>

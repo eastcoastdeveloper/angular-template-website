@@ -7,10 +7,9 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { NasaSearchService } from 'src/app/development/nasa/nasa.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { RelatedComponentsService } from 'src/app/services/related-components.service';
 
 @Component({
   selector: 'app-apps-wrapper',
@@ -26,23 +25,14 @@ export class AppsWrapperComponent
   pageTitle?: string;
 
   constructor(
-    private _relatedComponentsService: RelatedComponentsService,
-    private _windowWidthService: WindowWidthService,
+    private _globalFeaturesService: GlobalFeaturesService,
     private _projectListService: ProjectListService,
     private _nasaService: NasaSearchService,
     private _cd: ChangeDetectorRef
-  ) {
-    // Category Wrapper Related Items
-    this._relatedComponentsService.init(this.appsArray, 'projects');
-    this._relatedComponentsService.relatedItemsSubject
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((val) => {
-        this.appsArray = val;
-      });
-  }
+  ) {}
 
   ngOnInit(): void {
-    this._windowWidthService.currentWidth$
+    this._globalFeaturesService.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
@@ -63,7 +53,7 @@ export class AppsWrapperComponent
   }
 
   ngAfterViewChecked(): void {
-    this._projectListService.pageDataObjectSubject
+    this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.pageTitle = val.title;

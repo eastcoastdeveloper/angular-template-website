@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
-import { ProjectCategoryService } from 'src/app/services/project-category.service';
+import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -10,28 +12,44 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   ></app-projects-list-content>`
 })
 export class CornerstoneAppsComponent implements OnInit {
+  private unsubscribe$ = new Subject<boolean>();
   pageDataObject: PageDataObject = {
     title: 'Front End Development',
     cornerStone: true
   };
-  appsArray: any;
+  appsArray: ProjectsListInterface[] = [];
+  categoryType: string = 'projects';
+  pageQuery: number;
 
   constructor(
-    private _projectCategoryService: ProjectCategoryService,
+    private _activatedRoute: ActivatedRoute,
     private _projectListService: ProjectListService
-  ) {}
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
-    new Promise((resolve) => {
-      this._projectCategoryService.configureCategory('projects');
-      resolve(
-        this._projectCategoryService.categorySubject.subscribe((val) => {
-          this.appsArray = val;
-        })
-      );
+    this._activatedRoute.queryParams.subscribe((params) => {
+      this.setPageParamValue(params);
     });
+
+    this._projectListService.allProjects$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.appsArray = val;
+      });
+  }
+
+  // Set Query Params
+  setPageParamValue(params: { [x: string]: any }) {
+    undefined === params['page']
+      ? (this.pageQuery = 1)
+      : (this.pageQuery = params['page']);
+
+    this._projectListService.isThereCache(
+      this.categoryType,
+      this.pageQuery,
+      10
+    );
   }
 }

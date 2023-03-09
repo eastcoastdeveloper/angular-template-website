@@ -1,38 +1,14 @@
 <div class="page-content">
   <div class="details">
-    <h1 id="project-list-title" class="page-title">
-      JavaScript Projects
-      <!-- {{ activeCategory === '' ? 'Web Technologies' : activeCategory }} -->
-    </h1>
-    <!-- <app-category-navigation
-      *ngIf="windowWidth > 605"
-      [categoryType]="'null'"
-    ></app-category-navigation> -->
-
-    <!-- <ul class="filter-items" *ngIf="windowWidth > 605">
-            <li class="standard-btn" (click)="filterItems('')" [ngClass]="{'is-active':activeCategory === '' }">All</li>
-
-            <li class="standard-btn" (click)="filterItems('projects')"
-                [ngClass]="{'is-active':activeCategory === 'projects' }">Projects</li>
-
-            <li class="standard-btn" (click)="filterItems('ui-components')"
-                [ngClass]="{'is-active':activeCategory === 'ui-components' }">Components</li>
-
-            <li class="standard-btn" (click)="filterItems('web-development')"
-                [ngClass]="{'is-active':activeCategory === 'web-development' }">Development</li>
-
-            <li class="standard-btn" (click)="mostViews('views')" [ngClass]="{'is-active':activeCategory === 'views' }">
-                Viewed</li>
-            <li class="standard-btn" (click)="mostViews('forks')" [ngClass]="{'is-active':activeCategory === 'forks' }">
-                Forks</li>
-        </ul> -->
+    <app-back-button-navigation></app-back-button-navigation>
+    <h1 id="project-list-title" class="page-title">JavaScript Projects</h1>
   </div>
   <main class="two-column-layout">
     <div class="left-column">
       <app-projects-list-content
         [dataArray]="projectsArray"
       ></app-projects-list-content>
-      <app-pagination [totalPages]="totalItems"></app-pagination>
+      <app-pagination [categoryProp]="categoryType"></app-pagination>
     </div>
 
     <div class="right-column">

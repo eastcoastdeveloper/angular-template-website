@@ -1,8 +1,8 @@
 <div id="angular-spa">
   <div #headerComponent id="header">
-    <app-header></app-header>
+    <app-header (click)="this.backButtonActive = false"></app-header>
   </div>
-  <div id="content">
+  <div id="content" (click)="this.backButtonActive = false">
     <div class="router-wrapper">
       <router-outlet></router-outlet>
 
@@ -15,6 +15,7 @@
     *ngIf="600 > width"
     id="mobile-menu"
     [ngClass]="{ 'show-mobile-nav': sidebarStatus }"
+    (click)="this.backButtonActive = false"
   >
     <nav (click)="closeMobileNav()">
       <div routerLink="/">Home</div>
@@ -30,3 +31,9 @@
     </nav>
   </div>
 </div>
+
+<!-- <div>
+  <div *ngFor="let url of _globalFeatures.history; let i = index">
+    {{ i }} = {{ url }}
+  </div>
+</div> -->

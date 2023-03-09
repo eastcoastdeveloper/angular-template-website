@@ -5,7 +5,7 @@ import {
   OnDestroy
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { WindowWidthService } from '../../../services/window-width.service';
+import { GlobalFeaturesService } from '../../../services/global-features.service';
 import { DataModel } from '../nasa.model';
 import { NasaSearchService } from '../nasa.service';
 
@@ -41,7 +41,7 @@ export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private _searchService: NasaSearchService,
-    private _windowWidth: WindowWidthService,
+    private _globalFeatures: GlobalFeaturesService,
     private _cd: ChangeDetectorRef
   ) {}
 
@@ -60,7 +60,7 @@ export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
         this.payload = currentVal;
         this.title = this.payload.title;
       });
-    this._windowWidth.currentWidth$
+    this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;

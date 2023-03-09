@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -21,6 +22,9 @@ export class WebsiteExamplesComponent implements OnInit {
     cornerStone: true
   };
 
+  urlConseqta: string = 'https://www.conseqta.com/';
+  urlFindash: string = 'https://conseqta-financial-dashboard-web.conseqta.io/';
+  urlBlog: string = 'https://fredrickjaxx.is/';
   conseqtaSampleFour: string =
     '../../../assets/projects-grid/conseqta-sample-4.png';
 
@@ -46,6 +50,17 @@ export class WebsiteExamplesComponent implements OnInit {
   ];
   loadedItems: number = 0;
 
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeaturesService: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
+
+  ngOnInit(): void {
+    this.loadImages();
+  }
+
   loadImages() {
     for (let i = 0; i < this.images.length; i++) {
       let img = new Image();
@@ -60,11 +75,7 @@ export class WebsiteExamplesComponent implements OnInit {
     this.loadedItems++;
   }
 
-  constructor(private _projectListService: ProjectListService) {}
-
-  ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-    this.loadImages();
+  navigateToPage(url: string) {
+    this._globalFeaturesService.externalLink(url);
   }
 }

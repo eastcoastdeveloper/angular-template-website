@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
   selector: 'app-modules-in-angular',
@@ -23,19 +23,18 @@ export class ModulesInAngularComponent implements OnInit, OnDestroy {
     views: 2604,
     forks: 139,
     cornerStone: true,
-    threeColumnLayout: false
+    threeColumnLayout: true
   };
 
   constructor(
-    private _windowWidthService: WindowWidthService,
+    private _globalFeaturesService: GlobalFeaturesService,
     private _projectListService: ProjectListService
-  ) {}
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit() {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
-    this._windowWidthService.currentWidth$
+    this._globalFeaturesService.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.windowWidth = val;

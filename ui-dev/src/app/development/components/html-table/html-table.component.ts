@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-html-table',
   templateUrl: './html-table.component.html'
 })
-export class HtmlTableComponent implements OnInit {
+export class HtmlTableComponent {
   typescript = `var headers = Array.from(document.querySelectorAll('.headers > div')),
   search = document.getElementById('search-field'),
   clear = document.querySelector('.clear'),
@@ -259,6 +260,9 @@ function sortColumn(e) {
   }
   `;
 
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/table-in-html?file=index.js';
+
   htmlTableProjectImage: string =
     '../../../../assets/projects-grid/table-html-js.png';
   pageDataObject: PageDataObject = {
@@ -274,10 +278,14 @@ function sortColumn(e) {
     cornerStone: false
   };
 
-  constructor(private _projectListService: ProjectListService) {}
-
-  ngOnInit() {
-    // Send Page Data to Service & Wrapper
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 }

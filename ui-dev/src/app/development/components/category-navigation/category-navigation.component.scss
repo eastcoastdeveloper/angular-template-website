@@ -1,7 +1,7 @@
 @import '../../../styles/page-style.scss';
 
 .category-group {
-  font: normal 15px sans-serif;
+  font: normal 14px sans-serif;
   transform: translateY(-50%) translateX(9.5px);
   top: 50%;
   position: absolute;
@@ -11,18 +11,6 @@
     display: inline-block;
     cursor: pointer;
     outline: none;
-    padding: 3px 10px;
-    border-radius: 4px;
-    transition: background-color 0.25s;
-  }
-
-  > div:hover {
-    background-color: $greyBlack;
-    color: $yellowGold;
-  }
-
-  > div:not(:last-child) {
-    margin-right: 5px;
   }
 }
 

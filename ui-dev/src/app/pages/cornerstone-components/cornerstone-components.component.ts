@@ -1,15 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
-import { ProjectCategoryService } from 'src/app/services/project-category.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-cornerstone-components',
   template: `<app-projects-list-content
-    [dataArray]="cmpsArray"
-  ></app-projects-list-content>`
+      [dataArray]="cmpsArray"
+    ></app-projects-list-content>
+    <app-pagination [categoryProp]="categoryType"></app-pagination> `
 })
 export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<boolean>();
@@ -20,26 +21,39 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   };
 
   cmpsArray: ProjectsListInterface[] = [];
+  categoryType: string = 'cmp';
+  pageQuery: number;
 
   constructor(
-    private _projectCategoryService: ProjectCategoryService,
-    private _projectListService: ProjectListService
-  ) {}
+    private _projectListService: ProjectListService,
+    private _activatedRoute: ActivatedRoute
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
-    new Promise((resolve) => {
-      this._projectCategoryService.configureCategory('components');
-      resolve(
-        this._projectCategoryService.categorySubject
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe((val) => {
-            this.cmpsArray = val;
-          })
-      );
+    this._activatedRoute.queryParams.subscribe((params) => {
+      this.setPageParamValue(params);
     });
+
+    this._projectListService.allProjects$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.cmpsArray = val;
+      });
+  }
+
+  // Set Query Params
+  setPageParamValue(params: { [x: string]: any }) {
+    undefined === params['page']
+      ? (this.pageQuery = 1)
+      : (this.pageQuery = params['page']);
+
+    this._projectListService.isThereCache(
+      this.categoryType,
+      this.pageQuery,
+      10
+    );
   }
 
   ngOnDestroy(): void {

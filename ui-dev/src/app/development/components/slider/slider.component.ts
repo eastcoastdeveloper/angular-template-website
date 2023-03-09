@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { SliderInterface } from 'src/app/interfaces/slider.interface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/angular-slider-json?file=src%2Fapp%2Fapp.component.ts';
   result: SliderInterface[] = [
     {
       title: 'Driven: The Race to Create the Autonomous Car',
@@ -75,11 +78,14 @@ export class SliderComponent implements OnInit {
     cornerStone: false
   };
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit() {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
     this.renderCode();
     this.getSliderImage(this.currentIndex);
   }
@@ -127,6 +133,10 @@ export class SliderComponent implements OnInit {
       this.result[index].status = false;
     }
     this.productInfo = false;
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   private renderCode() {

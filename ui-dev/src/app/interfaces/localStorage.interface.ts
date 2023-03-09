@@ -1,5 +1,12 @@
-import { ProjectsListInterface } from './projects-list.interface';
-
-export class LocalStorageInterface {
-  [key: number]: ProjectsListInterface[];
+export interface LocalStorageInterface {
+  all: {};
+  projects: {};
+  cmp: {};
+  dev: {};
+  totals: {
+    all?: number;
+    prj?: number;
+    cmp?: number;
+    dev?: number;
+  };
 }

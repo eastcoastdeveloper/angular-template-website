@@ -17,12 +17,4 @@ describe('AccordionComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  //   const elem = fixture.debugElement.nativeElement.querySelector('.accordion-wrapper > div > p:first-child')
-  //   expect(elem.innerText).toEqual('Experience');
-  //   console.log('-------')
-  //   console.log(elem);
-  // });
 });

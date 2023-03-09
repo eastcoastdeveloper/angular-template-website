@@ -7,9 +7,8 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
-import { RelatedComponentsService } from 'src/app/services/related-components.service';
 
 @Component({
   selector: 'app-components-wrapper',
@@ -21,52 +20,36 @@ export class ComponentsWrapperComponent
 {
   private unsubscribe$: Subject<boolean> = new Subject<boolean>();
   compsArray: ProjectsListInterface[] = [];
+
+  categoryType: string = 'cmp';
   threeColumnLayout?: boolean;
-  devMenuStatus?: boolean;
+  relatedItems: ProjectsListInterface[] = [];
   windowWidth: number;
-  windowHeight: number;
   pageTitle?: string;
   cmpsArray: any;
 
   constructor(
-    private _relatedComponentsService: RelatedComponentsService,
-    private _windowWidthService: WindowWidthService,
+    private _globalFeaturesService: GlobalFeaturesService,
     private _projectListService: ProjectListService,
     private _cd: ChangeDetectorRef
-  ) {
-    // Category Wrapper Related Items
-    this._relatedComponentsService.init(this.cmpsArray, 'components');
-    this._relatedComponentsService.relatedItemsSubject
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((val) => {
-        this.cmpsArray = val;
-      });
-  }
+  ) {}
 
   ngOnInit(): void {
-    // Get Window Width
-    this._windowWidthService.currentWidth$
+    this._globalFeaturesService.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
-
-    this._windowWidthService.currentHeight$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((currentVal) => {
-        this.windowHeight = currentVal;
-      });
   }
 
   ngAfterViewChecked(): void {
-    this._projectListService.pageDataObjectSubject
+    this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.threeColumnLayout = val.threeColumnLayout;
         this.pageTitle = val.title;
+        this._cd.detectChanges();
       });
-
-    this._cd.detectChanges();
   }
 
   ngOnDestroy(): void {

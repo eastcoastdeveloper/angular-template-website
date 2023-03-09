@@ -135,7 +135,7 @@
       "imgUrl": "../../assets/projects-grid/chart-js-doughnut.jpg",
       "description": "Chart JS doughnut chart components working together to make up a neat little UI. Easily plug this into a financial app to display customer/client data. Ideal for data visualization enthusiasts.",
       "path": "https://stackblitz.com/edit/doughnut-chart-component?file=src%2Fapp%2Fdoughnut-chart%2Fdoughnut-chart.component.ts",
-      "altText": "Three dhart JS doughnut charts. Intended to showcase analytics. Use all three or just one. Demo of reusable code.",
+      "altText": "Three chart JS doughnut charts. Intended to showcase analytics. Use all three or just one. Demo of reusable code.",
       "stackblitz": true,
       "internal": null,
       "category": "components"

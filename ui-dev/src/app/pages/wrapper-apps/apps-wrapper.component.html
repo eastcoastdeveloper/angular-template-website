@@ -1,5 +1,21 @@
+<!-- <style>
+  .tools-panel {
+    background-color: red;
+    position: fixed;
+    width: 250px;
+    height: calc(100vh - 180px);
+  }
+
+  .page-content .three-column-layout,
+  .page-content .two-column-layout {
+    width: calc(100% - 270px);
+    float: right;
+  }
+</style> -->
+
 <div class="page-content">
   <div class="details" (click)="pageClickHandler($event)">
+    <app-back-button-navigation></app-back-button-navigation>
     <h1 class="page-title">{{ pageTitle }}</h1>
     <app-post-details
       *ngIf="pageTitle != 'Front End Development'"
@@ -9,6 +25,8 @@
       [categoryType]="'projects'"
     ></app-category-navigation>
   </div>
+
+  <!-- <div class="tools-panel"></div> -->
 
   <main
     [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'"
@@ -20,7 +38,7 @@
     </div>
 
     <div class="middle-column" *ngIf="threeColumnLayout">
-      <app-related-components [dataArray]="appsArray"></app-related-components>
+      <app-related-components [type]="'projects'"></app-related-components>
     </div>
 
     <div class="right-column" (click)="pageClickHandler($event)">

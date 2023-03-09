@@ -36,12 +36,11 @@ export class NasaComponent implements OnInit {
     private _nasaSearchService: NasaSearchService,
     private _projectListService: ProjectListService,
     private _metaTagService: Meta
-  ) {}
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this._metaTagService.addTags([
       {
         name: 'nasa-api, apod nasa gov',

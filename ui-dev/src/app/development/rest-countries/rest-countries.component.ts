@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -8,6 +9,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './rest-countries.component.html'
 })
 export class RestCountriesComponent implements OnInit {
+  urlRestCountries: string =
+    'https://stackblitz.com/edit/rest-countries-leaflet-map?file=src%2Fapp%2Fapp.component.ts';
+  urlLeaflet: string = 'https://leafletjs.com/';
+  urlStackblitz: string = 'https://rest-countries-leaflet-map.stackblitz.io/';
   pageDataObject: PageDataObject = {
     title: 'REST Countries',
     publishedOn: 'Oct 1, 2022',
@@ -27,12 +32,14 @@ export class RestCountriesComponent implements OnInit {
     'assets/projects-grid/rest-countries-L.jpg';
   model: string;
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit() {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this.model = `export class RESTCountryModel {
   public altSpellings?: Array<{ index: string }>;
   public area?: number;
@@ -80,5 +87,9 @@ export class RestCountriesComponent implements OnInit {
       (this.unMember = unMember));
   }
 }`;
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 }

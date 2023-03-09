@@ -7,9 +7,8 @@ import {
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
-import { RelatedComponentsService } from 'src/app/services/related-components.service';
 
 @Component({
   selector: 'app-development',
@@ -25,23 +24,13 @@ export class DevelopmentWrapper implements OnInit, AfterViewChecked, OnDestroy {
   arrayIndex: number;
 
   constructor(
-    private _relatedComponentsService: RelatedComponentsService,
     private _projectListService: ProjectListService,
-    private _windowWidth: WindowWidthService,
+    private _globalFeatures: GlobalFeaturesService,
     private _cd: ChangeDetectorRef
-  ) {
-    // Category Wrapper Related Items
-    this._relatedComponentsService.init(this.developmentArray, 'development');
-    this._relatedComponentsService.relatedItemsSubject
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((val) => {
-        this.developmentArray = val;
-      });
-  }
+  ) {}
 
   ngOnInit(): void {
-    // Get Window Width
-    this._windowWidth.currentWidth$
+    this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
@@ -49,7 +38,7 @@ export class DevelopmentWrapper implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked(): void {
-    this._projectListService.pageDataObjectSubject
+    this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.threeColumnLayout = val.threeColumnLayout;

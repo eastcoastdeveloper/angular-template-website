@@ -4,6 +4,55 @@
   border-radius: 5px;
   overflow: hidden;
 }
+// .data-block {
+//   font: normal 14px sans-serif;
+//   cursor: pointer;
+//   position: relative;
+// }
+// .data-block p {
+//   background-color: $oceanBlue;
+//   color: $white;
+//   margin: 0;
+//   padding: 10px 0 10px 10px;
+
+// // }
+// .data-block .count {
+//   top: 0;
+//   right: 15px;
+// }
+.data-block ul {
+  list-style-type: none;
+  background-color: $oceanBlue;
+  padding: 0px;
+  margin: 0;
+  line-height: 25px;
+  font-size: 14px;
+}
+.data-block li {
+  display: grid;
+  padding: 0 10px 0 10px;
+  grid-template-areas: 'title title' 'code project';
+  line-height: 25px;
+}
+.data-block .title {
+  color: $white;
+}
+.data-block ul li div:not(:first-child) {
+  font-style: italic;
+}
+.data-block a {
+  color: $white;
+  transition: color 0.3s;
+}
+.data-block a:hover {
+  color: $yellowGold;
+}
+.data-block .code-samples li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.data-block .title {
+  color: $white !important;
+}
 
 .data-block {
   font: normal 14px sans-serif;
@@ -12,6 +61,7 @@
 
   p {
     background-color: $oceanBlue;
+    font: normal 14px sans-serif;
     color: $white;
     margin: 0;
     padding: 10px 0 10px 10px;
@@ -71,6 +121,10 @@
   overflow: auto;
   max-height: 0;
   color: $white;
+}
+
+.show-content {
+  max-height: 250px !important;
 }
 
 #skills {

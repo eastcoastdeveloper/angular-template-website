@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
-import { ProjectCategoryService } from 'src/app/services/project-category.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -12,32 +12,46 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   ></app-projects-list-content>`
 })
 export class CornerstoneDevelopmentComponent implements OnDestroy {
-  developmentArray: ProjectsListInterface[] = [];
   private unsubscribe$ = new Subject<boolean>();
   pageDataObject: PageDataObject = {
     title: 'Learn to Code',
     cornerStone: true
   };
+  developmentArray: ProjectsListInterface[] = [];
+  categoryType: string = 'dev';
+  pageQuery: number;
 
   constructor(
-    private _projectCategoryService: ProjectCategoryService,
-    private _projectListService: ProjectListService
-  ) {}
-
-  ngOnInit(): void {
+    private _projectListService: ProjectListService,
+    private _activatedRoute: ActivatedRoute
+  ) {
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
-    new Promise((resolve) => {
-      this._projectCategoryService.configureCategory('development');
-      resolve(
-        this._projectCategoryService.categorySubject
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe((val) => {
-            this.developmentArray = val;
-          })
-      );
+  ngOnInit(): void {
+    this._activatedRoute.queryParams.subscribe((params) => {
+      this.setPageParamValue(params);
     });
+
+    this._projectListService.allProjects$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.developmentArray = val;
+      });
+  }
+
+  // Set Query Params
+  setPageParamValue(params: { [x: string]: any }) {
+    undefined === params['page']
+      ? (this.pageQuery = 1)
+      : (this.pageQuery = params['page']);
+
+    this._projectListService.isThereCache(
+      this.categoryType,
+      this.pageQuery,
+      10
+    );
   }
 
   ngOnDestroy(): void {

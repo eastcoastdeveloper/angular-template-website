@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SidebarInterface } from 'src/app/interfaces/dynamic-sidebar.interface';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './dynamic-sidebar.component.html',
   styleUrls: ['./dynamic-sidebar.component.scss']
 })
-export class DynamicSidebarComponent implements OnInit {
+export class DynamicSidebarComponent {
   pageDataObject: PageDataObject = {
     title: 'Angular Dynamic Sidebar',
     publishedOn: 'Oct 1, 2022',
@@ -21,6 +22,9 @@ export class DynamicSidebarComponent implements OnInit {
     threeColumnLayout: true,
     cornerStone: false
   };
+
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/angular-dynamic-sidebar?file=src%2Fapp%2Fcomponents%2Fsidebar%2Fsidebar.component.ts';
 
   result: SidebarInterface[] = [
     {
@@ -447,13 +451,14 @@ export class DynamicSidebarComponent implements OnInit {
 ]`;
 
   constructor(
-    // private _http: HttpClient,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
-  ) {}
-
-  ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
+  ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   ddToggle(i: number) {

@@ -8,6 +8,7 @@ import {
   ViewChildren
 } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -16,6 +17,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   styleUrls: ['./in-page-navigation.component.scss']
 })
 export class InPageNavigationComponent implements OnInit {
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/in-page-navigation?file=src%2Fapp%2Fapp.component.ts';
   pageDataObject: PageDataObject = {
     title: 'In Page Navigation',
     publishedOn: 'Nov 7, 2022',
@@ -38,26 +41,21 @@ export class InPageNavigationComponent implements OnInit {
   @ViewChild('btnGroup', { static: false }) btnGroup: ElementRef;
   @ViewChild('bar', { static: false }) bar: ElementRef;
 
-  // SET TO ANY AMOUNT!
   sectionLength = 3;
-
   barLinkWidth = 0;
   currentSection = 0;
   Math: any;
 
   constructor(
     private _cd: ChangeDetectorRef,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
     this.Math = Math;
   }
 
   ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
     this.renderCode();
   }
 
@@ -91,6 +89,10 @@ export class InPageNavigationComponent implements OnInit {
     this.percentages.forEach((val) => {
       val.nativeElement.style.opacity = 0;
     });
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   private renderCode() {

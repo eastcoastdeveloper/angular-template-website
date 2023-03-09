@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
   selector: 'app-post-details',
@@ -21,12 +21,12 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   forks?: number;
 
   constructor(
-    private _windowWidthService: WindowWidthService,
+    private _globalFeaturesService: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {}
 
   ngOnInit(): void {
-    this._projectListService.pageDataObjectSubject
+    this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.publishedOn = val?.publishedOn;
@@ -38,7 +38,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         this.forks = val?.forks;
       });
 
-    this._windowWidthService.currentWidth$
+    this._globalFeaturesService.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.windowWidth = val;
@@ -47,6 +47,10 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
   formatViews(val: number | bigint) {
     return new Intl.NumberFormat().format(val);
+  }
+
+  navigateToPage() {
+    this._globalFeaturesService.externalLink(this.repoLink!);
   }
 
   ngOnDestroy(): void {

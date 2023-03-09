@@ -11,9 +11,9 @@
 >
   <div class="wrapper">
     <nav>
-      <span (click)="loadCategory('projects')">Projects</span>
+      <!-- <span (click)="loadCategory('projects')">Projects</span>
       <span (click)="loadCategory('components')">Components</span>
-      <span (click)="loadCategory('development')">Development</span>
+      <span (click)="loadCategory('development')">Development</span> -->
     </nav>
     <div class="category-content">
       <div class="scroller">
@@ -36,18 +36,24 @@
   <div
     routerLink="/web-development-projects/front-end-development"
     routerLinkActive="active-btn"
+    class="standard-btn"
+    [ngClass]="{ 'is-active': categoryType === 'projects' }"
   >
     Projects
   </div>
   <div
     routerLink="/ui-components/website-features"
     routerLinkActive="active-btn"
+    class="standard-btn"
+    [ngClass]="{ 'is-active': categoryType === 'components' }"
   >
     Components
   </div>
   <div
     routerLink="/web-application-development/learn-to-code"
     routerLinkActive="active-btn"
+    class="standard-btn"
+    [ngClass]="{ 'is-active': categoryType === 'development' }"
   >
     Development
   </div>

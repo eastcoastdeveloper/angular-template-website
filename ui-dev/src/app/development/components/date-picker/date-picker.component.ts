@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   styleUrls: ['./date-picker.component.scss']
 })
 export class DatePickerComponent implements OnInit {
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/datepicker-angular-component?file=src%2Fapp%2Fdate-picker%2Fdate-picker.component.ts';
   pageDataObject: PageDataObject = {
     title: 'Angular Date Picker',
     publishedOn: 'Oct 1, 2022',
@@ -58,11 +61,14 @@ export class DatePickerComponent implements OnInit {
   scss: string;
   typescript: string;
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit() {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
     this.firstLastDays();
     this.renderCode();
   }
@@ -81,6 +87,10 @@ export class DatePickerComponent implements OnInit {
             : null
       });
     }
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   onResize($event: any) {
@@ -367,9 +377,7 @@ export class DatepickerComponent implements OnInit {
   calendarVisible: boolean = false;
   d: any = new Date();
   weekdays: string[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  
   months: string[] = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
   years: number[] = [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
                   2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
   
@@ -390,7 +398,8 @@ export class DatepickerComponent implements OnInit {
   calculateStartEndDate(firstDayOfMonth: number, lastDayOfMonth: number) {
     this.daySpan = [];
     let dayIndex = 1,
-      emptyCells = 0;
+        emptyCells = 0;
+    
     for (let i = 0; i < 42; i++) {
       if (firstDayOfMonth > i) emptyCells++;
       this.daySpan.push(
@@ -448,7 +457,7 @@ export class DatepickerComponent implements OnInit {
   checkForFutureDate(y: number, m: number, d: number) {
     this.selectedDate = new Date(y, m, d).getTime();
     this.currentDate = new Date().getTime();
-    this.currentDate > this.selectedDate ? '' : console.log('Please select a non future date');
+    this.currentDate > this.selectedDate ? '' : console.log('...future date');
   }
 }`;
   }

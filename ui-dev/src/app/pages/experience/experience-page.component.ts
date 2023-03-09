@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
-import { WindowWidthService } from 'src/app/services/window-width.service';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
   selector: 'app-experience-page',
@@ -18,18 +18,18 @@ export class ExperiencePageComponent implements OnInit, OnDestroy {
   };
 
   constructor(
-    private _windowWidth: WindowWidthService,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
-  ) {}
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit(): void {
-    this._windowWidth.currentWidth$
+    this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
-
-    this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnDestroy(): void {

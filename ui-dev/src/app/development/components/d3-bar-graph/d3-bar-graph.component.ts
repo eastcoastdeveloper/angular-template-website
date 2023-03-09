@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -8,10 +9,12 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 })
 export class D3BarGraphComponent implements OnInit {
   markup: string = '';
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/d3-bar-chart?file=script.js';
   javascript: string = '';
   d3ProjectImage: string = '../../../../assets/projects-grid/d3-bar-graph.png';
   pageDataObject: PageDataObject = {
-    title: 'D3 Bar Graph',
+    title: 'D3 Bar Chart',
     publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
     repoTitle: 'angular-date-picker',
@@ -24,13 +27,19 @@ export class D3BarGraphComponent implements OnInit {
     cornerStone: false
   };
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit() {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this.renderCode();
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   renderCode() {

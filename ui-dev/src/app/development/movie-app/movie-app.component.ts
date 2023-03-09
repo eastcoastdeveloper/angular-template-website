@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -8,9 +9,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './movie-app.component.html',
   styleUrls: ['./movie-app.component.scss']
 })
-export class MovieAppComponent implements OnInit {
+export class MovieAppComponent {
   @ViewChild('title', { static: false }) title: ElementRef;
   @ViewChild('year', { static: false }) year: ElementRef;
+
+  urlOMDB: string = 'https://www.omdbapi.com/';
 
   private baseUrl: string = 'https://www.omdbapi.com/?t=';
   private key: string = '&apikey=2a8aca86';
@@ -34,11 +37,9 @@ export class MovieAppComponent implements OnInit {
 
   constructor(
     private _http: HttpClient,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
-  ) {}
-
-  ngOnInit() {
-    // Send Page Data to Service & Wrapper
+  ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
@@ -88,5 +89,9 @@ export class MovieAppComponent implements OnInit {
 
   closeLightbox() {
     this.lightbox = false;
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 }

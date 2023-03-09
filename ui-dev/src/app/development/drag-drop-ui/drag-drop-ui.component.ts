@@ -6,6 +6,7 @@ import {
   ViewChildren
 } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -13,6 +14,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './drag-drop-ui.component.html'
 })
 export class DragDropUiComponent {
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/drag-and-drop-javascript?file=src%2Fapp%2Fapp.component.ts';
   pageDataObject: PageDataObject = {
     title: 'JavaScript Drag and Drop',
     publishedOn: 'Oct 1, 2022',
@@ -43,13 +46,19 @@ export class DragDropUiComponent {
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
   @ViewChild('newGroup', { static: false }) newGroup: ElementRef;
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit() {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this.renderCode();
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   private renderCode() {

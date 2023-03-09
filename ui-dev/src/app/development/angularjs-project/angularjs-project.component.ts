@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -7,6 +8,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './angularjs-project.component.html'
 })
 export class AngularjsProjectComponent implements OnInit {
+  urlFull: string = 'https://codepen.io/eastcoastdeveloper/project/full/ZgbdLb';
+  urlEditor: string =
+    'https://codepen.io/eastcoastdeveloper/project/editor/ZgbdLb';
+  urlViewChild: string = 'https://angular.io/api/core/ViewChild';
+  urlRenderer: string = 'https://angular.io/api/core/Renderer2';
   pageDataObject: PageDataObject = {
     title: 'AngularJS Project',
     publishedOn: 'Oct 16, 2017',
@@ -17,7 +23,7 @@ export class AngularjsProjectComponent implements OnInit {
     views: 2027,
     forks: 0,
     cornerStone: true,
-    threeColumnLayout: false
+    threeColumnLayout: true
   };
 
   directives: string;
@@ -26,13 +32,19 @@ export class AngularjsProjectComponent implements OnInit {
   angularJSimageThree: string =
     'assets/projects-grid/angularjs-deck-gallery.jpg';
 
-  constructor(private _projectListService: ProjectListService) {}
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
 
   ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
-    this._projectListService.changePageDataObject(this.pageDataObject);
-
     this.renderCode();
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   private renderCode() {

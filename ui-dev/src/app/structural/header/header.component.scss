@@ -2,7 +2,7 @@
 
 .app-header {
   position: relative;
-  height: 70px;
+  height: 50px;
   .site-header {
     color: #d9a74a;
     margin: 0;
@@ -13,7 +13,6 @@
     font-style: italic;
     text-transform: uppercase;
     position: absolute;
-    top: 34px;
   }
   .site-header + span {
     color: #d9a74a;
@@ -21,8 +20,8 @@
     font: normal 18px sans-serif;
     text-transform: uppercase;
     font-style: italic;
-    top: 28px;
-    left: 430px;
+    top: 18px;
+    left: 425px;
   }
   nav {
     float: right;
@@ -56,7 +55,7 @@
     outline: none;
     transition: transform 0.3s;
     position: relative;
-    height: 70px;
+    height: 50px;
   }
 
   .mobile-menu-icon {

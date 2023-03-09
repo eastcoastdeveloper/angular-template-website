@@ -9,9 +9,10 @@
       float: left;
       margin: 0 0 5px 0;
     }
-    a {
+    .visit-site {
       float: right;
       font: normal 15px sans-serif;
+      cursor: pointer;
       background-color: $oceanBlue;
       font-style: italic;
       color: $white;

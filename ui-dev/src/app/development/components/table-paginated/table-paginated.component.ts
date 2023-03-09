@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CarsInterface } from '../../../interfaces/table-paginated.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
   selector: 'table-paginated',
   templateUrl: './table-paginated.component.html',
   styleUrls: ['./table-paginated.component.scss']
 })
-export class TablePaginatedComponent implements OnInit {
+export class TablePaginatedComponent {
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/angular-table-pagination-json';
   pageDataObject: PageDataObject = {
     title: 'Angular Data Table',
     publishedOn: 'Aug 1, 2022',
@@ -155,10 +158,10 @@ export class TablePaginatedComponent implements OnInit {
   windowWidth: number;
   p: any;
 
-  constructor(private _projectListService: ProjectListService) {}
-
-  ngOnInit(): void {
-    // Send Page Data to Service & Wrapper
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
@@ -177,6 +180,10 @@ export class TablePaginatedComponent implements OnInit {
     if (this.enteredSearchValue === '') {
       return (this.cars = this.masterArray);
     }
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   json: string = `[
