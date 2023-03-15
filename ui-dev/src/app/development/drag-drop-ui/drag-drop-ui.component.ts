@@ -31,14 +31,11 @@ export class DragDropUiComponent {
 
   protected markup: string;
   protected typescript: string;
-  protected interface: string;
   protected snippetOne: string;
   protected snippetTwo: string;
   protected snippetThree: string;
   protected snippetFour: string;
   protected snippetFive: string;
-  protected scss: string;
-  protected json: string;
 
   dragDropImage: string = 'assets/projects-grid/js-drag-drop.jpg';
 
@@ -68,70 +65,8 @@ export class DragDropUiComponent {
     this.snippetFour = `[{active: false}, {active: false}, {active: false}, {active: false}, ...]`;
     this.snippetFive = `{active: true}`;
 
-    this.json = `  {
-    "unsortedItems": [
-      { "items": [
-          { "name": "Orange"     },
-          { "name": "Apple"      },
-          { "name": "Pear"       },
-          { "name": "Watermelon" },
-          { "name": "Kiwi"       },
-          { "name": "Banana"     },
-          { "name": "Papya"      }
-        ]},
-      { "items": [
-          { "name": "Ford"   },
-          { "name": "Honda"  },
-          { "name": "Chevy"  },
-          { "name": "Nissan" },
-          { "name": "Tesla"  },
-          { "name": "Toyota" },
-          { "name": "Opel"   }
-        ]},
-      { "items": [
-          { "name": "Los Angeles"  },
-          { "name": "Chicago"      },
-          { "name": "New York"     },
-          { "name": "Indianapolis" },
-          { "name": "Miami"        },
-          { "name": "Phoenix"      },
-          { "name": "Boise"        }
-        ]},
-      { "items": [
-          { "name": "blue"      },
-          { "name": "red"       },
-          { "name": "purple"    },
-          { "name": "turquoise" },
-          { "name": "green"     },
-          { "name": "pink"      },
-          { "name": "maroon"    }
-        ]},
-      { "items": [
-          { "name": "dog"     },
-          { "name": "cat"     },
-          { "name": "monkey"  },
-          { "name": "lizard"  },
-          { "name": "bear"    },
-          { "name": "wolf"    },
-          { "name": "giraffe" }
-        ]},
-      { "items": [
-          { "name": "sunday"    },
-          { "name": "monday"    },
-          { "name": "tuesday"   },
-          { "name": "wednesday" },
-          { "name": "thursday"  },
-          { "name": "friday"    },
-          { "name": "saturday"  }
-        ]}
-    ]
-  }`;
-
-    this.interface = ` export class ItemResponse {
-    [index: number]: { items: { name: string }[] };
-  }`;
-
     this.typescript = `items: { title: string }[] = [];
+private unsubscribe$ = new Subject<void>();
 groupItem: string;
 groupIndex: any;
 result: any = [];
@@ -152,7 +87,9 @@ draggedElement: any;
 constructor(private _http: HttpClient) {
   // Get JSON
   // Import HttpClientModule to the Parent Module
-  this._http.get<Response[]>('assets/unsorted.json').subscribe(val => {
+  this._http.get<Response[]>('path-to-json')
+  .pipe(takeUntil(this.unsubscribe$))
+  .subscribe(val => {
     this.result = val;
     this.setInputBooleans();
   });
@@ -327,6 +264,11 @@ removeInputs() {
     val.active = false;
   });
 }
+
+ngOnDestroy(){
+  this.unsubscribe$.next;
+  this.unsubscribe$.complete();
+}
 }`;
 
     this.markup = `<div class="wrapper">
@@ -401,288 +343,5 @@ removeInputs() {
     </div>
   </div>
 </div>`;
-
-    this.scss = `.wrapper {
-  font-family: Lato;
-  background-color: lightgrey;
-  max-width: 1000px;
-  margin: 0 auto;
-  .add-btn {
-    float: left;
-    color: #fff;
-    font-size: 17px;
-    padding: 3px 10px 4px 10px;
-    border-radius: 4px;
-    margin-left: 10px;
-    background-color: #333;
-    width: 150px;
-    text-align: center;
-  }
-  .group {
-    margin-left: 20px;
-    margin-top: 10px;
-  }
-  header {
-    background-color: lightgray;
-    overflow: auto;
-    padding: 10px;
-    position: relative;
-    p {
-      line-height: 36px;
-      color: #333;
-      font-size: 20px;
-      text-align: center;
-      margin: 20px 0 0 10px;
-    }
-    small {
-      margin-bottom: 20px;
-      display: block;
-      text-align: center;
-      font-style: italic;
-      font-family: inherit;
-    }
-  }
-  .selected-content {
-    background-color: lightgray;
-    display: grid;
-    grid-template-columns: repeat(2, calc(50% - 5px));
-    grid-gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    .child-container {
-      min-height: 50px;
-      background-color: #333;
-      border-radius: 4px;
-      color: #fff;
-      padding-top: 25px;
-      position: relative;
-      max-width: 500px;
-      padding-bottom: 10px;
-      hr {
-        margin-top: 22px;
-      }
-      .group-index {
-        text-transform: uppercase;
-        font-size: 14px;
-        margin: 0;
-        padding-left: 10px;
-        padding-bottom: 5px;
-        position: absolute;
-        top: 15px;
-      }
-      .dragged-items {
-        list-style-type: none;
-        line-height: 25px;
-        padding: 0 0 0 30px;
-        ::ng-deep {
-          li {
-            overflow: auto;
-            padding-right: 15px;
-            margin: 5px 0;
-            p {
-              margin: 0;
-              float: left;
-            }
-            div {
-              float: right;
-              position: relative;
-              border: 1px solid white;
-              width: 25px;
-              height: 25px;
-              border-radius: 4px;
-              cursor: pointer;
-              span {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -60%);
-                font-weight: bold;
-                font-size: 20px;
-                transition: transform 0.25s;
-              }
-            }
-          }
-        }
-      }
-      .rotate-arrow {
-        transform: rotate(-90deg) !important;
-      }
-      .toggle-block {
-        position: relative;
-        transition: all 0.2s;
-        max-height: 500px;
-        overflow: hidden;
-        p {
-          margin: 0 0 0 10px;
-          transform: translateY(5px);
-        }
-        span {
-          position: absolute;
-          top: 0;
-          right: 15px;
-          border-radius: 3px;
-          border: 1px solid white;
-          padding: 4px;
-          cursor: pointer;
-        }
-      }
-      .close-block {
-        max-height: 30px;
-      }
-    }
-    .drop-zone {
-      height: 50px;
-      margin-top: 20px;
-      border: 3px dashed;
-      margin: 30px 10px 20px 10px;
-      border-radius: 4px;
-      display: flex;
-      .ddText {
-        margin: auto;
-        font-size: 14px;
-        text-transform: uppercase;
-      }
-    }
-  }
-  .hasDirectories {
-    padding: 20px 20px 10px 20px;
-  }
-  .border-btm {
-    border-bottom: 1px solid #333;
-  }
-  .delete {
-    background-color: lightgray;
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    border: 1px solid white;
-    border-radius: 2px;
-    i {
-      margin: auto;
-      font-size: 25px;
-      color: #333;
-      transform: translate(-1px, -4px);
-    }
-    .faux-btn {
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-    }
-  }
-  .unsorted {
-    display: flex;
-    clear: left;
-    position: relative;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 50px auto 0 auto;
-    padding: 0 0 20px 10px;
-    text-transform: capitalize;
-    > div {
-      margin-bottom: 30px;
-    }
-    [data-group] {
-      position: relative;
-      margin: 10px;
-      span {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 14px;
-        color: white;
-        cursor: pointer;
-      }
-    }
-    .add-new-name {
-      background-color: #1b9e61;
-      position: absolute;
-      width: 30px;
-      border-radius: 4px;
-      margin-left: 10px;
-      display: flex;
-      cursor: pointer;
-      span {
-        color: white;
-        margin: auto;
-        font-size: 20px;
-      }
-      .add-new {
-        position: absolute;
-        top: 30px;
-        left: 0;
-        z-index: 1;
-        background-color: lightgrey;
-        border: 1px solid #333;
-        padding: 10px;
-        border-radius: 4px;
-        box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.4);
-      }
-    }
-    .delete-item {
-      width: 16px;
-      height: 17px;
-      position: absolute;
-      top: 10.5px;
-      right: 10px;
-      border-radius: 2px;
-      border: 1px solid white;
-      cursor: pointer;
-    }
-    p {
-      background-color: #333;
-      padding: 10px;
-      color: white;
-      border-radius: 4px;
-      cursor: move;
-      width: 125px;
-      transition: all 0.25s;
-    }
-  }
-  .dragging p {
-    opacity: 0.5;
-    transform: scale(1.1);
-  }
-  .add-new {
-    display: flex;
-    float: right;
-    margin-right: 10px;
-    input {
-      border: none;
-      height: 26px;
-      outline: none;
-      font-size: 14px;
-      width: 200px;
-      padding-left: 5px;
-      border-top-left-radius: 4px;
-      padding: 0 0 0 5px;
-      border-bottom-left-radius: 4px;
-      margin-right: 5px;
-    }
-    button {
-      height: 28px;
-      border: none;
-      outline: none;
-      border-radius: 4px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-  }
-  .drag-zone-active {
-    background-color: mediumturquoise;
-    color: #333;
-    border-color: lightgrey !important;
-  }
-  .required-field {
-    background-color: #b33a3a;
-    color: white;
-  }
-  .required-field::placeholder {
-    color: white;
-  }
-}`;
   } // renderCode end
 }

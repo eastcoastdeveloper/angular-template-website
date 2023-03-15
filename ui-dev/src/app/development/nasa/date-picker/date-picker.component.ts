@@ -8,7 +8,7 @@ import { NasaSearchService } from '../nasa.service';
   styleUrls: ['./date-picker.component.scss']
 })
 export class CalendarComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   calendarVisible: boolean = false;
   d: any = new Date();
   weekdays: any[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -152,7 +152,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

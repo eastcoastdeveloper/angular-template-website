@@ -1,18 +1,18 @@
 <p class="project-text">
   Not long ago I was tasked with creating a complex JavaScript drag and drop UI.
-  One in which users gave users the ability to move multiple items at once. This
-  was a feature I'd never done prior. And this was a project I was the lead
-  frontend developer for. Additionally, the client was the United States Senate.
-  Not only would members of Congress be using a UI I created, but every mouse or
-  hand gesture was a POST request.
+  One in which gave users the ability to move MULTIPLE items at once. This was a
+  feature I'd never done prior. And this was a project I was the lead frontend
+  developer for. Additionally, the client was the United States Senate. Not only
+  would members of Congress be using a UI I created, but every mouse or hand
+  gesture was a POST request.
 </p>
 
 <p class="project-text element-margin-top">
   Most of which is irrelevant. I'm a developer, and therefore need to ensure
-  that whatever I build, works flawlessly for whoever it's regardless of the
-  client. I wanted to be 100% prepared for the upcoming task. In turn, I created
-  this UI. Though far from exact, it demonstrates creative drag abilities via
-  JSON content. <span class="attention-arrow">&#x2190;</span>
+  that whatever I build works flawlessly. Regardless of the client. I wanted to
+  be 100% prepared for the upcoming task. In turn, I created this UI. Though far
+  from exact, it demonstrates creative drag abilities via JSON content.
+  <span class="attention-arrow">&#x2190;</span>
   <span class="external-link" (click)="navigateToPage(urlStackblitz)"
     >Working demo here.</span
   >
@@ -26,22 +26,20 @@
   />
 </div>
 
-<p class="project-text element-margin-top">
-  Let's begin with the data. Though this is in Angular, it could very well be
-  isolated to just vanilla JavaScript with an index.html and script file. Don't
-  be deterred simply because you may be most comfortable in React or Vue. This
-  is the data that populates the UI.
+<h2>JavaScript Drag and Drop</h2>
+<p class="project-text">
+  Yes, techically this is TypeScript. But because I originally wrote it in
+  JavaScript, and there's lot's of it here, I'm gonna say JavaScript. I digress.
+  The point of this is to explore a draggable UI without a library. See how it's
+  working, and maybe get new ideas for a project you're working on.
 </p>
 
-<div class="code-preview element-margin-top">
-  <pre><code>{{json}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">Create an interface of the data.</p>
-
-<div class="code-preview element-margin-top">
-  <pre><code>{{interface}}</code></pre>
-</div>
+<p class="project-text element-margin-top">
+  In retrospect, I'd avoid using innerHTML. It's certainly inbuilt and
+  oftentimes useful, but I've read from numerous resources how it's a
+  vulnerability. Yes, deterministic of how it's used, but I now avoid it
+  entirely.
+</p>
 
 <ul class="project-list element-margin-top">
   <li>
@@ -96,26 +94,28 @@
   <pre><code>{{typescript}}</code></pre>
 </div>
 
-<p class="project-text element-margin-top">app.component.html</p>
+<h2>Bring it All Together</h2>
 
-<div class="code-preview element-margin-top">
-  <pre><code>{{markup}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">app.component.scss</p>
-
-<div class="code-preview element-margin-top">
-  <pre><code>{{scss}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
+<p class="project-text">
   There's no way around it. If you're creating a UI like this without a library,
   it's gonna be complex. Plus, factoring in POST requests at every drop like my
-  project called for... Though many would advocate using a library, I try to
-  avoid using libs whenever possible. Especially if it calls for custom
-  solutions. You'll spend more time trying to get the lib to mimic the intended
-  behavior vs creating a system of your own.
+  project called for&mdash;not fun. Though many would advocate using a library,
+  I try to avoid using libs whenever possible. Why? I find lots of feature based
+  libraries to be more problematic than helpful simply because every project is
+  unique. And using one creates boundaries. In turn, I need to fight the feature
+  to have it act the way the project calls for.
 </p>
+
+<p class="project-text element-margin-top">
+  Such is the case with a draggable plugin. You'll spend more time trying to get
+  the lib to mimic the intended behavior vs creating a system of your own. At
+  the end of the day, you've got a flexible system. One in which you know what
+  every line is doing.
+</p>
+
+<div class="code-preview">
+  <pre><code>{{markup}}</code></pre>
+</div>
 
 <p class="project-text element-margin-top">
   This could no doubt be improved with more specified data types, but time was

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { LocalStorageInterface } from '../interfaces/localStorage.interface';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 
@@ -7,6 +8,18 @@ import { ProjectsListInterface } from '../interfaces/projects-list.interface';
   providedIn: 'root'
 })
 export class LocalStorageService {
+  localStorage$ = new BehaviorSubject<LocalStorageInterface>({
+    all: {},
+    projects: {},
+    cmp: {},
+    dev: {},
+    totals: {
+      all: undefined,
+      prj: undefined,
+      cmp: undefined,
+      dev: undefined
+    }
+  });
   key = 'frontenddev';
   storage: LocalStorageInterface = {
     all: {},
@@ -22,6 +35,7 @@ export class LocalStorageService {
   };
 
   public saveData(key: string, value: string) {
+    this.localStorage$.next(JSON.parse(value));
     localStorage.setItem(key, this.encrypt(value));
   }
 
@@ -46,38 +60,6 @@ export class LocalStorageService {
     return CryptoJS.AES.decrypt(txtToDecrypt, this.key).toString(
       CryptoJS.enc.Utf8
     );
-  }
-
-  // Check for Cache (Called Once OnInit in ProjectList Cmpt)
-  isThereCache(title: string) {
-    const storage = this.getData('frontenddev');
-    // this.projectArray = [];
-
-    // // There IS Cache
-    if (storage != '') {
-      let parsed = JSON.parse(storage);
-      this.storage = parsed;
-
-      let result = Object.values(this.storage),
-        newArray: ProjectsListInterface[] = [];
-
-      // for (var i = 0; i < result.length; i++) {
-      //   result[i].forEach((value: ProjectsListInterface) => {
-      //     newArray.push(value);
-      //   });
-      // }
-
-      newArray.forEach((currentValue) => {
-        if (currentValue.title === title) {
-          console.log(currentValue);
-        }
-      });
-    }
-
-    // There's NOTHING Cached
-    else {
-      return null;
-    }
   }
 
   // Populate Page Content

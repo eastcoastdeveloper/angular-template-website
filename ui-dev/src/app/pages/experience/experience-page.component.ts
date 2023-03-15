@@ -11,7 +11,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 })
 export class ExperiencePageComponent implements OnInit, OnDestroy {
   windowWidth: number;
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     cornerStone: true,
     threeColumnLayout: false
@@ -33,7 +33,7 @@ export class ExperiencePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

@@ -1,45 +1,5 @@
 @import '../../styles/page-style.scss';
 
-.right-column-cmp {
-  > div:first-child {
-    grid-area: signup;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .social-icons {
-    display: grid;
-    grid-area: socials;
-    grid-template-columns: repeat(2, calc(50% - 10px));
-    margin: 0 auto;
-    grid-gap: 17px;
-
-    > div {
-      text-align: center;
-      display: flex;
-      a {
-        margin: auto;
-        max-width: 125px;
-        img {
-          width: 100%;
-        }
-      }
-    }
-  }
-  .welcome {
-    border-radius: 4px;
-    .bio-pic {
-      background-color: aqua;
-      width: 150px;
-      height: 115px;
-      float: left;
-      margin-right: 15px;
-    }
-    p {
-      padding: 10px;
-    }
-  }
-}
-
 @media screen and (max-width: 1300px), screen and (max-height: 760px) {
   .two-column-layout {
     position: fixed !important;
@@ -49,11 +9,6 @@
       'signup'
       'socials'
       'code' !important;
-
-    .social-icons {
-      width: 275px !important;
-      grid-template-columns: repeat(2, calc(50% - 8px)) !important;
-    }
   }
 
   .right-column-cmp {
@@ -66,57 +21,9 @@
       'signup code';
     grid-column-gap: 20px;
     grid-row-gap: 15px;
-    > div:first-child {
-      max-width: unset;
-      padding: 14px 20px;
-    }
-    .social-icons {
-      width: 100%;
-      margin: 0 auto 20px auto;
-      grid-template-columns: repeat(3, calc(33.3% - 13px));
-    }
   }
   .social-icons {
     grid-gap: 0;
     width: 100%;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .right-column-cmp {
-    grid-template-columns: repeat(2, calc(50% - 10px));
-    grid-template-areas: 'socials socials' 'signup code';
-    grid-column-gap: 20px;
-    display: grid;
-    height: unset;
-    .contact-form {
-      box-sizing: border-box;
-      max-width: none;
-      width: 100%;
-    }
-    .accordion-wrapper {
-      margin: 0;
-    }
-  }
-}
-
-@media screen and (max-width: 605px) {
-  .right-column-cmp {
-    .social-icons {
-      margin: 0 auto 20px 0;
-    }
-  }
-}
-
-// @media screen and (max-width: 550px) {
-//   .right-column-cmp {
-//     grid-template-areas: 'social' 'signup' 'code';
-//     grid-template-columns: 100%;
-//     grid-column-gap: 0;
-//     grid-row-gap: 20px;
-//     .social-icons {
-//       grid-template-columns: repeat(2, auto);
-//       grid-gap: 20px;
-//     }
-//   }
-// }

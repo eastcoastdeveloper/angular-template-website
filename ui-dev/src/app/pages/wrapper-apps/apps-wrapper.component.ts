@@ -18,7 +18,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 export class AppsWrapperComponent
   implements OnInit, AfterViewChecked, OnDestroy
 {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   appsArray: ProjectsListInterface[] = [];
   threeColumnLayout?: boolean = false;
   windowWidth: number;
@@ -64,7 +64,7 @@ export class AppsWrapperComponent
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

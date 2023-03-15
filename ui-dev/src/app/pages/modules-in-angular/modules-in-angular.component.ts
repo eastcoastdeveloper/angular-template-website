@@ -10,7 +10,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
   styleUrls: ['./modules-in-angular.component.scss']
 })
 export class ModulesInAngularComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   windowWidth: number;
   pageDataObject: PageDataObject = {
     title: 'Modules in Angular',
@@ -42,7 +42,7 @@ export class ModulesInAngularComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

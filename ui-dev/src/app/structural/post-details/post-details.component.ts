@@ -11,7 +11,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
   projectListArray: ProjectsListInterface[] = [];
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   windowWidth: number;
   publishedOn?: string;
   updatedOn?: string;
@@ -30,7 +30,6 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.publishedOn = val?.publishedOn;
-        // this.pageTitle = val.pageTitle;
         this.updatedOn = val?.updatedOn;
         this.repoTitle = val?.repoTitle;
         this.repoLink = val?.repoLink;
@@ -54,7 +53,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

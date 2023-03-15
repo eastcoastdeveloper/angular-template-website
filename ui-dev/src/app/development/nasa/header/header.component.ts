@@ -15,7 +15,7 @@ import { NasaSearchService } from '../nasa.service';
   styleUrls: ['header.component.scss']
 })
 export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   windowWidth!: number;
   currentDate: any;
   months: any[] = [
@@ -81,7 +81,7 @@ export class NasaHeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

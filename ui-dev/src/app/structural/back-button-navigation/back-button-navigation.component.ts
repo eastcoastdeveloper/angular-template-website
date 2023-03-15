@@ -8,13 +8,11 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
   styleUrls: ['./back-button-navigation.component.scss']
 })
 export class BackButtonNavigationComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   historyIndex?: number;
   width: number;
 
-  constructor(private _globalFeatures: GlobalFeaturesService) {
-    this.historyIndex = this._globalFeatures.historyIndex;
-  }
+  constructor(private _globalFeatures: GlobalFeaturesService) {}
 
   ngOnInit(): void {
     this._globalFeatures.currentWidth$
@@ -22,14 +20,19 @@ export class BackButtonNavigationComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.width = data;
       });
+
+    this._globalFeatures.historyIndex$.subscribe((d) => {
+      this.historyIndex = d;
+    });
   }
 
   backButtonNavigation() {
     this._globalFeatures.goBack();
+    this._globalFeatures.hideBackButtonMessage();
   }
 
   ngOnDestroy() {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

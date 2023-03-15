@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { Subject, take, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -9,9 +10,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './movie-app.component.html',
   styleUrls: ['./movie-app.component.scss']
 })
-export class MovieAppComponent {
+export class MovieAppComponent implements OnDestroy {
   @ViewChild('title', { static: false }) title: ElementRef;
   @ViewChild('year', { static: false }) year: ElementRef;
+
+  private unsubscribe$ = new Subject<void>();
 
   urlOMDB: string = 'https://www.omdbapi.com/';
 
@@ -62,6 +65,7 @@ export class MovieAppComponent {
 
     this._http
       .get(this.baseUrl + this.titleQuery + '&y=' + this.yearQuery + this.key)
+      .pipe(takeUntil(this.unsubscribe$))
       .subscribe((data: any) => {
         this.dataArr.unshift(data);
       });
@@ -93,5 +97,10 @@ export class MovieAppComponent {
 
   navigateToPage(url: string) {
     this._globalFeatures.externalLink(url);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

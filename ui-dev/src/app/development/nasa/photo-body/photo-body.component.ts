@@ -15,7 +15,7 @@ import { NasaSearchService } from '../nasa.service';
   styleUrls: ['photo-body.component.scss']
 })
 export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   @Output() outputData = new EventEmitter();
   fullExplanation: boolean = false;
   datePickerStatus: boolean;
@@ -83,7 +83,7 @@ export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

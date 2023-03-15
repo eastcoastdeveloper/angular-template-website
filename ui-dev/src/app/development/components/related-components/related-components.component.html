@@ -1,7 +1,7 @@
-<div class="related-items">
+<div *ngIf="relatedItems[0]?.title" class="related-items">
   <div class="category-wrapper">
     <div
-      *ngFor="let item of relatedItems.slice(0, 4)"
+      *ngFor="let item of relatedItems | slice : 0 : 4"
       class="element-shadow related-item"
     >
       <div *ngIf="item.internal" routerLink="{{ item.path }}">
@@ -16,7 +16,6 @@
           <img src="{{ item.imgUrl }}" />
         </div>
       </div>
-
       <div *ngIf="!item.internal" (click)="navigateToPage(item.path)">
         <span>
           <img src="../../../../assets/img/new-tab.png" />

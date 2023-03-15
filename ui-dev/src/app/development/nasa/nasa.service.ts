@@ -1,19 +1,20 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take, takeUntil } from 'rxjs/operators';
 import { DataModel } from './nasa.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NasaSearchService {
+export class NasaSearchService implements OnDestroy {
   chosenDate: any = '';
   result: any = {};
   history: {}[] = [];
   datePickerStatus: boolean = false;
 
   public model: DataModel;
+  private unsubscribe$ = new Subject<void>();
 
   private searchSubject = new Subject<any>();
   private dateSource = new BehaviorSubject(this.chosenDate);
@@ -69,6 +70,7 @@ export class NasaSearchService {
           date
       )
       .pipe(
+        takeUntil(this.unsubscribe$),
         map((data) => {
           this.result = data;
         })
@@ -79,5 +81,10 @@ export class NasaSearchService {
           this.history.push(this.result);
         }
       });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

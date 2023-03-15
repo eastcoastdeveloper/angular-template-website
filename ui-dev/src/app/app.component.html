@@ -1,8 +1,8 @@
 <div id="angular-spa">
   <div #headerComponent id="header">
-    <app-header (click)="this.backButtonActive = false"></app-header>
+    <app-header (click)="historyActiveState()"></app-header>
   </div>
-  <div id="content" (click)="this.backButtonActive = false">
+  <div id="content" (click)="historyActiveState()">
     <div class="router-wrapper">
       <router-outlet></router-outlet>
 
@@ -15,16 +15,24 @@
     *ngIf="600 > width"
     id="mobile-menu"
     [ngClass]="{ 'show-mobile-nav': sidebarStatus }"
-    (click)="this.backButtonActive = false"
+    (click)="historyActiveState()"
   >
     <nav (click)="closeMobileNav()">
-      <div routerLink="/">Home</div>
-      <div routerLink="web-development-projects/front-end-development">
-        Projects
+      <div routerLink="/">
+        <span class="mobile-item-count">{{ totalAll }}</span
+        >All
       </div>
-      <div routerLink="ui-components/website-features">Components</div>
+      <div routerLink="web-development-projects/front-end-development">
+        <span class="mobile-item-count">{{ totalProjects }}</span
+        >Projects
+      </div>
+      <div routerLink="ui-components/website-features">
+        <span class="mobile-item-count">{{ totalComponennts }}</span
+        >Components
+      </div>
       <div routerLink="web-application-development/learn-to-code">
-        Development
+        <span class="mobile-item-count">{{ totalDevelopment }}</span
+        >Development
       </div>
       <div routerLink="front-end-dev-resume">Experience</div>
       <div routerLink="front-end-developer">About</div>
@@ -32,7 +40,24 @@
   </div>
 </div>
 
-<!-- <div>
+<div *ngIf="backButtonMessage" class="back-btn-notification element-shadow">
+  <span class="warning-icon">&#9888;</span>
+  <p>Please use internal back button at top left.</p>
+  <span (click)="closeNotification()" class="close-btn">&#x2715;</span>
+</div>
+
+<!-- <style>
+  .tools {
+    position: fixed;
+    top: 110px;
+    background-color: aquamarine;
+    left: 10px;
+    height: 450px;
+    padding: 10px;
+  }
+</style>
+
+<div class="tools">
   <div *ngFor="let url of _globalFeatures.history; let i = index">
     {{ i }} = {{ url }}
   </div>

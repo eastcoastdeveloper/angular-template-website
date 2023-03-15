@@ -2,10 +2,12 @@
   <div class="details">
     <app-back-button-navigation></app-back-button-navigation>
     <h1 class="page-title">{{ pageTitle }}</h1>
-    <app-post-details *ngIf="pageTitle != 'Learn to Code'"></app-post-details>
+    <app-post-details
+      *ngIf="pageTitle != 'Learn to Code' && windowWidth > 1199"
+    ></app-post-details>
     <app-category-navigation
       *ngIf="windowWidth > 605"
-      [categoryType]="'development'"
+      [categoryType]="'dev'"
     ></app-category-navigation>
   </div>
 
@@ -14,6 +16,9 @@
   >
     <div class="left-column">
       <router-outlet></router-outlet>
+      <app-post-details
+        *ngIf="pageTitle != 'Learn to Code' && windowWidth < 1200"
+      ></app-post-details>
       <app-end-of-post></app-end-of-post>
     </div>
 

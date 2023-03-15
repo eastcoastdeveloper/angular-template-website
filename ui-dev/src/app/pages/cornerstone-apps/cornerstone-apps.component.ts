@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
@@ -11,8 +11,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
     [dataArray]="appsArray"
   ></app-projects-list-content>`
 })
-export class CornerstoneAppsComponent implements OnInit {
-  private unsubscribe$ = new Subject<boolean>();
+export class CornerstoneAppsComponent implements OnInit, OnDestroy {
+  private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     title: 'Front End Development',
     cornerStone: true
@@ -29,9 +29,11 @@ export class CornerstoneAppsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.setPageParamValue(params);
-    });
+    this._activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.setPageParamValue(params);
+      });
 
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
@@ -51,5 +53,10 @@ export class CornerstoneAppsComponent implements OnInit {
       this.pageQuery,
       10
     );
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

@@ -16,7 +16,7 @@ import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interfac
 })
 export class DevelopmentWrapper implements OnInit, AfterViewChecked, OnDestroy {
   developmentArray: ProjectsListInterface[] = [];
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   threeColumnLayout?: boolean = false;
   devMenuStatus: boolean;
   windowWidth: number;
@@ -49,7 +49,7 @@ export class DevelopmentWrapper implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

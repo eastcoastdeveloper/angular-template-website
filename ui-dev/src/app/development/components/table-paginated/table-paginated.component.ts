@@ -240,6 +240,7 @@ import { CarsResponse } from './cars.interface';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  private unsubscribe$ = new Subject<void>();
   cars: CarsResponse[] = [];
   p: any;
 
@@ -249,13 +250,14 @@ export class AppComponent {
 
   tableDataReq() {
     return this._http
-      .get<CarsResponse[]>('assets/cars.json')
+      .get<CarsResponse[]>('json-path')
       .pipe(
         tap({
           next: (data: any) => {},
           error: (err: any) => console.log(err),
           complete: () => console.log('request successful')
-        })
+        }),
+        takeUntil(this.unsubscribe$)
       )
       .subscribe((val) => {
         this.cars = val;

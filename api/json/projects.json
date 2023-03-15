@@ -1,6 +1,46 @@
 {
   "data": [
     {
+      "title": "Angular Date Picker",
+      "imgUrl": "../../assets/projects-grid/angular-date-picker.jpg",
+      "description": "I've never cared for Angular Material, so I created my own Angular date picker. No complex configurations or modular additions. Just add the component and you're up and running.",
+      "path": "/ui-components/angular-date-picker",
+      "altText": "Angular date picker component that'll easily fit into any project by exporting the date value. Closes on external clicks.",
+      "stackblitz": false,
+      "internal": true,
+      "category": "components"
+    },
+    {
+      "title": "Angular Dynamic Sidebar",
+      "imgUrl": "../../assets/projects-grid/angular-dynamic-sidebar.jpg",
+      "description": "I recently had to create an Angular dynamic sidebar with user permissions. Users only had access to pages provided in the endpoints output. This is a close representation of my creation minus the permissions.",
+      "path": "/ui-components/angular-dynamic-sidebar",
+      "altText": "Angular dynamic sidebar. Specify which section is a drop down menu, and populate all menu items via a DB/API.",
+      "stackblitz": false,
+      "internal": true,
+      "category": "components"
+    },
+    {
+      "title": "JavaScript Drag and Drop",
+      "imgUrl": "../../assets/projects-grid/javascript-drag-and-drop.jpg",
+      "description": "I was recently tasked w/ the challenge of creating a JavaScript drag and drop UI. It called for the ability to drag multiple elements, each w/ their own POST requests. I wanted to ensure it went smooth, so I developed this similar concept.",
+      "path": "/web-development-projects/javascript-drag-and-drop",
+      "altText": "JavaScript drag and drop is a common task and this app showcases it via a simple UI. Drag/drop elements or create new ones.",
+      "stackblitz": false,
+      "internal": true,
+      "category": "projects"
+    },
+    {
+      "title": "Angular Data Table",
+      "imgUrl": "../../assets/projects-grid/angular-data-table.jpg",
+      "description": "Angular data table importing JSON. Search, filter, and pagination; set item count per page. Easily modify height, width, colors, etc. Replace dummy data stream with your own, customize style, etc.",
+      "path": "/ui-components/angular-data-table",
+      "altText": "Paginated Angular data table importing JSON data. Easily customize height and width, colors, etc.",
+      "stackblitz": false,
+      "internal": true,
+      "category": "components"
+    },
+    {
       "title": "Angular Countdown Timer",
       "imgUrl": "../../assets/projects-grid/angular-countdown-timer.jpg",
       "description": "Angular countdown timer component with very minimal code. Plug it into any Angular project. Easily customize style or add milliseconds. Great feature to use in advertisements.",
@@ -51,41 +91,11 @@
       "category": "projects"
     },
     {
-      "title": "Angular Date Picker",
-      "imgUrl": "../../assets/projects-grid/angular-date-picker.jpg",
-      "description": "I've never cared for Angular Material, so I created my own Angular date picker. No complex configurations or modular additions. Just add the component and you're up and running.",
-      "path": "/ui-components/angular-date-picker",
-      "altText": "Angular date picker component that'll easily fit into any project by exporting the date value. Closes on external clicks.",
-      "stackblitz": false,
-      "internal": true,
-      "category": "components"
-    },
-    {
       "title": "Angular Accordion",
       "imgUrl": "../../assets/projects-grid/accordion-component.jpg",
       "description": "Angular accordion component to neatly organize data in to sections. Use it in a column or as body content. The choice is yours. Comes with two different layouts, but easily add more.",
       "path": "/ui-components/accordion-component",
       "altText": "Angular accordion component. Store information in colapasable units. Built with three layouts, but add as many as you'd like.",
-      "stackblitz": false,
-      "internal": true,
-      "category": "components"
-    },
-    {
-      "title": "Angular Dynamic Sidebar",
-      "imgUrl": "../../assets/projects-grid/angular-dynamic-sidebar.jpg",
-      "description": "I recently had to create an Angular dynamic sidebar with user permissions. Users only had access to pages provided in the endpoints output. This is a close representation of my creation minus the permissions.",
-      "path": "/ui-components/angular-dynamic-sidebar",
-      "altText": "Angular dynamic sidebar. Specify which section is a drop down menu, and populate all menu items via a DB/API.",
-      "stackblitz": false,
-      "internal": true,
-      "category": "components"
-    },
-    {
-      "title": "Angular Data Table",
-      "imgUrl": "../../assets/projects-grid/angular-data-table.jpg",
-      "description": "Angular data table importing JSON. Search, filter, and pagination; set item count per page. Easily modify height, width, colors, etc. Replace dummy data stream with your own, customize style, etc.",
-      "path": "/ui-components/angular-data-table",
-      "altText": "Paginated Angular data table importing JSON data. Easily customize height and width, colors, etc.",
       "stackblitz": false,
       "internal": true,
       "category": "components"
@@ -209,16 +219,6 @@
       "stackblitz": false,
       "internal": true,
       "category": "development"
-    },
-    {
-      "title": "JavaScript Drag and Drop",
-      "imgUrl": "../../assets/projects-grid/javascript-drag-and-drop.jpg",
-      "description": "I was recently tasked w/ the challenge of creating a JavaScript drag and drop UI. It called for the ability to drag multiple elements, each w/ their own POST requests. I wanted to ensure it went smooth, so I developed this similar concept.",
-      "path": "/web-development-projects/javascript-drag-and-drop",
-      "altText": "JavaScript drag and drop is a common task and this app showcases it via a simple UI. Drag/drop elements or create new ones.",
-      "stackblitz": false,
-      "internal": true,
-      "category": "projects"
     },
     {
       "title": "Angular Event Emitter",

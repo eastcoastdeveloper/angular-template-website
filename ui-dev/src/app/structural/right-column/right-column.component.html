@@ -20,53 +20,24 @@
   </div>
 
   <div class="social-icons">
-    <div>
-      <a href="https://stackblitz.com/@eastcoastdeveloper" target="_blank">
-        <img class="stackblitz" [src]="stackblitz" alt="stackblitz logo" />
-      </a>
-    </div>
-    <div>
-      <a
-        href="https://codepen.io/eastcoastdeveloper/pens/popular?grid_type=list"
-        target="_blank"
-      >
-        <img [src]="codepen" alt="codepen logo" />
-      </a>
-    </div>
-    <div>
-      <a
-        href="https://github.com/eastcoastdeveloper?tab=repositories"
-        target="_blank"
-      >
-        <img [src]="git" alt="github logo" />
-      </a>
-    </div>
-    <div>
-      <a href="https://www.instagram.com/nodulldayz/" target="_blank">
-        <img [src]="instagram" alt="instagram logo" />
-      </a>
-    </div>
-    <div>
-      <a href="https://fredrickjaxx.is/" target="_blank">
-        <img [src]="fredrickJaxx" alt="fredrick jaxx blog logo" />
-      </a>
-    </div>
-    <div>
-      <a href="https://flickr.com/photos/nodulldays/" target="_blank">
-        <img [src]="flickr" alt="flickr logo" />
-      </a>
+    <div *ngFor="let item of socials">
+      <span (click)="navigateToPage(item.link)">
+        <img class="stackblitz" [src]="item.src" alt="{{ item.altText }}" />
+      </span>
     </div>
   </div>
 
   <div class="welcome element-shadow">
-    <div class="bio-pic"></div>
-    <p class="project-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non
+    <div class="bio-pic">
+      <img src="../../../assets/img/welcome-pic.png" />
+    </div>
+    <p>
+      Welcome! This website is a collection of projects and features I've built
+      indicative of real world development. Others are simply things I've
+      created for practice and to further my dev skills. Regardless, I hope you
+      find these items helpful or inspirational in your development endeavors.
+      If you have questions/ comments, please contact me via the contact form.
+      Thank you, and have a wonderful day.
     </p>
   </div>
 </div>

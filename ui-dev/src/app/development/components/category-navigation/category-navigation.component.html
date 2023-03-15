@@ -11,50 +11,42 @@
 >
   <div class="wrapper">
     <nav>
-      <!-- <span (click)="loadCategory('projects')">Projects</span>
-      <span (click)="loadCategory('components')">Components</span>
-      <span (click)="loadCategory('development')">Development</span> -->
+      <div
+        *ngFor="let item of navigationArray"
+        (click)="loadCategory(item)"
+        [ngClass]="{ 'is-active': categoryType === item.type }"
+      >
+        <span class="type-name">{{ item.text }}</span>
+      </div>
     </nav>
+
     <div class="category-content">
       <div class="scroller">
         <div
-          *ngFor="let item of dataArray"
+          *ngFor="let item of dataArray | slice : 0 : 9"
           class="category-item element-shadow"
         >
           <p>{{ item.title }}</p>
-          <div (click)="navigateToURL(item)" class="thumb">
+          <div (click)="itemNavigation(item)" class="thumb">
             <img [src]="item.imgUrl" />
           </div>
         </div>
       </div>
+      <button (click)="navigateToCateory()" type="button" class="standard-btn">
+        View All
+      </button>
     </div>
   </div>
 </div>
 
 <div *ngIf="windowWidth! > 992" class="category-group">
-  <div routerLink="/javascript-projects" routerLinkActive="active-btn">All</div>
   <div
-    routerLink="/web-development-projects/front-end-development"
-    routerLinkActive="active-btn"
+    *ngFor="let item of navigationArray"
+    (click)="navigateToRoute(item)"
     class="standard-btn"
-    [ngClass]="{ 'is-active': categoryType === 'projects' }"
+    [ngClass]="{ 'is-active': categoryType === item.type }"
   >
-    Projects
-  </div>
-  <div
-    routerLink="/ui-components/website-features"
-    routerLinkActive="active-btn"
-    class="standard-btn"
-    [ngClass]="{ 'is-active': categoryType === 'components' }"
-  >
-    Components
-  </div>
-  <div
-    routerLink="/web-application-development/learn-to-code"
-    routerLinkActive="active-btn"
-    class="standard-btn"
-    [ngClass]="{ 'is-active': categoryType === 'development' }"
-  >
-    Development
+    {{ item.text }}
+    <div class="item-count">{{ item.total }}</div>
   </div>
 </div>

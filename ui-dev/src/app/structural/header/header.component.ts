@@ -10,7 +10,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  unsubscribe$: Subject<boolean> = new Subject<boolean>();
+  unsubscribe$ = new Subject<void>();
   menuOpen: boolean = false;
   sidebarStatus!: boolean;
   currentUrl!: string;
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private _globalFeatures: GlobalFeaturesService,
     private windowWidth: GlobalFeaturesService,
-    public sideBarService: SideBarService,
+    public _sideBarService: SideBarService,
     private _renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document
   ) {}
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => (this.screenSize = currentVal));
 
-    this.sideBarService.currentVal$
+    this._sideBarService.currentVal$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.sidebarStatus = currentVal;
@@ -46,11 +46,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (!this.sidebarStatus) {
       this._renderer.removeAttribute(this.document.body, 'class');
     }
-    this.sideBarService.changeValue(this.sidebarStatus);
+    this._sideBarService.changeValue(this.sidebarStatus);
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

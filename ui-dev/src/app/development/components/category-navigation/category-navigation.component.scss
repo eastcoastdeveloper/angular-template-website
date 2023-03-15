@@ -1,70 +1,84 @@
 @import '../../../styles/page-style.scss';
 
 .category-group {
-  font: normal 14px sans-serif;
   transform: translateY(-50%) translateX(9.5px);
-  top: 50%;
+  font: normal 14px sans-serif;
   position: absolute;
+  display: flex;
   right: 20px;
+  top: 50%;
 
   > div {
-    display: inline-block;
     cursor: pointer;
     outline: none;
+    min-width: 70px;
+    box-sizing: border-box;
   }
+}
+
+.item-count {
+  font-size: 11px;
+  display: inline-block;
+  background-color: $greyBlack;
+  color: $white;
+  border-radius: 4px;
+  padding: 2px 3px;
+  box-sizing: border-box;
+  min-width: 20px;
+  margin-left: 3px;
 }
 
 @media screen and (max-width: 992px) {
   .hamburger-icon {
     position: absolute;
     cursor: pointer;
-    top: 12px;
+    top: 0;
     right: 20px;
     font-size: 35px;
   }
+  .item-count {
+    margin-left: 0;
+  }
   .fly-out-menu {
-    background-color: $greyBlack;
-    height: calc(100vh - 135px);
+    background-color: $white;
+    height: calc(100vh - 98px);
     transition: left 0.3s;
     position: absolute;
     width: 100%;
-    top: 67px;
+    top: 49px;
     left: 0;
     .wrapper {
       margin: 0 auto;
       padding-top: 20px;
       nav {
-        display: flex;
         margin-bottom: 15px;
         align-items: center;
-        grid-column-gap: 20px;
         justify-content: center;
-        span {
-          color: $oceanBlue;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        grid-gap: 5px;
+        > div {
+          color: $greyBlack;
           font: normal 14px sans-serif;
           text-align: center;
           cursor: pointer;
           background-color: $white;
           transition: all 0.25s;
-          padding: 5px 0;
+          padding: 5px 10px;
+          box-sizing: border-box;
           border-radius: 4px;
-          width: 125px;
-        }
-        span:hover {
-          background-color: $oceanBlue;
-          color: $white;
         }
       }
       .category-content {
-        background-color: $white;
         border-radius: 6px;
         margin: 0 20px;
         overflow: auto;
-        height: calc(100vh - 220px);
+        height: calc(100vh - 180px);
+        background-color: $greyBlack;
         .scroller {
           display: grid;
           grid-template-columns: repeat(3, calc(33.3% - 30px));
-          padding: 25px 0;
+          padding: 25px 0 20px 0;
           justify-content: center;
           grid-gap: 20px;
           margin: 0 auto;
@@ -72,6 +86,8 @@
           .category-item {
             overflow: hidden;
             border-radius: 6px;
+            background-color: $oceanBlue;
+            color: $white;
             p {
               white-space: nowrap;
               text-align: center;
@@ -88,29 +104,15 @@
             }
           }
         }
+        button {
+          width: 120px;
+          margin: 0 auto 20px auto;
+          display: block;
+        }
       }
     }
   }
   .open-menu {
     left: 110% !important;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .fly-out-menu {
-    top: 50px;
-    height: calc(100vh - 100px);
-    .wrapper {
-      .category-content {
-        height: calc(100vh - 175px);
-        .scroller {
-          grid-template-columns: repeat(2, calc(50% - 10px));
-          padding: 25px;
-        }
-      }
-    }
-  }
-  .hamburger-icon {
-    top: 3px;
   }
 }

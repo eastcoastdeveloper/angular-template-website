@@ -9,6 +9,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './rest-countries.component.html'
 })
 export class RestCountriesComponent implements OnInit {
+  urlEndpoint: string = 'https://restcountries.com/';
   urlRestCountries: string =
     'https://stackblitz.com/edit/rest-countries-leaflet-map?file=src%2Fapp%2Fapp.component.ts';
   urlLeaflet: string = 'https://leafletjs.com/';

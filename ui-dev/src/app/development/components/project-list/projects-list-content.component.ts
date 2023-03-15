@@ -17,10 +17,6 @@ export class ProjectsListContentComponent {
 
   constructor(private _globalFeatures: GlobalFeaturesService) {}
 
-  // formatViews(val: number | bigint) {
-  //   return new Intl.NumberFormat().format(val);
-  // }
-
   getImageUrl(i: number) {
     return this.dataArray[i].imgUrl;
   }

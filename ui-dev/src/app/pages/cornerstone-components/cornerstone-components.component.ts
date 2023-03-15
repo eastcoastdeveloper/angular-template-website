@@ -13,7 +13,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
     <app-pagination [categoryProp]="categoryType"></app-pagination> `
 })
 export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     title: 'Website Features',
     threeColumnLayout: false,
@@ -32,9 +32,11 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.setPageParamValue(params);
-    });
+    this._activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.setPageParamValue(params);
+      });
 
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
@@ -57,7 +59,7 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

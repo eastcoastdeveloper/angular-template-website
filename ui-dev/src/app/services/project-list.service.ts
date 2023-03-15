@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 import { PageDataObject } from '../interfaces/pageDataInterface';
 import { LocalStorageService } from './local-storage.service';
@@ -10,7 +10,8 @@ import { LocationStrategy } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectListService {
+export class ProjectListService implements OnDestroy {
+  private unsubscribe$ = new Subject<void>();
   totalItems$ = new BehaviorSubject<number>(0);
   pageDataObject: PageDataObject = new PageDataObject();
   allProjects$ = new BehaviorSubject<ProjectsListInterface[]>([]);
@@ -40,8 +41,8 @@ export class ProjectListService {
       this._local.storage = parsed;
 
       // If Requested Page is Cached w/ a Value
+      // Set Pagination Count
       if (this._local.storage[type].hasOwnProperty(pageNum)) {
-        // Set Pagination Count
         this.totalPages = this._local.storage.totals[type]!;
         this.totalPages = (Math.ceil(this.totalPages / 10) * 10) / 10;
         this.totalItems$.next(this.totalPages);
@@ -57,10 +58,11 @@ export class ProjectListService {
           this.getAllProjects(type, pageNum, limit);
           resolve(this.saveNewlyCachedData(type, pageNum));
         });
+        this.navigateToRoute(pageNum);
       }
     }
 
-    // There's NOTHING Cached
+    // Nothing's Cached
     else {
       this.getAllProjects(type, pageNum, limit);
     }
@@ -93,14 +95,12 @@ export class ProjectListService {
         httpOptions
       )
       .pipe(
+        takeUntil(this.unsubscribe$),
         map((response) => {
           let allProjects: ProjectsListInterface[] = [];
           Object.keys(response).filter((currentVal, index) => {
             if (currentVal === type) {
               allProjects = Object.values(response)[index];
-              allProjects.map((val) => {
-                val.cached = true;
-              });
             }
             if (currentVal === 'totals') {
               this.totalPages = Math.ceil(response['totals'][type] / 10);
@@ -141,5 +141,10 @@ export class ProjectListService {
   // Called in Every Page to Update Title, Git, Stackblitz, etc.
   changePageDataObject(obj: PageDataObject) {
     return this.pageDataObject$.next(obj);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

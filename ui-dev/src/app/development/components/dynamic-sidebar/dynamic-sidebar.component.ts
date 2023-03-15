@@ -388,11 +388,15 @@ export class DynamicSidebarComponent {
     styleUrls: ['./sidebar.component.scss'],
   })
   export class SidebarComponent {
+    private unsubscribe$ = new Subject<void>();
     result: SidebarModel[] = [];
     expandAll: boolean = false;
+    
     constructor(private _http: HttpClient) {
       this._http.get<SidebarModel[]>(
-        'assets/sidebar.json').subscribe((res) => {
+        'path-to-json')
+        .pipe(takeUntil(this.unsubscribe$))
+        .subscribe((res) => {
         this.result = res;
       });
     }
@@ -406,6 +410,11 @@ export class DynamicSidebarComponent {
       for (var i = 0; i < this.result.length; i++) {
         this.result[i].menu = this.expandAll;
       }
+    }
+
+    ngOnDestroy(){
+      this.unsubscribe$.next();
+      this.unsubscribe$.complete();
     }
   }`;
 

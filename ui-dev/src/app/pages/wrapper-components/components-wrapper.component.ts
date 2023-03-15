@@ -16,13 +16,12 @@ import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interfac
   styleUrls: ['./components-wrapper.component.scss']
 })
 export class ComponentsWrapperComponent
-  implements OnInit, OnDestroy, AfterViewChecked
+  implements OnInit, AfterViewChecked, OnDestroy
 {
-  private unsubscribe$: Subject<boolean> = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   compsArray: ProjectsListInterface[] = [];
-
   categoryType: string = 'cmp';
-  threeColumnLayout?: boolean;
+  threeColumnLayout?: boolean = true;
   relatedItems: ProjectsListInterface[] = [];
   windowWidth: number;
   pageTitle?: string;
@@ -46,14 +45,15 @@ export class ComponentsWrapperComponent
     this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.threeColumnLayout = val.threeColumnLayout;
         this.pageTitle = val.title;
-        this._cd.detectChanges();
+        this.threeColumnLayout = val.threeColumnLayout;
       });
+
+    this._cd.detectChanges();
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

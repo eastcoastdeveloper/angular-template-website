@@ -10,7 +10,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   @Input() categoryProp: string;
   totalPages: number[] = [];
   totalPagesProp: number;
@@ -38,5 +38,10 @@ export class PaginationComponent implements OnInit {
   getEndpointData(page: number, limit: number) {
     this._projectListService.isThereCache(this.categoryProp, page, limit);
     this._scrollUp.scrollToTop();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

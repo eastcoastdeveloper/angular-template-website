@@ -1,4 +1,5 @@
 import {
+  AfterContentChecked,
   AfterViewInit,
   Component,
   Inject,
@@ -8,10 +9,11 @@ import {
 } from '@angular/core';
 import { GlobalFeaturesService } from './services/global-features.service';
 import { SideBarService } from './services/sidebar-service';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DOCUMENT, LocationStrategy } from '@angular/common';
 import { CanonicalService } from './services/canonical.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'my-app',
@@ -21,35 +23,54 @@ import { CanonicalService } from './services/canonical.service';
     '(window:resize)': 'onWindowResize($event)'
   }
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
-  resizeID: any;
-  window: any;
+export class AppComponent
+  implements OnInit, AfterViewInit, AfterContentChecked, OnDestroy
+{
+  private unsubscribe$ = new Subject<void>();
 
-  isMobile: boolean = false;
-  sidebarStatus: boolean;
   width: number = window.innerWidth;
-  mobileWidth: number = 760;
-  currentRoute: string;
   backButtonActive?: boolean;
+  isMobile: boolean = false;
+  mobileWidth: number = 760;
+  sidebarStatus: boolean;
+  currentRoute: string;
+
+  totalAll: number;
+  totalProjects: number;
+  totalComponennts: number;
+  totalDevelopment: number;
+  backButtonMessage: boolean;
+  browserRefresh: boolean = false;
 
   constructor(
     public _globalFeatures: GlobalFeaturesService,
-    private _sidebarService: SideBarService,
-    private _router: Router,
-    private _location: LocationStrategy,
     private _canonicalService: CanonicalService,
+    private _sidebarService: SideBarService,
+    private _local: LocalStorageService,
+    private _location: LocationStrategy,
     private _renderer: Renderer2,
+    private _router: Router,
     @Inject(DOCUMENT) private document: Document
   ) {
-    this.backButtonActive = this._globalFeatures.backButtonActive;
+    // this.backButtonActive = this._globalFeatures.backButtonActive;
   }
 
   ngOnInit(): void {
     this._canonicalService.setCanonicalURL();
     this.isMobile = this.width < this.mobileWidth;
 
-    // Window Service
+    this._globalFeatures.backButtonMessage$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((booleanValue) => {
+        this.backButtonMessage = booleanValue;
+      });
+
+    this._globalFeatures.backButtonActive$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((d) => {
+        this.backButtonActive = d;
+      });
+
     this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
@@ -61,12 +82,11 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => (this.sidebarStatus = currentVal));
 
-    // this._sidebarService.urlVal$
-    //   .pipe(takeUntil(this.unsubscribe$))
-    //   .subscribe((currentVal) => (this.currentRoute = currentVal));
-
     // Remove Inability to Scroll
     this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
+      if (data instanceof NavigationStart) {
+        this.browserRefresh = this._router.navigated;
+      }
       if (data instanceof NavigationEnd) {
         this._renderer.removeAttribute(this.document.body, 'class');
         this.currentRoute = data.url;
@@ -75,37 +95,41 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
         this._sidebarService.changeValue(false);
 
         // Back Button Navigation
-        this.currentRoute = data.urlAfterRedirects;
+        if (this.browserRefresh) {
+          this.currentRoute = data.urlAfterRedirects;
+          if (!this.backButtonActive) {
+            this._globalFeatures.historyIndex++;
+            this._globalFeatures.history.push(data.urlAfterRedirects);
 
-        if (!this._globalFeatures.backButtonActive) {
-          this._globalFeatures.historyIndex++;
-          this._globalFeatures.history.push(data.urlAfterRedirects);
+            this._globalFeatures.history.forEach((item, index) => {
+              // Remove Duplicate/ Partial URLs
+              this._globalFeatures.history[index] ===
+              this._globalFeatures.history[index - 1]
+                ? this._globalFeatures.history.splice(index - 1, 1)
+                : '';
 
-          this._globalFeatures.history.forEach((item, index) => {
-            // Remove Duplicate/ Partial URLs
-            this._globalFeatures.history[index] ===
-            this._globalFeatures.history[index - 1]
-              ? this._globalFeatures.history.splice(index - 1, 1)
-              : '';
+              if (
+                item === '/javascript-projects' ||
+                item === '/ui-components/website-features' ||
+                item === '/web-application-development/learn-to-code' ||
+                item === '/web-development-projects/front-end-development'
+              ) {
+                this._globalFeatures.history.splice(index, 1);
+                this._globalFeatures.historyIndex =
+                  this._globalFeatures.history.length;
+              }
+            });
+          }
 
-            if (
-              item === '/javascript-projects' ||
-              item === '/ui-components/website-features' ||
-              item === '/web-application-development/learn-to-code' ||
-              item === '/web-development-projects/front-end-development'
-            ) {
-              this._globalFeatures.history.splice(index, 1);
-              this._globalFeatures.historyIndex =
-                this._globalFeatures.history.length;
-            }
-          });
+          // Back Button Active
+          if (this.backButtonActive) {
+            this._globalFeatures.historyIndex - 1;
+          }
+          this._globalFeatures.historyIndex$.next(
+            this._globalFeatures.historyIndex
+          );
+          this.preventBackButton();
         }
-
-        // Back Button Active
-        if (this._globalFeatures.backButtonActive) {
-          this._globalFeatures.historyIndex - 1;
-        }
-        this.preventBackButton();
       }
     });
   }
@@ -115,16 +139,36 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
     this._globalFeatures.changeWidth(window.innerWidth);
   }
 
+  ngAfterContentChecked(): void {
+    const storage = this._local.getData('frontenddev');
+    if (storage != '') {
+      let parsed = JSON.parse(storage);
+      this._local.storage = parsed;
+      this.totalAll = parsed.totals.all;
+      this.totalProjects = parsed.totals.prj;
+      this.totalComponennts = parsed.totals.cmp;
+      this.totalDevelopment = parsed.totals.dev;
+    }
+  }
+
   preventBackButton() {
     history.pushState(null, null!, location.href);
     this._location.onPopState(() => {
       history.pushState(null, null!, location.href);
-      console.log('Please use app buttons');
+      this._globalFeatures.showBackButtonMessage();
     });
+  }
+
+  historyActiveState() {
+    this._globalFeatures.backButtonActive$.next(false);
   }
 
   closeMobileNav() {
     this._sidebarService.changeValue(false);
+  }
+
+  closeNotification() {
+    this._globalFeatures.backButtonMessage$.next(false);
   }
 
   onWindowResize(event: any) {
@@ -135,7 +179,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

@@ -1,9 +1,16 @@
 @import '../../styles/page-style.scss';
 
 .routing-example {
+  min-height: 530px;
+  background-color: lightgrey;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid $greyBlack;
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-column-gap: 10px;
+    font: normal 14px sans-serif;
   }
 }

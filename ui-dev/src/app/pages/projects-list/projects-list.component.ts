@@ -19,7 +19,7 @@ import { ProjectsListInterface } from '../../interfaces/projects-list.interface'
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
   @ViewChild('leftColumn', { static: false }) leftColumn: ElementRef;
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     threeColumnLayout: false,
     cornerStone: true
@@ -39,9 +39,11 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.setPageParamValue(params);
-    });
+    this._activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.setPageParamValue(params);
+      });
 
     // Window Width Service
     this._globalFeatures.currentWidth$
@@ -76,7 +78,7 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

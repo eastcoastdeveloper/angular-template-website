@@ -13,5 +13,4 @@ export class ProjectsListInterface {
   repoLink: string;
   repoTitle: string;
   category: string;
-  cached?: boolean;
 }

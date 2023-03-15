@@ -12,7 +12,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   ></app-projects-list-content>`
 })
 export class CornerstoneDevelopmentComponent implements OnDestroy {
-  private unsubscribe$ = new Subject<boolean>();
+  private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     title: 'Learn to Code',
     cornerStone: true
@@ -30,9 +30,11 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams.subscribe((params) => {
-      this.setPageParamValue(params);
-    });
+    this._activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.setPageParamValue(params);
+      });
 
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
@@ -55,7 +57,7 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe$.next(true);
+    this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 }

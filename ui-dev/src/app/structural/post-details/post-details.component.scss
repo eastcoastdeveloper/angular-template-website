@@ -61,29 +61,12 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   .project-details {
-    display: inline-block;
-    margin-left: 20px;
+    margin: 25px auto 30px auto;
+    display: block;
     .specs {
-      top: calc(38.5px / 2);
-      transform: translateY(calc(-38.5px / 2));
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .project-details {
-    margin-left: 0;
-    margin-top: 2px;
-    float: right;
-    .specs {
-      top: 19px;
-      font-size: 12px;
-      grid-column-gap: 5px;
-      .git {
-        transform: translateY(8px);
-      }
+      justify-content: center;
     }
   }
 }

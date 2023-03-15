@@ -1,0 +1,23 @@
+@import '../../styles/page-style.scss';
+
+#app-footer {
+  display: flex;
+  background-color: $greyBlack;
+  height: 35px;
+  margin-top: 25px;
+  position: relative;
+  > div {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+  }
+  .copyright {
+    margin-right: 10px;
+  }
+  .copyright,
+  .statement {
+    color: $yellowGold;
+    font: normal 12px sans-serif;
+    display: inline-block;
+  }
+}
