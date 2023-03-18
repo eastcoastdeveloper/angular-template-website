@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComponentsWrapperComponent } from '../../pages/wrapper-components/components-wrapper.component';
-import { TablePaginatedComponent } from '../../development/components/table-paginated/table-paginated.component';
+import { TablePaginatedComponent } from '../../development/components/data-table/data-table.component';
 import { AccordionComponent } from '../../development/components/accordion/accordion.component';
 import { CountdownComponent } from '../../development/components/countdown/countdown.component';
 import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';

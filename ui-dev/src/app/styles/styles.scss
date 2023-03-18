@@ -482,9 +482,7 @@ h2 {
       grid-template-areas:
         'leftColumn middleColumn'
         'rightColumn middleColumn';
-      // grid-template-columns: calc(100% - 265px) 240px;
       grid-template-columns: calc(100% - 450px) 423px;
-      // grid-template-columns: calc(100% - 255px) 235px;
       padding: 0 20px;
       grid-column-gap: 25px;
       .left-column {
@@ -498,16 +496,11 @@ h2 {
         position: unset;
         width: 100%;
         margin: 0;
-        // .related-items {
-        //   position: unset;
-        // }
+
         .related-items {
           .category-wrapper {
             grid-template-rows: repeat(2, 125px);
             grid-template-columns: repeat(2, calc(50% - 8px));
-            // grid-template-rows: repeat(4, 125px);
-            // grid-template-columns: 100%;
-            // width: 230px;
             grid-gap: 15px;
             width: calc(100% - 40px);
             margin: unset;
@@ -552,17 +545,12 @@ h2 {
         .related-items {
           position: unset;
           .category-wrapper {
-            // grid-template-columns: 100%;
-            // grid-template-rows: repeat(4, 125px);
             grid-template-rows: repeat(4, 125px);
             grid-template-columns: 100%;
-            // grid-template-rows: repeat(2, 125px);
-            // grid-template-columns: repeat(2, calc(50% - 8px));
             grid-template-rows: repeat(4, 125px);
             grid-template-columns: 100%;
             width: 230px;
             grid-gap: 15px;
-            // width: calc(100% - 40px);
             margin: unset;
             .item-wrapper {
               img {
@@ -944,7 +932,7 @@ h2 {
   overflow: hidden;
 }
 
-.modules-in-angular-text {
+.routing-in-angular-text {
   color: $greyBlack;
   font: normal 14px sans-serif;
   line-height: 22px;

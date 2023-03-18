@@ -31,7 +31,7 @@
 //   navigateToCategory(category: string) {
 //     if (category === "Apps") this.defaultRoute = "apps/apod-nasa-gov";
 //     if (category === "Development")
-//       this.defaultRoute = "development/modules-in-angular/home";
+//       this.defaultRoute = "development/routing-in-angular/home";
 //     if (category === "Components")
 //       this.defaultRoute = "components/angular-data-table";
 //     this._router.navigateByUrl(this.defaultRoute);

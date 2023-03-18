@@ -37,7 +37,7 @@ export class ProjectListService implements OnDestroy {
     this.currentRoute = this._location.path();
     // There IS Cache
     if (storage != '') {
-      let parsed = JSON.parse(storage);
+      const parsed = JSON.parse(storage);
       this._local.storage = parsed;
 
       // If Requested Page is Cached w/ a Value

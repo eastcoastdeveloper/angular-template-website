@@ -51,9 +51,7 @@ export class AppComponent
     private _renderer: Renderer2,
     private _router: Router,
     @Inject(DOCUMENT) private document: Document
-  ) {
-    // this.backButtonActive = this._globalFeatures.backButtonActive;
-  }
+  ) {}
 
   ngOnInit(): void {
     this._canonicalService.setCanonicalURL();
@@ -90,7 +88,6 @@ export class AppComponent
       if (data instanceof NavigationEnd) {
         this._renderer.removeAttribute(this.document.body, 'class');
         this.currentRoute = data.url;
-        // this._sidebarService.changeRoute(this.currentRoute);
         this._globalFeatures.scrollToTop();
         this._sidebarService.changeValue(false);
 
@@ -142,7 +139,7 @@ export class AppComponent
   ngAfterContentChecked(): void {
     const storage = this._local.getData('frontenddev');
     if (storage != '') {
-      let parsed = JSON.parse(storage);
+      const parsed = JSON.parse(storage);
       this._local.storage = parsed;
       this.totalAll = parsed.totals.all;
       this.totalProjects = parsed.totals.prj;

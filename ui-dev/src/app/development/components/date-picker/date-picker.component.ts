@@ -149,7 +149,7 @@ export class DatePickerComponent implements OnInit {
   }
 
   getValue() {
-    let returnValue;
+    let returnValue!: string;
     if (this.currentDate === '') {
       returnValue = 'Calendar Inactive';
     }

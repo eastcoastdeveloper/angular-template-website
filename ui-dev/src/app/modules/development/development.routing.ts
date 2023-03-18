@@ -18,9 +18,9 @@ const routes: Routes = [
           ).then((m) => m.CornerstoneDevelopmentModule)
       },
       {
-        path: 'modules-in-angular',
+        path: 'routing-in-angular',
         loadChildren: () =>
-          import(`../modules-in-angular/modules-in-angular.module`).then(
+          import(`../routing-in-angular/routing-in-angular.module`).then(
             (m) => m.ModulesInAngularModule
           )
       },

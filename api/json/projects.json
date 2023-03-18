@@ -211,10 +211,10 @@
       "category": "projects"
     },
     {
-      "title": "Modules in Angular",
-      "imgUrl": "../../assets/projects-grid/modules-in-angular.jpg",
+      "title": "Routing in Angular",
+      "imgUrl": "../../assets/projects-grid/routing-in-angular.jpg",
       "description": "Modules in Angular are the backbone of the framework. See modular code navigation and learn how to properly maintain modules in a large production ready application.",
-      "path": "/web-application-development/modules-in-angular/home",
+      "path": "/web-application-development/routing-in-angular/home",
       "altText": "Showcasing modules in Angular. How to use them and navigate between them.",
       "stackblitz": false,
       "internal": true,

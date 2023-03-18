@@ -1,0 +1,101 @@
+<p class="project-text">
+  Routing in Angular is a key component of the framework. For me, it's usually
+  one of the first things I do during development. It enables me to quickly
+  build a foundation. The applications I work on typically have an innumerable
+  amount of moving parts, so I incorporate modules. Modularity often causes
+  complexity. Usually, there's features such as components that are isolated to
+  certain areas. These components are housed in prospective modules.
+</p>
+
+<p class="project-text element-margin-top">
+  I've worked with devs who don't understand the purpose of modules. One may
+  think of them as packages in Spring. Or akin to microservices in large
+  applications. They're collections of features and related code. They're ways
+  to isolate content and enable loading thereof at designated times.
+  Conceptually known as Lazy Loading.
+</p>
+
+<div class="routing-example element-margin-top">
+  <div class="grid">
+    <a routerLinkActive="is-active" routerLink="home" class="standard-btn"
+      >Home</a
+    >
+    <a routerLinkActive="is-active" routerLink="products" class="standard-btn"
+      >Products</a
+    >
+    <a routerLinkActive="is-active" routerLink="about" class="standard-btn"
+      >About</a
+    >
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
+
+<h2>Lazy Loading</h2>
+<p class="project-text">
+  Lazy loading is a feature indicative of loading assets on a need to know
+  basis. In a single page application, there could be dozens of features. Most
+  of which are not needed when the user initially lands on the home page. Or,
+  whatever page. There's no point in making the user wait for thereof to be
+  loaded. So, aforementioned assets are loaded if and only if the user visits
+  that page. It's the opposite of formerly popular website loaders with nifty
+  animations. These systems would show a percentage and often times load
+  everything up front. Frontend frameworks such as Angular, Vue, and React have
+  more robust systems enabling devs to simply improve UX.
+</p>
+
+<p class="project-text element-margin-top">
+  Every app has at least one module&mdash;called the root module. This class
+  uses a function called a decorator that lets the framework know, it's special.
+  The function takes one object with properties. Popular properties are imports,
+  exports, declarations, and providers. Imports contain other modules.
+  Declarations are the components used in that module. Exports are items you may
+  wish to make available to other modules. All of which are arrays. Be careful
+  however not to replicate import statements. Avoid this like so:
+</p>
+
+<div class="code-preview element-margin-top">
+  <pre><code>{{componentImport}}</code></pre>
+</div>
+
+<h2>Routing in Angular</h2>
+<p class="project-text">
+  Page navigation can no doubt be done a variety of ways. The router however is
+  undoubtedly the best option. This is what ultimately makes these frameworks so
+  popular. They're elegant, can be faster than conventionally built sites. And
+  perhaps most importantly, they function like mobile applications. Mobile apps,
+  in that there's no flash between pages. This is because we're swapping out the
+  content inside a static shell. All of which emanates from the router. It is in
+  the router that we dictate the page names and their destination. Typically,
+  we'd do something like this:
+</p>
+
+<div class="code-preview element-margin-top">
+  <pre><code>{{basicRouter}}</code></pre>
+</div>
+
+<p class="project-text element-margin-top">
+  Navigating to components in this manner loads them all simultaneously though.
+  Modules will also be eager to load on startup. We can change this scenario via
+  loadChildren, which activates Lazy Loading.
+</p>
+
+<div class="code-preview mt-20">
+  <pre><code>{{lazyLoading}}</code></pre>
+</div>
+
+<p class="project-text element-margin-top">
+  The Feature Module then looks like this:
+</p>
+
+<div class="code-preview mt-20">
+  <pre><code>{{featureModule}}</code></pre>
+</div>
+
+<p class="project-text element-margin-top">
+  Frontend frameworks such as Angular are shockingly powerful, flexible, and
+  robust. Angular has a massive library of classes. Therefore, whatever the
+  need, there's mostlikely inbuilt support for it. Other frameworks require
+  third party systems to do what Angular comes fully equipped with. But I
+  disgress. Hope you've enjoyed this brief post on routing in Angular.
+</p>

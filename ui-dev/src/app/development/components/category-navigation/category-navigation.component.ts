@@ -52,7 +52,7 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
   isThereCache() {
     const storage = this._local.getData('frontenddev');
     if (storage != '') {
-      let parsed = JSON.parse(storage);
+      const parsed = JSON.parse(storage);
       this.setTotals(parsed);
       if (Object.keys(parsed[this.categoryType]).length === 0) {
         this.fetchItems();
@@ -117,7 +117,7 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
   }
 
   loadCategory(obj: NavigationData) {
-    let typeReference = this._local.storage[obj.type];
+    const typeReference = this._local.storage[obj.type];
     this.categoryType = obj.type;
     if (Object.keys(typeReference).length === 0) {
       this.isThereCache();

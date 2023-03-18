@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LocalStorageInterface } from '../interfaces/localStorage.interface';
-import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +39,7 @@ export class LocalStorageService {
   }
 
   public getData(key: string) {
-    let data = localStorage.getItem(key) || '';
+    const data = localStorage.getItem(key) || '';
     return this.decrypt(data);
   }
 
@@ -60,16 +59,5 @@ export class LocalStorageService {
     return CryptoJS.AES.decrypt(txtToDecrypt, this.key).toString(
       CryptoJS.enc.Utf8
     );
-  }
-
-  // Populate Page Content
-  configureProjects(arr: ProjectsListInterface[]) {
-    let categoryArray: ProjectsListInterface[] = [];
-    if (arr.length < 9) {
-      categoryArray = arr;
-    } else {
-      categoryArray = arr;
-      return categoryArray;
-    }
   }
 }

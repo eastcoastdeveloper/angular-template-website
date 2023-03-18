@@ -41,11 +41,18 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.cmpsArray = val;
+        this.removeDuplicates(val);
       });
   }
 
-  // Set Query Params
+  removeDuplicates(val: ProjectsListInterface[]) {
+    let arr: ProjectsListInterface[] = [];
+    val.forEach((item) => {
+      arr.push(item);
+    });
+    this.cmpsArray = [...new Set(arr)];
+  }
+
   setPageParamValue(params: { [x: string]: any }) {
     undefined === params['page']
       ? (this.pageQuery = 1)

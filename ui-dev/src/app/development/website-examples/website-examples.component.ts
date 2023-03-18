@@ -63,7 +63,7 @@ export class WebsiteExamplesComponent implements OnInit {
 
   loadImages() {
     for (let i = 0; i < this.images.length; i++) {
-      let img = new Image();
+      const img = new Image();
       img.onload = () => {
         this.loaded();
       };

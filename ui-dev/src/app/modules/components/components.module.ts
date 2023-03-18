@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import {
   ComponentsRoutingModule,
@@ -14,10 +14,10 @@ import { RightColumnModule } from '../shared/right-column.module';
   declarations: [componentsComponents],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     RouterModule,
     FormsModule,
     SharedModule,
-    NgxPaginationModule,
     ComponentsRoutingModule,
     RightColumnModule
   ],

@@ -1,13 +1,5 @@
 @import '../../styles/cornerstone.scss';
 
-// [loader] {
-//   position: absolute;
-//   top: 0;
-//   background-color: rgba(0, 0, 0, 0.5);
-//   width: 100vw;
-//   height: 100vh;
-// }
-
 #project-list-title {
   text-transform: capitalize;
 }
@@ -26,17 +18,3 @@
     cursor: pointer;
   }
 }
-
-// .item-length {
-//   margin-left: 5px;
-//   font: normal 14px sans-serif;
-//   display: inline-block;
-//   transform: translateY(-2px);
-// }
-
-// @media screen and (max-width: 768px) {
-//   .item-length {
-//     font: normal 13px sans-serif;
-//     transform: translateY(-1px);
-//   }
-// }

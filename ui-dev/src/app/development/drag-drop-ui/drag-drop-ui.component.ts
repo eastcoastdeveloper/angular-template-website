@@ -100,7 +100,7 @@ setInputBooleans() {
   this.addNewItem.push({ active: false });
 }
 
-// Add Dragstart Evt to All
+// Add Dragstart Event to All
 dragStartHandler(e: any) {
   this.groupIndex = e.target.dataset.group;
   this.itemIndex = e.target.dataset.name;
@@ -193,7 +193,7 @@ itemAdded() {
   this.itemTitle = undefined;
 }
 
-// Delete Directory/Dropzone
+// Delete Directory/ Dropzone
 // Return Elems to Groups
 deleteItem(i: number) {
   this.items.splice(i, 1);
@@ -210,14 +210,14 @@ deleteItem(i: number) {
   }
 }
 
-// Delete Dragable
+// Delete Draggable
 deleteName(i: number, j: number) {
   this.result[i].items.splice(j, 1);
   this.typeName.length - 1;
   this.removeInputs();
 }
 
-// Add New Dragable Group
+// Add New Draggable Group
 addGroup() {
   if (this.itemName != undefined) {
     this.newGroup.nativeElement.classList.remove('required-field');
@@ -231,17 +231,17 @@ addGroup() {
   this.itemName = undefined;
 }
 
-// Add New Drop Zone on Enter
+// Add New Drop Zone on Keypress (Enter)
 getKeyCode(e: any) {
   e.code === 'Enter' ? this.itemAdded() : '';
 }
 
-// Add New Group on Enter
+// Add New Group on Keypress (Enter)
 addGroupKeyCode(e: any) {
   e.code === 'Enter' ? this.addGroup() : '';
 }
 
-// Add New Item on Enter
+// Add New Item on Keypress (Enter)
 addNewItemField(e: any, i: number) {
   e.code === 'Enter' ? this.pushNamedItem(i) : '';
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { WeatherComponent } from './development/weather/weather.component';
 import { RedirectGuard } from './guards/redirect.guard';
 import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 
@@ -56,7 +55,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-export const appRoutingComponents = [
-  WeatherComponent,
-  FormConfirmationComponent
-];
+export const appRoutingComponents = [FormConfirmationComponent];

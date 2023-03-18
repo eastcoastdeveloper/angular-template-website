@@ -37,7 +37,8 @@ export class GlobalFeaturesService {
     if (this.historyIndex > 0) {
       this.backButtonActive$.next(true);
       this.historyIndex--;
-      let page_start_pos = this.history[this.historyIndex].lastIndexOf('=') + 1;
+      const page_start_pos =
+        this.history[this.historyIndex].lastIndexOf('=') + 1;
       if (page_start_pos !== 0) {
         this.pageQuery = 0;
         this.pageQuery = parseInt(
