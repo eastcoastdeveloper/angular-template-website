@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, appRoutingComponents } from './app-routing.module';
@@ -30,6 +30,7 @@ import { LoadingInterceptor } from './guards/loading.interceptor';
     FormConfirmationComponent
   ],
   providers: [
+    Meta,
     HttpClientModule,
     WindowRef,
     {

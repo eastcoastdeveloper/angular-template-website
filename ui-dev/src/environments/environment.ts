@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'localhost:8080',
-  license: '282A8FDE963E4384B925535EC8230C9B'
+  apiUrl: 'localhost:8080'
 };
 
 /*

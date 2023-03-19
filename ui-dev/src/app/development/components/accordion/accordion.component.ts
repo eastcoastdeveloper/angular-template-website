@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccordionComponentInterface } from 'src/app/interfaces/accordion.interface';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
@@ -10,7 +10,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss']
 })
-export class AccordionComponent implements OnInit {
+export class AccordionComponent {
   @ViewChild('accordionParent', { static: false }) accordionParent: ElementRef;
   urlStackblitz: string =
     'https://stackblitz.com/edit/angular-accordion-json?file=src%2Fapp%2Fapp.component.ts';
@@ -248,25 +248,28 @@ export class AccordionComponent implements OnInit {
   ];
 
   constructor(
-    private _metaTagService: Meta,
+    private _metaService: Meta,
+    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
-  ngOnInit(): void {
-    this._metaTagService.addTags([
+  addTags() {
+    this._metaService.addTags([
       {
         name: 'keywords',
         content: 'Angular SEO Integration, Music CRUD, Angular Universal'
       },
       { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: 'Eric Scott' },
+      { name: 'author', content: 'Digamber Singh' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'date', content: '2022-11-31', scheme: 'YYYY-MM-DD' },
+      { name: 'date', content: '2019-10-31', scheme: 'YYYY-MM-DD' },
       { charset: 'UTF-8' }
     ]);
+    this._title.setTitle('Angular Accordion');
   }
 
   // Toggle Accordion
