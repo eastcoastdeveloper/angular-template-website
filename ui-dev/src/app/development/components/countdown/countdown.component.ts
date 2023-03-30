@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
@@ -63,10 +64,32 @@ export class CountdownComponent implements AfterViewInit {
   @ViewChild('seconds', { static: true }) seconds: ElementRef;
 
   constructor(
+    private _metaService: Meta,
+    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
+  }
+
+  addTags() {
+    this._metaService.addTags([
+      {
+        name: 'keywords',
+        content:
+          'angular component, styled components typescript, getting started with angular'
+      },
+      {
+        name: 'description',
+        content:
+          'Angular countdown timer, with over 1,100 forks. Easily change styling and even add additional options. Clean code.'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
+    ]);
+    this._title.setTitle('Angular Countdown Timer');
   }
 
   ngAfterViewInit() {

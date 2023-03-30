@@ -31,6 +31,16 @@
       border-radius: 4px;
       position: relative;
     }
+
+    .personal-projects {
+      color: #313b3f;
+      font: normal 14px sans-serif;
+      line-height: 22px;
+      margin-left: 15px;
+      li:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 

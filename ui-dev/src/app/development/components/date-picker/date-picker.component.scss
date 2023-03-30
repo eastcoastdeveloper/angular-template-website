@@ -52,8 +52,8 @@
     background-color: $greyBlack;
     color: white;
     padding: 5px 0 6px 0;
-    grid-template-columns: repeat(2, 30px);
-    grid-column-gap: 5px;
+    grid-template-columns: repeat(2, 40px);
+    grid-column-gap: 10px;
     position: relative;
     justify-content: center;
 
@@ -91,6 +91,18 @@
 
     .month,
     .year {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-column-gap: 4px;
+      .caret {
+        font-size: 10px;
+        transform: translateY(4px);
+        transition: transform 0.2s;
+      }
+
+      .rotate-caret {
+        transform: rotate(90deg) translate(2px, 5px) !important;
+      }
       ul {
         display: grid;
         grid-template-columns: repeat(3, 33.3%);

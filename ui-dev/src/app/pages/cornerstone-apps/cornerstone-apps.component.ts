@@ -15,7 +15,16 @@ export class CornerstoneAppsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     title: 'Front End Development',
-    cornerStone: true
+    cornerStone: true,
+    meta: {
+      description:
+        'Front end development project samples including but not limited to websites, components, dynamic UIs and much more.',
+      keywords:
+        'front end development, web development projects, web developer portfolio',
+      title: 'Front End Development',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
   appsArray: ProjectsListInterface[] = [];
   categoryType: string = 'projects';
@@ -42,7 +51,6 @@ export class CornerstoneAppsComponent implements OnInit, OnDestroy {
       });
   }
 
-  // Set Query Params
   setPageParamValue(params: { [x: string]: any }) {
     undefined === params['page']
       ? (this.pageQuery = 1)

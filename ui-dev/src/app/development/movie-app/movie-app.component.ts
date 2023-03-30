@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { Subject, take, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -15,15 +15,14 @@ export class MovieAppComponent implements OnDestroy {
   @ViewChild('year', { static: false }) year: ElementRef;
 
   private unsubscribe$ = new Subject<void>();
-
-  urlOMDB: string = 'https://www.omdbapi.com/';
-
-  private baseUrl: string = 'https://www.omdbapi.com/?t=';
-  private key: string = '&apikey=2a8aca86';
+  private baseUrl = 'https://www.omdbapi.com/?t=';
+  private key = '&apikey=2a8aca86';
   protected dataArr: any = [];
-  layout: string = 'inline';
-  currentMovie: number = 0;
-  lightbox: boolean = false;
+
+  urlOMDB = 'https://www.omdbapi.com/';
+  layout = 'inline';
+  currentMovie = 0;
+  lightbox = false;
 
   pageDataObject: PageDataObject = {
     title: 'OMDB API — Movie & TV Search',
@@ -35,7 +34,15 @@ export class MovieAppComponent implements OnDestroy {
     views: 0,
     forks: 0,
     cornerStone: true,
-    threeColumnLayout: true
+    threeColumnLayout: true,
+    meta: {
+      description:
+        'OMDB API UI project. Query the API with names of movies and TV shows. Toggle data between table and poster view layout.',
+      keywords: 'web development project, omdbapi, public api',
+      title: 'OMDB API',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
 
   constructor(

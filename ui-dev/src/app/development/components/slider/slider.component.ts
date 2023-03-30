@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { SliderInterface } from 'src/app/interfaces/slider.interface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
@@ -79,15 +80,37 @@ export class SliderComponent implements OnInit {
   };
 
   constructor(
+    private _metaService: Meta,
+    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnInit() {
     this.renderCode();
     this.getSliderImage(this.currentIndex);
+  }
+
+  addTags() {
+    this._metaService.addTags([
+      {
+        name: 'keywords',
+        content:
+          'angular component, styled components typescript, web development project'
+      },
+      {
+        name: 'description',
+        content:
+          'Angular slider component, code, and Stackblitz reference. Easy to customize, clear code explanation, and basic styling.'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
+    ]);
+    this._title.setTitle('Angular Slider');
   }
 
   changeShowcase(i: number) {

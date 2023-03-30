@@ -261,13 +261,16 @@ export class AccordionComponent {
     this._metaService.addTags([
       {
         name: 'keywords',
-        content: 'Angular SEO Integration, Music CRUD, Angular Universal'
+        content: 'angular component, website features, ui components'
       },
-      { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: 'Digamber Singh' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'date', content: '2019-10-31', scheme: 'YYYY-MM-DD' },
-      { charset: 'UTF-8' }
+      {
+        name: 'description',
+        content:
+          'Working example of an Angular accordion with all the HTML5, SCSS, and TypeScript needed to get you up and running.'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
     ]);
     this._title.setTitle('Angular Accordion');
   }

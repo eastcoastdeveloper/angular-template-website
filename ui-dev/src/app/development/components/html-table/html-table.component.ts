@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -279,10 +280,31 @@ function sortColumn(e) {
   };
 
   constructor(
+    private _metaService: Meta,
+    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
+  }
+
+  addTags() {
+    this._metaService.addTags([
+      {
+        name: 'keywords',
+        content: 'web development project, html table css, website features'
+      },
+      {
+        name: 'description',
+        content:
+          'Table in HTML written in basic HTML, straightforward style, w/ numerous lean JavaScript features including JSON import.'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
+    ]);
+    this._title.setTitle('Table in HTML');
   }
 
   navigateToPage(url: string) {

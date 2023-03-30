@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -62,15 +63,37 @@ export class DatePickerComponent implements OnInit {
   typescript: string;
 
   constructor(
+    private _metaService: Meta,
+    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnInit() {
     this.firstLastDays();
     this.renderCode();
+  }
+
+  addTags() {
+    this._metaService.addTags([
+      {
+        name: 'keywords',
+        content:
+          'datepicker angular, angular component, styled components typescript'
+      },
+      {
+        name: 'description',
+        content:
+          'Custom Angular date picker. Easy to modify styling & features. Code is both clean & flexible. Use it in your project!'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
+    ]);
+    this._title.setTitle('Angular Date Picker');
   }
 
   // Calculate First/ Last Days of the Month

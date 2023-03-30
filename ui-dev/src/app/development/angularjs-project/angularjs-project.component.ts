@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -7,12 +7,14 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   selector: 'app-angularjs-project',
   templateUrl: './angularjs-project.component.html'
 })
-export class AngularjsProjectComponent implements OnInit {
-  urlFull: string = 'https://codepen.io/eastcoastdeveloper/project/full/ZgbdLb';
-  urlEditor: string =
-    'https://codepen.io/eastcoastdeveloper/project/editor/ZgbdLb';
-  urlViewChild: string = 'https://angular.io/api/core/ViewChild';
-  urlRenderer: string = 'https://angular.io/api/core/Renderer2';
+export class AngularjsProjectComponent {
+  urlFull = 'https://codepen.io/eastcoastdeveloper/project/full/ZgbdLb';
+  angularJSimageOne = 'assets/projects-grid/angularjs-project-home.jpg';
+  angularJSimageThree = 'assets/projects-grid/angularjs-deck-gallery.jpg';
+  urlEditor = 'https://codepen.io/eastcoastdeveloper/project/editor/ZgbdLb';
+  urlViewChild = 'https://angular.io/api/core/ViewChild';
+  urlRenderer = 'https://angular.io/api/core/Renderer2';
+
   pageDataObject: PageDataObject = {
     title: 'AngularJS Project',
     publishedOn: 'Oct 16, 2017',
@@ -23,32 +25,19 @@ export class AngularjsProjectComponent implements OnInit {
     views: 2027,
     forks: 0,
     cornerStone: true,
-    threeColumnLayout: true
+    threeColumnLayout: true,
+    meta: {
+      description:
+        'AngularJS project showcasing a massive single page app. Clean code, numerous UI features, video & image galleries.',
+      keywords:
+        'web development project, angularjs directive, angularjs single page application',
+      title: 'AngularJS Project',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
 
-  directives: string;
-
-  angularJSimageOne: string = 'assets/projects-grid/angularjs-project-home.jpg';
-  angularJSimageThree: string =
-    'assets/projects-grid/angularjs-deck-gallery.jpg';
-
-  constructor(
-    private _projectListService: ProjectListService,
-    private _globalFeatures: GlobalFeaturesService
-  ) {
-    this._projectListService.changePageDataObject(this.pageDataObject);
-  }
-
-  ngOnInit(): void {
-    this.renderCode();
-  }
-
-  navigateToPage(url: string) {
-    this._globalFeatures.externalLink(url);
-  }
-
-  private renderCode() {
-    this.directives = `angular.module("vikingApp").directive("itineraries", function ($http) {
+  directives = `angular.module("vikingApp").directive("itineraries", function ($http) {
     return {
         // ITINERARIES SLIDER TEMPLATE
         templateUrl: "pages/itineraries.html",
@@ -137,5 +126,15 @@ vikingApp.directive("myYoutube", function ($sce) {
         }
     };
 });`;
+
+  constructor(
+    private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService
+  ) {
+    this._projectListService.changePageDataObject(this.pageDataObject);
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 }

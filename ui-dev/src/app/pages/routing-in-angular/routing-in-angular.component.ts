@@ -3,6 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-routing-in-angular',
@@ -11,6 +12,8 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 })
 export class RoutingInAngularComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
+  urlStackblitz: string =
+    'https://stackblitz.com/edit/angular-routing-between-modules?file=src%2Fapp%2Fapp-routing.module.ts';
   windowWidth: number;
   componentImport: string;
   featureModule: string;
@@ -31,20 +34,41 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
   };
 
   constructor(
-    private _globalFeaturesService: GlobalFeaturesService,
+    private _metaService: Meta,
+    private _title: Title,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnInit() {
-    this._globalFeaturesService.currentWidth$
+    this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.windowWidth = val;
       });
 
     this.renderCode();
+  }
+
+  addTags() {
+    this._metaService.addTags([
+      {
+        name: 'keywords',
+        content: 'angular lazy loading, modules in angular, angular routing'
+      },
+      {
+        name: 'description',
+        content:
+          'Routing in angular simplified with lazy loading explanation, module and routing code, plus a child navigation example.'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
+    ]);
+    this._title.setTitle('Routing in Angular');
   }
 
   renderCode() {
@@ -126,6 +150,10 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class FeatureRoutingModule {}`;
+  }
+
+  navigateToPage(url: string) {
+    this._globalFeatures.externalLink(url);
   }
 
   ngOnDestroy(): void {

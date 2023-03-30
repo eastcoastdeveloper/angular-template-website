@@ -3,7 +3,7 @@
     <app-back-button-navigation></app-back-button-navigation>
     <h1 class="page-title">Frontend Developer</h1>
   </div>
-  <main class="two-column-layout">
+  <main class="three-column-layout">
     <div class="left-column">
       <div id="about-page">
         <div class="about">
@@ -40,8 +40,8 @@
             graphics. Static web pages and massive interactive ad campaigns to
             single page applications. CMS solutions to data driven UIs with
             hundreds of components&mdash;all communicating with one another.
-            Now, I write unit tests, work with Java, Spring, Docker, and
-            Kubernetes.
+            Now, I write unit tests, work with Spring, Node JS, and Mongo. I'm
+            inching into pipelines, Docker, and Kubernetes.
           </p>
 
           <p>
@@ -57,10 +57,60 @@
             >
             and always thinking about my next travel adventure.
           </p>
+
+          <h2>Personal Endeavors</h2>
+          <ul class="personal-projects">
+            <li>
+              Aside from my day job as a developer, I'm currently working on two
+              books. Both are which are slated for publication this year. Topics
+              range from software to security.
+            </li>
+            <li>
+              I'm well on my way to creating a MEAN stack application with a
+              login, permissions, custom uploader, and commenting abilities.
+            </li>
+            <li>
+              While working in government (2018 - 2021), I began using NVD3, D3,
+              and ChartJS. My job often called for me to build dynamic graphs
+              using a variety of libraries. All of which needed to be heavily
+              customized to match the mocks. In my spare time
+              <span
+                (click)="navigateToPage(urlChartCollection)"
+                class="external-link"
+                >I created a collection of dynamic charts.</span
+              >
+              All of which have garnered hundreds of forks.
+            </li>
+            <li>
+              Circa 2019, after reading an onslaught of technology books, I
+              started a blog. I write about Aritifical Intelligence, Online
+              Privacy & Security, coupled with Technology's Impact on Our World.
+              You can read my essays here:
+              <span (click)="navigateToPage(urlBlog)" class="external-link"
+                >FredrickJaxx</span
+              >
+            </li>
+            <li>This website</li>
+            <li>Online tutorials</li>
+            <li>
+              Books I've read
+              <span class="external-link" (click)="navigateToPage(urlBookList)"
+                >technology related books I've read</span
+              >
+            </li>
+            <li>Drag and Drop project</li>
+            <li>SEO for my website and blog</li>
+            <li>Security for my website and blog</li>
+          </ul>
         </div>
       </div>
       <app-end-of-post></app-end-of-post>
     </div>
+
+    <div class="middle-column" style="background-color: blueviolet">
+      <!-- <app-related-components [type]="'dev'"></app-related-components> -->
+    </div>
+
     <div class="right-column">
       <app-right-column></app-right-column>
     </div>

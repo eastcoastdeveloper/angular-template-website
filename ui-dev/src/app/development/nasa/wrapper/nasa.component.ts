@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NasaPhotoBodyComponent } from '../photo-body/photo-body.component';
 import { NasaHeaderComponent } from '../header/header.component';
 import { NasaSearchComponent } from '../seachbar/search.component';
 import { NasaSearchService } from '../nasa.service';
-import { Meta } from '@angular/platform-browser';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 
@@ -12,7 +11,8 @@ import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
   templateUrl: './nasa.component.html',
   styleUrls: ['./nasa.component.scss']
 })
-export class NasaComponent implements OnInit {
+export class NasaComponent {
+  history!: any[];
   pageDataObject: PageDataObject = {
     title: 'APOD NASA Gov',
     publishedOn: 'Oct 1, 2022',
@@ -23,10 +23,16 @@ export class NasaComponent implements OnInit {
     views: 0,
     forks: 0,
     cornerStone: true,
-    threeColumnLayout: false
+    threeColumnLayout: false,
+    meta: {
+      description:
+        '"APOD Nasa Gov; Nasa\'s Photo of the Day API.Select a date from now til 1995. Access photos/ video dating back to 1995."',
+      keywords: 'web development project, apod nasa, nasa api',
+      title: 'APOD Nasa Gov',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
-
-  history!: any[];
 
   @ViewChild(NasaPhotoBodyComponent) photoBodyReference: NasaPhotoBodyComponent;
   @ViewChild(NasaHeaderComponent) headerReference: NasaHeaderComponent;
@@ -34,24 +40,9 @@ export class NasaComponent implements OnInit {
 
   constructor(
     private _nasaSearchService: NasaSearchService,
-    private _projectListService: ProjectListService,
-    private _metaTagService: Meta
+    private _projectListService: ProjectListService
   ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
-  }
-
-  ngOnInit(): void {
-    this._metaTagService.addTags([
-      {
-        name: 'nasa-api, apod nasa gov',
-        content: 'APOD Nasa Gov, Nasa Photo of the Day API'
-      },
-      { name: 'robots', content: 'index, follow' },
-      { name: 'author', content: 'Eric Scott' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'date', content: '2022-10-31', scheme: 'YYYY-MM-DD' },
-      { charset: 'UTF-8' }
-    ]);
   }
 
   externalClick() {

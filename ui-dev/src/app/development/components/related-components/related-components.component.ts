@@ -19,7 +19,7 @@ export class RelatedComponentsComponent implements OnDestroy {
 
   constructor(
     private _categoriesService: CategoriesService,
-    private _globalFeaturesService: GlobalFeaturesService,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService,
     private _router: Router
   ) {
@@ -74,7 +74,7 @@ export class RelatedComponentsComponent implements OnDestroy {
   }
 
   navigateToPage(path: string) {
-    this._globalFeaturesService.externalLink(path);
+    this._globalFeatures.externalLink(path);
   }
 
   ngOnDestroy(): void {

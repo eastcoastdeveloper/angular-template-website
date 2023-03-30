@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
@@ -16,7 +17,6 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     title: 'Website Features',
-    threeColumnLayout: false,
     cornerStone: true
   };
 
@@ -25,9 +25,12 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   pageQuery: number;
 
   constructor(
+    private _metaService: Meta,
+    private _title: Title,
     private _projectListService: ProjectListService,
     private _activatedRoute: ActivatedRoute
   ) {
+    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
@@ -43,6 +46,25 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
       .subscribe((val) => {
         this.removeDuplicates(val);
       });
+  }
+
+  addTags() {
+    this._metaService.addTags([
+      {
+        name: 'keywords',
+        content:
+          'front end development, web development projects, web developer portfolio'
+      },
+      {
+        name: 'description',
+        content:
+          'An array of website features including but not limited to an accordion, dynamic sidebar, graphs, & data driven tables.'
+      },
+      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
+      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
+      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
+    ]);
+    this._title.setTitle('Website Features');
   }
 
   removeDuplicates(val: ProjectsListInterface[]) {

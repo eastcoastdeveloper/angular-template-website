@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { WindowRef } from '../windowRef';
@@ -18,7 +19,12 @@ export class GlobalFeaturesService {
   history: string[] = [];
   pageQuery?: number;
 
-  constructor(private _windowRef: WindowRef, private _router: Router) {}
+  constructor(
+    private _windowRef: WindowRef,
+    private _router: Router,
+    private _metaService: Meta,
+    private _title: Title
+  ) {}
 
   changeWidth(newValue: number) {
     this.winWidthSource.next(newValue);
@@ -69,5 +75,31 @@ export class GlobalFeaturesService {
 
   hideBackButtonMessage() {
     this.backButtonMessage$.next(false);
+  }
+
+  addTags(obj: {
+    description: string;
+    dateCreated: string;
+    dateModified: string;
+    keywords: string;
+    title: string;
+  }) {
+    this._metaService.updateTag({
+      name: 'description',
+      content: obj.description!
+    });
+    this._metaService.updateTag({
+      name: 'data.created',
+      content: obj.dateCreated!
+    });
+    this._metaService.updateTag({
+      name: 'data.created',
+      content: obj.dateModified!
+    });
+    this._metaService.updateTag({
+      name: 'keywords',
+      content: obj.keywords!
+    });
+    this._title.setTitle(obj.title!);
   }
 }

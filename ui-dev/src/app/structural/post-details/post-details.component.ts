@@ -21,7 +21,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   forks?: number;
 
   constructor(
-    private _globalFeaturesService: GlobalFeaturesService,
+    private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {}
 
@@ -37,7 +37,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
         this.forks = val?.forks;
       });
 
-    this._globalFeaturesService.currentWidth$
+    this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.windowWidth = val;
@@ -49,7 +49,7 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   }
 
   navigateToPage() {
-    this._globalFeaturesService.externalLink(this.repoLink!);
+    this._globalFeatures.externalLink(this.repoLink!);
   }
 
   ngOnDestroy(): void {

@@ -9,4 +9,11 @@ export class PageDataObject {
   forks?: number;
   threeColumnLayout?: boolean;
   cornerStone?: boolean;
+  meta?: {
+    description: string;
+    keywords: string;
+    title: string;
+    dateCreated: string;
+    dateModified: string;
+  };
 }

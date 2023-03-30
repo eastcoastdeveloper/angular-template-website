@@ -14,8 +14,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   templateUrl: './drag-drop-ui.component.html'
 })
 export class DragDropUiComponent {
-  urlStackblitz: string =
+  dragDropImage = 'assets/projects-grid/js-drag-drop.jpg';
+  urlStackblitz =
     'https://stackblitz.com/edit/drag-and-drop-javascript?file=src%2Fapp%2Fapp.component.ts';
+
   pageDataObject: PageDataObject = {
     title: 'JavaScript Drag and Drop',
     publishedOn: 'Oct 1, 2022',
@@ -26,7 +28,16 @@ export class DragDropUiComponent {
     views: 271,
     forks: 3,
     cornerStone: true,
-    threeColumnLayout: true
+    threeColumnLayout: true,
+    meta: {
+      description:
+        'JavaScript drag and drop app w/ code/ explanation. Indicative of a cloud storage UI. Add new named groups/ content.',
+      keywords:
+        'web development project, angular drag and drop, drag and drop angular',
+      title: 'JavaScript Drag and Drop',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
 
   protected markup: string;
@@ -37,11 +48,9 @@ export class DragDropUiComponent {
   protected snippetFour: string;
   protected snippetFive: string;
 
-  dragDropImage: string = 'assets/projects-grid/js-drag-drop.jpg';
-
-  @ViewChildren('typeName') typeName: QueryList<any>;
   @ViewChild('newDirectory', { static: false }) newDirectory: ElementRef;
   @ViewChild('newGroup', { static: false }) newGroup: ElementRef;
+  @ViewChildren('typeName') typeName: QueryList<any>;
 
   constructor(
     private _projectListService: ProjectListService,
