@@ -7,7 +7,6 @@ import {
   ViewChild,
   ViewChildren
 } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -30,7 +29,16 @@ export class InPageNavigationComponent implements OnInit {
     views: 110,
     forks: 0,
     cornerStone: false,
-    threeColumnLayout: true
+    threeColumnLayout: true,
+    meta: {
+      description:
+        'TypeScript (Angular) in page navigation. Add as many sections as needed. Follow clearly written code & explanations.',
+      keywords:
+        'web development project, angular ngif, getting started with angular',
+      title: 'In Page Navigation',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
 
   markup: string;
@@ -48,38 +56,16 @@ export class InPageNavigationComponent implements OnInit {
   Math: any;
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _cd: ChangeDetectorRef,
     private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
     this.Math = Math;
   }
 
   ngOnInit(): void {
     this.renderCode();
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content:
-          'web development project, angular ngif, getting started with angular'
-      },
-      {
-        name: 'description',
-        content:
-          'In page navigation written in TypeScript. Add as many sections as needed. Follow clearly written code and explanations.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('In Page Navigation');
   }
 
   ngAfterViewInit() {

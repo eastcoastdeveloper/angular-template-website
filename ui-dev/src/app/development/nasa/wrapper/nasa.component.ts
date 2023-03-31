@@ -26,7 +26,7 @@ export class NasaComponent {
     threeColumnLayout: false,
     meta: {
       description:
-        '"APOD Nasa Gov; Nasa\'s Photo of the Day API.Select a date from now til 1995. Access photos/ video dating back to 1995."',
+        "APOD Nasa Gov; Nasa's Photo of the Day API. Select a date from now til 1995. Access photos/ video dating back to 1995.",
       keywords: 'web development project, apod nasa, nasa api',
       title: 'APOD Nasa Gov',
       dateCreated: '2022-10-15',

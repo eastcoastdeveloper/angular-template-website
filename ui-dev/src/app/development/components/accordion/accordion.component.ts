@@ -24,7 +24,15 @@ export class AccordionComponent {
     views: 821,
     forks: 20,
     threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    meta: {
+      description:
+        'Working example of an Angular accordion with all the HTML5, SCSS, and TypeScript needed to get you up and running.',
+      keywords: 'angular component, website features, ui components',
+      title: 'Angular Accordion',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
 
   accordionData: AccordionComponentInterface[] = [
@@ -248,31 +256,10 @@ export class AccordionComponent {
   ];
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content: 'angular component, website features, ui components'
-      },
-      {
-        name: 'description',
-        content:
-          'Working example of an Angular accordion with all the HTML5, SCSS, and TypeScript needed to get you up and running.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Angular Accordion');
   }
 
   // Toggle Accordion

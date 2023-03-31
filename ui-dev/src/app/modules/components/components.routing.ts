@@ -8,7 +8,7 @@ import { DatePickerComponent } from 'src/app/development/components/date-picker/
 import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
 import { SliderComponent } from 'src/app/development/components/slider/slider.component';
 import { D3BarGraphComponent } from '../../development/components/d3-bar-graph/d3-bar-graph.component';
-import { HtmlTableComponent } from '../../development/components/html-table/html-table.component';
+import { TableInHTMLComponent } from '../../development/components/table-in-html/table-in-html.component';
 
 const routes: Routes = [
   {
@@ -49,7 +49,7 @@ const routes: Routes = [
       },
       {
         path: 'table-in-html',
-        component: HtmlTableComponent
+        component: TableInHTMLComponent
       },
       {
         path: 'd3-bar-chart',
@@ -74,6 +74,6 @@ export const componentsComponents = [
   DynamicSidebarComponent,
   DatePickerComponent,
   SliderComponent,
-  HtmlTableComponent,
+  TableInHTMLComponent,
   D3BarGraphComponent
 ];

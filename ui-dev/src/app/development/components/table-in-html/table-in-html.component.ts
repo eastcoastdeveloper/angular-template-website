@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-html-table',
-  templateUrl: './html-table.component.html'
+  selector: 'app-table-in-html',
+  templateUrl: './table-in-html.component.html'
 })
-export class HtmlTableComponent {
+export class TableInHTMLComponent {
   typescript = `var headers = Array.from(document.querySelectorAll('.headers > div')),
   search = document.getElementById('search-field'),
   clear = document.querySelector('.clear'),
@@ -276,35 +275,22 @@ function sortColumn(e) {
     views: 74,
     forks: 0,
     threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    meta: {
+      description:
+        'Table in HTML written in basic HTML, straightforward style, w/ numerous lean JavaScript features including JSON import.',
+      keywords: 'web development project, html table css, website features',
+      title: 'Table in HTML',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content: 'web development project, html table css, website features'
-      },
-      {
-        name: 'description',
-        content:
-          'Table in HTML written in basic HTML, straightforward style, w/ numerous lean JavaScript features including JSON import.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Table in HTML');
   }
 
   navigateToPage(url: string) {

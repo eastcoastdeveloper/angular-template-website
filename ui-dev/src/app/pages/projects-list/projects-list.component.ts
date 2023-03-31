@@ -5,13 +5,12 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from '../../interfaces/projects-list.interface';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects-list',
@@ -20,10 +19,28 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
   @ViewChild('leftColumn', { static: false }) leftColumn: ElementRef;
+
   private unsubscribe$ = new Subject<void>();
+  meta?: {
+    description: string;
+    keywords: string;
+    title: string;
+    dateCreated: string;
+    dateModified: string;
+  };
+
   pageDataObject: PageDataObject = {
     threeColumnLayout: false,
-    cornerStone: true
+    cornerStone: true,
+    meta: {
+      description:
+        'A wide variety of TypeScript and JavaScript projects ranging from components, charts, and websites, to API development.',
+      keywords:
+        'front end development, web development projects, web developer portfolio',
+      title: 'JavaScript Projects',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
 
   projectsArray: ProjectsListInterface[] = [];
@@ -32,13 +49,25 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   pageQuery: number;
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService,
+    private _router: Router,
     private _activatedRoute: ActivatedRoute
   ) {
-    this.addTags();
+    this._router.events.subscribe((data) => {
+      if (data instanceof NavigationEnd) {
+        this._projectListService.pageDataObject$
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe({
+            next: (val) => {
+              this.meta = val.meta;
+              if (Object.values(val).length) {
+                this._globalFeatures.addTags(this.meta!);
+              }
+            }
+          });
+      }
+    });
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
@@ -61,25 +90,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       .subscribe((val) => {
         this.projectsArray = val;
       });
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content:
-          'front end development, web development projects, web developer portfolio'
-      },
-      {
-        name: 'description',
-        content:
-          'A wide variety of TypeScript and JavaScript projects ranging from components, charts, and websites, to API development.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('JavaScript Projects');
   }
 
   // Set Query Params

@@ -3,7 +3,6 @@ import { CarsInterface } from '../../../interfaces/table-paginated.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'data-table',
@@ -25,7 +24,15 @@ export class TablePaginatedComponent {
     views: 6671,
     forks: 191,
     threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    meta: {
+      description:
+        'Angular data table w/ pagination, search, and populated via a dynamic source. Customize styling w/ rudimentary CSS.',
+      keywords: 'angular component, styled components typescript, angular json',
+      title: 'Angular Data Table',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
 
   cars: CarsInterface[] = [
@@ -161,32 +168,10 @@ export class TablePaginatedComponent {
   p: any;
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content:
-          'angular component, styled components typescript, table in html'
-      },
-      {
-        name: 'description',
-        content:
-          'Angular data table w/ pagination, search, and populated via a dynamic source. Customize styling w/ rudimentary CSS.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Angular Data Table');
   }
 
   enteredSearchValue: string = '';

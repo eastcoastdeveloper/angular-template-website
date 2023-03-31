@@ -24,7 +24,15 @@ export class D3BarGraphComponent implements OnInit {
     views: 330,
     forks: 7,
     threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    meta: {
+      description:
+        'Responsive, D3 bar chart written in vanilla JavaScript. Plug it into your project, and customize it to suit your needs.',
+      keywords: 'd3 graph, d3 javascript, d3js examples',
+      title: 'D3 Bar Chart',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
 
   constructor(

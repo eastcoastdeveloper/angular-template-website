@@ -3,7 +3,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-routing-in-angular',
@@ -19,6 +18,7 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
   featureModule: string;
   basicRouter: string;
   lazyLoading: string;
+
   pageDataObject: PageDataObject = {
     title: 'Routing in Angular',
     publishedOn: 'Oct 1, 2022',
@@ -30,16 +30,21 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
     views: 2604,
     forks: 139,
     cornerStone: true,
-    threeColumnLayout: true
+    threeColumnLayout: true,
+    meta: {
+      description:
+        'Routing in angular simplified with lazy loading explanation, module and routing code, plus a child navigation example.',
+      keywords: 'angular lazy loading, modules in angular, angular routing',
+      title: 'Routing in Angular',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
@@ -51,24 +56,6 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
       });
 
     this.renderCode();
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content: 'angular lazy loading, modules in angular, angular routing'
-      },
-      {
-        name: 'description',
-        content:
-          'Routing in angular simplified with lazy loading explanation, module and routing code, plus a child navigation example.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Routing in Angular');
   }
 
   renderCode() {

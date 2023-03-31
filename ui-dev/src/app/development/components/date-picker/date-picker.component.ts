@@ -23,7 +23,16 @@ export class DatePickerComponent implements OnInit {
     views: 85,
     forks: 0,
     threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    meta: {
+      description:
+        'Custom Angular date picker. Easy to modify styling & features. Code is both clean & flexible. Use it in your project!',
+      keywords:
+        'datepicker angular, angular component, styled components typescript',
+      title: 'Angular Date Picker',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
   calendarVisible: boolean = false;
   private d: any = new Date();
@@ -63,37 +72,15 @@ export class DatePickerComponent implements OnInit {
   typescript: string;
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnInit() {
     this.firstLastDays();
     this.renderCode();
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content:
-          'datepicker angular, angular component, styled components typescript'
-      },
-      {
-        name: 'description',
-        content:
-          'Custom Angular date picker. Easy to modify styling & features. Code is both clean & flexible. Use it in your project!'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Angular Date Picker');
   }
 
   // Calculate First/ Last Days of the Month

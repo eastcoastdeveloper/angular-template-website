@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HtmlTableComponent } from './html-table.component';
+import { TableInHTMLComponent } from './table-in-html.component';
 
-describe('HtmlTableComponent', () => {
-  let component: HtmlTableComponent;
-  let fixture: ComponentFixture<HtmlTableComponent>;
+describe('TableInHTMLComponent', () => {
+  let component: TableInHTMLComponent;
+  let fixture: ComponentFixture<TableInHTMLComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HtmlTableComponent]
+      declarations: [TableInHTMLComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HtmlTableComponent);
+    fixture = TestBed.createComponent(TableInHTMLComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

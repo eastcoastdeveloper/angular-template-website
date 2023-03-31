@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
@@ -16,19 +15,25 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     title: 'Learn to Code',
-    cornerStone: true
+    cornerStone: true,
+    meta: {
+      description:
+        'Learn to code w/ these fully built features. Contains explanations & code samples. Content is both front & backend dev.',
+      keywords:
+        'web developer projects, getting started with angular, web developer portfolios',
+      title: 'Learn to Code',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-10-25'
+    }
   };
   developmentArray: ProjectsListInterface[] = [];
   categoryType: string = 'dev';
   pageQuery: number;
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _projectListService: ProjectListService,
     private _activatedRoute: ActivatedRoute
   ) {
-    this.addTags();
     // Send Page Data to Service & Wrapper
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
@@ -45,25 +50,6 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
       .subscribe((val) => {
         this.developmentArray = val;
       });
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content:
-          'web developer projects, getting started with angular, web developer portfolios'
-      },
-      {
-        name: 'description',
-        content:
-          'Learn to code w/ these fully built features. Contains explanations & code samples. Content is both front & backend dev.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Learn to Code');
   }
 
   // Set Query Params

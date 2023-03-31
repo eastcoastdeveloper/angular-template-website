@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { SidebarInterface } from 'src/app/interfaces/dynamic-sidebar.interface';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
@@ -21,7 +20,15 @@ export class DynamicSidebarComponent {
     views: 5134,
     forks: 130,
     threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    meta: {
+      description:
+        'Angular dynamic sidebar with an expand all button. Plug it into your app and populate an unlimited amount of sub menus.',
+      keywords: 'angular component, styled components typescript, angular json',
+      title: 'Angular Dynamic Sidebar',
+      dateCreated: '2022-10-15',
+      dateModified: '2023-04-05'
+    }
   };
 
   urlStackblitz: string =
@@ -461,31 +468,10 @@ export class DynamicSidebarComponent {
 ]`;
 
   constructor(
-    private _metaService: Meta,
-    private _title: Title,
     private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService
   ) {
-    this.addTags();
     this._projectListService.changePageDataObject(this.pageDataObject);
-  }
-
-  addTags() {
-    this._metaService.addTags([
-      {
-        name: 'keywords',
-        content: 'angular component, styled components typescript, angular json'
-      },
-      {
-        name: 'description',
-        content:
-          'Angular dynamic sidebar with an expand all button. Plug it into your app and populate an unlimited amount of sub menus.'
-      },
-      { name: 'date.created', content: '2022-10-15', scheme: 'YYYY-MM-DD' },
-      { name: 'date.updated', content: '2023-02-05', scheme: 'YYYY-MM-DD' },
-      { name: 'date.modified', content: '2023-03-25', scheme: 'YYYY-MM-DD' }
-    ]);
-    this._title.setTitle('Angular Slider');
   }
 
   navigateToPage(url: string) {
