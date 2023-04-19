@@ -10,9 +10,10 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
   styleUrls: ['./data-table.component.scss']
 })
 export class TablePaginatedComponent {
-  urlNGX: string = 'https://www.npmjs.com/package/ngx-pagination';
-  urlStackblitz: string =
-    'https://stackblitz.com/edit/angular-table-pagination-json';
+  urlNGX = 'https://www.npmjs.com/package/ngx-pagination';
+  importStatement = "import { NgxPaginationModule } from 'ngx-pagination'";
+  urlStackblitz = 'https://stackblitz.com/edit/angular-table-pagination-json';
+
   pageDataObject: PageDataObject = {
     title: 'Angular Data Table',
     publishedOn: 'Aug 1, 2022',
@@ -21,7 +22,7 @@ export class TablePaginatedComponent {
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
     category: '',
-    views: 6671,
+    views: 6676,
     forks: 191,
     threeColumnLayout: true,
     cornerStone: false,
@@ -35,7 +36,7 @@ export class TablePaginatedComponent {
     }
   };
 
-  cars: CarsInterface[] = [
+  cars: readonly CarsInterface[] = [
     {
       year: '1967',
       make: 'Pontiac',
@@ -195,7 +196,7 @@ export class TablePaginatedComponent {
     this._globalFeatures.externalLink(url);
   }
 
-  json: string = `[
+  json = `[
     { "year": "1967", "make": "Pontiac", "model": "GTO" },
     { "year": "1967", "make": "Pontiac", "model": "Firebird" },
     { "year": "1967", "make": "Chevrolet", "model": "Malibu SS 396" },
@@ -223,7 +224,7 @@ export class TablePaginatedComponent {
     { "year": "1967", "make": "Dodge", "model": "Coronet 500 Hemi" }
   ]`;
 
-  appModule: string = `import { NgModule } from '@angular/core';
+  appModule = `import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -238,7 +239,7 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 `;
 
-  typescript: string = `import { HttpClient } from '@angular/common/http';
+  typescript = `import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { tap } from 'rxjs';
 import { CarsResponse } from './cars.interface';
@@ -274,13 +275,13 @@ export class AppComponent {
   }
 }`;
 
-  interface: string = `export interface CarsResponse {
+  interface = `export interface CarsResponse {
     year: string;
     make: string;
     model: string;
 }`;
 
-  styling: string = `#table-component {
+  styling = `#table-component {
   font: normal 14px sans-serif;
   margin: 15px auto 0 auto;
   border: 1px solid black;
@@ -367,7 +368,7 @@ export class AppComponent {
   }
 }`;
 
-  markup: string = `<div id="table-component">
+  markup = `<div id="table-component">
   <div class="table-details">
     <span>Popular Muscle Cars</span>
     <span>Total Vehicles: {{ cars.length }}</span>

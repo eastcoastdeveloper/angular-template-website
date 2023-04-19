@@ -1,7 +1,4 @@
-<span
-  *ngIf="windowWidth! < 993"
-  class="hamburger-icon"
-  (click)="menuOpen = !menuOpen"
+<span *ngIf="windowWidth! < 993" class="hamburger-icon" (click)="togglePanel()"
   >&#9776;</span
 >
 <div

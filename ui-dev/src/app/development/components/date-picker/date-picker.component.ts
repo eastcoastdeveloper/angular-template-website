@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -20,7 +19,7 @@ export class DatePickerComponent implements OnInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/datepicker-angular-component',
     category: '',
-    views: 85,
+    views: 63,
     forks: 0,
     threeColumnLayout: true,
     cornerStone: false,
@@ -51,7 +50,7 @@ export class DatePickerComponent implements OnInit {
     'Nov',
     'Dec'
   ];
-  years: number[] = [
+  years: readonly number[] = [
     1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
     2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
     2020, 2021, 2022
@@ -386,9 +385,9 @@ export class DatePickerComponent implements OnInit {
 export class DatepickerComponent implements OnInit {
   calendarVisible: boolean = false;
   d: any = new Date();
-  weekdays: string[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  months: string[] = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  years: number[] = [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
+  weekdays: readonly string[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  months: readonly string[] = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  years: readonly number[] = [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
                   2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
   
   currentDay: any = this.d.getDate();

@@ -1,5 +1,9 @@
 @import '../../styles/page-style.scss';
 
+.app-header .url:hover {
+  transform: scale(0.95);
+}
+
 .app-header {
   position: relative;
   height: 50px;

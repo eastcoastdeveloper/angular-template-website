@@ -12,7 +12,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 export class SliderComponent implements OnInit {
   urlStackblitz: string =
     'https://stackblitz.com/edit/angular-slider-json?file=src%2Fapp%2Fapp.component.ts';
-  result: SliderInterface[] = [
+  result: readonly SliderInterface[] = [
     {
       title: 'Driven: The Race to Create the Autonomous Car',
       author: 'Alex Davies',
@@ -72,7 +72,7 @@ export class SliderComponent implements OnInit {
     repoTitle: 'angular-slider',
     repoLink: 'https://github.com/eastcoastdeveloper/angular-basic-carousel',
     category: 'components',
-    views: 885,
+    views: 906,
     forks: 10,
     threeColumnLayout: true,
     cornerStone: false,

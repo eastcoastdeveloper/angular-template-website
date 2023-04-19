@@ -14,7 +14,9 @@ export class GlobalFeaturesService {
 
   backButtonMessage$ = new BehaviorSubject<boolean>(false);
   backButtonActive$ = new BehaviorSubject<boolean>(false);
+  categoryNavigationMenu$ = new BehaviorSubject<boolean>(false);
   historyIndex$ = new BehaviorSubject<number>(0);
+
   historyIndex: number = 0;
   history: string[] = [];
   pageQuery?: number;

@@ -11,8 +11,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   calendarVisible: boolean = false;
   d: any = new Date();
-  weekdays: any[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  months: any[] = [
+  weekdays: readonly string[] = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  months: readonly string[] = [
     'Jan',
     'Feb',
     'Mar',
@@ -26,7 +26,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     'Nov',
     'Dec'
   ];
-  years: any[] = [
+  years: readonly number[] = [
     1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
     2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
     2020, 2021, 2022

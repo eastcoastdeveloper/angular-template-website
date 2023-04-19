@@ -24,11 +24,11 @@ export class AngularjsProjectComponent {
     category: '',
     views: 2027,
     forks: 0,
-    cornerStone: true,
+    cornerStone: false,
     threeColumnLayout: true,
     meta: {
       description:
-        'AngularJS project showcasing a massive single page app. Clean code, numerous UI features, video & image galleries.',
+        'AngularJS project showcasing an intricately designed single page app. Clean code, numerous UI features, video & image galleries.',
       keywords:
         'web development project, angularjs directive, angularjs single page application',
       title: 'AngularJS Project',

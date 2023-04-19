@@ -26,6 +26,7 @@ export class ComponentsWrapperComponent
   relatedItems: ProjectsListInterface[] = [];
   windowWidth: number;
   pageTitle?: string;
+  cornerstone?: boolean;
   cmpsArray: any;
 
   meta?: {
@@ -51,6 +52,7 @@ export class ComponentsWrapperComponent
               this.pageTitle = val.title;
               this.threeColumnLayout = val.threeColumnLayout;
               this.meta = val.meta;
+              this.cornerstone = val.cornerStone;
               if (Object.values(val).length) {
                 this._globalFeaturesService.addTags(this.meta!);
               }

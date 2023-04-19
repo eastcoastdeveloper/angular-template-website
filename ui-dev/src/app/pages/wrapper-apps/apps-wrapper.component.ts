@@ -11,6 +11,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { MetaInterface } from 'src/app/interfaces/meta.interface';
 
 @Component({
   selector: 'app-apps-wrapper',
@@ -20,17 +21,13 @@ export class AppsWrapperComponent
   implements OnInit, AfterViewChecked, OnDestroy
 {
   private unsubscribe$ = new Subject<void>();
+
   appsArray: ProjectsListInterface[] = [];
   threeColumnLayout?: boolean = false;
   windowWidth: number;
   pageTitle?: string;
-  meta?: {
-    description: string;
-    keywords: string;
-    title: string;
-    dateCreated: string;
-    dateModified: string;
-  };
+  cornerstone?: boolean;
+  meta? = <MetaInterface>{};
 
   constructor(
     private _globalFeatures: GlobalFeaturesService,
@@ -48,6 +45,8 @@ export class AppsWrapperComponent
               this.pageTitle = val.title;
               this.threeColumnLayout = val.threeColumnLayout;
               this.meta = val.meta;
+              this.cornerstone = val.cornerStone;
+              console.log(this.cornerstone);
               if (Object.values(val).length) {
                 this._globalFeatures.addTags(this.meta!);
               }

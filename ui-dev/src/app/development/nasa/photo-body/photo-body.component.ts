@@ -7,6 +7,7 @@ import {
   Output
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
+import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { NasaSearchService } from '../nasa.service';
 
 @Component({
@@ -17,6 +18,7 @@ import { NasaSearchService } from '../nasa.service';
 export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   @Output() outputData = new EventEmitter();
+  categoryMenuStatus: boolean;
   fullExplanation: boolean = false;
   datePickerStatus: boolean;
   explanation: string = '';
@@ -28,7 +30,8 @@ export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private _nasa: NasaSearchService,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
+    private _globalFeatures: GlobalFeaturesService
   ) {}
 
   ngAfterViewInit() {
@@ -47,6 +50,12 @@ export class NasaPhotoBodyComponent implements AfterViewInit, OnDestroy {
       .subscribe((currentVal) => {
         this.datePickerStatus = currentVal;
         this.shareData();
+      });
+
+    this._globalFeatures.categoryNavigationMenu$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        val ? (this.fullExplanation = false) : '';
       });
 
     this._cd.detectChanges();

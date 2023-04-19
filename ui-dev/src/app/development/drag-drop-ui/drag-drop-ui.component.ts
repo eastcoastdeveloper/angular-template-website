@@ -27,7 +27,7 @@ export class DragDropUiComponent {
     category: 'projects',
     views: 271,
     forks: 3,
-    cornerStone: true,
+    cornerStone: false,
     threeColumnLayout: true,
     meta: {
       description:

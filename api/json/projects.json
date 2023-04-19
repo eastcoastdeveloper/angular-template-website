@@ -173,7 +173,7 @@
     {
       "title": "Website Examples",
       "imgUrl": "../../assets/projects-grid/website-examples.jpg",
-      "description": "Two fully responsive website examples I recently created. One developed in pure HTML, CSS, & JavaScript, but functions like a single page app. 100% on a Google Speed test at deployment. The other, a massive financial single page app.",
+      "description": "Two fully responsive website examples I recently created. One developed in pure HTML, CSS, & JavaScript, but functions like a single page app. 100% on a Google Speed test at deployment. The other, a large financial single page app.",
       "path": "/web-development-projects/website-examples",
       "altText": "Two fully responsive website examples. Each of which showcase single page app architectures. One in native HTML, the other in TypeScript.",
       "stackblitz": false,

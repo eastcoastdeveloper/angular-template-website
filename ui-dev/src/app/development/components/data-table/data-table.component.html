@@ -57,8 +57,28 @@
     >ngx-pagination</span
   >
   and run the necessary CLI command. Add the module (NgxPaginationModule) to
-  your module.
+  your module. To do so, add NgxPaginationModule to your module imports array.
+  And of course ensure the import statement is automatically added. If you're
+  adding pagination to multiple items, add an ID to the pagination-controls
+  component (shown at the end of the markup). Then in the paginate object in the
+  ngFor loop, add the ID and name as a key value pair (id: 'pagination1',
+  itemsPerPage: 10...);
 </p>
+
+<p class="project-text element-margin-top">
+  This is one reason as to why I'm not so gung-ho on the standalone components
+  upgrade. This pagination component is a dumb component. It simply transfers
+  information. It's dumb because it doesn't need to know the larger context. It
+  knows nothing of what else is occuring. If we wanted to use this throughout
+  our application, we'd need to import it to every component. The flip side, is
+  creating a shared module. Then simply import that shared module to the needed
+  modules. In turn, we maintain a modular system, lazy loading, and stay
+  organized.
+</p>
+
+<div class="code-preview element-margin-top">
+  <pre><code>{{importStatement}}</code></pre>
+</div>
 
 <div class="code-preview element-margin-top">
   <pre><code>{{interface}}</code></pre>

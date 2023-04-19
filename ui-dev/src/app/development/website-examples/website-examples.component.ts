@@ -19,7 +19,7 @@ export class WebsiteExamplesComponent implements OnInit {
     views: 0,
     forks: 0,
     threeColumnLayout: true,
-    cornerStone: true,
+    cornerStone: false,
     meta: {
       description:
         'Website examples showcasing multiple sites I developed. Based on provided mocks or a Wordpress theme. Fast & modern.',

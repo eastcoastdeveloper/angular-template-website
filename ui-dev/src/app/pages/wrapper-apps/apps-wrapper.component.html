@@ -39,7 +39,7 @@
       <app-post-details
         *ngIf="pageTitle != 'Front End Development' && windowWidth < 1200"
       ></app-post-details>
-      <app-end-of-post></app-end-of-post>
+      <app-end-of-post *ngIf="!cornerstone"></app-end-of-post>
     </div>
 
     <div class="middle-column" *ngIf="threeColumnLayout">

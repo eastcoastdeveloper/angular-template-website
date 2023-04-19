@@ -23,10 +23,10 @@ export class RestCountriesComponent {
     repoLink:
       'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
     category: '',
-    views: 445,
+    views: 501,
     forks: 3,
     threeColumnLayout: true,
-    cornerStone: true,
+    cornerStone: false,
     meta: {
       description:
         "REST Countries is a TypeScript powered app using Leaflet's mapping abilities in conjunction w/ REST Countries' data.",

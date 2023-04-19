@@ -1,60 +1,78 @@
 @import '../../styles/page-style.scss';
 
-#about-page {
-  margin: 0 auto;
-  color: $greyBlack;
+.single-column-layout {
+  .about-pic {
+    width: 180px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 3px 0 13px 0;
+    float: left;
+    margin-right: 20px;
+    box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.3);
 
-  .about {
-    .about-pic {
-      width: 200px;
-      border-radius: 6px;
-      overflow: hidden;
-      margin: 3px 0 13px 0;
-      float: left;
-      margin-right: 20px;
-      box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.3);
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
 
-      img {
-        width: 100%;
-        display: block;
+  .endeavors-wrapper {
+    border: 1px solid $greyBlack;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-top: 20px;
+    h2 {
+      font: 300 20px sans-serif;
+      margin: 0;
+      background-color: $oceanBlue;
+      color: $white;
+      padding: 5px 5px 5px 20px;
+    }
+  }
+  .personal-projects {
+    font: normal 14px sans-serif;
+    line-height: 22px;
+    list-style-type: none;
+    display: grid;
+    color: $greyBlack;
+    grid-gap: 20px;
+    padding: 10px 10px 15px 10px;
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    li {
+      .topic {
+        margin-right: 5px;
+        padding: 0 10px;
+      }
+      p {
+        margin: 0;
+        padding: 0 10px;
       }
     }
-
-    p {
-      font: normal 14px sans-serif;
-      line-height: 22px;
-      margin: 10px 0;
+    li:last-child {
+      grid-column: span 2;
     }
+  }
+}
 
-    .paragraph-link {
-      color: $yellowGold;
-      border-radius: 4px;
-      position: relative;
-    }
-
+@media screen and (max-width: 768px) {
+  .single-column-layout {
     .personal-projects {
-      color: #313b3f;
-      font: normal 14px sans-serif;
-      line-height: 22px;
-      margin-left: 15px;
-      li:not(:last-child) {
-        margin-bottom: 20px;
+      grid-template-columns: 100%;
+      padding: 10px 0 0 0;
+      grid-column-gap: 0;
+      grid-row-gap: 10px;
+      li:nth-child(even) {
+        padding: 10px 0;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      li:last-child {
+        grid-column: unset;
+        padding-bottom: 15px;
       }
     }
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  #about-page {
-    margin-bottom: 45px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  #about-page {
-    .about {
-      .about-pic {
-        width: 150px;
+    .endeavors-wrapper {
+      h2 {
+        padding: 5px 5px 5px 10px;
       }
     }
   }

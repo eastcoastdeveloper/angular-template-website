@@ -96,12 +96,16 @@
       grid-column-gap: 4px;
       .caret {
         font-size: 10px;
-        transform: translateY(4px);
+        transform: translateY(6px) rotate(-45deg);
         transition: transform 0.2s;
+        border-bottom: 2px solid $white;
+        border-right: 2px solid $white;
+        width: 6px;
+        height: 6px;
       }
 
       .rotate-caret {
-        transform: rotate(90deg) translate(2px, 5px) !important;
+        transform: rotate(45deg) translate(4px, 2px) !important;
       }
       ul {
         display: grid;

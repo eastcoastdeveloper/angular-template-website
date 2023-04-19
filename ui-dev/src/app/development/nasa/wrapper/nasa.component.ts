@@ -22,8 +22,8 @@ export class NasaComponent {
     category: '',
     views: 0,
     forks: 0,
-    cornerStone: true,
-    threeColumnLayout: false,
+    cornerStone: false,
+    threeColumnLayout: true,
     meta: {
       description:
         "APOD Nasa Gov; Nasa's Photo of the Day API. Select a date from now til 1995. Access photos/ video dating back to 1995.",

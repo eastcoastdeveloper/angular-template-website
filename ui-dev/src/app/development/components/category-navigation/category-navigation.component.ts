@@ -14,8 +14,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   styleUrls: ['./category-navigation.component.scss']
 })
 export class CategoryNavigationComponent implements OnInit, OnDestroy {
-  unsubscribe$ = new Subject<void>();
   dataArray: ProjectsListInterface[] = [];
+  navigationArray: NavigationData[] = [];
+
+  unsubscribe$ = new Subject<void>();
+
   @Input() categoryType: string;
   menuOpen: boolean = false;
   totalDevelopment?: number;
@@ -23,7 +26,6 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
   totalProjects?: number;
   windowWidth?: number;
   totalAll?: number;
-  navigationArray: NavigationData[] = [];
 
   constructor(
     private _globalFeatures: GlobalFeaturesService,
@@ -125,6 +127,13 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
       const key = Object.keys(typeReference)[0];
       this.dataArray = typeReference[key];
     }
+  }
+
+  togglePanel() {
+    this.menuOpen = !this.menuOpen;
+    this.menuOpen
+      ? this._globalFeatures.categoryNavigationMenu$.next(true)
+      : this._globalFeatures.categoryNavigationMenu$.next(false);
   }
 
   navigateToCateory() {

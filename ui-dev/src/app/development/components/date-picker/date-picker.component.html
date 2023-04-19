@@ -15,9 +15,7 @@
       </div>
       <div class="month" (click)="showMonths()">
         <span>{{ months[monthIndex] }}</span>
-        <span class="caret" [ngClass]="{ 'rotate-caret': monthsMenu }"
-          >&#9654;</span
-        >
+        <span class="caret" [ngClass]="{ 'rotate-caret': monthsMenu }"></span>
         <ul *ngIf="monthsMenu">
           <li
             *ngFor="let month of months; let i = index"
@@ -29,9 +27,7 @@
       </div>
       <div class="year" (click)="showYears()">
         <span>{{ year }}</span>
-        <span class="caret" [ngClass]="{ 'rotate-caret': yearsMenu }"
-          >&#9654;</span
-        >
+        <span class="caret" [ngClass]="{ 'rotate-caret': yearsMenu }"></span>
         <ul *ngIf="yearsMenu">
           <li
             *ngFor="let year of years; let i = index"

@@ -17,8 +17,8 @@ export class DynamicSidebarComponent {
     repoTitle: 'angular-dynamic-sidebar',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Dynamic-Sidebar',
     category: '',
-    views: 5134,
-    forks: 130,
+    views: 5856,
+    forks: 149,
     threeColumnLayout: true,
     cornerStone: false,
     meta: {
@@ -34,7 +34,7 @@ export class DynamicSidebarComponent {
   urlStackblitz: string =
     'https://stackblitz.com/edit/angular-dynamic-sidebar?file=src%2Fapp%2Fcomponents%2Fsidebar%2Fsidebar.component.ts';
 
-  result: SidebarInterface[] = [
+  result: readonly SidebarInterface[] = [
     {
       linkText: 'About',
       parentLink: '',

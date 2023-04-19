@@ -10,27 +10,23 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { NavigationEnd, Router } from '@angular/router';
+import { MetaInterface } from 'src/app/interfaces/meta.interface';
 
 @Component({
   selector: 'app-development',
   templateUrl: './development-wrapper.component.html'
 })
 export class DevelopmentWrapper implements OnInit, AfterViewChecked, OnDestroy {
-  developmentArray: ProjectsListInterface[] = [];
   private unsubscribe$ = new Subject<void>();
+
+  developmentArray: ProjectsListInterface[] = [];
   threeColumnLayout?: boolean = false;
+  meta? = <MetaInterface>{};
   devMenuStatus: boolean;
   windowWidth: number;
   pageTitle?: string;
+  cornerstone?: boolean;
   arrayIndex: number;
-
-  meta?: {
-    description: string;
-    keywords: string;
-    title: string;
-    dateCreated: string;
-    dateModified: string;
-  };
 
   constructor(
     private _projectListService: ProjectListService,
@@ -47,6 +43,7 @@ export class DevelopmentWrapper implements OnInit, AfterViewChecked, OnDestroy {
               this.pageTitle = val.title;
               this.threeColumnLayout = val.threeColumnLayout;
               this.meta = val.meta;
+              this.cornerstone = val.cornerStone;
               if (Object.values(val).length) {
                 this._globalFeatures.addTags(this.meta!);
               }

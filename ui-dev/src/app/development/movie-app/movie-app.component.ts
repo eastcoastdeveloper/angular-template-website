@@ -33,7 +33,7 @@ export class MovieAppComponent implements OnDestroy {
     category: '',
     views: 0,
     forks: 0,
-    cornerStone: true,
+    cornerStone: false,
     threeColumnLayout: true,
     meta: {
       description:

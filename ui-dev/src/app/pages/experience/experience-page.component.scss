@@ -1,13 +1,21 @@
 @import '../../styles/page-style.scss';
 
-#experience-page {
-  margin: 0 auto;
-  font-family: sans-serif;
-  max-width: 1000px;
-
-  .skills {
+#experience {
+  .skillset {
     font: normal 14px sans-serif;
     line-height: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 8px));
+    grid-gap: 15px;
+    > div {
+      span {
+        display: block;
+        font-weight: 600;
+      }
+    }
+    > div:last-child {
+      grid-column: span 2;
+    }
   }
 
   h4 {
@@ -57,7 +65,7 @@
         padding-left: 15px;
       }
 
-      tr:nth-child(odd) {
+      tr:nth-child(even) {
         background-color: rgba(0, 0, 0, 0.1);
 
         td:first-child {
@@ -77,35 +85,39 @@
         }
       }
     }
-
-    .mobile-contracts {
-      font-size: 14px;
-      font-family: sans-serif;
-      margin-top: 10px;
-      line-height: 25px;
-    }
   }
 }
 
-@media screen and (max-width: 1300px) {
-  .left-column {
-    margin-bottom: 45px;
-  }
-}
-
-@media screen and (max-width: 675px) {
-  #experience-page {
+@media screen and (max-width: 650px) {
+  #experience {
     .history-block {
-      .employer-history {
-        border-bottom: 1px solid $greyBlack;
-        padding-bottom: 10px;
+      .job-description {
+        list-style-type: none;
+        padding-left: 0;
+        > li:nth-child(even) {
+          background-color: rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+        }
+        > li {
+          padding: 5px 10px;
+          line-height: 22px;
+        }
       }
     }
-
-    .history-block:nth-child(odd) {
-      background-color: rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      border-radius: 6px;
+    .skillset {
+      grid-template-columns: 100%;
+      line-height: 22px;
+      grid-gap: 0;
+      > div {
+        padding: 5px 10px;
+      }
+      > div:last-child {
+        grid-column: auto;
+      }
+      > div:nth-child(even) {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+      }
     }
   }
 }

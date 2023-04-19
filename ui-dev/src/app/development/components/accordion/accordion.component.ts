@@ -21,8 +21,8 @@ export class AccordionComponent {
     repoTitle: 'angular-accordion',
     repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
     category: '',
-    views: 821,
-    forks: 20,
+    views: 921,
+    forks: 23,
     threeColumnLayout: true,
     cornerStone: false,
     meta: {
@@ -35,7 +35,7 @@ export class AccordionComponent {
     }
   };
 
-  accordionData: AccordionComponentInterface[] = [
+  accordionData: readonly AccordionComponentInterface[] = [
     {
       name: 'Experience',
       content: [

@@ -18,8 +18,8 @@ export class CountdownComponent implements AfterViewInit {
     repoLink:
       'https://github.com/eastcoastdeveloper/angular-countdown-timer-component',
     category: '',
-    views: 14363,
-    forks: 982,
+    views: 16752,
+    forks: 1103,
     threeColumnLayout: true,
     cornerStone: false,
     meta: {

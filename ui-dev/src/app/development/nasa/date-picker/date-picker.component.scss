@@ -23,7 +23,6 @@
     right: 0;
     top: 40px;
     border-radius: 4px;
-    z-index: 1;
 
     .all-days-skeleton {
       display: flex;
@@ -183,9 +182,15 @@
 @media screen and (max-width: 600px) {
   #calendar-component {
     margin: 0;
+    position: unset;
     input {
       font-size: 14px;
       padding: 4px 8px;
+    }
+    .calendar {
+      left: 0;
+      top: 60px;
+      margin: 0 auto;
     }
   }
 }
