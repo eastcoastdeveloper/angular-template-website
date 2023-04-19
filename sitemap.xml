@@ -1,0 +1,96 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+<loc>https://frontenddevelopment.tech/</loc>
+<lastmod>2023-04-18T17:31:36+00:00</lastmod>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/angular-date-picker</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/angular-dynamic-sidebar</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/angular-data-table</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/angular-countdown-timer</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/accordion-component</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/table-in-html</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/d3-bar-chart</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/ui-components/angular-slider</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-development-projects/javascript-drag-and-drop</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-development-projects/apod-nasa-gov</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-development-projects/rest-countries</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-development-projects/omdb-api</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-development-projects/website-examples</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-development-projects/angularjs-project</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-application-development/routing-in-angular</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/web-application-development/in-page-navigation</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/front-end-dev-resume</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://frontenddevelopment.tech/front-end-developer</loc>
+  <lastmod>2020-11-12T10:13:39+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+</urlset>
