@@ -1,8 +1,8 @@
 <div id="angular-spa">
   <div #headerComponent id="header">
-    <app-header (click)="historyActiveState()"></app-header>
+    <app-header></app-header>
   </div>
-  <div id="content" (click)="historyActiveState()">
+  <div id="content">
     <div class="router-wrapper">
       <router-outlet></router-outlet>
 
@@ -15,7 +15,6 @@
     *ngIf="600 > width"
     id="mobile-menu"
     [ngClass]="{ 'show-mobile-nav': sidebarStatus }"
-    (click)="historyActiveState()"
   >
     <nav (click)="closeMobileNav()">
       <div routerLink="/">
@@ -40,11 +39,11 @@
   </div>
 </div>
 
-<div *ngIf="backButtonMessage" class="back-btn-notification element-shadow">
+<!-- <div *ngIf="backButtonMessage" class="back-btn-notification element-shadow">
   <span class="warning-icon">&#9888;</span>
   <p>Please use internal back button at top left.</p>
   <span (click)="closeNotification()" class="close-btn">&#x2715;</span>
-</div>
+</div> -->
 
 <!-- <style>
   .tools {

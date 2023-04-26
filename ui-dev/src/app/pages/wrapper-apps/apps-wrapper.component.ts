@@ -46,7 +46,6 @@ export class AppsWrapperComponent
               this.threeColumnLayout = val.threeColumnLayout;
               this.meta = val.meta;
               this.cornerstone = val.cornerStone;
-              console.log(this.cornerstone);
               if (Object.values(val).length) {
                 this._globalFeatures.addTags(this.meta!);
               }

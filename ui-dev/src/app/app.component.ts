@@ -9,11 +9,17 @@ import {
 } from '@angular/core';
 import { GlobalFeaturesService } from './services/global-features.service';
 import { SideBarService } from './services/sidebar-service';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  NavigationStart,
+  Router
+} from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { DOCUMENT, LocationStrategy } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { CanonicalService } from './services/canonical.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { query } from 'express';
 
 @Component({
   selector: 'my-app',
@@ -28,26 +34,26 @@ export class AppComponent
 {
   private unsubscribe$ = new Subject<void>();
 
+  history: { url: string; hasParam: boolean; query: number | null }[] = [];
   width: number = window.innerWidth;
-  backButtonActive?: boolean;
   isMobile: boolean = false;
   mobileWidth: number = 760;
-  sidebarStatus: boolean;
-  currentRoute: string;
-
-  totalAll: number;
-  totalProjects: number;
   totalComponennts: number;
   totalDevelopment: number;
-  backButtonMessage: boolean;
-  browserRefresh: boolean = false;
+  backButtonActive = false;
+  sidebarStatus: boolean;
+  totalProjects: number;
+  currentRoute: string;
+  historyIndex: number;
+  queryParam: number;
+  totalAll: number;
 
   constructor(
     public _globalFeatures: GlobalFeaturesService,
     private _canonicalService: CanonicalService,
     private _sidebarService: SideBarService,
     private _local: LocalStorageService,
-    private _location: LocationStrategy,
+    private _activatedRoute: ActivatedRoute,
     private _renderer: Renderer2,
     private _router: Router,
     @Inject(DOCUMENT) private document: Document
@@ -56,19 +62,6 @@ export class AppComponent
   ngOnInit(): void {
     this._canonicalService.setCanonicalURL();
     this.isMobile = this.width < this.mobileWidth;
-
-    this._globalFeatures.backButtonMessage$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((booleanValue) => {
-        this.backButtonMessage = booleanValue;
-      });
-
-    this._globalFeatures.backButtonActive$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((d) => {
-        this.backButtonActive = d;
-      });
-
     this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
@@ -83,50 +76,60 @@ export class AppComponent
     // Remove Inability to Scroll
     this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
       if (data instanceof NavigationStart) {
-        this.browserRefresh = this._router.navigated;
+        if (data.navigationTrigger === 'popstate') {
+          this.backButtonActive = true;
+        }
       }
       if (data instanceof NavigationEnd) {
-        this._renderer.removeAttribute(this.document.body, 'class');
-        this.currentRoute = data.url;
-        this._globalFeatures.scrollToTop();
-        this._sidebarService.changeValue(false);
+        if (!this.backButtonActive) {
+          this._activatedRoute.queryParams.subscribe((val) => {
+            this.queryParam = parseInt(val['page']);
+          });
 
-        // Back Button Navigation
-        if (this.browserRefresh) {
-          this.currentRoute = data.urlAfterRedirects;
-          if (!this.backButtonActive) {
-            this._globalFeatures.historyIndex++;
-            this._globalFeatures.history.push(data.urlAfterRedirects);
+          if (this.queryParam) {
+            const paramIndex = data.urlAfterRedirects.indexOf('?');
+            const url = data.urlAfterRedirects.slice(0, paramIndex);
+            this.history.push({
+              url: url,
+              hasParam: true,
+              query: this.queryParam
+            });
 
-            this._globalFeatures.history.forEach((item, index) => {
-              // Remove Duplicate/ Partial URLs
-              this._globalFeatures.history[index] ===
-              this._globalFeatures.history[index - 1]
-                ? this._globalFeatures.history.splice(index - 1, 1)
-                : '';
-
-              if (
-                item === '/javascript-projects' ||
-                item === '/ui-components/website-features' ||
-                item === '/web-application-development/learn-to-code' ||
-                item === '/web-development-projects/front-end-development'
-              ) {
-                this._globalFeatures.history.splice(index, 1);
-                this._globalFeatures.historyIndex =
-                  this._globalFeatures.history.length;
-              }
+            this.history.length > 1 &&
+            this.history[0]['url'] === this.history[1]['url']
+              ? this.history.pop()
+              : '';
+          } else {
+            this.history.push({
+              url: data.urlAfterRedirects,
+              hasParam: false,
+              query: null
             });
           }
 
-          // Back Button Active
-          if (this.backButtonActive) {
-            this._globalFeatures.historyIndex - 1;
-          }
-          this._globalFeatures.historyIndex$.next(
-            this._globalFeatures.historyIndex
-          );
-          this.preventBackButton();
+          this.historyIndex = this.history.length;
         }
+
+        if (this.backButtonActive) {
+          this.historyIndex--;
+          console.log(this.history);
+          console.log(this.history[this.historyIndex - 1]);
+          // if (this.history[this.historyIndex - 1]['query']) {
+          //   this._router.navigate(
+          //     [this.history[this.historyIndex - 1]['url']],
+          //     {
+          //       queryParams: {
+          //         page: this.history[this.historyIndex - 1]['query']
+          //       }
+          //     }
+          //   );
+          // }
+          this.backButtonActive = false;
+        }
+
+        this._renderer.removeAttribute(this.document.body, 'class');
+        this._globalFeatures.scrollToTop();
+        this._sidebarService.changeValue(false);
       }
     });
   }
@@ -148,24 +151,8 @@ export class AppComponent
     }
   }
 
-  preventBackButton() {
-    history.pushState(null, null!, location.href);
-    this._location.onPopState(() => {
-      history.pushState(null, null!, location.href);
-      this._globalFeatures.showBackButtonMessage();
-    });
-  }
-
-  historyActiveState() {
-    this._globalFeatures.backButtonActive$.next(false);
-  }
-
   closeMobileNav() {
     this._sidebarService.changeValue(false);
-  }
-
-  closeNotification() {
-    this._globalFeatures.backButtonMessage$.next(false);
   }
 
   onWindowResize(event: any) {

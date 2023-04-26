@@ -1,5 +1,5 @@
-@import './page-style.scss';
-@import './reset.scss';
+@import './_page-style.scss';
+@import './_reset.scss';
 
 @font-face {
   font-family: 'SourceCodePro';
@@ -15,7 +15,7 @@ a {
   display: inline-block;
   font-size: 14px;
   margin-right: 3px;
-  color: red;
+  color: $warningRed;
 }
 
 blockquote {
@@ -26,6 +26,22 @@ blockquote {
 
 body {
   background-color: rgba(211, 211, 211, 0.2);
+}
+
+.code-preview {
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 35%);
+  font: normal 13px/20px 'SourceCodePro', sans-serif;
+  background-color: $oceanBlue;
+  border: 1px solid $white;
+  letter-spacing: 0.75px;
+  padding: 15px;
+  color: $white;
+  font-weight: 300;
+  pre {
+    overflow-x: auto;
+  }
 }
 
 .details-position {
@@ -44,6 +60,10 @@ body {
 .external-link {
   color: $oceanBlue;
   cursor: pointer;
+}
+
+#header {
+  width: 100%;
 }
 
 .overflow-hidden {
@@ -101,6 +121,17 @@ h5 {
   }
 }
 
+.project-text,
+.project-list {
+  color: $greyBlack;
+  font: normal 14px sans-serif;
+  line-height: 22px;
+}
+
+.project-list {
+  margin-left: 15px;
+}
+
 .standard-btn {
   transition: all 0.2s ease-in;
   background-color: $white;
@@ -129,6 +160,10 @@ h5 {
   margin: 70px auto 0 auto;
   font-family: sans-serif;
   min-height: calc(100vh - 220px);
+
+  .details {
+    width: 100%;
+  }
 
   .two-column-layout {
     display: grid;
@@ -382,7 +417,6 @@ h5 {
       font: bold 1.5em sans-serif;
       float: left;
       color: $greyBlack;
-      transform: translateY(2px);
     }
   }
 } /* End of .page-content */
@@ -582,9 +616,6 @@ h5 {
 /*             992              */
 /* ############################ */
 @media screen and (max-width: 992px) {
-  // .item-last-child {
-  //   margin-bottom: 0;
-  // }
   .page-content {
     .two-column-layout {
       .end-of-post-icon {
@@ -773,102 +804,7 @@ h5 {
 /*             450              */
 /* ############################ */
 @media screen and (max-width: 450px) {
-  .page-content .details .page-title {
-    font-size: 0.9em;
-    padding-top: 2px;
-  }
   h2 {
     font-size: 18px;
   }
-}
-
-/* ############################ */
-/*             REVISE           */
-/* ############################ */
-.category-menu,
-.data-block .count,
-.mobile-title {
-  position: absolute;
-}
-
-.app-header nav #dropdown-component .menu-wrapper,
-.app-header nav #dropdown-component .menu-wrapper ul li a,
-#content,
-#header,
-#content,
-.panel-bg,
-.page-content .details {
-  width: 100%;
-}
-
-.accordion-wrapper,
-.category-menu,
-.category-menu .category-list li,
-.code-preview,
-.page-content .details .breadcrumbs .active-crumb {
-  border-radius: 5px;
-}
-
-.accordion-wrapper {
-  overflow: hidden;
-}
-
-.category-menu {
-  box-shadow: 1px 2px 5px 3px rgb(0 0 0 / 30%);
-  grid-template-columns: 145px auto;
-  background-color: $greyBlack;
-  color: #eff3f6;
-  font: normal 14px sans-serif;
-  padding: 10px;
-  line-height: 22px;
-  overflow-y: auto;
-  right: 40px;
-  top: 50px;
-  grid-gap: 10px;
-  display: none;
-}
-.category-menu .sub-category,
-.category-menu li {
-  cursor: pointer;
-}
-.category-menu .sub-category a {
-  color: $white;
-  text-decoration: none;
-}
-.category-menu .category-list li {
-  padding: 0 0 0 10px;
-  list-style-type: none;
-}
-.category-menu .category-list li a {
-  color: $white;
-}
-.code-preview {
-  margin-top: 10px;
-  box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 35%);
-  font: normal 13px/20px 'SourceCodePro', sans-serif;
-
-  background-color: $oceanBlue;
-  border: 1px solid $white;
-  letter-spacing: 0.75px;
-  padding: 15px;
-  color: $white;
-  font-weight: 300;
-  pre {
-    overflow-x: auto;
-  }
-}
-
-.no-scroll {
-  overflow: hidden;
-}
-
-.project-text,
-.project-list {
-  color: $greyBlack;
-  font: normal 14px sans-serif;
-  line-height: 22px;
-}
-
-.project-list {
-  margin-left: 15px;
 }

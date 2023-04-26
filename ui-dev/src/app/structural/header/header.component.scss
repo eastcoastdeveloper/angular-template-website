@@ -1,32 +1,8 @@
 @import '../../styles/page-style.scss';
 
-.app-header .url:hover {
-  transform: scale(0.95);
-}
-
 .app-header {
   position: relative;
   height: 50px;
-  .site-header {
-    color: #d9a74a;
-    margin: 0;
-    font: bold 30px sans-serif;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 10px;
-    font-style: italic;
-    text-transform: uppercase;
-    position: absolute;
-  }
-  .site-header + span {
-    color: #d9a74a;
-    position: absolute;
-    font: normal 18px sans-serif;
-    text-transform: uppercase;
-    font-style: italic;
-    top: 18px;
-    left: 425px;
-  }
   nav {
     float: right;
     position: relative;
@@ -47,19 +23,23 @@
         transform: translateY(-50%);
         display: block;
         font-size: 15px;
-        color: white;
+        color: $white;
         text-decoration: none;
       }
     }
   }
   .url {
-    float: left;
-    width: 500px;
+    top: 50%;
+    width: 340px;
     cursor: pointer;
     outline: none;
-    transition: transform 0.3s;
-    position: relative;
-    height: 50px;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 20px;
+    img {
+      display: block;
+      width: 100%;
+    }
   }
 
   .mobile-menu-icon {
@@ -81,7 +61,7 @@
     }
   }
   .mobile-title {
-    color: #d9a74a;
+    color: $yellowGold;
     font: normal 20px sans-serif;
     top: 50%;
     transform: translateY(-50%);
@@ -95,8 +75,8 @@
   .app-header {
     height: 50px;
     .url {
-      width: 325px;
-      height: 50px;
+      width: 250px;
+      left: 15px;
     }
     .site-header {
       top: 25px;

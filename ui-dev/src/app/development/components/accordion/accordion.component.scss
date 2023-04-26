@@ -1,87 +1,59 @@
 @import '../../../styles/page-style.scss';
 
 .accordion-wrapper {
+  margin: 30px auto 0 auto;
   border-radius: 5px;
   overflow: hidden;
-}
-
-.data-block ul {
-  list-style-type: none;
-  background-color: $oceanBlue;
-  padding: 0px;
-  margin: 0;
-  line-height: 25px;
-  font-size: 14px;
-}
-.data-block li {
-  display: grid;
-  padding: 0 10px 0 10px;
-  grid-template-areas: 'title title' 'code project';
-  line-height: 25px;
-}
-.data-block .title {
-  color: $white;
-}
-.data-block ul li div:not(:first-child) {
-  font-style: italic;
-}
-.data-block a {
-  color: $white;
-  transition: color 0.3s;
-}
-.data-block a:hover {
-  color: $yellowGold;
-}
-.data-block .code-samples li:not(:last-child) {
-  margin-bottom: 10px;
-}
-.data-block .title {
-  color: $white !important;
 }
 
 .data-block {
   font: normal 14px sans-serif;
   cursor: pointer;
   position: relative;
-
   p {
-    background-color: $oceanBlue;
-    font: normal 14px sans-serif;
-    color: $white;
+    background-color: $greyBlack;
+    color: $yellowGold;
     margin: 0;
     padding: 10px 0 10px 10px;
   }
-
   .count {
     position: absolute;
     top: 0;
     right: 15px;
   }
-
   ul {
     list-style-type: none;
     padding: 0px;
     margin: 0;
     line-height: 25px;
-
     li {
       display: grid;
       padding: 5px 10px 5px 30px;
       grid-template-areas: 'title title' 'code project';
-
       .title {
         color: $white;
+        grid-area: title;
       }
-
+      .code-link {
+        a {
+          grid-area: code;
+        }
+      }
+      .project-link {
+        a {
+          grid-area: project;
+        }
+      }
       div:not(:first-child) {
         font-style: italic;
       }
     }
-
-    li {
-      background-color: $greyBlack;
+    li:nth-child(even) {
+      background-color: rgba(49, 59, 63, 0.8);
     }
-
+    li:nth-child(odd) {
+      background-color: rgba(49, 59, 63, 0.9);
+    }
     li:hover {
       background-color: $greyBlack;
     }
@@ -91,45 +63,38 @@
       text-decoration: none;
       transition: color 0.3s;
     }
-
     a:hover {
       color: $yellowGold;
     }
   }
 }
-
 .data-block:not(:last-child) {
   border-bottom: 1px solid $white;
 }
-
 .hidden-content {
   overflow: auto;
   max-height: 0;
   color: $white;
 }
-
 .show-content {
   max-height: 250px !important;
 }
-
 #skills {
-  list-style-type: unset;
+  grid-template-columns: 50% 50%;
   background-color: $greyBlack;
+  padding: 0 0 10px 30px;
+  list-style-type: unset;
   display: grid;
-  grid-template-columns: repeat(2, 50%);
   line-height: 20px;
-  text-align: center;
-  padding: 10px;
-
   li {
-    display: block;
     padding: 5px 10px 5px 0;
+    display: block;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .accordion-wrapper {
-    width: 100%;
-    max-width: unset;
-  }
+.borderBottom {
+  border-bottom: 1px solid $white;
+  position: absolute;
+  top: 36px;
+  width: 100%;
+  z-index: 1;
 }

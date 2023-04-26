@@ -11,9 +11,6 @@ export class GlobalFeaturesService {
   someWidth: number = window.innerWidth;
   private winWidthSource = new BehaviorSubject(this.someWidth);
   currentWidth$ = this.winWidthSource.asObservable();
-
-  backButtonMessage$ = new BehaviorSubject<boolean>(false);
-  backButtonActive$ = new BehaviorSubject<boolean>(false);
   categoryNavigationMenu$ = new BehaviorSubject<boolean>(false);
   historyIndex$ = new BehaviorSubject<number>(0);
 
@@ -23,7 +20,6 @@ export class GlobalFeaturesService {
 
   constructor(
     private _windowRef: WindowRef,
-    private _router: Router,
     private _metaService: Meta,
     private _title: Title
   ) {}
@@ -41,42 +37,8 @@ export class GlobalFeaturesService {
     });
   }
 
-  goBack() {
-    if (this.historyIndex > 0) {
-      this.backButtonActive$.next(true);
-      this.historyIndex--;
-      const page_start_pos =
-        this.history[this.historyIndex].lastIndexOf('=') + 1;
-      if (page_start_pos !== 0) {
-        this.pageQuery = 0;
-        this.pageQuery = parseInt(
-          this.history[this.historyIndex].slice(page_start_pos)
-        );
-        this._router.navigate([this.history[this.historyIndex]], {
-          queryParams: { page: this.pageQuery }
-        });
-        this.history.pop();
-        return;
-      }
-      if (page_start_pos === 0) {
-        this._router.navigate([this.history[this.historyIndex]]);
-        this.history.pop();
-        return;
-      }
-    }
-    this.historyIndex$.next(this.historyIndex);
-  }
-
   externalLink(url: string) {
     window.open(url, '_blank');
-  }
-
-  showBackButtonMessage() {
-    this.backButtonMessage$.next(true);
-  }
-
-  hideBackButtonMessage() {
-    this.backButtonMessage$.next(false);
   }
 
   addTags(obj: {

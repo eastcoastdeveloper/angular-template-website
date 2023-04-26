@@ -5,7 +5,7 @@ import { ProjectsListInterface } from '../../../interfaces/projects-list.interfa
 @Component({
   selector: 'app-projects-list-content',
   templateUrl: './projects-list-content.component.html',
-  styleUrls: ['../../../styles/cornerstone.scss']
+  styleUrls: ['../../../styles/_cornerstone.scss']
 })
 export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];
