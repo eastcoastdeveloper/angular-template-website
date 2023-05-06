@@ -9,17 +9,12 @@ import {
 } from '@angular/core';
 import { GlobalFeaturesService } from './services/global-features.service';
 import { SideBarService } from './services/sidebar-service';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  NavigationStart,
-  Router
-} from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { CanonicalService } from './services/canonical.service';
 import { LocalStorageService } from './services/local-storage.service';
-import { query } from 'express';
+import { NavigationService } from './services/navigation.service';
 
 @Component({
   selector: 'my-app',
@@ -45,7 +40,7 @@ export class AppComponent
   totalProjects: number;
   currentRoute: string;
   historyIndex: number;
-  queryParam: number;
+  queryParam: number | null;
   totalAll: number;
 
   constructor(
@@ -53,7 +48,7 @@ export class AppComponent
     private _canonicalService: CanonicalService,
     private _sidebarService: SideBarService,
     private _local: LocalStorageService,
-    private _activatedRoute: ActivatedRoute,
+    private _navigationService: NavigationService,
     private _renderer: Renderer2,
     private _router: Router,
     @Inject(DOCUMENT) private document: Document
@@ -75,58 +70,7 @@ export class AppComponent
 
     // Remove Inability to Scroll
     this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
-      if (data instanceof NavigationStart) {
-        if (data.navigationTrigger === 'popstate') {
-          this.backButtonActive = true;
-        }
-      }
       if (data instanceof NavigationEnd) {
-        if (!this.backButtonActive) {
-          this._activatedRoute.queryParams.subscribe((val) => {
-            this.queryParam = parseInt(val['page']);
-          });
-
-          if (this.queryParam) {
-            const paramIndex = data.urlAfterRedirects.indexOf('?');
-            const url = data.urlAfterRedirects.slice(0, paramIndex);
-            this.history.push({
-              url: url,
-              hasParam: true,
-              query: this.queryParam
-            });
-
-            this.history.length > 1 &&
-            this.history[0]['url'] === this.history[1]['url']
-              ? this.history.pop()
-              : '';
-          } else {
-            this.history.push({
-              url: data.urlAfterRedirects,
-              hasParam: false,
-              query: null
-            });
-          }
-
-          this.historyIndex = this.history.length;
-        }
-
-        if (this.backButtonActive) {
-          this.historyIndex--;
-          console.log(this.history);
-          console.log(this.history[this.historyIndex - 1]);
-          // if (this.history[this.historyIndex - 1]['query']) {
-          //   this._router.navigate(
-          //     [this.history[this.historyIndex - 1]['url']],
-          //     {
-          //       queryParams: {
-          //         page: this.history[this.historyIndex - 1]['query']
-          //       }
-          //     }
-          //   );
-          // }
-          this.backButtonActive = false;
-        }
-
         this._renderer.removeAttribute(this.document.body, 'class');
         this._globalFeatures.scrollToTop();
         this._sidebarService.changeValue(false);
@@ -149,6 +93,10 @@ export class AppComponent
       this.totalComponennts = parsed.totals.cmp;
       this.totalDevelopment = parsed.totals.dev;
     }
+  }
+
+  back(): void {
+    this._navigationService.back();
   }
 
   closeMobileNav() {

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { WindowRef } from '../windowRef';
 
