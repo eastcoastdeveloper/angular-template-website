@@ -17,7 +17,6 @@ export class NavigationService {
           }
         });
         this.history.push(event.urlAfterRedirects);
-        console.log('pushed');
 
         // Remove duplicates
         if (
@@ -49,6 +48,7 @@ export class NavigationService {
   }
 
   back() {
+    console.log('clicked');
     var arr = this.history;
     if (arr.length > 1) {
       arr.pop();

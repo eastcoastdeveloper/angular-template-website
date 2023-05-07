@@ -9,7 +9,8 @@ import { PaginationComponent } from 'src/app/development/components/pagination/p
 import { CategoryNavigationComponent } from 'src/app/development/components/category-navigation/category-navigation.component';
 import { RelatedComponentsComponent } from 'src/app/development/components/related-components/related-components.component';
 import { EndOfPostComponent } from 'src/app/development/components/end-of-post/end-of-post.component';
-// import { BackButtonNavigationComponent } from 'src/app/structural/back-button-navigation/back-button-navigation.component';
+import { BackButtonComponent } from 'src/app/development/components/back-button/back-button.component';
+import { BackButtonDirective } from 'src/app/directives/back-button.directive';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import { EndOfPostComponent } from 'src/app/development/components/end-of-post/e
     PaginationComponent,
     CategoryNavigationComponent,
     RelatedComponentsComponent,
-    EndOfPostComponent
-    // BackButtonNavigationComponent
+    EndOfPostComponent,
+    BackButtonComponent,
+    BackButtonDirective
   ],
   imports: [CommonModule, RouterModule, RightColumnModule],
   exports: [
@@ -30,8 +32,9 @@ import { EndOfPostComponent } from 'src/app/development/components/end-of-post/e
     PaginationComponent,
     CategoryNavigationComponent,
     RelatedComponentsComponent,
-    EndOfPostComponent
-    // BackButtonNavigationComponent
+    EndOfPostComponent,
+    BackButtonComponent,
+    BackButtonDirective
   ]
 })
 export class SharedModule {}

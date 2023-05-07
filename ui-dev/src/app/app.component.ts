@@ -11,7 +11,7 @@ import { GlobalFeaturesService } from './services/global-features.service';
 import { SideBarService } from './services/sidebar-service';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, LocationStrategy } from '@angular/common';
 import { CanonicalService } from './services/canonical.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { NavigationService } from './services/navigation.service';
@@ -48,6 +48,7 @@ export class AppComponent
     private _canonicalService: CanonicalService,
     private _sidebarService: SideBarService,
     private _local: LocalStorageService,
+    private _location: LocationStrategy,
     private _navigationService: NavigationService,
     private _renderer: Renderer2,
     private _router: Router,
@@ -71,6 +72,11 @@ export class AppComponent
     // Remove Inability to Scroll
     this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
       if (data instanceof NavigationEnd) {
+        history.pushState(null, null!, location.href);
+        this._location.onPopState(() => {
+          history.pushState(null, null!, location.href);
+        });
+
         this._renderer.removeAttribute(this.document.body, 'class');
         this._globalFeatures.scrollToTop();
         this._sidebarService.changeValue(false);
@@ -95,9 +101,9 @@ export class AppComponent
     }
   }
 
-  back(): void {
-    this._navigationService.back();
-  }
+  // back(): void {
+  //   this._navigationService.back();
+  // }
 
   closeMobileNav() {
     this._sidebarService.changeValue(false);

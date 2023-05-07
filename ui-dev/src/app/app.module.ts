@@ -11,7 +11,6 @@ import { FooterComponent } from './structural/footer/footer.component';
 import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 import { WindowRef } from './windowRef';
 import { LoadingInterceptor } from './guards/loading.interceptor';
-import { BackButtonDirective } from './directives/back-button.directive';
 
 @NgModule({
   imports: [
@@ -28,7 +27,6 @@ import { BackButtonDirective } from './directives/back-button.directive';
     HeaderComponent,
     FooterComponent,
     appRoutingComponents,
-    BackButtonDirective,
     FormConfirmationComponent
   ],
   providers: [

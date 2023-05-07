@@ -75,7 +75,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     this._activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params) => {
-        // console.log(params);
         this.setPageParamValue(params);
       });
 
