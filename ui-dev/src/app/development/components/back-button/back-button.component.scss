@@ -3,10 +3,17 @@
   height: 22px;
   float: left;
   margin: 1px 10px 0 0;
+  opacity: 0.5;
+  pointer-events: none;
   cursor: pointer;
   img {
     width: 100%;
   }
+}
+
+.has-history {
+  opacity: 1;
+  pointer-events: all;
 }
 
 @media screen and (max-width: 768px) {

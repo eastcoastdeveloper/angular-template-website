@@ -11,11 +11,6 @@ export class GlobalFeaturesService {
   private winWidthSource = new BehaviorSubject(this.someWidth);
   currentWidth$ = this.winWidthSource.asObservable();
   categoryNavigationMenu$ = new BehaviorSubject<boolean>(false);
-  historyIndex$ = new BehaviorSubject<number>(0);
-
-  historyIndex: number = 0;
-  history: string[] = [];
-  pageQuery?: number;
 
   constructor(
     private _windowRef: WindowRef,

@@ -14,7 +14,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { DOCUMENT, LocationStrategy } from '@angular/common';
 import { CanonicalService } from './services/canonical.service';
 import { LocalStorageService } from './services/local-storage.service';
-import { NavigationService } from './services/navigation.service';
 
 @Component({
   selector: 'my-app',
@@ -29,13 +28,12 @@ export class AppComponent
 {
   private unsubscribe$ = new Subject<void>();
 
-  history: { url: string; hasParam: boolean; query: number | null }[] = [];
   width: number = window.innerWidth;
+  backButtonNotification = false;
   isMobile: boolean = false;
   mobileWidth: number = 760;
   totalComponennts: number;
   totalDevelopment: number;
-  backButtonActive = false;
   sidebarStatus: boolean;
   totalProjects: number;
   currentRoute: string;
@@ -49,7 +47,6 @@ export class AppComponent
     private _sidebarService: SideBarService,
     private _local: LocalStorageService,
     private _location: LocationStrategy,
-    private _navigationService: NavigationService,
     private _renderer: Renderer2,
     private _router: Router,
     @Inject(DOCUMENT) private document: Document
@@ -75,6 +72,10 @@ export class AppComponent
         history.pushState(null, null!, location.href);
         this._location.onPopState(() => {
           history.pushState(null, null!, location.href);
+          this.backButtonNotification = true;
+          setTimeout(() => {
+            this.backButtonNotification = false;
+          }, 5000);
         });
 
         this._renderer.removeAttribute(this.document.body, 'class');
@@ -100,10 +101,6 @@ export class AppComponent
       this.totalDevelopment = parsed.totals.dev;
     }
   }
-
-  // back(): void {
-  //   this._navigationService.back();
-  // }
 
   closeMobileNav() {
     this._sidebarService.changeValue(false);

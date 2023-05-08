@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
   private history: string[] = [];
   private queryParam: number | null;
+  historySubject$ = new BehaviorSubject<string[]>(this.history);
 
   constructor(private router: Router, private _activatedRoute: ActivatedRoute) {
     this.router.events.subscribe((event) => {
@@ -48,7 +50,6 @@ export class NavigationService {
   }
 
   back() {
-    console.log('clicked');
     var arr = this.history;
     if (arr.length > 1) {
       arr.pop();

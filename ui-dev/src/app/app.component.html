@@ -1,6 +1,10 @@
-<!-- <button backButton style="position: fixed; z-index: 9999">
-  Back with NavigationService
-</button> -->
+<div
+  class="notification"
+  *ngIf="backButtonNotification"
+  [ngClass]="{ 'display-notification': backButtonNotification }"
+>
+  <span>Please use internal back button.</span>
+</div>
 <div id="angular-spa">
   <div #headerComponent id="header">
     <app-header></app-header>
@@ -42,26 +46,3 @@
     </nav>
   </div>
 </div>
-
-<!-- <div *ngIf="backButtonMessage" class="back-btn-notification element-shadow">
-  <span class="warning-icon">&#9888;</span>
-  <p>Please use internal back button at top left.</p>
-  <span (click)="closeNotification()" class="close-btn">&#x2715;</span>
-</div> -->
-
-<!-- <style>
-  .tools {
-    position: fixed;
-    top: 110px;
-    background-color: aquamarine;
-    left: 10px;
-    height: 450px;
-    padding: 10px;
-  }
-</style>
-
-<div class="tools">
-  <div *ngFor="let url of _globalFeatures.history; let i = index">
-    {{ i }} = {{ url }}
-  </div>
-</div> -->
