@@ -3,6 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "strictPropertyInitialization": false,
     "noImplicitAny": false,
