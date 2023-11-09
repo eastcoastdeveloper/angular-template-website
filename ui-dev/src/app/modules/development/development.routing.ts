@@ -2,37 +2,37 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InPageNavigationComponent } from 'src/app/development/components/in-page-navigation/in-page-navigation.component';
 import { ServicesComponent } from 'src/app/development/components/services/services.component';
-import { DevelopmentWrapper } from 'src/app/pages/wrapper-development/development-wrapper.component';
+import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DevelopmentWrapper,
+    component: AppsWrapperComponent,
     children: [
-      { path: '', redirectTo: 'learn-to-code', pathMatch: 'full' },
+      { path: '', redirectTo: 'security-classes', pathMatch: 'full' },
       {
-        path: 'learn-to-code',
+        path: 'security-classes',
         loadChildren: () =>
           import(
             `../../modules/cornerstone-development/cornerstone-development.module`
           ).then((m) => m.CornerstoneDevelopmentModule)
       },
       {
-        path: 'routing-in-angular',
+        path: 'regulatory-environment',
         loadChildren: () =>
           import(`../routing-in-angular/routing-in-angular.module`).then(
             (m) => m.ModulesInAngularModule
           )
       },
       {
-        path: 'in-page-navigation',
+        path: 'safety-security',
         component: InPageNavigationComponent
       },
       {
         path: 'services-in-angular',
         component: ServicesComponent
       },
-      { path: '**', redirectTo: 'learn-to-code' }
+      { path: '**', redirectTo: 'security-classes' }
     ]
   }
 ];
@@ -44,7 +44,6 @@ const routes: Routes = [
 export class DevelopmentRoutingModule {}
 
 export const developmentComponents = [
-  DevelopmentWrapper,
   ServicesComponent,
   InPageNavigationComponent
 ];

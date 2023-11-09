@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,13 @@ import { FooterComponent } from './structural/footer/footer.component';
 import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 import { WindowRef } from './windowRef';
 import { LoadingInterceptor } from './guards/loading.interceptor';
+import { ConfigService } from './services/config.service';
+
+export function appConfigInit(appConfigService: ConfigService) {
+  return () => {
+    return appConfigService.loadAppConfig();
+  };
+}
 
 @NgModule({
   imports: [
@@ -37,6 +44,12 @@ import { LoadingInterceptor } from './guards/loading.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appConfigInit,
+      multi: true,
+      deps: [ConfigService]
     }
   ],
   bootstrap: [AppComponent]

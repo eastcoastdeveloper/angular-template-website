@@ -12,8 +12,10 @@ import { SideBarService } from './services/sidebar-service';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DOCUMENT, LocationStrategy } from '@angular/common';
-import { CanonicalService } from './services/canonical.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { ProjectListService } from './services/project-list.service';
+import { ConfigService } from './services/config.service';
+import { CategoryInterface } from './interfaces/categories.interface';
 
 @Component({
   selector: 'my-app',
@@ -27,8 +29,8 @@ export class AppComponent
   implements OnInit, AfterViewInit, AfterContentChecked, OnDestroy
 {
   private unsubscribe$ = new Subject<void>();
-
   width: number = window.innerWidth;
+  configObject: CategoryInterface;
   backButtonNotification = false;
   isMobile: boolean = false;
   mobileWidth: number = 760;
@@ -37,28 +39,40 @@ export class AppComponent
   sidebarStatus: boolean;
   totalProjects: number;
   currentRoute: string;
+  categoryType: string;
   historyIndex: number;
   queryParam: number | null;
   totalAll: number;
 
   constructor(
     public _globalFeatures: GlobalFeaturesService,
-    private _canonicalService: CanonicalService,
     private _sidebarService: SideBarService,
     private _local: LocalStorageService,
+    private _projectListService: ProjectListService,
     private _location: LocationStrategy,
+    private _configService: ConfigService,
     private _renderer: Renderer2,
     private _router: Router,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit(): void {
-    this._canonicalService.setCanonicalURL();
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.configObject = val;
+      });
     this.isMobile = this.width < this.mobileWidth;
     this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.width = currentVal;
+      });
+
+    this._projectListService.categoryType$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.categoryType = val;
       });
 
     // Sidebar Service
@@ -96,9 +110,9 @@ export class AppComponent
       const parsed = JSON.parse(storage);
       this._local.storage = parsed;
       this.totalAll = parsed.totals.all;
-      this.totalProjects = parsed.totals.prj;
-      this.totalComponennts = parsed.totals.cmp;
-      this.totalDevelopment = parsed.totals.dev;
+      this.totalProjects = parsed.totals.leadership;
+      this.totalComponennts = parsed.totals.standards;
+      this.totalDevelopment = parsed.totals.security;
     }
   }
 

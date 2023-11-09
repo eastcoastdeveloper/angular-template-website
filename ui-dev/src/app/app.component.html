@@ -29,20 +29,36 @@
         <span class="mobile-item-count">{{ totalAll }}</span
         >All
       </div>
-      <div routerLink="web-development-projects/front-end-development">
-        <span class="mobile-item-count">{{ totalProjects }}</span
-        >Projects
+
+      <div
+        routerLink="{{ configObject.categoryOne }}/{{
+          configObject.categoryOne
+        }}-classes"
+      >
+        <!-- <span class="mobile-item-count">{{ totalProjects }}</span> -->
+        <span class="nav-name"> {{ configObject.categoryOne }}</span>
       </div>
-      <div routerLink="ui-components/website-features">
-        <span class="mobile-item-count">{{ totalComponennts }}</span
-        >Components
+
+      <div
+        routerLink="{{ configObject.categoryTwo }}/{{
+          configObject.categoryTwo
+        }}-classes"
+      >
+        <!-- <span class="mobile-item-count">{{ totalComponennts }}</span> -->
+        <span class="nav-name">{{ configObject.categoryTwo }}</span>
       </div>
-      <div routerLink="web-application-development/learn-to-code">
-        <span class="mobile-item-count">{{ totalDevelopment }}</span
-        >Development
+
+      <div
+        routerLink="{{ configObject.categoryThree }}/{{
+          configObject.categoryThree
+        }}-classes"
+      >
+        <!-- <span class="mobile-item-count">{{ totalDevelopment }}</span> -->
+        <span class="nav-name">{{ configObject.categoryThree }}</span>
       </div>
-      <div routerLink="front-end-dev-resume">Experience</div>
-      <div routerLink="front-end-developer">About</div>
+
+      <!-- <div routerLink="front-end-dev-resume">Experience</div> -->
+      <div routerLink="about-us">About</div>
     </nav>
   </div>
 </div>

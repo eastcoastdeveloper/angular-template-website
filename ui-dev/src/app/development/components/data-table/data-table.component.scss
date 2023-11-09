@@ -1,5 +1,13 @@
 @import '../../../styles/page-style.scss';
 
+.page-intro {
+  .feature-img {
+    background: transparent
+      url('../../../../assets/images/data_privacy_security.jpg') scroll
+      no-repeat center / cover;
+  }
+}
+
 #table-component {
   font-family: sans-serif;
   background-color: $white;

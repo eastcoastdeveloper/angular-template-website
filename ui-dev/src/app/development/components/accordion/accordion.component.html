@@ -1,185 +1,63 @@
-<div #accordionParent class="accordion-wrapper element-shadow">
-  <div class="data-block" *ngFor="let item of accordionData; let i = index">
-    <p (click)="toggleSection($event, i)">{{ item.name }}</p>
-    <p class="count">{{ item.content.length }}</p>
-    <div class="hidden-content">
-      <ul *ngIf="i === 0">
-        <li *ngFor="let posts of item.content; let j = index">
-          <div class="title" style="grid-area: title">{{ posts.item }}</div>
-        </li>
-      </ul>
-      <ul id="skills" *ngIf="i === 1">
-        <li *ngFor="let listElems of item.content; let j = index">
-          <div class="title" style="grid-area: title">
-            {{ listElems.title }}
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="i === 2 || i === 3 || i === 4">
-        <li *ngFor="let listElems of item.content; let j = index">
-          <div class="title" style="grid-area: title">
-            {{ listElems.title }}
-          </div>
-          <div>
-            <a
-              href="{{ listElems.code }}"
-              target="_blank"
-              style="grid-area: code"
-              >code</a
-            >
-          </div>
-          <div>
-            <a
-              href="{{ listElems.viewProject }}"
-              target="_blank"
-              style="grid-area: project"
-              >view project</a
-            >
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="i === 4">
-        <li *ngFor="let listElems of item.content; let j = index">
-          <div class="title" style="grid-area: title">
-            {{ listElems.title }}
-          </div>
-          <div>
-            <a
-              href="{{ listElems.code }}"
-              target="_blank"
-              style="grid-area: code"
-              >code</a
-            >
-          </div>
-          <div>
-            <a
-              href="{{ listElems.viewProject }}"
-              target="_blank"
-              style="grid-area: project"
-              >view project</a
-            >
-          </div>
-        </li>
-      </ul>
-      <ul *ngIf="i === 5">
-        <li *ngFor="let posts of item.content; let j = index">
-          <div class="title" style="grid-area: title">{{ posts.title }}</div>
-          <div>
-            <a href="{{ posts.link }}" target="_blank" style="grid-area: code"
-              >Read the post</a
-            >
-          </div>
-        </li>
-      </ul>
-    </div>
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
+<p class="project-text">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<h2>Is this Required for You?</h2>
+<p class="project-text">
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
+</p>
 
 <p class="project-text element-margin-top">
-  This basic Angular accordion is set up to have multiple layouts. Each of which
-  can be easily configured to apply in any group. The code is super simple as
-  it's akin to basic JavaScript class toggling. Not really much to it here, but
-  can certainly be used as a solid component. The number of items on the far
-  right is the amount of objects being piped into each group. So, yes&mdash;this
-  is JSON powered, acquired via a conventional http GET.
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
 </p>
 
-<h2>Imported Data</h2>
-<div class="code-preview">
-  <pre><code>{{json}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
-  Next, we'll tell TypeScript what to expect by creating an interface with
-  optional values. Values are optional because there's different layouts. Not
-  all values exist in each layout.
-</p>
-
-<h2>Create the Interface</h2>
-<div class="code-preview">
-  <pre><code>{{interface}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
-  For those of you unfamiliar with this, it's a representation of the payload.
-  Not possible in JavaScript, but one of the core pieces of TypeScript and
-  abundant in other languages such as Java and frameworks such as Spring and
-  .NET. The type is checked at run time vs compile time. You may see interfaces
-  prefixed with T, such as TAccordionData to help denote a valid type for future
-  developers. Moreoever this could certainly be considered a best practice in
-  some environments as an interface or model called T is simply not intuitive
-  enough.
-</p>
-
-<h2>Angular Accordion Component</h2>
-<ul class="project-list">
-  <li>
-    In the TypeScript file, we begin with an empty array set to the interface
-    type.
-  </li>
-  <li>Capture the parent element.</li>
-  <li>
-    OnInit pushes the data into the afforementioned array via an http request.
-  </li>
-  <li>
-    Notice the http reference in the constructor. You'll also need to add
-    HttpClientModule to the parent module.
-  </li>
-  <li>
-    The subscribe method takes advantage of RxJS's inbuilt next, error, and
-    complete methods. Of course in a real world scenario, these would be
-    beneficial.
-  </li>
-  <li>
-    The toggle function looks more complex than it really is. The hidden
-    sections are gathered in an array. The line before clears that array. Loop
-    over the elements, and apply the 'show-content' class to the appropriate
-    section.
-  </li>
-</ul>
-
-<div class="code-preview">
-  <pre><code>{{typescript}}</code></pre>
-</div>
-
-<h2>Lean Markup</h2>
+<h2>Moving Forward</h2>
 <p class="project-text">
-  The markup is essentially one giant HTML block with settings for each section.
-  Notice the ngFor directive at the very top. I've seen markup get pretty messy
-  and often times have unnessary tags, parents, and children. Usually written by
-  devs that have no interest in the frontend in my experience. So, regardless of
-  the frontend task, keep the markup as lean as possible. Each section is
-  initialized with a double loop indicative of the payload.
-</p>
-
-<div class="code-preview">
-  <pre><code>{{markup}}</code></pre>
-</div>
-
-<h2>Apply the Styling</h2>
-<p class="project-text">
-  The scss variables at the top are no doubt housed in another file, then
-  imported. This of course allows us to change the entire color palette in one
-  fell swoop. As mentioned on other pages, I use nesting to compartmentalize
-  tyling blocks. Looks cleaner, easier to read, and definitely a safer bet. I
-  must say, even while working on high profile projects&mdash;I notice devs
-  writting inline styles. Please, avoid this at all cost! It's inflexible and
-  definitely frowned upon.
-</p>
-
-<div class="code-preview">
-  <pre><code>{{scss}}</code></pre>
-</div>
-
-<h2>In Conclusion</h2>
-<p class="project-text">
-  Regardless of the project, components like these are always helpful in
-  organizing the UI for any screen size. Making components like this clean,
-  maleable, and easy to maintain are crucial. At my current place of employment,
-  there's archaic code. Features without documentation or comments. There's
-  basic components that don't work or are unresponsive. But I digress. Hope you
-  found this post useful. <span class="attention-arrow">&#x2190;</span>
-  <span class="external-link" (click)="navigateToPage(urlStackblitz)"
-    >Accordion Component Stackblitz demo.</span
-  >.
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

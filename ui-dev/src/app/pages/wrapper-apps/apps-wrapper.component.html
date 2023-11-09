@@ -14,17 +14,17 @@
 </style> -->
 
 <div class="page-content">
-  <div class="details" (click)="pageClickHandler($event)">
+  <div class="details">
     <app-back-button></app-back-button>
     <h1 class="page-title">{{ pageTitle }}</h1>
 
-    <app-post-details
+    <!-- <app-post-details
       *ngIf="pageTitle != 'Front End Development' && windowWidth > 1199"
-    ></app-post-details>
+    ></app-post-details> -->
 
     <app-category-navigation
       *ngIf="windowWidth > 605"
-      [categoryType]="'projects'"
+      [categoryType]="categoryType"
     ></app-category-navigation>
   </div>
 
@@ -32,21 +32,20 @@
 
   <main
     [ngClass]="threeColumnLayout ? 'three-column-layout' : 'two-column-layout'"
-    (click)="pageClickHandler($event)"
   >
     <div class="left-column">
       <router-outlet></router-outlet>
-      <app-post-details
+      <!-- <app-post-details
         *ngIf="pageTitle != 'Front End Development' && windowWidth < 1200"
-      ></app-post-details>
+      ></app-post-details> -->
       <app-end-of-post *ngIf="!cornerstone"></app-end-of-post>
     </div>
 
     <div class="middle-column" *ngIf="threeColumnLayout">
-      <app-related-components [type]="'projects'"></app-related-components>
+      <app-related-components [type]="categoryType"></app-related-components>
     </div>
 
-    <div class="right-column" (click)="pageClickHandler($event)">
+    <div class="right-column">
       <app-right-column></app-right-column>
     </div>
   </main>

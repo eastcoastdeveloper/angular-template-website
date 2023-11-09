@@ -55,6 +55,7 @@ export class RelatedComponentsComponent implements OnDestroy {
       this.dataSubject$.next([]);
     } else {
       let parsed = JSON.parse(storage);
+      // this._globalFeatures.getCategoryFromUrl();
       this.dataSubject$.next(parsed[type][1]);
       return parsed;
     }

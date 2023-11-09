@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -21,26 +21,10 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   @ViewChild('leftColumn', { static: false }) leftColumn: ElementRef;
 
   private unsubscribe$ = new Subject<void>();
-  meta?: {
-    description: string;
-    keywords: string;
-    title: string;
-    dateCreated: string;
-    dateModified: string;
-  };
 
   pageDataObject: PageDataObject = {
     threeColumnLayout: false,
-    cornerStone: true,
-    meta: {
-      description:
-        'A wide variety of TypeScript and JavaScript projects ranging from components, charts, and websites, to API development.',
-      keywords:
-        'front end development, web development projects, web developer portfolio',
-      title: 'JavaScript Projects',
-      dateCreated: '2022-10-15',
-      dateModified: '2023-10-25'
-    }
+    cornerStone: true
   };
 
   projectsArray: ProjectsListInterface[] = [];
@@ -51,23 +35,8 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   constructor(
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService,
-    private _router: Router,
     private _activatedRoute: ActivatedRoute
   ) {
-    this._router.events.subscribe((data) => {
-      if (data instanceof NavigationEnd) {
-        this._projectListService.pageDataObject$
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe({
-            next: (val) => {
-              this.meta = val.meta;
-              if (Object.values(val).length) {
-                this._globalFeatures.addTags(this.meta!);
-              }
-            }
-          });
-      }
-    });
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
@@ -97,7 +66,6 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
     undefined === params['page']
       ? (this.pageQuery = 1)
       : (this.pageQuery = params['page']);
-
     this._projectListService.isThereCache(
       this.categoryType,
       this.pageQuery,

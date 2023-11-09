@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "masterObject": {
+    "categoryOne": "leadership",
+    "categoryTwo": "standards",
+    "categoryThree": "security"
+  }
+}

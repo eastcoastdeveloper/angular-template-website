@@ -1,144 +1,63 @@
-<p class="project-text">
-  This basic Angular slider component is maleable, responsive, and dynamic.
-  Sometimes called a carousel too. There's so many variations of how this can
-  work. Use an API for the graphics and data. Add smooth transitions or image
-  descriptions. However you decide you modify it, enjoy the feature.
-</p>
-
-<div class="wrapper element-shadow element-margin-top">
-  <div class="slider-bg"></div>
-  <div class="tagLine">Top Four AI Books of 2023</div>
-  <div id="slider">
-    <div class="content">
-      <div *ngIf="loaded" class="books-wrapper">
-        <img
-          onerror="this.onerror=null;this.src='../../../../../assets/img/git_logo.png'"
-          [src]="getSliderImage(currentIndex)"
-          class="element-shadow"
-          alt="{{ result[currentIndex].altText }}"
-        />
-        <div
-          class="product-info"
-          [ngClass]="{ 'show-product-info': productInfo }"
-        >
-          {{ result[currentIndex].description }}
-        </div>
-        <div class="purchase-info">
-          <div>
-            <a
-              href="{{ result[currentIndex].link }}"
-              target="_blank"
-              class="purchase-btn element-shadow"
-              >Purchase Book</a
-            >
-            <div (click)="productInfo = !productInfo" class="info-wrapper">
-              <span>i</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="navigation">
-      <div (click)="prevBook()" class="prev"><span>&#10140;</span></div>
-      <div (click)="nextBook()" class="next"><span>&#10140;</span></div>
-    </div>
-  </div>
-  <div class="dots">
-    <input
-      type="radio"
-      [checked]="item.status"
-      name="arrPos"
-      *ngFor="let item of result; let i = index"
-      (click)="changeShowcase(i)"
-    />
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
-
-<h2>Interface and TypeScript</h2>
 <p class="project-text">
-  This is a mirror of what the data looks like. Interfaces&mdash;were designed
-  to describe object shapes and check for necessary keys. They're virtual
-  structures that exist solely in TypeScript at run time. Not thereafter simply
-  because JavaScript doesn't have such a feature. Fortunately for us, the object
-  is rudimentary. More complex objects result in more complex interfaces. Though
-  there are tools that convert data to interfaces, I prefer writing them myself.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<div class="code-preview">
-  <pre><code>{{interface}}</code></pre>
-</div>
-
-<ul class="project-list element-margin-top">
-  <li>
-    unsubscribe is a private variable because no other class needs to know about
-    it. We use it to end the subscription when the component life cycle is
-    finished. This is denoted by the ngOnDestroy hook at the bottom.
-  </li>
-  <li>result is our main array with the aforementioned interface reference.</li>
-  <li>currentIndex is our indice/ reference to the currently active book.</li>
-  <li>productInfo is whether the book description is shown or not</li>
-  <li>
-    Set the private _http variable and be sure to add HttpClientModule to the
-    parent module.
-  </li>
-  <li>GET the response and store it in the results variable.</li>
-  <li>
-    changeShowcase resets all the objects' status' values to false. Then sets
-    the incoming value to true.
-  </li>
-  <li>
-    next and prevBook simply retrieve the current index of the original data
-    stream, and reset the status values. Both of which are set via
-    currentIndex++, subtract with currentIndex--, or set it to zero if we reach
-    the end.
-  </li>
-</ul>
-
-<div class="code-preview">
-  <pre><code>{{typescript}}</code></pre>
-</div>
-
-<h2>Angular Slider Markup & Style</h2>
+<h2>Is this Required for You?</h2>
 <p class="project-text">
-  The meat and potatoes are housed inside the slider ID element. If things are
-  loaded, we show content. And if the image is not found, we add a new path to
-  the image src element. All attributes come from the data stream.
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
 </p>
 
 <p class="project-text element-margin-top">
-  Show the book description if productInfo is true. There's a click function
-  with the logic built right into the markup. I did this because it's one simple
-  variable toggle. Below that are the next and previous buttons. Both of which
-  use the currentIndex variable. Below that are the radio buttons with a for
-  loop. So, if we have more books, these will grow automatically.
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
 </p>
 
-<div class="code-preview">
-  <pre><code>{{markup}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
-  The styling has an auto generated gradient at the top with extra browser
-  support. The purchaseInfo class is one big nested object for organizational
-  purposes. Inside of the dots class, we're changing the color of the radio
-  buttons with accent. productInfo is the black overlay that slides in and out.
-</p>
-
-<div class="code-preview">
-  <pre><code>{{scss}}</code></pre>
-</div>
-
-<h2>In Conclusion</h2>
+<h2>Moving Forward</h2>
 <p class="project-text">
-  There's so much more we can add here. Transitions between the imagery. We can
-  add a description to each book and display it underneath vs on the book. We
-  could add a star rating powered by Spring Boot so users of this carousel could
-  rate the books. Or, we could even add params to the GET request. Send it to an
-  Express backend to fetch the data. Regardless, I hope you found this usefull
-  and can use it in future projects. As is or customized to your liking. The
-  list goes on. Check out my Angular Slider
-  <span class="attention-arrow">&#x2190;</span>
-  <span class="external-link" (click)="navigateToPage(urlStackblitz)"
-    >live code example.</span
-  >
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

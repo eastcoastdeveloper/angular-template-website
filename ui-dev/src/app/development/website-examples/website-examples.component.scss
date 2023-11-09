@@ -1,36 +1,8 @@
 @import '../../styles/page-style.scss';
 
-.project {
-  .site-details {
-    overflow: auto;
-    border-bottom: 1px solid $greyBlack;
-    padding-bottom: 4px;
-    h2 {
-      float: left;
-      margin: 0 0 5px 0;
-    }
-    .visit-site {
-      float: right;
-      font: normal 15px sans-serif;
-      cursor: pointer;
-      background-color: $oceanBlue;
-      font-style: italic;
-      color: $white;
-      padding: 2px 10px;
-      border-radius: 4px;
-    }
+.page-intro {
+  .feature-img {
+    background: transparent url('../../../assets/images/insider_trading.jpg')
+      scroll no-repeat center / cover;
   }
-  .site-details + span {
-    margin: 5px 0 10px 0;
-    display: block;
-    font: normal 15px sans-serif;
-  }
-  .site-description {
-    font: normal 14px/22px sans-serif;
-    color: $greyBlack;
-  }
-}
-
-.project:not(:first-child) .site-details {
-  margin-top: 30px;
 }

@@ -1,12 +1,12 @@
 export interface LocalStorageInterface {
   all: {};
-  projects: {};
-  cmp: {};
-  dev: {};
+  leadership: {};
+  standards: {};
+  security: {};
   totals: {
     all?: number;
-    prj?: number;
-    cmp?: number;
-    dev?: number;
+    leadership?: number;
+    standards?: number;
+    security?: number;
   };
 }

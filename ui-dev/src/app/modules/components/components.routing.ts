@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ComponentsWrapperComponent } from '../../pages/wrapper-components/components-wrapper.component';
 import { TablePaginatedComponent } from '../../development/components/data-table/data-table.component';
 import { AccordionComponent } from '../../development/components/accordion/accordion.component';
 import { CountdownComponent } from '../../development/components/countdown/countdown.component';
@@ -9,53 +8,54 @@ import { DynamicSidebarComponent } from '../../development/components/dynamic-si
 import { SliderComponent } from 'src/app/development/components/slider/slider.component';
 import { D3BarGraphComponent } from '../../development/components/d3-bar-graph/d3-bar-graph.component';
 import { TableInHTMLComponent } from '../../development/components/table-in-html/table-in-html.component';
+import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ComponentsWrapperComponent,
+    component: AppsWrapperComponent,
     children: [
-      { path: '', redirectTo: 'website-features', pathMatch: 'full' },
+      { path: '', redirectTo: 'standards-classes', pathMatch: 'full' },
       {
-        path: 'website-features',
+        path: 'standards-classes',
         loadChildren: () =>
           import(
             `../cornerstone-components/cornerstone-components.module`
           ).then((m) => m.CornerstoneComponentsModule)
       },
       {
-        path: 'angular-data-table',
+        path: 'data-privacy-security',
         component: TablePaginatedComponent
       },
       {
-        path: 'accordion-component',
+        path: 'fair-competition',
         component: AccordionComponent
       },
       {
-        path: 'angular-countdown-timer',
+        path: 'doing-business-globally',
         component: CountdownComponent
       },
       {
-        path: 'angular-date-picker',
+        path: 'accurate-book-records',
         component: DatePickerComponent
       },
       {
-        path: 'angular-dynamic-sidebar',
+        path: 'building-trust',
         component: DynamicSidebarComponent
       },
       {
-        path: 'angular-slider',
+        path: 'unfair-labor-practices',
         component: SliderComponent
       },
       {
-        path: 'table-in-html',
+        path: 'fair-housing',
         component: TableInHTMLComponent
       },
       {
-        path: 'd3-bar-chart',
+        path: 'information-security',
         component: D3BarGraphComponent
       },
-      { path: '**', redirectTo: 'website-features' }
+      { path: '**', redirectTo: 'standards-classes' }
     ]
   }
 ];
@@ -67,7 +67,6 @@ const routes: Routes = [
 export class ComponentsRoutingModule {}
 
 export const componentsComponents = [
-  ComponentsWrapperComponent,
   TablePaginatedComponent,
   AccordionComponent,
   CountdownComponent,

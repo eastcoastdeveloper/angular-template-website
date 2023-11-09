@@ -20,7 +20,7 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
   lazyLoading: string;
 
   pageDataObject: PageDataObject = {
-    title: 'Routing in Angular',
+    title: 'Regulatory Environment',
     publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
     repoTitle: 'routing-in-angular',
@@ -30,15 +30,7 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
     views: 3104,
     forks: 169,
     cornerStone: false,
-    threeColumnLayout: true,
-    meta: {
-      description:
-        'Routing in angular simplified with lazy loading explanation, module and routing code, plus a child navigation example.',
-      keywords: 'angular lazy loading, modules in angular, angular routing',
-      title: 'Routing in Angular',
-      dateCreated: '2022-10-15',
-      dateModified: '2023-10-25'
-    }
+    threeColumnLayout: true
   };
 
   constructor(
@@ -54,89 +46,6 @@ export class RoutingInAngularComponent implements OnInit, OnDestroy {
       .subscribe((val) => {
         this.windowWidth = val;
       });
-
-    this.renderCode();
-  }
-
-  renderCode() {
-    this.componentImport = `// Router
-import { ComponentOne } ...
-import { ComponentTwo } ...
-import { ComponentThree } ...
-    
-const routes: Routes = [
-   { path: '...', component: ComponentOne   },
-   { path: '...', component: ComponentTwo   },
-   { path: '...', component: ComponentThree },
-];
-    
-@NgModule({
-   imports: [RouterModule.forChild(routes)],
-   exports: [RouterModule],
-})
-
-export class SampleRouterModule {} 
-export const routerComponents = [ComponentOne, ComponentTwo, ComponentThree];
-
-// Module
-// Import Cmpts vs Duplicate Statements
-import { SampleRouterModule, routerComponents } from './sample-route.routing';
-
-@NgModule({
-  declarations: [ComponentOne, ComponentTwo, ComponentThree],
-  imports: [CommonModule, ModuleOneRoutingModule],
-})
-
-export class SampleModule {}
-`;
-
-    this.basicRouter = `import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [
-  { path: 'module-one', component: 'SomeComponent' }
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
-`;
-
-    this.lazyLoading = `import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-    
-const routes: Routes = [
-  {
-    path: 'feature-module',
-    loadChildren: () => import('./feature-module.module').then((m) => m.ModuleOneModule)
-  }
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}`;
-
-    this.featureModule = `// Feature Module
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-    
-const routes: Routes = [
-  {
-    path: '',
-    component: FeatureComponent,
-    children: [{ path: 'my-route', component: FeatureComponent }],
-  },
-];
-    
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class FeatureRoutingModule {}`;
   }
 
   navigateToPage(url: string) {

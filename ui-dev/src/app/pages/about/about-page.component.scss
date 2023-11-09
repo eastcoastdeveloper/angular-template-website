@@ -2,7 +2,7 @@
 
 .single-column-layout {
   .about-pic {
-    width: 180px;
+    width: 220px;
     border-radius: 6px;
     overflow: hidden;
     margin: 3px 0 13px 0;
@@ -17,14 +17,15 @@
   }
 
   .endeavors-wrapper {
-    border: 1px solid $greyBlack;
+    border: 1px solid $yellowGold;
+    overflow: hidden;
     box-sizing: border-box;
     border-radius: 5px;
     margin-top: 20px;
     h2 {
       font: 300 20px sans-serif;
       margin: 0;
-      background-color: $oceanBlue;
+      background-color: $orangeRed;
       color: $white;
       padding: 5px 5px 5px 20px;
     }
@@ -34,7 +35,7 @@
     line-height: 22px;
     list-style-type: none;
     display: grid;
-    color: $greyBlack;
+    color: $yellowGold;
     grid-gap: 20px;
     padding: 10px 10px 15px 10px;
     grid-template-columns: repeat(2, calc(50% - 10px));

@@ -1,35 +1,48 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { LocalStorageInterface } from '../interfaces/localStorage.interface';
+import { ConfigService } from './config.service';
+import { CategoryInterface } from '../interfaces/categories.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
+  private unsubscribe$ = new Subject<void>();
+  configObject: CategoryInterface;
+
+  constructor(private _configService: ConfigService) {
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.configObject = val;
+      });
+  }
+
   localStorage$ = new BehaviorSubject<LocalStorageInterface>({
     all: {},
-    projects: {},
-    cmp: {},
-    dev: {},
+    leadership: {},
+    standards: {},
+    security: {},
     totals: {
       all: undefined,
-      prj: undefined,
-      cmp: undefined,
-      dev: undefined
+      leadership: undefined,
+      standards: undefined,
+      security: undefined
     }
   });
   key = 'frontenddev';
   storage: LocalStorageInterface = {
     all: {},
-    projects: {},
-    cmp: {},
-    dev: {},
+    leadership: {},
+    standards: {},
+    security: {},
     totals: {
       all: undefined,
-      prj: undefined,
-      cmp: undefined,
-      dev: undefined
+      leadership: undefined,
+      standards: undefined,
+      security: undefined
     }
   };
 

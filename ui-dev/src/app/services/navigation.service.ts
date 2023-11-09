@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
   private history: string[] = [];
+  private unsubscribe$ = new Subject<void>();
   private queryParam: number | null;
   historySubject$ = new BehaviorSubject<string[]>(this.history);
 
   constructor(private router: Router, private _activatedRoute: ActivatedRoute) {
-    this.router.events.subscribe((event) => {
+    this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this._activatedRoute.queryParams.subscribe((val) => {
-          if (Object.values(val).length > 0) {
-            this.queryParam = parseInt(val['page']);
-          } else {
-            this.queryParam = null;
-          }
-        });
+        this._activatedRoute.queryParams
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe((val) => {
+            if (Object.values(val).length > 0) {
+              this.queryParam = parseInt(val['page']);
+            } else {
+              this.queryParam = null;
+            }
+          });
         this.history.push(event.urlAfterRedirects);
 
         // Remove duplicates

@@ -1,116 +1,64 @@
-<div class="count-down-timer element-shadow">
-  <p>Countdown to {{ currentTime }}</p>
-  <div class="wrapper">
-    <div class="description">
-      <p>Days</p>
-      <p>Hours</p>
-      <p>Minutes</p>
-      <p>Seconds</p>
-    </div>
-    <div class="times">
-      <p #days></p>
-      <p #hours></p>
-      <p #minutes></p>
-      <p #seconds></p>
-    </div>
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
 
-<h2>How it's Built</h2>
 <p class="project-text">
-  I created this Angular countdown timer because it's often difficult to find
-  exactly what you need. Whether it's an Angular or React component. A spcific
-  service. Or an Axios GET request with error handling that doesn't cause 500
-  errors by default.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<p class="project-text element-margin-top">
-  Regardless, I'm often amazed how much developers can accomplish in such few
-  lines of code. No frameworks or libraries, just code in a native language. I
-  think this is one of those times. Here's a neat component&mdash;done so with
-  minimal code.
-</p>
-
-<ul class="project-list element-margin-top">
-  <li>Begin by setting the variables.</li>
-  <li>Basic date reference followed by the current time.</li>
-  <li>targetDate is of course the desired date to countdown from.</li>
-  <li>targetTime is the numeric version of the date.</li>
-  <li>difference is then subtracted by now (numerically).</li>
-  <li>
-    The months array is used to illustrate the month name in the template. Feel
-    free to substitute this w/ template literals.
-    <span (click)="navigateToPage(urlStackblitz)" class="external-link"
-      >(Template Literal)</span
-    >
-  </li>
-  <li>
-    We're using basic ViewChild to retrieve the DOM elements, which are then
-    populated w/ values. Some may argue Angular's Renderer2 would be a better
-    approach due to potential injection sinks. So this may change in a future
-    version.
-  </li>
-  <li>
-    ngAfterViewInit is used because ViewChild elements do not become available
-    at early life cycle hooks.
-  </li>
-  <li>
-    The isNaN bit is pertinent because days is not a number before it's
-    calculated. So unless you want NaN showing in the UI, use the ternary at the
-    end of the ngAfterViewInit hook block.
-  </li>
-  <li>
-    In this hook, we call a repeating fn every 1 second. It updates the
-    difference bwtween then and now and divides it by an equation to make it
-    readable/ presentable.
-  </li>
-  <li>
-    tickTock() creates a new date, and updates the aforementioned values. That's
-    it!
-  </li>
-</ul>
-
-<h2>Angular Countdown Timer Typescript</h2>
+<h2>Is this Required for You?</h2>
 <p class="project-text">
-  If you're familiar with Angular this shouldn't be foreign to you. If it is
-  though, feel free to ping me. Always happy to explain code. Regardless,
-  understand the code. It's not so much about the sytax but moreso about the the
-  concept. Building and applying conceptually makes us better developers. In
-  turn, it becomes easier to learn new languages because we apply concepts. Then
-  simply piece them together.
-</p>
-<div class="code-preview">
-  <pre><code>{{typescript}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
-  The markup is a rudimentary wrapper with two rows of elements. #days, #hours,
-  #minutes, and #seconds receive their prospective values.
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
 </p>
 
-<div class="code-preview">
-  <pre><code>{{markup}}</code></pre>
-</div>
-
 <p class="project-text element-margin-top">
-  Styling is nothing revolutionary. I've certainly encountered devs though
-  who've never nested scss. I enjoy it because it enables strict isolation.
-  Encapsulation in nature if you will.
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
 </p>
 
-<h2>Styling and Conclusion</h2>
-<div class="code-preview">
-  <pre><code>{{styling}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
-  Ideas for additional features may include a millisecond count down too. Or
-  perhaps the ability to change the time zone, in turn updating the time.
-  Regardless, customize it to suit your needs. As always, if you get stuck or
-  need a working version, check out my
-  <span class="attention-arrow">&#x2190;</span>
-  <span (click)="navigateToPage(urlStackblitz)" class="external-link"
-    >Angular countdown timer</span
-  >
-  component on Stackblitz.
+<h2>Moving Forward</h2>
+<p class="project-text">
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

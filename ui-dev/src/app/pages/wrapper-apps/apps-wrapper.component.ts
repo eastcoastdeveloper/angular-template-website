@@ -11,7 +11,6 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { MetaInterface } from 'src/app/interfaces/meta.interface';
 
 @Component({
   selector: 'app-apps-wrapper',
@@ -24,10 +23,10 @@ export class AppsWrapperComponent
 
   appsArray: ProjectsListInterface[] = [];
   threeColumnLayout?: boolean = false;
+  categoryType: string;
   windowWidth: number;
   pageTitle?: string;
   cornerstone?: boolean;
-  meta? = <MetaInterface>{};
 
   constructor(
     private _globalFeatures: GlobalFeaturesService,
@@ -36,7 +35,7 @@ export class AppsWrapperComponent
     private _cd: ChangeDetectorRef,
     private _router: Router
   ) {
-    this._router.events.subscribe((data) => {
+    this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((data) => {
       if (data instanceof NavigationEnd) {
         this._projectListService.pageDataObject$
           .pipe(takeUntil(this.unsubscribe$))
@@ -44,11 +43,7 @@ export class AppsWrapperComponent
             next: (val) => {
               this.pageTitle = val.title;
               this.threeColumnLayout = val.threeColumnLayout;
-              this.meta = val.meta;
               this.cornerstone = val.cornerStone;
-              if (Object.values(val).length) {
-                this._globalFeatures.addTags(this.meta!);
-              }
             }
           });
       }
@@ -56,24 +51,16 @@ export class AppsWrapperComponent
   }
 
   ngOnInit(): void {
+    this._projectListService.categoryType$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.categoryType = val;
+      });
     this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((currentVal) => {
         this.windowWidth = currentVal;
       });
-  }
-
-  pageClickHandler(event: any) {
-    if (
-      event.target.classList.contains('details') ||
-      event.target.classList.contains('right-column') ||
-      event.target.nodeName === 'FORM' ||
-      event.target.nodeName === 'BUTTON' ||
-      event.target.nodeName === 'P' ||
-      event.target.parentElement.nodeName === 'FORM'
-    ) {
-      this._nasaService.changeDatePickerVal(false);
-    }
   }
 
   ngAfterViewChecked(): void {

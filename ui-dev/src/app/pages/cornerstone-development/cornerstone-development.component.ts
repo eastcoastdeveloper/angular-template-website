@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -14,24 +15,15 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 export class CornerstoneDevelopmentComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
-    title: 'Learn to Code',
-    cornerStone: true,
-    meta: {
-      description:
-        'Learn to code w/ these fully built features. Contains explanations & code samples. Content is both front & backend dev.',
-      keywords:
-        'web developer projects, getting started with angular, web developer portfolios',
-      title: 'Learn to Code',
-      dateCreated: '2022-10-15',
-      dateModified: '2023-10-25'
-    }
+    cornerStone: true
   };
   developmentArray: ProjectsListInterface[] = [];
-  categoryType: string = 'dev';
+  categoryType: string;
   pageQuery: number;
 
   constructor(
     private _projectListService: ProjectListService,
+    private _configService: ConfigService,
     private _activatedRoute: ActivatedRoute
   ) {
     // Send Page Data to Service & Wrapper
@@ -39,16 +31,21 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((params) => {
-        this.setPageParamValue(params);
-      });
-
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.developmentArray = val;
+      });
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.categoryType = val.categoryThree;
+        this.pageDataObject.title = val.categoryThree;
+      });
+    this._activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.setPageParamValue(params);
       });
   }
 
@@ -57,7 +54,6 @@ export class CornerstoneDevelopmentComponent implements OnDestroy {
     undefined === params['page']
       ? (this.pageQuery = 1)
       : (this.pageQuery = params['page']);
-
     this._projectListService.isThereCache(
       this.categoryType,
       this.pageQuery,

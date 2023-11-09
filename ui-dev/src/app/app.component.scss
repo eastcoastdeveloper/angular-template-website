@@ -81,13 +81,6 @@
     color: $white;
     margin: 10px 0 0 20px;
     line-height: 35px;
-    ul {
-      list-style-type: none;
-      li {
-        outline: none;
-        cursor: pointer;
-      }
-    }
     > div {
       outline: none;
       cursor: pointer;
@@ -102,6 +95,9 @@
         padding: 5px;
         transform: translateY(-3px);
         display: inline-block;
+      }
+      .nav-name {
+        text-transform: capitalize;
       }
     }
   }

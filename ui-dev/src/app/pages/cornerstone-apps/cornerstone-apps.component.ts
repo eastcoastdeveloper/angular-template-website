@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -14,40 +15,37 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 export class CornerstoneAppsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
-    title: 'Front End Development',
-    cornerStone: true,
-    meta: {
-      description:
-        'Front end development project samples including but not limited to websites, components, dynamic UIs and much more.',
-      keywords:
-        'front end development, web development projects, web developer portfolio',
-      title: 'Front End Development',
-      dateCreated: '2022-10-15',
-      dateModified: '2023-10-25'
-    }
+    cornerStone: true
   };
   appsArray: ProjectsListInterface[] = [];
-  categoryType: string = 'projects';
+  categoryType: string;
   pageQuery: number;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _projectListService: ProjectListService
+    private _projectListService: ProjectListService,
+    private _configService: ConfigService
   ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnInit(): void {
-    this._activatedRoute.queryParams
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((params) => {
-        this.setPageParamValue(params);
-      });
-
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.appsArray = val;
+      });
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.categoryType = val.categoryOne;
+        this.pageDataObject.title = val.categoryOne;
+      });
+
+    this._activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((params) => {
+        this.setPageParamValue(params);
       });
   }
 

@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --aot --build-optimizer --common-chunk --vendor-chunk --named-chunks",
+    "build": "ng build --aot --build-optimizer --common-chunk --vendor-chunk --named-chunks --base-href /angular-spa/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "cache": "rm -rf .angular/cache",
     "lint": "npx eslint 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --quiet --fix",
     "format": "npx prettier 'src/**/*.{js,jsx,ts,tsx,html,css,scss}' --write",
     "dev": "nodemon index"
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "^16.2.12",
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/router": "^16.2.12",
+    "@asymmetrik/ngx-leaflet": "^16.0.1",
     "body-parser": "^1.20.1",
     "crypto-js": "^4.1.1",
     "express": "^4.18.2",
@@ -43,7 +45,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^3.0.1",
     "prettier": "^2.8.1",
     "typescript": "~5.0.4"
   }

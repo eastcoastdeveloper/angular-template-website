@@ -1,22 +1,11 @@
 <div class="right-column-cmp">
   <div class="contact-form element-shadow">
-    <p>Subscribe to get new projects!</p>
-    <form action="https://submit-form.com/jHAoxlLO">
-      <input
-        type="hidden"
-        name="_redirect"
-        value="https://frontenddevelopment.tech/form-confirmation"
-      />
-
-      <input
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Email address"
-        required=""
-      />
-      <button type="submit">Send</button>
-    </form>
+    <div
+      id="map"
+      leaflet
+      (leafletMapReady)="onMapReady($event)"
+      [leafletOptions]="mapOptions"
+    ></div>
   </div>
 
   <div class="social-icons">
@@ -29,15 +18,14 @@
 
   <div class="welcome element-shadow">
     <div class="bio-pic">
-      <img src="../../../assets/img/welcome-pic.png" />
+      <img src="assets/img/welcome-pic.jpg" />
     </div>
     <p>
-      Welcome! This website is a collection of projects and features I've built
-      indicative of real world development. Others are simply things I've
-      created for practice and to further my dev skills. Regardless, I hope you
-      find these items helpful or inspirational in your development endeavors.
-      If you have questions/ comments, please contact me via the contact form.
-      Thank you, and have a wonderful day.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur.
     </p>
   </div>
 </div>

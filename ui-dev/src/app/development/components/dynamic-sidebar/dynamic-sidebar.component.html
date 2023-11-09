@@ -1,119 +1,55 @@
-<p class="project-text">
-  This Angular dynamic sidebar illustrates how to populate a navigation with
-  JSON. Something that may become necessary in the event you need to assign user
-  permissions to page content. This would more than likely be accomplished via
-  an API. Hence the dummy data JSON stream. No doubt there's other ways to
-  develop such a feature. This is but one possible method.
-</p>
-
-<div id="dynamic-sidebar">
-  <span class="expand-all" (click)="toggleAll()">{{
-    !expandAll ? 'Expand All' : 'Close All'
-  }}</span>
-  <div class="wrapper element-shadow">
-    <div class="group" *ngFor="let item of result; let i = index">
-      <a
-        *ngIf="item.submenu.length"
-        (click)="ddToggle(i)"
-        class="light-blue-bg"
-        >{{ item.linkText }}</a
-      >
-      <a
-        *ngIf="!item.submenu.length"
-        (click)="ddToggle(i)"
-        class="light-blue-bg"
-        >{{ item.linkText }}</a
-      >
-      <div
-        *ngIf="item.submenu.length"
-        class="caret"
-        [ngClass]="{ 'rotate-caret': item.menu }"
-      >
-        &#9660;
-      </div>
-      <div class="sub-menu" [ngClass]="{ 'show-menu': item.menu }">
-        <ul *ngFor="let menu of result[i].submenu">
-          <li>
-            <a>{{ menu.childtext }}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
 
-<h2>The Payload</h2>
+<h2>Is this Required for You?</h2>
 <p class="project-text">
-  Let's begin with the data. linkText is the top tier text. parentLink is the
-  top tier link. The menu boolean dictates whether the dropdown is open or
-  closed. The submenu array contains the dropdown menu text and link.
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
 </p>
 
-<div class="code-preview">
-  <pre><code>{{json}}</code></pre>
-</div>
-
-<h2>Create the Interface</h2>
-<p class="project-text">
-  SidebarModel is a representation of the above data. A TypeScript interface is
-  not compiled to JavaScript, since it doesn't exist in the language. It's
-  merely a virtual outline solely residing in the TypeScript
-  ecosystem&mdash;used for type checking. Upon transpiling however, they're
-  removed.
+<p class="project-text element-margin-top">
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
 </p>
 
-<div class="code-preview">
-  <pre><code>{{model}}</code></pre>
-</div>
-
-<h2>Angular Dynamic Sidebar TypeScript</h2>
-<ul class="project-list">
-  <li>Set the result equal to an empty array with a SidebarModel type.</li>
-  <li>Get the data in the constructor with a reference to the HttpClient.</li>
-  <li>Set result equal to the response.</li>
-  <li>The ddToggle fn toggles the menu boolean by passing the indice.</li>
-  <li>That's really all there is to it!</li>
-</ul>
-
-<div class="code-preview">
-  <pre><code>{{typescript}}</code></pre>
-</div>
-
-<h2>The Markup</h2>
-<ul class="project-list">
-  <li>Loop over the result containing the imported data.</li>
-  <li>
-    There's two links&mdash;one for items with a submenu, the other without a
-    submenu. Each contains the ddToggle fn. Items that have a parentLink are
-    accommodated.
-  </li>
-  <li>
-    The sub-menu class has a dynamic class tied to the menu boolean value.
-    Following, we loop over the submenu items.
-  </li>
-</ul>
-
-<div class="code-preview">
-  <pre><code>{{markup}}</code></pre>
-</div>
-
-<h2>Prettify it with Sass</h2>
+<h2>Moving Forward</h2>
 <p class="project-text">
-  Though not much actual Sass featuring here, I use it as a default. Mainly for
-  nesting.
-</p>
-
-<div class="code-preview">
-  <pre><code>{{scss}}</code></pre>
-</div>
-
-<h2>Conclusion</h2>
-<p class="project-text">
-  The only thing remaining here is to add HttpClientModule to the module. Not
-  doing this will cause an error. As stated above, there's numerous ways to
-  accomplish this. Regardless of how it's done, conceptually, this is a
-  theoretical reference. Feel free to fork this Angular dynamic sidebar project
-  located <span class="attention-arrow">&#x2190;</span>
-  <span class="external-link" (click)="navigateToPage(urlStackblitz)">here</span
-  >. Have a great day!
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

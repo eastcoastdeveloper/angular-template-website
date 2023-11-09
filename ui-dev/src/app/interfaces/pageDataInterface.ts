@@ -1,5 +1,3 @@
-import { MetaInterface } from './meta.interface';
-
 export class PageDataObject {
   title?: string;
   publishedOn?: string;
@@ -11,5 +9,4 @@ export class PageDataObject {
   forks?: number;
   threeColumnLayout?: boolean;
   cornerStone?: boolean;
-  meta?: MetaInterface;
 }

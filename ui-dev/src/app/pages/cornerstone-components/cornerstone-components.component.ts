@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -10,46 +11,43 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-projects-list-content
       [dataArray]="cmpsArray"
     ></app-projects-list-content>
-    <app-pagination [categoryProp]="categoryType"></app-pagination> `
+    <app-pagination [categoryProp]="categoryType"></app-pagination>`
 })
 export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
-    title: 'Website Features',
-    cornerStone: true,
-    meta: {
-      description:
-        'An array of website features including but not limited to an accordion, dynamic sidebar, graphs, & data driven tables.',
-      keywords:
-        'front end development, web development projects, web developer portfolio',
-      title: 'Website Features',
-      dateCreated: '2022-10-15',
-      dateModified: '2023-10-25'
-    }
+    cornerStone: true
   };
 
   cmpsArray: ProjectsListInterface[] = [];
-  categoryType: string = 'cmp';
+  categoryType: string;
   pageQuery: number;
 
   constructor(
     private _projectListService: ProjectListService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _configService: ConfigService
   ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
 
   ngOnInit(): void {
+    this._projectListService.allProjects$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        // this.removeDuplicates(val);
+        this.cmpsArray = val;
+      });
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.categoryType = val.categoryTwo;
+        this.pageDataObject.title = val.categoryTwo;
+      });
     this._activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params) => {
         this.setPageParamValue(params);
-      });
-
-    this._projectListService.allProjects$
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((val) => {
-        this.removeDuplicates(val);
       });
   }
 

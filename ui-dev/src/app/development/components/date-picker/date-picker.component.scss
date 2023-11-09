@@ -1,5 +1,13 @@
 @import '../../../styles/page-style.scss';
 
+.page-intro {
+  .feature-img {
+    background: transparent
+      url('../../../../assets/images/accurate_books_records.jpg') scroll
+      no-repeat center / cover;
+  }
+}
+
 #calendar-component {
   position: relative;
 

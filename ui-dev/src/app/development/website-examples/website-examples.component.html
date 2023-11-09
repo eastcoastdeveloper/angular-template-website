@@ -1,139 +1,64 @@
-<div class="project">
-  <div class="site-details">
-    <h2>Conseqta.com</h2>
-    <span (click)="navigateToPage(urlConseqta)" class="visit-site"
-      >visit site</span
-    >
-  </div>
-  <span>Software Company</span>
-
-  <p class="project-text">
-    I built this site in full based on provided mocks. Though developed with
-    native HTML5, CSS, and JS, it functions like a single page app. Every page
-    uses numerous web components that persist or populate new data. At the time
-    of deployment, it scored a 100% on a Google Speed Test. Highlights include
-    an image gallery template that detects the page and populates the
-    appropriate JSON data. I built a canvas particle animation on the home page
-    followed by a product gallery which is a gallery of galleries. The website
-    does not use libraries, packages or frameworks. As with most apps I develop,
-    this too has a custom rigorous responsive system. A notable feature among my
-    website examples.
-  </p>
-
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Digital transformation engineered for the future with a green animated reactor taking particles."
-      [src]="conseqtaSampleFour"
-    />
-  </div>
-
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Product image gallery showcasing company features, services, and products."
-      [src]="conseqtaSampleThree"
-    />
-  </div>
-
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Apache Kafka cluster monitoring showing graphs monitoring API status."
-      [src]="conseqtaSampleTwo"
-    />
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
 
-<div class="project">
-  <div class="site-details">
-    <h2>Financial Dashboard</h2>
-    <span (click)="navigateToPage(urlFindash)" class="visit-site"
-      >visit site</span
-    >
-  </div>
-  <span>SaaS Product</span>
+<p class="project-text">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
+</p>
 
-  <p class="project-text">
-    I was the lead Angular developer on this enormous web application. It
-    utilizes a tremendous amount of chart and UI components. With the help of an
-    abundance of RxJS methods, data is loaded and shared in a variety of ways.
-    Highlights include a calendar component akin to Google Flights with start
-    and end dates. The top tier navigation radically transforms itself in
-    addition to every layout between screen sizes. The app is extremely frontend
-    heavy with over a dozen streams of JSON data. I managed the app while
-    training two other developers. Guiding and rewriting their code throughout
-    the process.
-  </p>
+<h2>Is this Required for You?</h2>
+<p class="project-text">
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
+</p>
 
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Analytical user interface with line and doughnut graph, a paginated data table and dropdowns"
-      [src]="findashSampleOne"
-    />
-  </div>
+<p class="project-text element-margin-top">
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
+</p>
 
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Date range calendar with analytical interface in the background."
-      [src]="findashSampleTwo"
-    />
-  </div>
-
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Company departments represented by line graph with a doughnut chart and table for department spending."
-      [src]="findashSampleThree"
-    />
-  </div>
-</div>
-
-<div class="project element-margin-top">
-  <div class="site-details">
-    <h2>FredrickJaxx.is</h2>
-    <span (click)="navigateToPage(urlBlog)" class="visit-site">visit site</span>
-  </div>
-  <span>Tech Blog</span>
-
-  <p class="project-text">
-    After years of developing a keen interest in data, AI, security, and modern
-    technologies, I began writing about it. Each post is 1800 - 2500 words. I
-    monitor security through a variety of methods. I've modified the template
-    and plugins. Optimized numerous segments in a variety of ways and continue
-    working on thereof. It's allowed me to learn about AI, privacy, and
-    security, while fulfilling my love of reading and writing. This year, I'm
-    adding a tremendous amount of new content coupled with SEO.
-  </p>
-
-  <div class="image-wrapper element-shadow element-margin-top">
-    <div *ngIf="images.length !== loadedItems" class="img-loading">
-      <span>Loading...</span>
-    </div>
-    <img
-      *ngIf="images.length == loadedItems"
-      alt="Online privacy browsers post heading with browser icons. Showing top half of page."
-      [src]="techblog"
-    />
-  </div>
-</div>
+<h2>Moving Forward</h2>
+<p class="project-text">
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
+</p>

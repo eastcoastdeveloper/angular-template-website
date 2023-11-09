@@ -1,9 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { CategoryInterface } from 'src/app/interfaces/categories.interface';
 import { LocalStorageInterface } from 'src/app/interfaces/localStorage.interface';
 import { NavigationData } from 'src/app/interfaces/navigation-date.interface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
+import { ConfigService } from 'src/app/services/config.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -16,9 +18,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 export class CategoryNavigationComponent implements OnInit, OnDestroy {
   dataArray: ProjectsListInterface[] = [];
   navigationArray: NavigationData[] = [];
-
   unsubscribe$ = new Subject<void>();
-
+  configObject: CategoryInterface;
   @Input() categoryType: string;
   menuOpen: boolean = false;
   totalDevelopment?: number;
@@ -28,89 +29,107 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
   totalAll?: number;
 
   constructor(
-    private _globalFeatures: GlobalFeaturesService,
+    private _globalFeaturesService: GlobalFeaturesService,
     private _projectListService: ProjectListService,
+    private _globalFeatures: GlobalFeaturesService,
+    private _configService: ConfigService,
     private _local: LocalStorageService,
     private _router: Router
   ) {
-    this._router.events.subscribe((ev) => {
+    this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
         this.isThereCache();
-        return this.categoryType;
       }
     });
   }
 
   ngOnInit(): void {
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.configObject = val;
+      });
+
     this._globalFeatures.currentWidth$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.windowWidth = val;
       });
 
-    this.isThereCache();
+    // this.isThereCache();
+    this._globalFeaturesService.getCategoryFromUrl();
+    this.categoryType = this._projectListService.categoryType$.value;
+
+    this._local.localStorage$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((d) => {
+        this.setTotals(d);
+      });
   }
 
   isThereCache() {
-    const storage = this._local.getData('frontenddev');
-    if (storage != '') {
-      const parsed = JSON.parse(storage);
-      this.setTotals(parsed);
-      if (Object.keys(parsed[this.categoryType]).length === 0) {
-        this.fetchItems();
-      }
-    } else {
-      this.fetchItems();
-    }
+    // const storage = this._local.getData('frontenddev');
+    // if (storage != '') {
+    //   const parsed = JSON.parse(storage);
+    //   console.log(parsed);
+    // this.getCategoryFromUrl();
+    //   // if (Object.keys(parsed[this.categoryType]).length === 0) {
+    //   //   this.fetchItems();
+    //   // }
+    // } else {
+    //   console.log('fasdafs');
+    //   this.fetchItems();
+    // }
   }
 
-  fetchItems() {
-    new Promise((resolve) => {
-      this._projectListService.getAllProjects(this.categoryType, 1, 10);
-      resolve(
-        this._local.localStorage$
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe((d) => {
-            this.setTotals(d);
-          })
-      );
-    });
-  }
+  // getCategoryFromUrl() {
+  //   this._globalFeaturesService.getCategoryFromUrl();
+  //   // this._projectListService.isThereCache(this.categoryType, 1, 10);
+  // }
+
+  // fetchItems() {
+  //   new Promise((resolve) => {
+  //     this._projectListService.getAllProjects(this.categoryType, 1, 10);
+  //     resolve(
+
+  //     );
+  //   });
+  // }
 
   setTotals(obj: LocalStorageInterface) {
     this.totalAll = obj.totals.all;
-    this.totalProjects = obj.totals.prj;
-    this.totalComponents = obj.totals.cmp;
-    this.totalDevelopment = obj.totals.dev;
+    this.totalProjects = obj.totals[this.categoryType];
+    this.totalComponents = obj.totals[this.categoryType];
+    this.totalDevelopment = obj.totals[this.categoryType];
 
     this.navigationArray = [
       {
         type: 'all',
         text: 'All',
         total: this.totalAll,
-        link: '/javascript-projects'
+        link: '/compliance-library'
       },
       {
-        type: 'projects',
-        text: 'Projects',
+        type: this.configObject.categoryOne,
+        text: this.configObject.categoryOne,
         total: this.totalProjects,
-        link: '/web-development-projects/front-end-development'
+        link: `/${this.configObject.categoryOne}/${this.configObject.categoryOne}-classes`
       },
       {
-        type: 'cmp',
-        text: 'Components',
+        type: this.configObject.categoryTwo,
+        text: this.configObject.categoryTwo,
         total: this.totalComponents,
-        link: '/ui-components/website-features'
+        link: `/${this.configObject.categoryTwo}/${this.configObject.categoryTwo}-classes`
       },
       {
-        type: 'dev',
-        text: 'Development',
+        type: this.configObject.categoryThree,
+        text: this.configObject.categoryThree,
         total: this.totalDevelopment,
-        link: '/web-application-development/learn-to-code'
+        link: `/${this.configObject.categoryThree}/${this.configObject.categoryThree}-classes`
       }
     ];
 
-    this.dataArray = obj[this.categoryType][1];
+    // this.dataArray = obj[this.categoryType][1];
   }
 
   navigateToRoute(obj: NavigationData) {

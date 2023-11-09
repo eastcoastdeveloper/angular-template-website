@@ -10,12 +10,28 @@ a {
   text-decoration: none;
 }
 
+.page-intro {
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 8px));
+  grid-column-gap: 15px;
+  margin-bottom: 20px;
+  .feature-img {
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.3);
+  }
+  .what-you-learn {
+    h2 {
+      margin-top: 0;
+    }
+  }
+}
+
 .attention-arrow {
   transform: rotate(-180deg);
   display: inline-block;
   font-size: 14px;
   margin-right: 3px;
-  color: $warningRed;
+  color: $purple;
 }
 
 blockquote {
@@ -58,7 +74,7 @@ body {
 }
 
 .external-link {
-  color: $oceanBlue;
+  color: $purple;
   cursor: pointer;
 }
 
@@ -83,7 +99,7 @@ html {
 h2 {
   margin: 20px 0 5px 0;
   font: 600 20px sans-serif;
-  color: $greyBlack;
+  color: $yellowGold;
 }
 
 h5 {
@@ -123,7 +139,7 @@ h5 {
 
 .project-text,
 .project-list {
-  color: $greyBlack;
+  color: $yellowGold;
   font: normal 14px sans-serif;
   line-height: 22px;
 }
@@ -183,7 +199,7 @@ h5 {
         grid-template-rows: 290px 136px 143px;
         grid-row-gap: 20px;
         grid-template-areas:
-          'code'
+          'intro'
           'signup'
           'socials';
       }
@@ -198,10 +214,10 @@ h5 {
         position: fixed;
         width: 300px;
         grid-template-columns: repeat(1, 100%);
-        grid-template-rows: 290px 136px 143px;
+        grid-template-rows: 255px 136px 143px;
         grid-row-gap: 20px;
         grid-template-areas:
-          'code'
+          'intro'
           'signup'
           'socials';
 
@@ -213,7 +229,6 @@ h5 {
           font: normal 14px sans-serif;
           background-color: $greyBlack;
           color: $yellowGold;
-          padding: 20px;
           max-width: 400px;
           margin: 0 auto;
           text-area {
@@ -307,7 +322,8 @@ h5 {
           line-height: 22px;
           .bio-pic {
             width: 150px;
-            height: 115px;
+            overflow: hidden;
+            height: 130px;
             float: left;
             margin-right: 15px;
             border-right: 5px solid $greyBlack;
@@ -416,7 +432,8 @@ h5 {
     .page-title {
       font: bold 1.5em sans-serif;
       float: left;
-      color: $greyBlack;
+      color: $yellowGold;
+      text-transform: capitalize;
     }
   }
 } /* End of .page-content */
@@ -427,6 +444,16 @@ h5 {
   line-height: 22px;
   margin-left: 30px;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 1300px) {
+  .page-intro {
+    grid-template-columns: 100%;
+    grid-row-gap: 20px;
+    .feature-img {
+      min-height: 300px;
+    }
+  }
 }
 
 /* ####################################### */
@@ -459,17 +486,17 @@ h5 {
 /* ####################################### */
 @media screen and (max-width: 1300px), screen and (max-height: 760px) {
   .page-content {
-    .two-column-layout,
-    .three-column-layout {
-      .right-column {
-        .right-column-cmp {
-          .contact-form {
-            max-width: unset;
-            padding: 14px 20px;
-          }
-        }
-      }
-    }
+    // .two-column-layout,
+    // .three-column-layout {
+    //   .right-column {
+    //     .right-column-cmp {
+    //       .contact-form {
+    //         max-width: unset;
+    //         padding: 14px 20px;
+    //       }
+    //     }
+    //   }
+    // }
     .right-column {
       position: unset;
       width: unset;
@@ -492,7 +519,7 @@ h5 {
         grid-template-areas:
           'signup'
           'socials'
-          'code';
+          'intro';
       }
     }
     .three-column-layout {
@@ -766,7 +793,7 @@ h5 {
     .three-column-layout {
       .right-column {
         .right-column-cmp {
-          grid-template-areas: 'signup' 'socials' 'code';
+          grid-template-areas: 'signup' 'socials' 'intro';
           grid-template-rows: 140px 130px auto;
           grid-template-columns: 100%;
           grid-column-gap: 0;

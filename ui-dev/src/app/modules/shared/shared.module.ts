@@ -11,6 +11,7 @@ import { RelatedComponentsComponent } from 'src/app/development/components/relat
 import { EndOfPostComponent } from 'src/app/development/components/end-of-post/end-of-post.component';
 import { BackButtonComponent } from 'src/app/development/components/back-button/back-button.component';
 import { BackButtonDirective } from 'src/app/directives/back-button.directive';
+import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BackButtonDirective } from 'src/app/directives/back-button.directive';
     RelatedComponentsComponent,
     EndOfPostComponent,
     BackButtonComponent,
-    BackButtonDirective
+    BackButtonDirective,
+    AppsWrapperComponent
   ],
   imports: [CommonModule, RouterModule, RightColumnModule],
   exports: [
@@ -34,7 +36,8 @@ import { BackButtonDirective } from 'src/app/directives/back-button.directive';
     RelatedComponentsComponent,
     EndOfPostComponent,
     BackButtonComponent,
-    BackButtonDirective
+    BackButtonDirective,
+    AppsWrapperComponent
   ]
 })
 export class SharedModule {}

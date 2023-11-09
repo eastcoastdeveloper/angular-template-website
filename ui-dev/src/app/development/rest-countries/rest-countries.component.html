@@ -1,100 +1,64 @@
-<p class="project-text">
-  REST Countries is a
-  <span (click)="navigateToPage(urlEndpoint)" class="external-link"
-    >neat endpoint</span
-  >
-  that provides a list of countries shown in the selection pane. Additionally,
-  it provides capital names, flag imagery, population, native and region names.
-  It also provides geographical data. The geographical data is then coupled with
-  Leaflet's mapping abilities. The endpoints' additional data is shared with
-  Leaflet on click.
-</p>
-
-<p class="project-text element-margin-top">
-  <span class="external-link" (click)="navigateToPage(urlLeaflet)"
-    >Leaflet</span
-  >
-  is an interactive mapping solution akin to Google Maps, but provides devs an
-  onslaught of options. And unlike Google Maps, there's no need for a Gmail
-  account and API key. Only caveat is Leaflet is a library that takes some
-  getting used to. Moreover, how it's implemented may vary between framework
-  versions.
-</p>
-
-<p class="project-text element-margin-top">
-  The below app extracts the
-  <span class="external-link" (click)="navigateToPage(urlRestCountries)"
-    >REST Countries</span
-  >
-  country geographical output and sends it to Leaflet. In turn, we're able to
-  quickly cycle through the countries list, locating the central point of each
-  selection. <span class="attention-arrow">&#x2190;</span> Check out the
-  <span class="external-link" (click)="navigateToPage(urlStackblitz)"
-    >working version here</span
-  >.
-</p>
-
-<p class="project-text element-margin-top">
-  One challenge I did encounter was how to fit all the data in the UI, in every
-  screen size. There's simply so many items to display with little screen real
-  estate. Upgrading to Angular 14 however broke most of Leaflet so
-  responsiveness didn't make it into the rebuild. You know how it is. When you
-  build something awesome and it all falls apart, the inclination to rebuild is
-  lower than the initial drive.
-</p>
-
-<div class="image-wrapper element-shadow element-margin-top">
-  <img
-    [src]="restCountriesProjectImage"
-    alt="List of countries on the left and plotted map locations on the right with details of the country."
-  />
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
+  </div>
 </div>
 
-<h2>Building Rest Countries</h2>
 <p class="project-text">
-  When I build a UI like this at work or for practice, I literally begin with
-  pen and paper. That's if there's not a provided mock of course. I sketch out
-  how every feature works then map out the data flow and business logic. In rare
-  scenarios I'll do everything on the fly. But I know from experience, taking
-  the time to flesh out an offline draft pays off.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<p class="project-text element-margin-top">
-  Regardless of the task actually, pre planning allows us to see things we
-  wouldn't normall think of. Table and mobile views for instance don't have
-  space for the same elements shown on desktop. Planning for accessibility is a
-  big one. SEO and security planning. Planning for UI optimization. Planning for
-  components, routes, and error handling all are what I consider a best
-  practice. Planning for API design too is actually fun in my opinion. I get to
-  see how lean I can make my code. This part actually usually comes mid project
-  for me. But we can certainly plan for it.
-</p>
-
-<h2>Modeling the Payload</h2>
+<h2>Is this Required for You?</h2>
 <p class="project-text">
-  One area I initially struggled with was the interface. The payload is rather
-  bizarre. Last time I checked it, expected types weren't the types being shown.
-  I used a variety of methods and tools to double and triple check because I
-  wanted to nail the interface. What I came up with NO DOUBT could be refined in
-  retrospect. Learn and grow.
-</p>
-
-<div class="code-preview">
-  <pre><code>{{model}}</code></pre>
-</div>
-
-<p class="project-text element-margin-top">
-  Building apps like this allow me to create things I'd otherwise never get the
-  chance to. I guess that's part of being a developer. Coding for practice and
-  fun in your spare time (like any of us have an onslaught of thereof lol) is
-  rather necessary. It's part of the craft. Otherwise, you become type casted to
-  one role. A group of technologies unable to move forward.
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
 </p>
 
 <p class="project-text element-margin-top">
-  Regardless, the ultimate goal was to create a relatively simple rendition of
-  two APIs playing well together. Check out the REST Countries
-  <a class="external-link" (click)="navigateToPage(urlRestCountries)"
-    >code sample here</a
-  >.
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
+</p>
+
+<h2>Moving Forward</h2>
+<p class="project-text">
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

@@ -6,6 +6,8 @@ import { PageDataObject } from '../interfaces/pageDataInterface';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
+import { ConfigService } from './config.service';
+import { CategoryInterface } from '../interfaces/categories.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,21 +18,30 @@ export class ProjectListService implements OnDestroy {
   pageDataObject: PageDataObject = new PageDataObject();
   allProjects$ = new BehaviorSubject<ProjectsListInterface[]>([]);
   pageDataObject$ = new BehaviorSubject<PageDataObject>(this.pageDataObject);
-
-  projectsURL: string = `/api/javascript-projects/`;
+  categoryType$ = new BehaviorSubject<string>('');
+  configObject: CategoryInterface;
+  projectsURL: string = `../api/compliance-library/`;
   projectArray: ProjectsListInterface[] = [];
   currentRoute: string;
   totalPages: number;
 
   constructor(
+    private _configService: ConfigService,
     private _local: LocalStorageService,
     private _location: LocationStrategy,
     private _http: HttpClient,
     private _router: Router
-  ) {}
+  ) {
+    this._configService.categoryConfig$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((val) => {
+        this.configObject = val;
+      });
+  }
 
   // Check for Cache (Called Once OnInit in ProjectList Cmpt)
   isThereCache(type: string, pageNum: number, limit: number) {
+    this.categoryType$.next(type);
     const storage = this._local.getData('frontenddev');
     this.projectArray = [];
 
@@ -46,7 +57,6 @@ export class ProjectListService implements OnDestroy {
         this.totalPages = this._local.storage.totals[type]!;
         this.totalPages = (Math.ceil(this.totalPages / 10) * 10) / 10;
         this.totalItems$.next(this.totalPages);
-
         this.projectArray = this._local.storage[type][pageNum];
         this.allProjects$.next(this.projectArray);
         this.navigateToRoute(pageNum);
@@ -112,14 +122,21 @@ export class ProjectListService implements OnDestroy {
           });
 
           // Build Storage Object
-          if (type === 'all')
+          if (type === 'all') {
             this._local.storage['all'][pageNum] = response['all'];
-          if (type === 'projects')
-            this._local.storage['projects'][pageNum] = response['projects'];
-          if (type === 'cmp')
-            this._local.storage['cmp'][pageNum] = response['cmp'];
-          if (type === 'dev')
-            this._local.storage['dev'][pageNum] = response['dev'];
+          }
+          if (type === this.configObject.categoryOne) {
+            this._local.storage[this.configObject.categoryOne][pageNum] =
+              response[this.configObject.categoryOne];
+          }
+          if (type === this.configObject.categoryTwo) {
+            this._local.storage[this.configObject.categoryTwo][pageNum] =
+              response[this.configObject.categoryTwo];
+          }
+          if (type === this.configObject.categoryThree) {
+            this._local.storage[this.configObject.categoryThree][pageNum] =
+              response[this.configObject.categoryThree];
+          }
 
           this.cacheCategoryTotals(response);
         })
@@ -132,9 +149,12 @@ export class ProjectListService implements OnDestroy {
   // Square Away Category Totals
   cacheCategoryTotals(response: HttpResponse<ProjectsListInterface>) {
     this._local.storage['totals'].all = response['totals'].all;
-    this._local.storage['totals'].prj = response['totals'].prj;
-    this._local.storage['totals'].cmp = response['totals'].cmp;
-    this._local.storage['totals'].dev = response['totals'].dev;
+    this._local.storage['totals'][this.configObject.categoryOne] =
+      response['totals'][this.configObject.categoryOne];
+    this._local.storage['totals'][this.configObject.categoryTwo] =
+      response['totals'][this.configObject.categoryTwo];
+    this._local.storage['totals'][this.configObject.categoryThree] =
+      response['totals'][this.configObject.categoryThree];
     this._local.saveData('frontenddev', JSON.stringify(this._local.storage));
   }
 

@@ -1,5 +1,12 @@
 @import '../../../styles/page-style.scss';
 
+.page-intro {
+  .feature-img {
+    background: transparent url('../../../../assets/images/building_trust.jpg')
+      scroll no-repeat center / cover;
+  }
+}
+
 #dynamic-sidebar {
   font: normal 11pt sans-serif;
   box-sizing: border-box;

@@ -1,264 +1,264 @@
 {
   "data": [
     {
-      "title": "Angular Date Picker",
-      "imgUrl": "../../assets/projects-grid/angular-date-picker.jpg",
-      "description": "I've never cared for Angular Material, so I created my own Angular date picker. No complex configurations or modular additions. Just add the component and you're up and running.",
-      "path": "/ui-components/angular-date-picker",
-      "altText": "Angular date picker component that'll easily fit into any project by exporting the date value. Closes on external clicks.",
+      "title": "Accurate Book Records",
+      "imgUrl": "../../assets/images/accurate_books_records.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "path": "/standards/accurate-book-records",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Angular Dynamic Sidebar",
-      "imgUrl": "../../assets/projects-grid/angular-dynamic-sidebar.jpg",
-      "description": "I recently had to create an Angular dynamic sidebar with user permissions. Users only had access to pages provided in the endpoints output. This is a close representation of my creation minus the permissions.",
-      "path": "/ui-components/angular-dynamic-sidebar",
-      "altText": "Angular dynamic sidebar. Specify which section is a drop down menu, and populate all menu items via a DB/API.",
+      "title": "Building Trust",
+      "imgUrl": "../../assets/images/building_trust.jpg",
+      "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "path": "/standards/building-trust",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "JavaScript Drag and Drop",
-      "imgUrl": "../../assets/projects-grid/javascript-drag-and-drop.jpg",
-      "description": "I was recently tasked w/ the challenge of creating a JavaScript drag and drop UI. It called for the ability to drag multiple elements, each w/ their own POST requests. I wanted to ensure it went smooth, so I developed this similar concept.",
-      "path": "/web-development-projects/javascript-drag-and-drop",
-      "altText": "JavaScript drag and drop is a common task and this app showcases it via a simple UI. Drag/drop elements or create new ones.",
+      "title": "Charitable Solicitations",
+      "imgUrl": "../../assets/images/charitable_solicitations.jpg",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+      "path": "/leadership/charitable-solicitations",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "Angular Data Table",
-      "imgUrl": "../../assets/projects-grid/angular-data-table.jpg",
-      "description": "Angular data table importing JSON. Search, filter, and pagination; set item count per page. Easily modify height, width, colors, etc. Replace dummy data stream with your own, customize style, etc.",
-      "path": "/ui-components/angular-data-table",
-      "altText": "Paginated Angular data table importing JSON data. Easily customize height and width, colors, etc.",
+      "title": "Data Privacy & Security",
+      "imgUrl": "../../assets/images/data_privacy_security.jpg",
+      "description": "Aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+      "path": "/standards/data-privacy-security",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Angular Countdown Timer",
-      "imgUrl": "../../assets/projects-grid/angular-countdown-timer.jpg",
-      "description": "Angular countdown timer component with very minimal code. Plug it into any Angular project. Easily customize style or add milliseconds. Great feature to use in advertisements.",
-      "path": "/ui-components/angular-countdown-timer",
-      "altText": "Angular countdown timer component. Countdown with days, hours, minutes, and seconds. Written in TypeScript.",
+      "title": "Doing Business Globally",
+      "imgUrl": "../../assets/images/doing_business_globally.jpg",
+      "description": "Dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui.",
+      "path": "/standards/doing-business-globally",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "APOD NASA Gov",
-      "imgUrl": "../../assets/projects-grid/apod-nasa-gov.jpg",
-      "description": "APOD NASA Gov is NASA's Photo of the Day API. This Angular app w/ numerous components pings the endpoint to populate the DOM. A service connects them all. Access records dating back to 1995.",
-      "path": "/web-development-projects/apod-nasa-gov",
-      "altText": "APOD NASA Gov API. Single page app w/ numerous components using the endpoint to populate the DOM. Access records dating back to 1995",
+      "title": "Ensuring Positive Workplace",
+      "imgUrl": "../../assets/images/ensuring_positive_workplace.jpg",
+      "description": "Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.",
+      "path": "/leadership/ensuring-positive-workplace",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "REST Countries",
-      "imgUrl": "../../assets/projects-grid/rest-countries.jpg",
-      "description": "REST Countries app coupled w/ Leafleft interactive maps wrapped in an Angular UI experience. Pulling data in from a remote source and using it to plot locations on a map. Flexible UI.",
-      "path": "/web-development-projects/rest-countries",
-      "altText": "REST Countries app coupled w/ Leafleft interactive maps. Pulls data in from an OMDB API and uses it to plot locations on a map.",
+      "title": "Environmental Compliance",
+      "imgUrl": "../../assets/images/environmental_compliance.jpg",
+      "description": "Voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil.",
+      "path": "/leadership/environmental-compliance",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "React Project",
-      "imgUrl": "../../assets/projects-grid/react-project.jpg",
-      "description": "Basic get data sample React project written. Retrieves data from the Hackernews API then distributes the output to multiple components. Obtain new results by searching the endpoint for relative queries.",
-      "path": "https://stackblitz.com/edit/react-http-get?file=Content.tsx",
-      "altText": "React project using the Hackernews API as a data feed. Multiple components, clearly showing data distribution and styling.",
+      "title": "Ethical Hiring",
+      "imgUrl": "../../assets/images/ethical_hiring.jpg",
+      "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "path": "https://www.eduployment.com/blog/what-is-ethical-hiring/",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "OMDB API — Movie & TV Search",
-      "imgUrl": "../../assets/projects-grid/omdb-api.jpg",
-      "description": "This app uses output from the OMDB API. It's packaged up in a neat UI. Fully responsive and written in TypeScript. Enter a TV show or movie EXACTLY and get tremendous data in return. Look up your favorite movies/tv shows.",
-      "path": "/web-development-projects/omdb-api",
-      "altText": "Movie app using the OMDB API as a data source. Search for cinema or TV titles. Results populate table rows or showcase movie posters.",
+      "title": "Ethical Sales Practices",
+      "imgUrl": "../../assets/images/ethical_sales_practices.jpg",
+      "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+      "path": "/leadership/ethical-sales-practices",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "Angular Accordion",
-      "imgUrl": "../../assets/projects-grid/accordion-component.jpg",
-      "description": "Angular accordion component to neatly organize data in to sections. Use it in a column or as body content. The choice is yours. Comes with two different layouts, but easily add more.",
-      "path": "/ui-components/accordion-component",
-      "altText": "Angular accordion component. Store information in colapasable units. Built with three layouts, but add as many as you'd like.",
+      "title": "Fair Competition",
+      "imgUrl": "../../assets/images/fair_competition.jpg",
+      "description": "Laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.",
+      "path": "/standards/fair-competition",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Table in HTML",
-      "imgUrl": "../../assets/projects-grid/table-in-html.jpg",
-      "description": "For those of you working on a framework agnostic project, here's an HTML table written entirely in HTML, JavaScript, & CSS. Features include JSON data import, sort columns, search, and pagination.",
-      "path": "/ui-components/table-in-html",
-      "altText": "Table in HTML with search and sort functionality. Written in vanilla JavaScript.",
+      "title": "Fair Housing",
+      "imgUrl": "../../assets/images/fair_housing.jpg",
+      "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.",
+      "path": "/standards/fair-housing",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Chart JS Area Chart",
-      "imgUrl": "../../assets/projects-grid/chart-js-area-chart.jpg",
-      "description": "Chart JS area chart showcasing how easy it is to import data via JSON. Easily change colors, X or Y axis options, labels. Fork and make it your own.",
-      "path": "https://stackblitz.com/edit/angular-8-area-chart?file=src%2Fapp%2Fapp.component.ts",
-      "altText": "Chart JS area chart with not much styling. Project shows how to easily use dynamic data streams.",
+      "title": "False Claims",
+      "imgUrl": "../../assets/images/false_claims.jpg",
+      "description": "Chart JS area chart showcasing how easy it is to import data via JSON. Easily change colors, X or Y axis options, labels. Fork and make it your own. Ut aut reiciendis voluptatibus maiores alias consequatur aut.",
+      "path": "https://www.urmc.rochester.edu/compliance-office/education-tools/false-claims-act-prevention.aspx",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Chart JS Multiple Lines",
-      "imgUrl": "../../assets/projects-grid/chart-js-multiple-lines.jpg",
-      "description": "Chart JS multiple lines written in TypeScript. Change an abundance of options in one TS object. Plug it into any Angular App (lower than 14 I believe). Angular 14 and up seems to require Chart JS V3.",
-      "path": "https://stackblitz.com/edit/chartjs-multi-line-chart?file=src%2Fapp%2Fapp.component.ts",
-      "altText": "Chart JS multiple line chart. Data visualization by means of two lines spread out over multiple values.",
+      "title": "Foreign Corrupt Practices",
+      "imgUrl": "../../assets/images/foreign_corrupt_practices.jpg",
+      "description": "Accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.",
+      "path": "https://www.trade.gov/us-foreign-corrupt-practices-act",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Chart JS Bar Chart UI",
-      "imgUrl": "../../assets/projects-grid/chart-js-bar-chart.jpg",
-      "description": "Neat little Chart JS bar chart UI I created to familiarize myself moreso with components, the library, and using streams of JSON data. Pick it apart, fork, download....use for your purposes.",
-      "path": "https://stackblitz.com/edit/chartjs-bar-chart?file=src%2Fapp%2Fapp.component.ts",
-      "altText": "Chart JS bar chart user interface. Click on quarter 1, 2, or 3 and watch the data visualization bars change values.",
+      "title": "Gifts & Gratuities",
+      "imgUrl": "../../assets/images/gifts_and_gratuities.jpg",
+      "description": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam.",
+      "path": "https://www.lawinsider.com/dictionary/gifts-and-gratuities",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Chart JS Doughnut Chart",
-      "imgUrl": "../../assets/projects-grid/chart-js-doughnut.jpg",
-      "description": "Chart JS doughnut chart components working together to make up a neat little UI. Easily plug this into a financial app to display customer/client data. Ideal for data visualization enthusiasts.",
-      "path": "https://stackblitz.com/edit/doughnut-chart-component?file=src%2Fapp%2Fdoughnut-chart%2Fdoughnut-chart.component.ts",
-      "altText": "Three chart JS doughnut charts. Intended to showcase analytics. Use all three or just one. Demo of reusable code.",
+      "title": "Global Trade Controls",
+      "imgUrl": "../../assets/images/global_trade_controls.jpg",
+      "description": "Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis.",
+      "path": "https://www2.deloitte.com/us/en/pages/tax/articles/customs-and-global-trade-export-controls.html",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Chart JS Line Chart",
-      "imgUrl": "../../assets/projects-grid/chart-js-line-chart.jpg",
-      "description": "When the designer creates a mock, it's up to the developer to build it. This was my first attempt at modifying a Chart JS line chart to suit drastically different needs than it's default.",
-      "path": "https://stackblitz.com/edit/chart-with-js?file=src%2Fapp%2Fline-chart%2Fline-chart.component.ts",
-      "altText": "Custom chart JS line chart with an options menu. Hide/show labels on X or Y axis, or hide the grid alltogether.",
+      "title": "Healthcare Compliance",
+      "imgUrl": "../../assets/images/healthcare_compliance.jpg",
+      "description": "Debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.",
+      "path": "https://www.hcca-info.org/",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "D3 Bar Chart",
-      "imgUrl": "../../assets/projects-grid/d3-bar-chart.jpg",
-      "description": "D3 bar chart with a script to get you going. A brief intro to the world of D3. Modifications may be required to make it work in a framework. Written in vanilla JavaScript.",
-      "path": "/ui-components/d3-bar-chart",
-      "altText": "Responsive D3 bar chart with an X and Y axis. Project includes both the HTML and JavaScript.",
+      "title": "Information Security",
+      "imgUrl": "../../assets/images/information_security.jpg",
+      "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+      "path": "/standards/information-security",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Website Examples",
-      "imgUrl": "../../assets/projects-grid/website-examples.jpg",
-      "description": "Two fully responsive website examples I recently created. One developed in pure HTML, CSS, & JavaScript, but functions like a single page app. 100% on a Google Speed test at deployment. The other, a large financial single page app.",
-      "path": "/web-development-projects/website-examples",
-      "altText": "Two fully responsive website examples. Each of which showcase single page app architectures. One in native HTML, the other in TypeScript.",
+      "title": "Insider Trading",
+      "imgUrl": "../../assets/images/insider_trading.jpg",
+      "description": "Sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
+      "path": "/leadership/insider-trading",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "React To Do List",
-      "imgUrl": "../../assets/projects-grid/react-to-do-list.jpg",
-      "description": "React app demostrating basic features, functionality, and components. Running in Stackblitz, so check out live code, modify, fork...",
-      "path": "https://stackblitz.com/edit/react-list-item-app?file=src%2Fcomponents%2FTodoitem.js",
-      "altText": "React app to do list. Add and subtract things you'd like to do. Easily plug them into a DB or use for practice.",
+      "title": "Intellectual Property",
+      "imgUrl": "../../assets/images/intellectual_property.jpg",
+      "description": "Sonsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "path": "https://www.wipo.int/about-ip/en/",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "Weather-Leaflet App",
-      "imgUrl": "../../assets/projects-grid/weather-app.jpg",
-      "description": "TypeScript app retrieving data from a weather API. It then plots locations on a Leaflet map. Goal was to connect two APIs and have them play nicely together. Adding 3-7-10 day results is a breeze.",
-      "path": "https://stackblitz.com/edit/angular-weather-component?file=src%2Fapp%2Fapp.component.ts",
-      "altText": "Weather API communicating with the Leaflet maps API. Together they construct a modern weather forecast showing locations on a map.",
+      "title": "Phishing",
+      "imgUrl": "../../assets/images/phishing.jpg",
+      "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.",
+      "path": "https://www.trendmicro.com/en_za/what-is/phishing/types-of-phishing.html",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "AngularJS Project",
-      "imgUrl": "../../assets/projects-grid/angularjs-project.jpg",
-      "description": "Though I built this circa 2017, I still love it. This AngularJS project uses nearly all the bells and whistles of the former framework. Components, templates, controllers, page transitions, APIs, nested JSON powered image galleries, factories, etc.",
-      "path": "/web-development-projects/angularjs-project",
-      "altText": "AngularJS project using all the bells and whistles of the framework. Controllers, factories, templates, transitions, and more.",
+      "title": "Records Management",
+      "imgUrl": "../../assets/images/records_management.jpg",
+      "description": "Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
+      "path": "/leadership/records-management",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "projects"
+      "category": "leadership"
     },
     {
-      "title": "Routing in Angular",
-      "imgUrl": "../../assets/projects-grid/routing-in-angular.jpg",
-      "description": "Modules in Angular are the backbone of the framework. See modular code navigation and learn how to properly maintain modules in a large production ready application.",
-      "path": "/web-application-development/routing-in-angular/home",
-      "altText": "Showcasing modules in Angular. How to use them and navigate between them.",
+      "title": "Regulatory Environment",
+      "imgUrl": "../../assets/images/regulatory_environment.jpg",
+      "description": "Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat duis aute irure dolor in reprehenderit.",
+      "path": "/security/regulatory-environment",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "development"
+      "category": "security"
     },
     {
-      "title": "Angular Event Emitter",
-      "imgUrl": "../../assets/projects-grid/angular-event-emitter.jpg",
-      "description": "Angular event emitter illustrated via three components. Interact with a data table component and send the click event to the parent. Then share that same click event with a Chart JS area chart. Great example of one of the many ways to share data,",
-      "path": "https://stackblitz.com/edit/angular-eventemitter-example",
-      "altText": "Angular event emitter showcased between an area chart and table. Click table rows and watch the area chart reflect the table values.",
+      "title": "Risk",
+      "imgUrl": "../../assets/images/risk.jpg",
+      "description": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme.",
+      "path": "https://www.techtarget.com/searchcio/definition/compliance-risk",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "development"
+      "category": "security"
     },
     {
-      "title": "In Page Navigation",
-      "imgUrl": "../../assets/projects-grid/in-page-navigation.jpg",
-      "description": "Basic in page navigation mock. Easily show and hide different sections of a page without changing pages. Ideal for a questionaire, quiz, or any type of user info gathering UI.",
-      "path": "/web-application-development/in-page-navigation",
-      "altText": "In page navigation with a progress bar at the bottom. Navigate to different sections without changing pages.",
+      "title": "Safety & Security",
+      "imgUrl": "../../assets/images/safety_security.jpg",
+      "description": "Anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique.",
+      "path": "/security/safety-security",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "development"
+      "category": "security"
     },
     {
-      "title": "Angular Slider",
-      "imgUrl": "../../assets/projects-grid/angular-slider.jpg",
-      "description": "Basic Angular slider. Replace the JSON to suit your own needs. Take this foundation and add transitions or textual descriptions. Tinker with it here or in Stackblitz.",
-      "path": "/ui-components/angular-slider",
-      "altText": "Angular slider w/ clickable dots. Click a dot to shift the slider to a new book or change book w/ next/prev buttons.",
+      "title": "Unfair Labor Practices",
+      "imgUrl": "../../assets/images/unfair_labor_practices.jpg",
+      "description": "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans.",
+      "path": "/standards/unfair-labor-practices",
+      "altText": "Add your alt text here",
       "stackblitz": false,
       "internal": true,
-      "category": "components"
+      "category": "standards"
     },
     {
-      "title": "Angular Resolver",
-      "imgUrl": "../../assets/projects-grid/angular-resolver.jpg",
-      "description": "Angular resolver that preloads component content. This sample however takes it one step further by disallowing an endpoint to be called more than once. Ideal if you have a prefix appended to multiple endpoints.",
-      "path": "https://stackblitz.com/edit/angular-resolver-mock?file=src%2Fapp%2Fresolver.service.ts",
-      "altText": "Angular resolver that not only pre fetches content, but all ensures the endpoint is called only once.",
+      "title": "Whistle Blowers",
+      "imgUrl": "../../assets/images/whistle_blowers.jpg",
+      "description": "De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites.",
+      "path": "https://www.whistleblowers.gov/",
+      "altText": "Add your alt text here",
       "stackblitz": true,
       "internal": null,
-      "category": "development"
+      "category": "security"
     }
   ]
 }

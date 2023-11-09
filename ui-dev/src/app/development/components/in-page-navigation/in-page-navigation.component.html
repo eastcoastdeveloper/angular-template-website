@@ -1,140 +1,63 @@
-<p class="project-text">
-  I used in page navigation frequently while working at a former company. The
-  owners often didn't want new pages for different sections. They didn't even
-  want parameters appended to the url. The result was to create unique methods
-  of showing/ hiding content. This project is one such concept.
-</p>
-
-<div id="module-name" class="element-shadow element-margin-top">
-  <section *ngFor="let item of [].constructor(sectionLength)">
-    <div #sections>
-      {{ 'Section ' + (currentSection + 1) }}
-      <div *ngIf="currentSection === 0" class="section-content">
-        <div class="group">
-          <label for="name">First Name:</label>
-          <input type="text" placeholder="Enter a name" id="name" />
-        </div>
-        <div class="group">
-          <label for="occupation">Occupation:</label>
-          <input type="text" placeholder="Your occupation" id="occupation" />
-        </div>
-        <div class="group">
-          <label for="title">Title:</label>
-          <input type="text" placeholder="Your title" id="title" />
-        </div>
-      </div>
-
-      <div *ngIf="currentSection === 1" class="section-content">
-        <div class="group">
-          <label for="city">City:</label>
-          <input type="text" placeholder="Your city" id="city" />
-        </div>
-        <div class="group">
-          <label for="state">State:</label>
-          <input type="text" placeholder="Your state" id="state" />
-        </div>
-        <div class="group">
-          <label for="zip">Zip Code:</label>
-          <input type="text" placeholder="Your zip code" id="zip" />
-        </div>
-      </div>
-
-      <div *ngIf="currentSection === 2" class="section-content">Results...</div>
-    </div>
-  </section>
-  <div id="indicator" #bar></div>
-  <div id="percent">
-    <div
-      #percentages
-      *ngFor="let percent of [].constructor(sectionLength); let i = index"
-    >
-      {{ Math.round((100 / sectionLength) * (i + 1)) + '%' }}
-    </div>
-  </div>
-  <div
-    class="btn-group"
-    #btnGroup
-    (mouseover)="showProgressBar()"
-    (mouseout)="hideProgressBar()"
-  >
-    <button
-      *ngFor="let btn of [].constructor(sectionLength); let i = index"
-      (click)="navigate(i)"
-    >
-      {{ 'Section ' + (i + 1) }}
-    </button>
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
-
-<h2>Create the Class</h2>
 <p class="project-text">
-  In the TypeScript file below, we retrieve a group of elements. @ViewChildren
-  is akin to document.get... Though it no doubt has many other uses. We retrieve
-  the third line of the HTML, denoted by the "#sections" reference. Necessary to
-  show & hide them. Next, btnGroup references the group of buttons.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<p class="project-text element-margin-top">
-  Here, we simply pass the section count and add HTML for the content. bar
-  references the progress bar. currentSection for the only visible section.
-  percentages holds the percentage divs.
-</p>
-
-<p class="project-text element-margin-top">
-  Math is used to round the percentages. In turn a Math object is needed.
-  Created in the constructor. Notice the first line of the ngAfterViewInit
-  block. ChangeDetection is used because the values are changed during runtime
-  compilation. The length of the bar is set here too. Also in the
-  ngAfterViewInit hook grid columns are set, indicative of how many sections
-  there are. Set by the sectionLength variable. Yes, set any number of sections,
-  and an equal amount of buttons and sections render.
-</p>
-
-<p class="project-text element-margin-top">
-  The navigate fn sets the currentSection and the progress bar width. show &
-  hideProgressBar functions adjust the bar opacity and height.
-</p>
-
-<div class="code-preview">
-  <pre><code>{{typescript}}</code></pre>
-</div>
-
-<h2>Add the Markup</h2>
+<h2>Is this Required for You?</h2>
 <p class="project-text">
-  The markup below loops over an empty array. We use the constructor keyword to
-  initialize the object and pass it the amount of sections. Hiding all but the
-  current section. ngIf unfortunately cannot be used on the same line as Angular
-  restricts one template binding per element. Add the section headline. The
-  progress bar equation is a way of accommodating any number. I'd imagine 2, 3,
-  or 4 is ideal. All of which work beautfully with this line. Divide 100 by the
-  amount of sections. Round that number. Then multiple it by the section indice.
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
 </p>
-
-<div class="code-preview">
-  <pre><code>{{markup}}</code></pre>
-</div>
-
-<h2>Wrap it Up</h2>
-<p class="project-text">
-  Using a separate file for the content would definitely work. We could even
-  remove the 'Section 1' and include that in the section content. Form groups
-  would work here too. Images, endpoints, etc. Whatever you decide to do, go for
-  it. Angular is an immensely powerful framework with the ability to do nearly
-  anything imaginable in the UI. Add the CSS below.
-</p>
-<div class="code-preview">
-  <pre><code>{{style}}</code></pre>
-</div>
 
 <p class="project-text element-margin-top">
-  I guess the most important take away here is this is a maleable feature that
-  can be used when your boss or the client has an unusual request. This worked
-  particularly well for me when I was working at a startup and I was more often
-  than not pressed for time. Yeah, I could've found a library or some
-  pre-written solution, but being able to code a custom, viable feature is
-  rewarding. Fork and customize. Make this
-  <span class="attention-arrow">&#x2190;</span>
-  <span class="external-link" (click)="navigateToPage(urlStackblitz)"
-    >in page navigation component your own!</span
-  >
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
+</p>
+
+<h2>Moving Forward</h2>
+<p class="project-text">
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

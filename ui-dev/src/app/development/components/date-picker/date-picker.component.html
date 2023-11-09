@@ -1,156 +1,64 @@
-<div id="calendar-component" (window:resize)="onResize($event)">
-  <input
-    type="text"
-    placeholder="Select a date..."
-    (focus)="openCalendar()"
-    [ngClass]="{
-      'future-date': selectedDate > currentDate && currentDate != ''
-    }"
-    value="{{ getValue() }}"
-  />
-  <div *ngIf="calendarVisible" class="calendar">
-    <nav>
-      <div class="close-calendar" (click)="closeCalendar()">
-        <span>&#x2715;</span>
-      </div>
-      <div class="month" (click)="showMonths()">
-        <span>{{ months[monthIndex] }}</span>
-        <span class="caret" [ngClass]="{ 'rotate-caret': monthsMenu }"></span>
-        <ul *ngIf="monthsMenu">
-          <li
-            *ngFor="let month of months; let i = index"
-            (click)="selectMonth(i)"
-          >
-            {{ month }}
-          </li>
-        </ul>
-      </div>
-      <div class="year" (click)="showYears()">
-        <span>{{ year }}</span>
-        <span class="caret" [ngClass]="{ 'rotate-caret': yearsMenu }"></span>
-        <ul *ngIf="yearsMenu">
-          <li
-            *ngFor="let year of years; let i = index"
-            (click)="selectYear(year)"
-          >
-            {{ year }}
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="weekdays">
-      <ul>
-        <li *ngFor="let day of weekdays">{{ day }}</li>
-      </ul>
-    </div>
-    <div class="all-days-skeleton">
-      <div
-        *ngFor="let day of daySpan; let i = index"
-        (click)="selectDay(day)"
-        [ngClass]="{
-          'has-value': day.value != null,
-          'current-date': day.value === currentDay
-        }"
-      >
-        <div class="day-value">{{ day.value }}</div>
-      </div>
-    </div>
+<div class="page-intro">
+  <div class="feature-img"></div>
+  <div class="what-you-learn">
+    <h2>What You'll Learn</h2>
+    <ul class="project-list">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing.</li>
+      <li>Elit, sed do eiusmod tempor incididunt ut labore.</li>
+      <li>Et dolore magna aliqua. Ut enim ad minim veniam.</li>
+      <li>Duis aute irure dolor in reprehenderit in.</li>
+      <li>Excepteur sint occaecat cupidatat non proident.</li>
+      <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</li>
+      <li>Accusantium doloremque laudantium, totam rem aperiam.</li>
+      <li>Quae ab illo inventore veritatis et quasi architecto beatae.</li>
+      <li>Nemo enim ipsam voluptatem quia voluptas sit.</li>
+      <li>Qui dolorem ipsum quia dolor sit amet, consectetur.</li>
+      <li>Adipisci velit, sed quia non numquam eius modi tempora.</li>
+      <li>Ut enim ad minima veniam, quis nostrum exercitationem ullam.</li>
+      <li>Quis autem vel eum iure reprehenderit qui in ea voluptate.</li>
+    </ul>
   </div>
 </div>
 
-<p class="project-text element-margin-top" (click)="closeCalendar()">
-  I created this Angular datepicker to have as a standalone component. A feature
-  to easily add into projects as needed. I arrived at this decision after taking
-  unnessary time to configure everything that Material needs. I've done this
-  several times&mdash;for a date picker. Much of what the library supplies can
-  be developed as custom features. Custom features vs needing to conform to the
-  library's demands. The TypeScript file below has a number of moving parts.
-  Once we get past the first function however, it's not as complex.
-</p>
-
-<h2>How it Works</h2>
-<ul class="project-list" (click)="closeCalendar()">
-  <li>
-    calendarVisible is the variable that determines if the component is open or
-    closed. Whether it's in the DOM, or removed.
-  </li>
-  <li>d is the date object.</li>
-  <li>Manually declare weekdays, months, and years.</li>
-  <li>currentDay, monthIndex, and year are standard date methods.</li>
-  <li>
-    firstDay and lastDay holds the first and last day of each month
-    respectively.
-  </li>
-  <li>
-    monthsMenu determines visibility of the months when the current month is
-    clicked.
-  </li>
-  <li>yearsMenu the same as monthsMenu.</li>
-  <li>
-    In the calculateStartEndDate fn, we loop over 42 indices. With seven days in
-    a week multiplied by six potential weeks in a month, there's 42 possible
-    days. One month may begin on a Saturday, end on Sunday&mdash;spanning six
-    weeks. If the first day of the month is greater than one of the 42, add
-    empty cells. Then push those values to the array.
-  </li>
-  <li>
-    The firstLastDays fn gets the first and last day of the month respectively,
-    then passes them into the previous fn.
-  </li>
-  <li>selectDay(), selectYear(), and selectMonth() are similar.</li>
-  <li>showMonths() toggle the months menu while closing the years menu.</li>
-  <li>
-    checkForFutureDate() flags to the user, "Hey, you're selecting a future
-    date".
-  </li>
-  <li>
-    This is clearly the brains of the Angular datepicker. Moderately complex,
-    yet easier than maintaining Material in my opinion.
-  </li>
-</ul>
-
-<div class="code-preview" (click)="closeCalendar()">
-  <pre><code>{{typescript}}</code></pre>
-</div>
-
-<h2>Angular Date Picker Markup</h2>
 <p class="project-text">
-  The only semi unrecognizable part of the input should be the value. Which
-  simply lays out the date, already retrieved. monthsMenu is visible only if
-  it's open, then loops over the months array. As does yearsMenu. weekdays are
-  constant. showMonths() opens the months menu. selectDay() at the end passes
-  the day as an argument. In the TypeScript, the incoming day is then set to
-  currentDay. checkForFutureDate() fires which creates a new date.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
-<div class="code-preview">
-  <pre><code>{{markup}}</code></pre>
-</div>
+<h2>Is this Required for You?</h2>
+<p class="project-text">
+  Minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+  omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+  aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+  molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+  ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+  doloribus asperiores repellat.
+</p>
 
 <p class="project-text element-margin-top">
-  Styling is what it is. Nothing overly complicated here if you know CSS. The
-  nesting aspect is a feature of scss and allows for wonderful organization of
-  styling blocks. Only caveat is updating said styles in media queries requires
-  the same ordering of nested elements. If > div looks foreign to you, it's
-  simply referencing all divs that are first descendents. Grandchildren are not
-  captured.
+  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+  praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+  excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+  officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum
+  quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+  soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+  placeat facere possimus.
 </p>
 
-<h2>Create the Styling</h2>
-<div class="code-preview">
-  <pre><code>{{scss}}</code></pre>
-</div>
-
-<h2>Wrapping Up</h2>
+<h2>Moving Forward</h2>
 <p class="project-text">
-  <span class="attention-arrow">&#x2190;</span>
-  <span class="external-link" (click)="navigateToPage(urlStackblitz)"
-    >If you get stuck, check out the live demo.</span
-  >. I really hope these explanations helped you understand this component. My
-  objective here, as always is to give something back to the developer
-  community. Development is tough. And yes, there's some great learning
-  resources available in every medium. Other times we find code that's either
-  outdated, not compatible with our environment, or simply doesn't work. My goal
-  here is provide solutions and features that are regularly updated and
-  improved. Hope I've succeeded in providing a valuable Angular datepicker!
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+  consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+  porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+  adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et
+  dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+  nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+  ea commodi consequatur?
 </p>

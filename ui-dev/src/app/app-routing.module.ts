@@ -4,21 +4,21 @@ import { RedirectGuard } from './guards/redirect.guard';
 import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'javascript-projects', pathMatch: 'full' },
+  { path: '', redirectTo: 'compliance-library', pathMatch: 'full' },
   {
-    path: 'web-development-projects',
+    path: 'leadership',
     loadChildren: () =>
       import(`./modules/apps/apps.module`).then((m) => m.AppsModule)
   },
   {
-    path: 'ui-components',
+    path: 'standards',
     loadChildren: () =>
       import(`./modules/components/components.module`).then(
         (m) => m.ComponentsModule
       )
   },
   {
-    path: 'web-application-development',
+    path: 'security',
     loadChildren: () =>
       import(`./modules/development/development.module`).then(
         (m) => m.DevelopmentModule
@@ -32,18 +32,21 @@ const routes: Routes = [
       )
   },
   {
-    path: 'front-end-developer',
+    path: 'about-us',
     loadChildren: () =>
       import(`./modules/about/about.module`).then((m) => m.AboutPageModule)
   },
   {
-    path: 'javascript-projects',
+    path: 'compliance-library',
     loadChildren: () =>
       import(`./modules/projects-list/projects-list.module`).then(
         (m) => m.ProjectListModule
       )
   },
-  { path: '**', redirectTo: 'javascript-projects' }
+  {
+    path: '**',
+    redirectTo: 'compliance-library'
+  }
 ];
 
 @NgModule({
