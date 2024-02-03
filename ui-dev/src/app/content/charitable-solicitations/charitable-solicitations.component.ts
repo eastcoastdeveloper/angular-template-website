@@ -6,7 +6,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-drag-drop-ui',
   templateUrl: './charitable-solicitations.component.html',
-  styleUrls: ['./charitable-solicitations.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/charitable_solicitations.jpg') scroll
+      no-repeat center / cover;
+  }`
 })
 export class CharitableSolicitations {
   pageDataObject: PageDataObject = {

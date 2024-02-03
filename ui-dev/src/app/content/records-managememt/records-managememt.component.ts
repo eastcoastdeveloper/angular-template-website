@@ -6,7 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-angularjs-project',
   templateUrl: './records-managememt.component.html',
-  styleUrls: ['./records-managememt.component.scss']
+  styles: `.feature-img {
+    background: transparent url('../../../assets/images/records_management.jpg')
+      scroll no-repeat center / cover;
+  }`
 })
 export class AngularjsProjectComponent {
   pageDataObject: PageDataObject = {

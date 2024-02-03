@@ -6,7 +6,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: '[app-date-picker]',
   templateUrl: './accurate-book-records.component.html',
-  styleUrls: ['./accurate-book-records.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/accurate_books_records.jpg') scroll no-repeat
+      center / cover;
+  }`
 })
 export class AccurateBookRecordsComponent {
   pageDataObject: PageDataObject = {

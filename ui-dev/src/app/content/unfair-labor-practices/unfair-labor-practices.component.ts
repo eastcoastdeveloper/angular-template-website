@@ -5,7 +5,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-slider',
   templateUrl: './unfair-labor-practices.component.html',
-  styleUrls: ['./unfair-labor-practices.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/unfair_labor_practices.jpg') scroll no-repeat
+      center / cover;
+  }`
 })
 export class UnfairLaborPracticesComponent {
   currentIndex: number = 0;

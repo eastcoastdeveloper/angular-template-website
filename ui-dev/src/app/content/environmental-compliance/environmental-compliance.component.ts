@@ -6,7 +6,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-rest-countries',
   templateUrl: './environmental-compliance.component.html',
-  styleUrls: ['./environmental-compliance.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/environmental_compliance.jpg') scroll
+      no-repeat center / cover;
+  }`
 })
 export class EnvironmentalComplianceComponent {
   pageDataObject: PageDataObject = {

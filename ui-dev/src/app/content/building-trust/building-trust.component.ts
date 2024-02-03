@@ -6,7 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './building-trust.component.html',
-  styleUrls: ['./building-trust.component.scss']
+  styles: `.feature-img {
+    background: transparent url('../../../assets/images/building_trust.jpg')
+      scroll no-repeat center / cover;
+  }`
 })
 export class DynamicSidebarComponent {
   pageDataObject: PageDataObject = {

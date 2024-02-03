@@ -6,7 +6,11 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 @Component({
   selector: 'data-table',
   templateUrl: './data-privacy-security.component.html',
-  styleUrls: ['./data-privacy-security.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/data_privacy_security.jpg') scroll no-repeat
+      center / cover;
+  }`
 })
 export class DataPrivacySecurityComponent {
   pageDataObject: PageDataObject = {

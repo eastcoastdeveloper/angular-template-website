@@ -6,7 +6,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-d3-bar-graph',
   templateUrl: './information-security.component.html',
-  styleUrls: ['./information-security.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/information_security.jpg') scroll no-repeat
+      center / cover;
+  }`
 })
 export class InformationSecurityComponent {
   d3ProjectImage: string = '../../../../assets/projects-grid/d3-bar-graph.png';

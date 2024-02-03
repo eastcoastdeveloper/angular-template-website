@@ -6,7 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-table-in-html',
   templateUrl: './fair-housing.component.html',
-  styleUrls: ['./fair-housing.component.scss']
+  styles: ` .feature-img {
+    background: transparent url('../../../assets/images/fair_competition.jpg')
+      scroll no-repeat center / cover;
+  }`
 })
 export class FairHousingComponent {
   pageDataObject: PageDataObject = {

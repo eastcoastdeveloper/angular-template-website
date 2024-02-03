@@ -6,7 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-website-examples',
   templateUrl: './insider-trading.component.html',
-  styleUrls: ['./insider-trading.component.scss']
+  styles: `.feature-img {
+    background: transparent url('../../../assets/images/insider_trading.jpg')
+      scroll no-repeat center / cover;
+  }`
 })
 export class InsiderTradingComponent {
   pageDataObject: PageDataObject = {

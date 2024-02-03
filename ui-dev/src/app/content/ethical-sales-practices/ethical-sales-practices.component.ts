@@ -6,7 +6,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'movie-app',
   templateUrl: './ethical-sales-practices.component.html',
-  styleUrls: ['./ethical-sales-practices.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/ethical_sales_practices.jpg') scroll no-repeat
+      center / cover;
+  }`
 })
 export class EthicalSalePracticesComponent {
   pageDataObject: PageDataObject = {

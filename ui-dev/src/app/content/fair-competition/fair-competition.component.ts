@@ -6,7 +6,10 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 @Component({
   selector: 'accordion',
   templateUrl: './fair-competition.component.html',
-  styleUrls: ['./fair-competition.component.scss']
+  styles: `.feature-img {
+    background: transparent url('../../../assets/images/fair_competition.jpg')
+      scroll no-repeat center / cover;
+  }`
 })
 export class FairCompetitionComponent {
   pageDataObject: PageDataObject = {

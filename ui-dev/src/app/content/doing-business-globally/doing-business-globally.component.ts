@@ -7,7 +7,11 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'countdown',
   templateUrl: './doing-business-globally.component.html',
-  styleUrls: ['./doing-business-globally.component.scss']
+  styles: `.feature-img {
+    background: transparent
+      url('../../../assets/images/doing_business_globally.jpg') scroll no-repeat
+      center / cover;
+  }`
 })
 export class DoingBusinessGloballyComponent {
   pageDataObject: PageDataObject = {

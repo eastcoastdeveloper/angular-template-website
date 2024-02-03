@@ -6,7 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 @Component({
   selector: 'app-in-page-navigation',
   templateUrl: './safety-security.component.html',
-  styleUrls: ['./safety-security.component.scss']
+  styles: `.feature-img {
+    background: transparent url('../../../assets/images/safety_security.jpg')
+      scroll no-repeat center / cover;
+  }`
 })
 export class SafetySecurityComponent {
   pageDataObject: PageDataObject = {
