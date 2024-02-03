@@ -5,8 +5,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './dynamic-sidebar.component.html',
-  styleUrls: ['./dynamic-sidebar.component.scss']
+  templateUrl: './building-trust.component.html',
+  styleUrls: ['./building-trust.component.scss']
 })
 export class DynamicSidebarComponent {
   pageDataObject: PageDataObject = {

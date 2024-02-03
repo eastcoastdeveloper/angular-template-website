@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RightColumnComponent } from '../../structural/right-column/right-column.component';
+import { RightColumnComponent } from '../../components/right-column/right-column.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
