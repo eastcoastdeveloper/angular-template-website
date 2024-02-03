@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import { ProjectsListInterface } from '../../../interfaces/projects-list.interface';
+import { ProjectsListInterface } from '../../interfaces/projects-list.interface';
 
 @Component({
   selector: 'app-projects-list-content',
   templateUrl: './projects-list-content.component.html',
-  styleUrls: ['../../../styles/_cornerstone.scss']
+  styleUrls: ['../../styles/_cornerstone.scss']
 })
 export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];

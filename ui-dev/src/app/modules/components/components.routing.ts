@@ -4,7 +4,7 @@ import { DataPrivacySecurityComponent } from '../../content/data-privacy-securit
 import { FairCompetitionComponent } from '../../content/fair-competition/fair-competition.component';
 import { DoingBusinessGloballyComponent } from '../../content/doing-business-globally/doing-business-globally.component';
 import { AccurateBookRecordsComponent } from 'src/app/content/accurate-book-records/accurate-book-records.component';
-import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
+import { DynamicSidebarComponent } from '../../components/dynamic-sidebar/dynamic-sidebar.component';
 import { UnfairLaborPracticesComponent } from 'src/app/content/unfair-labor-practices/unfair-labor-practices.component';
 import { InformationSecurityComponent } from '../../content/information-security/information-security.component';
 import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';

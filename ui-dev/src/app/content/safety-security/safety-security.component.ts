@@ -5,10 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-in-page-navigation',
-  templateUrl: './in-page-navigation.component.html',
-  styleUrls: ['./in-page-navigation.component.scss']
+  templateUrl: './safety-security.component.html',
+  styleUrls: ['./safety-security.component.scss']
 })
-export class InPageNavigationComponent {
+export class SafetySecurityComponent {
   pageDataObject: PageDataObject = {
     title: 'Safety & Security',
     publishedOn: 'Nov 7, 2022',
