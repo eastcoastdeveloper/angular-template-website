@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
+import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-angularjs-project',
-  templateUrl: './angularjs-project.component.html',
-  styleUrls: ['./angularjs-project.component.scss']
+  selector: 'accordion',
+  templateUrl: './fair-competition.component.html',
+  styleUrls: ['./fair-competition.component.scss']
 })
-export class AngularjsProjectComponent {
+export class FairCompetitionComponent {
   pageDataObject: PageDataObject = {
-    title: 'Records Management',
-    publishedOn: 'Oct 16, 2017',
+    title: 'Fair Competition',
+    publishedOn: 'Sept 29, 2022',
     updatedOn: 'Jan 10, 2023',
-    repoTitle: 'angularjs-project',
-    repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
+    repoTitle: 'angular-accordion',
+    repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
     category: '',
-    views: 2027,
-    forks: 0,
-    cornerStone: false,
-    threeColumnLayout: true
+    views: 921,
+    forks: 23,
+    threeColumnLayout: false,
+    cornerStone: false
   };
 
   constructor(

@@ -95,6 +95,7 @@ export class ProjectListService implements OnDestroy {
 
   // Call All Projects API
   getAllProjects(type: string, pageNum: number, pageLimit: number) {
+    console.log(`${type} was fetched`);
     const httpOptions = {
       headers: new HttpHeaders()
     };

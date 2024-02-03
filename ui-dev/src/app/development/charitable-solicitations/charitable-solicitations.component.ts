@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'accordion',
-  templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+  selector: 'app-drag-drop-ui',
+  templateUrl: './charitable-solicitations.component.html',
+  styleUrls: ['./charitable-solicitations.component.scss']
 })
-export class AccordionComponent {
+export class CharitableSolicitations {
   pageDataObject: PageDataObject = {
-    title: 'Fair Competition',
-    publishedOn: 'Sept 29, 2022',
+    title: 'Charitable Solicitations',
+    publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
-    repoTitle: 'angular-accordion',
-    repoLink: 'https://github.com/eastcoastdeveloper/Angular-Accordion-JSON',
-    category: '',
-    views: 921,
-    forks: 23,
-    threeColumnLayout: false,
-    cornerStone: false
+    repoTitle: 'javascript-drag-and-drop',
+    repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
+    category: 'projects',
+    views: 271,
+    forks: 3,
+    cornerStone: false,
+    threeColumnLayout: true
   };
 
   constructor(

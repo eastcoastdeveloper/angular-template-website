@@ -4,22 +4,22 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-table-in-html',
-  templateUrl: './table-in-html.component.html',
-  styleUrls: ['./table-in-html.component.scss']
+  selector: 'app-angularjs-project',
+  templateUrl: './records-managememt.component.html',
+  styleUrls: ['./records-managememt.component.scss']
 })
-export class TableInHTMLComponent {
+export class AngularjsProjectComponent {
   pageDataObject: PageDataObject = {
-    title: 'Fair Housing',
-    publishedOn: 'Oct 1, 2022',
+    title: 'Records Management',
+    publishedOn: 'Oct 16, 2017',
     updatedOn: 'Jan 10, 2023',
-    repoTitle: 'angular-date-picker',
-    repoLink: 'https://github.com/eastcoastdeveloper/Dynamic-HTML-Table',
-    category: 'components',
-    views: 74,
+    repoTitle: 'angularjs-project',
+    repoLink: 'https://github.com/eastcoastdeveloper/angularjs-project',
+    category: '',
+    views: 2027,
     forks: 0,
-    threeColumnLayout: true,
-    cornerStone: false
+    cornerStone: false,
+    threeColumnLayout: true
   };
 
   constructor(

@@ -4,22 +4,22 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-drag-drop-ui',
-  templateUrl: './drag-drop-ui.component.html',
-  styleUrls: ['./drag-drop-ui.component.scss']
+  selector: 'app-table-in-html',
+  templateUrl: './fair-housing.component.html',
+  styleUrls: ['./fair-housing.component.scss']
 })
-export class DragDropUiComponent {
+export class FairHousingComponent {
   pageDataObject: PageDataObject = {
-    title: 'Charitable Solicitations',
+    title: 'Fair Housing',
     publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
-    repoTitle: 'javascript-drag-and-drop',
-    repoLink: 'https://github.com/eastcoastdeveloper/drag-and-drop-javascript',
-    category: 'projects',
-    views: 271,
-    forks: 3,
-    cornerStone: false,
-    threeColumnLayout: true
+    repoTitle: 'angular-date-picker',
+    repoLink: 'https://github.com/eastcoastdeveloper/Dynamic-HTML-Table',
+    category: 'components',
+    views: 74,
+    forks: 0,
+    threeColumnLayout: true,
+    cornerStone: false
   };
 
   constructor(

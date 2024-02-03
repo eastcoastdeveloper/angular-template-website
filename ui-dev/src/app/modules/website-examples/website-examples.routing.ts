@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WebsiteExamplesComponent } from '../../development/website-examples/website-examples.component';
+import { InsiderTradingComponent } from '../../development/insider-trading/insider-trading.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: WebsiteExamplesComponent
-  },
+    component: InsiderTradingComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class WebsiteExamplesRoutingModule {}
 
-export const websiteExamplesComponents = [WebsiteExamplesComponent];
+export const insiderTradingComponents = [InsiderTradingComponent];

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableInHTMLComponent } from './table-in-html.component';
+import { FairHousingComponent } from './table-in-html.component';
 
-describe('TableInHTMLComponent', () => {
-  let component: TableInHTMLComponent;
-  let fixture: ComponentFixture<TableInHTMLComponent>;
+describe('FairHousingComponent', () => {
+  let component: FairHousingComponent;
+  let fixture: ComponentFixture<FairHousingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TableInHTMLComponent]
+      declarations: [FairHousingComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TableInHTMLComponent);
+    fixture = TestBed.createComponent(FairHousingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

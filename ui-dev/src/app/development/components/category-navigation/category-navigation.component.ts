@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { CategoryInterface } from 'src/app/interfaces/categories.interface';
 import { LocalStorageInterface } from 'src/app/interfaces/localStorage.interface';
@@ -36,11 +36,11 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
     private _local: LocalStorageService,
     private _router: Router
   ) {
-    this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((ev) => {
-      if (ev instanceof NavigationEnd) {
-        this.isThereCache();
-      }
-    });
+    // this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((ev) => {
+    //   if (ev instanceof NavigationEnd) {
+    //     this.isThereCache();
+    //   }
+    // });
   }
 
   ngOnInit(): void {
@@ -56,7 +56,6 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
         this.windowWidth = val;
       });
 
-    // this.isThereCache();
     this._globalFeaturesService.getCategoryFromUrl();
     this.categoryType = this._projectListService.categoryType$.value;
 
@@ -66,35 +65,6 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
         this.setTotals(d);
       });
   }
-
-  isThereCache() {
-    // const storage = this._local.getData('frontenddev');
-    // if (storage != '') {
-    //   const parsed = JSON.parse(storage);
-    //   console.log(parsed);
-    // this.getCategoryFromUrl();
-    //   // if (Object.keys(parsed[this.categoryType]).length === 0) {
-    //   //   this.fetchItems();
-    //   // }
-    // } else {
-    //   console.log('fasdafs');
-    //   this.fetchItems();
-    // }
-  }
-
-  // getCategoryFromUrl() {
-  //   this._globalFeaturesService.getCategoryFromUrl();
-  //   // this._projectListService.isThereCache(this.categoryType, 1, 10);
-  // }
-
-  // fetchItems() {
-  //   new Promise((resolve) => {
-  //     this._projectListService.getAllProjects(this.categoryType, 1, 10);
-  //     resolve(
-
-  //     );
-  //   });
-  // }
 
   setTotals(obj: LocalStorageInterface) {
     this.totalAll = obj.totals.all;
@@ -140,9 +110,7 @@ export class CategoryNavigationComponent implements OnInit, OnDestroy {
   loadCategory(obj: NavigationData) {
     const typeReference = this._local.storage[obj.type];
     this.categoryType = obj.type;
-    if (Object.keys(typeReference).length === 0) {
-      this.isThereCache();
-    } else {
+    if (Object.keys(typeReference).length != 0) {
       const key = Object.keys(typeReference)[0];
       this.dataArray = typeReference[key];
     }

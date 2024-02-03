@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WebsiteExamplesRoutingModule, websiteExamplesComponents} from './website-examples.routing';
+import {
+  WebsiteExamplesRoutingModule,
+  insiderTradingComponents
+} from './website-examples.routing';
 
 @NgModule({
-  declarations: [
-    websiteExamplesComponents
-  ],
-  imports: [CommonModule, WebsiteExamplesRoutingModule],
+  declarations: [insiderTradingComponents],
+  imports: [CommonModule, WebsiteExamplesRoutingModule]
 })
-export class WebsiteExamplesModule { }
+export class WebsiteExamplesModule {}

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AngularjsProjectComponent } from './angularjs-project.component';
+import { AngularjsProjectComponent } from './records-managememt.component';
 
 describe('AngularjsProjectComponent', () => {
   let component: AngularjsProjectComponent;

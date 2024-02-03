@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "ng build --aot --build-optimizer --common-chunk --vendor-chunk --named-chunks --base-href /angular-spa/",
+    "build": "ng build --aot --build-optimizer --common-chunk --vendor-chunk --named-chunks",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "cache": "rm -rf .angular/cache",

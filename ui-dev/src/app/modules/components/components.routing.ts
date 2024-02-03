@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TablePaginatedComponent } from '../../development/components/data-table/data-table.component';
-import { AccordionComponent } from '../../development/components/accordion/accordion.component';
+import { FairCompetitionComponent } from '../../development/components/fair-competition/fair-competition.component';
 import { CountdownComponent } from '../../development/components/countdown/countdown.component';
 import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';
 import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
-import { SliderComponent } from 'src/app/development/components/slider/slider.component';
+import { UnfairLaborPracticesComponent } from 'src/app/development/components/unfair-labor-practices/unfair-labor-practices.component';
 import { D3BarGraphComponent } from '../../development/components/d3-bar-graph/d3-bar-graph.component';
-import { TableInHTMLComponent } from '../../development/components/table-in-html/table-in-html.component';
 import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
+import { FairHousingComponent } from 'src/app/development/components/fair-housing/table-in-html.component';
 
 const routes: Routes = [
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: 'fair-competition',
-        component: AccordionComponent
+        component: FairCompetitionComponent
       },
       {
         path: 'doing-business-globally',
@@ -45,11 +45,11 @@ const routes: Routes = [
       },
       {
         path: 'unfair-labor-practices',
-        component: SliderComponent
+        component: UnfairLaborPracticesComponent
       },
       {
         path: 'fair-housing',
-        component: TableInHTMLComponent
+        component: FairHousingComponent
       },
       {
         path: 'information-security',
@@ -68,11 +68,11 @@ export class ComponentsRoutingModule {}
 
 export const componentsComponents = [
   TablePaginatedComponent,
-  AccordionComponent,
+  FairCompetitionComponent,
   CountdownComponent,
   DynamicSidebarComponent,
   DatePickerComponent,
-  SliderComponent,
-  TableInHTMLComponent,
+  UnfairLaborPracticesComponent,
+  FairHousingComponent,
   D3BarGraphComponent
 ];

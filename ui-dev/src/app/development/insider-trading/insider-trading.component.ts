@@ -5,10 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-website-examples',
-  templateUrl: './website-examples.component.html',
-  styleUrls: ['./website-examples.component.scss']
+  templateUrl: './insider-trading.component.html',
+  styleUrls: ['./insider-trading.component.scss']
 })
-export class WebsiteExamplesComponent {
+export class InsiderTradingComponent {
   pageDataObject: PageDataObject = {
     title: 'Insider Trading',
     publishedOn: 'Oct 1, 2022',

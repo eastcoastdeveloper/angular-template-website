@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AngularjsProjectComponent } from 'src/app/development/angularjs-project/angularjs-project.component';
+import { AngularjsProjectComponent } from 'src/app/development/records-managememt/records-managememt.component';
 import { AppsWrapperComponent } from '../../pages/wrapper-apps/apps-wrapper.component';
 
 const routes: Routes = [
@@ -46,9 +46,10 @@ const routes: Routes = [
       },
       {
         path: 'charitable-solicitations',
-        data: { title: 'JavaScript Drag and Drop' },
         loadChildren: () =>
-          import(`../drag-drop/drag-drop.module`).then((m) => m.DragDropModule)
+          import(`../drag-drop/charitable-solicitations.module`).then(
+            (m) => m.CharitableSolicitationsModule
+          )
       },
       {
         path: '**',

@@ -4,10 +4,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss']
+  templateUrl: './unfair-labor-practices.component.html',
+  styleUrls: ['./unfair-labor-practices.component.scss']
 })
-export class SliderComponent {
+export class UnfairLaborPracticesComponent {
   currentIndex: number = 0;
   markup: string;
   productInfo: boolean = false;

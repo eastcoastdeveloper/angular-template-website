@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InPageNavigationComponent } from 'src/app/development/components/in-page-navigation/in-page-navigation.component';
-import { ServicesComponent } from 'src/app/development/components/services/services.component';
+// import { ServicesComponent } from 'src/app/development/components/services/services.component';
 import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
 
 const routes: Routes = [
@@ -28,10 +28,6 @@ const routes: Routes = [
         path: 'safety-security',
         component: InPageNavigationComponent
       },
-      {
-        path: 'services-in-angular',
-        component: ServicesComponent
-      },
       { path: '**', redirectTo: 'security-classes' }
     ]
   }
@@ -43,7 +39,4 @@ const routes: Routes = [
 })
 export class DevelopmentRoutingModule {}
 
-export const developmentComponents = [
-  ServicesComponent,
-  InPageNavigationComponent
-];
+export const developmentComponents = [InPageNavigationComponent];

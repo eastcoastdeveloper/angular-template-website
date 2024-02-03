@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  DragDropRoutingModule,
+  CharitableSolicitationsRoutingModule,
   dragdropRoutingComponents
-} from './drag-drop.routing';
+} from './charitable-solicitations.routing';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [dragdropRoutingComponents],
-  imports: [CommonModule, DragDropRoutingModule, FormsModule]
+  imports: [CommonModule, CharitableSolicitationsRoutingModule, FormsModule]
 })
-export class DragDropModule {}
+export class CharitableSolicitationsModule {}

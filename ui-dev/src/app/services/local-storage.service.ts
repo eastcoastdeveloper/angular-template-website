@@ -3,36 +3,32 @@ import * as CryptoJS from 'crypto-js';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { LocalStorageInterface } from '../interfaces/localStorage.interface';
 import { ConfigService } from './config.service';
-import { CategoryInterface } from '../interfaces/categories.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
   private unsubscribe$ = new Subject<void>();
-  configObject: CategoryInterface;
+  configObject = {
+    all: [],
+    totals: []
+  };
 
   constructor(private _configService: ConfigService) {
     this._configService.categoryConfig$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.configObject = val;
+        let values = Object.keys(val);
+        for (var i = 0; i < values.length; i++) {
+          this.configObject[values[i]] = [];
+        }
       });
   }
 
-  localStorage$ = new BehaviorSubject<LocalStorageInterface>({
-    all: {},
-    leadership: {},
-    standards: {},
-    security: {},
-    totals: {
-      all: undefined,
-      leadership: undefined,
-      standards: undefined,
-      security: undefined
-    }
-  });
+  localStorage$ = new BehaviorSubject<any>(this.configObject);
+
   key = 'frontenddev';
+
   storage: LocalStorageInterface = {
     all: {},
     leadership: {},

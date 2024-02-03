@@ -26,14 +26,6 @@ a {
   }
 }
 
-.attention-arrow {
-  transform: rotate(-180deg);
-  display: inline-block;
-  font-size: 14px;
-  margin-right: 3px;
-  color: $purple;
-}
-
 blockquote {
   font: italic 14px sans-serif;
   line-height: 20px;
@@ -71,11 +63,6 @@ body {
 
 .element-shadow {
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.35);
-}
-
-.external-link {
-  color: $purple;
-  cursor: pointer;
 }
 
 #header {
@@ -486,17 +473,6 @@ h5 {
 /* ####################################### */
 @media screen and (max-width: 1300px), screen and (max-height: 760px) {
   .page-content {
-    // .two-column-layout,
-    // .three-column-layout {
-    //   .right-column {
-    //     .right-column-cmp {
-    //       .contact-form {
-    //         max-width: unset;
-    //         padding: 14px 20px;
-    //       }
-    //     }
-    //   }
-    // }
     .right-column {
       position: unset;
       width: unset;
