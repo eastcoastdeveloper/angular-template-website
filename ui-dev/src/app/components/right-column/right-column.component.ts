@@ -1,19 +1,20 @@
 import { Component, AfterViewChecked, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import * as L from 'leaflet';
-import {
-  icon,
-  latLng,
-  Map,
-  marker,
-  point,
-  polyline,
-  MapOptions,
-  Marker,
-  tileLayer,
-  map
-} from 'leaflet';
+// import * as L from 'leaflet';
+// import * as L from 'leaflet';
+// import {
+//   icon,
+//   latLng,
+//   Map,
+//   marker,
+//   point,
+//   polyline,
+//   MapOptions,
+//   Marker,
+//   tileLayer,
+//   map
+// } from 'leaflet';
 declare let L;
 
 @Component({
@@ -26,9 +27,6 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
   threeColumnLayout?: boolean;
   cornerStone?: boolean;
   windowWidth?: number;
-
-  mapOptions: MapOptions;
-  map: Map;
 
   socials: { name: string; link: string; altText: string; src: string }[] = [
     {
@@ -72,7 +70,7 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
   constructor(private _globalFeatures: GlobalFeaturesService) {}
 
   ngOnInit(): void {
-    this.initializeMapOptions();
+    // this.initializeMapOptions();
   }
 
   ngAfterViewChecked(): void {
@@ -83,22 +81,22 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
       });
   }
 
-  private initializeMapOptions() {
-    this.mapOptions = {
-      center: latLng(36.168, -115.15),
-      zoom: 13,
-      layers: [
-        tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
-          attribution: 'Map data © OpenStreetMap contributors'
-        })
-      ]
-    };
-  }
+  // private initializeMapOptions() {
+  //   this.mapOptions = {
+  //     center: latLng(36.168, -115.15),
+  //     zoom: 13,
+  //     layers: [
+  //       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //         maxZoom: 18,
+  //         attribution: 'Map data © OpenStreetMap contributors'
+  //       })
+  //     ]
+  //   };
+  // }
 
-  onMapReady(map: Map) {
-    this.map = map;
-  }
+  // onMapReady(map: Map) {
+  //   this.map = map;
+  // }
 
   navigateToPage(url: string) {
     this._globalFeatures.externalLink(url);

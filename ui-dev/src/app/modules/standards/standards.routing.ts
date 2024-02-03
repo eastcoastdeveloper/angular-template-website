@@ -64,9 +64,9 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ComponentsRoutingModule {}
+export class StandardsRoutingModule {}
 
-export const componentsComponents = [
+export const standardsComponents = [
   DataPrivacySecurityComponent,
   FairCompetitionComponent,
   DoingBusinessGloballyComponent,

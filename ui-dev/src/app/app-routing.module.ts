@@ -7,19 +7,19 @@ const routes: Routes = [
   {
     path: 'leadership',
     loadChildren: () =>
-      import(`./modules/apps/apps.module`).then((m) => m.AppsModule)
+      import(`./modules/leadership/leadership.module`).then((m) => m.AppsModule)
   },
   {
     path: 'standards',
     loadChildren: () =>
-      import(`./modules/components/components.module`).then(
+      import(`./modules/standards/standards.module`).then(
         (m) => m.ComponentsModule
       )
   },
   {
     path: 'security',
     loadChildren: () =>
-      import(`./modules/development/development.module`).then(
+      import(`./modules/security/security.module`).then(
         (m) => m.DevelopmentModule
       )
   },

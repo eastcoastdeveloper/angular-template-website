@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'security-classes',
         loadChildren: () =>
           import(
-            `../../modules/cornerstone-development/cornerstone-development.module`
+            `../cornerstone-development/cornerstone-development.module`
           ).then((m) => m.CornerstoneDevelopmentModule)
       },
       {
@@ -36,6 +36,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DevelopmentRoutingModule {}
+export class SecurityRoutingModule {}
 
-export const developmentComponents = [SafetySecurityComponent];
+export const securityComponents = [SafetySecurityComponent];

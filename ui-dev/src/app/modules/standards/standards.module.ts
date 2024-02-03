@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {
-  DevelopmentRoutingModule,
-  developmentComponents
-} from './development.routing';
+  StandardsRoutingModule,
+  standardsComponents
+} from './standards.routing';
 import { RightColumnModule } from '../shared/right-column.module';
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [developmentComponents],
+  declarations: [standardsComponents],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     RouterModule,
     FormsModule,
     SharedModule,
-    DevelopmentRoutingModule,
+    StandardsRoutingModule,
     RightColumnModule
   ],
-  exports: []
+  exports: [NgxPaginationModule]
 })
-export class DevelopmentModule {}
+export class ComponentsModule {}

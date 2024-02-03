@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { AppsRoutingModule, appsComponents } from './leadership.routing';
 import { RouterModule } from '@angular/router';
-import {
-  CornerstoneAppsRoutingModule,
-  cornerstoneAppsComponents
-} from './leadership.routing';
+import { RightColumnModule } from '../shared/right-column.module';
 
 @NgModule({
-  declarations: [cornerstoneAppsComponents],
+  declarations: [appsComponents],
   imports: [
     CommonModule,
-    RouterModule,
     SharedModule,
-    CornerstoneAppsRoutingModule
+    RouterModule,
+    AppsRoutingModule,
+    RightColumnModule
   ]
 })
-export class CornerstoneAppsModule {}
+export class AppsModule {}

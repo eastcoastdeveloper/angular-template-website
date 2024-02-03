@@ -14,8 +14,6 @@ export class EnvironmentalComplianceComponent {
     publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
     repoTitle: 'rest-countries',
-    repoLink:
-      'https://github.com/eastcoastdeveloper/rest-countries-leaflet-map',
     category: '',
     views: 501,
     forks: 3,

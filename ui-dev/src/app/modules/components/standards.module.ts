@@ -5,20 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {
-  ComponentsRoutingModule,
-  componentsComponents
-} from './components.routing';
+  StandardsRoutingModule,
+  standardsComponents
+} from '../standards/standards.routing';
 import { RightColumnModule } from '../shared/right-column.module';
 
 @NgModule({
-  declarations: [componentsComponents],
+  declarations: [standardsComponents],
   imports: [
     CommonModule,
     NgxPaginationModule,
     RouterModule,
     FormsModule,
     SharedModule,
-    ComponentsRoutingModule,
+    StandardsRoutingModule,
     RightColumnModule
   ],
   exports: [NgxPaginationModule]

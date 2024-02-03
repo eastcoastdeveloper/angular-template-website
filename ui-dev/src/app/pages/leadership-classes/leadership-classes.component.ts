@@ -12,7 +12,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
     [dataArray]="appsArray"
   ></app-projects-list-content>`
 })
-export class CornerstoneAppsComponent implements OnInit, OnDestroy {
+export class LeadershipClassesComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     cornerStone: true
