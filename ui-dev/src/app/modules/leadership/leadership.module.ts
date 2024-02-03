@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import {
   CornerstoneAppsRoutingModule,
   cornerstoneAppsComponents
-} from './cornerstone-apps.routing';
+} from './leadership.routing';
 
 @NgModule({
   declarations: [cornerstoneAppsComponents],

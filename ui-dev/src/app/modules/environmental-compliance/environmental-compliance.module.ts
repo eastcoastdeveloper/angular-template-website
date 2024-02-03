@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   RestCountriesRoutingModule,
   EnvironmentalComplianceComponents
-} from './rest-countries.routing';
+} from './environmental-compliance.routing';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 

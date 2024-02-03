@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { RedirectGuard } from './guards/redirect.guard';
-import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'compliance-library', pathMatch: 'full' },
@@ -50,5 +49,3 @@ const routes: Routes = [
   providers: [RedirectGuard]
 })
 export class AppRoutingModule {}
-
-export const appRoutingComponents = [FormConfirmationComponent];

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   WebsiteExamplesRoutingModule,
   insiderTradingComponents
-} from './website-examples.routing';
+} from './insider-trading.routing';
 
 @NgModule({
   declarations: [insiderTradingComponents],

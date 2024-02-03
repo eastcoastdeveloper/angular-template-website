@@ -12,21 +12,23 @@ const routes: Routes = [
       {
         path: 'leadership-classes',
         loadChildren: () =>
-          import(`../cornerstone-apps/cornerstone-apps.module`).then(
+          import(`../leadership/leadership.module`).then(
             (m) => m.CornerstoneAppsModule
           )
       },
       {
         path: 'ethical-sales-practices',
         loadChildren: () =>
-          import(`../omdb/movie-app.module`).then((m) => m.MovieAppModule)
+          import(
+            `../ethical-sale-practices/ethical-sale-practices.module`
+          ).then((m) => m.MovieAppModule)
       },
       {
         path: 'environmental-compliance',
         loadChildren: () =>
-          import(`../rest-countries/rest-countries.module`).then(
-            (m) => m.RestCountriesModule
-          )
+          import(
+            `../environmental-compliance/environmental-compliance.module`
+          ).then((m) => m.RestCountriesModule)
       },
       {
         path: 'records-management',
@@ -35,7 +37,7 @@ const routes: Routes = [
       {
         path: 'insider-trading',
         loadChildren: () =>
-          import(`../website-examples/website-examples.module`).then(
+          import(`../insider-trading/insider-trading.module`).then(
             (m) => m.WebsiteExamplesModule
           )
       },

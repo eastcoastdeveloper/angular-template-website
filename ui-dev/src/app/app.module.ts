@@ -2,13 +2,12 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule, appRoutingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './modules/shared/shared.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './structural/header/header.component';
 import { FooterComponent } from './structural/footer/footer.component';
-import { FormConfirmationComponent } from './pages/form-confirmation/form-confirmation.component';
 import { WindowRef } from './windowRef';
 import { LoadingInterceptor } from './guards/loading.interceptor';
 import { ConfigService } from './services/config.service';
@@ -29,13 +28,7 @@ export function appConfigInit(appConfigService: ConfigService) {
     SharedModule,
     ReactiveFormsModule
   ],
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    appRoutingComponents,
-    FormConfirmationComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   providers: [
     Meta,
     HttpClientModule,

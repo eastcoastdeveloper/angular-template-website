@@ -35,7 +35,6 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        // this.removeDuplicates(val);
         this.cmpsArray = val;
       });
     this._configService.categoryConfig$
