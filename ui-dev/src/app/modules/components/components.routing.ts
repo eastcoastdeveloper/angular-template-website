@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TablePaginatedComponent } from '../../development/components/data-table/data-table.component';
 import { FairCompetitionComponent } from '../../development/components/fair-competition/fair-competition.component';
-import { CountdownComponent } from '../../development/components/countdown/countdown.component';
+import { DoingBusinessGloballyComponent } from '../../development/components/doing-business-globally/doing-business-globally.component';
 import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';
 import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
 import { UnfairLaborPracticesComponent } from 'src/app/development/components/unfair-labor-practices/unfair-labor-practices.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
       },
       {
         path: 'doing-business-globally',
-        component: CountdownComponent
+        component: DoingBusinessGloballyComponent
       },
       {
         path: 'accurate-book-records',
@@ -69,7 +69,7 @@ export class ComponentsRoutingModule {}
 export const componentsComponents = [
   TablePaginatedComponent,
   FairCompetitionComponent,
-  CountdownComponent,
+  DoingBusinessGloballyComponent,
   DynamicSidebarComponent,
   DatePickerComponent,
   UnfairLaborPracticesComponent,

@@ -6,10 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'countdown',
-  templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.scss']
+  templateUrl: './doing-business-globally.component.html',
+  styleUrls: ['./doing-business-globally.component.scss']
 })
-export class CountdownComponent {
+export class DoingBusinessGloballyComponent {
   pageDataObject: PageDataObject = {
     title: 'Doing Business Globally',
     publishedOn: 'Oct 1, 2022',
