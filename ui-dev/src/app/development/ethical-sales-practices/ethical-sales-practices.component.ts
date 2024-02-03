@@ -5,10 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'movie-app',
-  templateUrl: './movie-app.component.html',
-  styleUrls: ['./movie-app.component.scss']
+  templateUrl: './ethical-sales-practices.component.html',
+  styleUrls: ['./ethical-sales-practices.component.scss']
 })
-export class MovieAppComponent {
+export class EthicalSalePracticesComponent {
   pageDataObject: PageDataObject = {
     title: 'Ethical Sales Practices',
     publishedOn: 'Oct 1, 2022',

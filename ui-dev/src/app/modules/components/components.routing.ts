@@ -6,7 +6,7 @@ import { CountdownComponent } from '../../development/components/countdown/count
 import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';
 import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
 import { UnfairLaborPracticesComponent } from 'src/app/development/components/unfair-labor-practices/unfair-labor-practices.component';
-import { D3BarGraphComponent } from '../../development/components/d3-bar-graph/d3-bar-graph.component';
+import { InformationSecurityComponent } from '../../development/components/information-security/information-security.component';
 import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
 import { FairHousingComponent } from 'src/app/development/components/fair-housing/table-in-html.component';
 
@@ -53,7 +53,7 @@ const routes: Routes = [
       },
       {
         path: 'information-security',
-        component: D3BarGraphComponent
+        component: InformationSecurityComponent
       },
       { path: '**', redirectTo: 'standards-classes' }
     ]
@@ -74,5 +74,5 @@ export const componentsComponents = [
   DatePickerComponent,
   UnfairLaborPracticesComponent,
   FairHousingComponent,
-  D3BarGraphComponent
+  InformationSecurityComponent
 ];

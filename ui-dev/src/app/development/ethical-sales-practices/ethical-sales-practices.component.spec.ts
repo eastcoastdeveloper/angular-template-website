@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieAppComponent } from './movie-app.component';
+import { MovieAppComponent } from './ethical-sales-practices.component';
 
 describe('MovieAppComponent', () => {
   let component: MovieAppComponent;

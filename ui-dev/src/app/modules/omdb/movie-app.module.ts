@@ -5,6 +5,6 @@ import { MovieAppRoutingModule, movieAppComponents } from './movie-app.routing';
 
 @NgModule({
   declarations: [movieAppComponents],
-  imports: [CommonModule, MovieAppRoutingModule, SharedModule],
+  imports: [CommonModule, MovieAppRoutingModule, SharedModule]
 })
 export class MovieAppModule {}

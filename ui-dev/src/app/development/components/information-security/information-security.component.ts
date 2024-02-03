@@ -5,10 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-d3-bar-graph',
-  templateUrl: './d3-bar-graph.component.html',
-  styleUrls: ['./d3-bar-graph.component.scss']
+  templateUrl: './information-security.component.html',
+  styleUrls: ['./information-security.component.scss']
 })
-export class D3BarGraphComponent {
+export class InformationSecurityComponent {
   d3ProjectImage: string = '../../../../assets/projects-grid/d3-bar-graph.png';
   pageDataObject: PageDataObject = {
     title: 'Information Security',
