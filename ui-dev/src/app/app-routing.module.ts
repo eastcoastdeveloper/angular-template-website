@@ -7,21 +7,21 @@ const routes: Routes = [
   {
     path: 'leadership',
     loadChildren: () =>
-      import(`./modules/leadership/leadership.module`).then((m) => m.AppsModule)
+      import(`./modules/leadership/leadership.module`).then(
+        (m) => m.LeadershipModule
+      )
   },
   {
     path: 'standards',
     loadChildren: () =>
       import(`./modules/standards/standards.module`).then(
-        (m) => m.ComponentsModule
+        (m) => m.StandardsModule
       )
   },
   {
     path: 'security',
     loadChildren: () =>
-      import(`./modules/security/security.module`).then(
-        (m) => m.DevelopmentModule
-      )
+      import(`./modules/security/security.module`).then((m) => m.SecurityModule)
   },
   {
     path: 'about-us',
@@ -31,9 +31,7 @@ const routes: Routes = [
   {
     path: 'compliance-library',
     loadChildren: () =>
-      import(`./modules/projects-list/projects-list.module`).then(
-        (m) => m.ProjectListModule
-      )
+      import(`./modules/library/library.module`).then((m) => m.LibraryModule)
   },
   {
     path: '**',

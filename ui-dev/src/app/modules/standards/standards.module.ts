@@ -23,4 +23,4 @@ import { RightColumnModule } from '../shared/right-column.module';
   ],
   exports: [NgxPaginationModule]
 })
-export class ComponentsModule {}
+export class StandardsModule {}

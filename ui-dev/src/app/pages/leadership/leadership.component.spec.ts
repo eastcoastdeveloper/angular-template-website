@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoutingInAngularComponent } from './routing-in-angular.component';
+import { LeadershipComponent } from './leadership.component';
 
-describe('RoutingInAngularComponent', () => {
-  let component: RoutingInAngularComponent;
-  let fixture: ComponentFixture<RoutingInAngularComponent>;
+describe('LeadershipComponent', () => {
+  let component: LeadershipComponent;
+  let fixture: ComponentFixture<LeadershipComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RoutingInAngularComponent]
+      declarations: [LeadershipComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoutingInAngularComponent);
+    fixture = TestBed.createComponent(LeadershipComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

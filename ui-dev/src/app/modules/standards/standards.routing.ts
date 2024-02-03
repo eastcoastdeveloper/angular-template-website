@@ -7,21 +7,19 @@ import { AccurateBookRecordsComponent } from 'src/app/content/accurate-book-reco
 import { DynamicSidebarComponent } from '../../content/building-trust/building-trust.component';
 import { UnfairLaborPracticesComponent } from 'src/app/content/unfair-labor-practices/unfair-labor-practices.component';
 import { InformationSecurityComponent } from '../../content/information-security/information-security.component';
-import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
+import { LibraryComponent } from 'src/app/pages/library/library.component';
 import { FairHousingComponent } from 'src/app/content/fair-housing/table-in-html.component';
+import { StandardsComponent } from 'src/app/pages/standards/standards.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppsWrapperComponent,
+    component: LibraryComponent,
     children: [
       { path: '', redirectTo: 'standards-classes', pathMatch: 'full' },
       {
         path: 'standards-classes',
-        loadChildren: () =>
-          import(
-            `../cornerstone-components/cornerstone-components.module`
-          ).then((m) => m.CornerstoneComponentsModule)
+        component: StandardsComponent
       },
       {
         path: 'data-privacy-security',
@@ -67,6 +65,7 @@ const routes: Routes = [
 export class StandardsRoutingModule {}
 
 export const standardsComponents = [
+  StandardsComponent,
   DataPrivacySecurityComponent,
   FairCompetitionComponent,
   DoingBusinessGloballyComponent,

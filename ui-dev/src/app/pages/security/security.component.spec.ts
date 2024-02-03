@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeadershipClassesComponent } from './leadership-classes.component';
+import { SecurityComponent } from './security.component';
 
-describe('LeadershipClassesComponent', () => {
-  let component: LeadershipClassesComponent;
-  let fixture: ComponentFixture<LeadershipClassesComponent>;
+describe('SecurityComponent', () => {
+  let component: SecurityComponent;
+  let fixture: ComponentFixture<SecurityComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LeadershipClassesComponent]
+      declarations: [SecurityComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeadershipClassesComponent);
+    fixture = TestBed.createComponent(SecurityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

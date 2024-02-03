@@ -7,25 +7,23 @@ import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-cornerstone-components',
+  selector: 'app-leadership',
   template: `<app-projects-list-content
-      [dataArray]="cmpsArray"
-    ></app-projects-list-content>
-    <app-pagination [categoryProp]="categoryType"></app-pagination>`
+    [dataArray]="appsArray"
+  ></app-projects-list-content>`
 })
-export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
+export class LeadershipComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     cornerStone: true
   };
-
-  cmpsArray: ProjectsListInterface[] = [];
+  appsArray: ProjectsListInterface[] = [];
   categoryType: string;
   pageQuery: number;
 
   constructor(
-    private _projectListService: ProjectListService,
     private _activatedRoute: ActivatedRoute,
+    private _projectListService: ProjectListService,
     private _configService: ConfigService
   ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
@@ -35,27 +33,20 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
     this._projectListService.allProjects$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.cmpsArray = val;
+        this.appsArray = val;
       });
     this._configService.categoryConfig$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
-        this.categoryType = val.categoryTwo;
-        this.pageDataObject.title = val.categoryTwo;
+        this.categoryType = val.categoryOne;
+        this.pageDataObject.title = val.categoryOne;
       });
+
     this._activatedRoute.queryParams
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((params) => {
         this.setPageParamValue(params);
       });
-  }
-
-  removeDuplicates(val: ProjectsListInterface[]) {
-    let arr: ProjectsListInterface[] = [];
-    val.forEach((item) => {
-      arr.push(item);
-    });
-    this.cmpsArray = [...new Set(arr)];
   }
 
   setPageParamValue(params: { [x: string]: any }) {
@@ -70,7 +61,7 @@ export class CornerstoneComponentsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }

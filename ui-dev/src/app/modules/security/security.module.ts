@@ -18,4 +18,4 @@ import { SharedModule } from '../shared/shared.module';
   ],
   exports: []
 })
-export class DevelopmentModule {}
+export class SecurityModule {}

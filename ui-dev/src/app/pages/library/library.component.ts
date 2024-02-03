@@ -12,12 +12,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-apps-wrapper',
-  templateUrl: './apps-wrapper.component.html'
+  selector: 'compliance-library-wrapper',
+  templateUrl: './library.component.html'
 })
-export class AppsWrapperComponent
-  implements OnInit, AfterViewChecked, OnDestroy
-{
+export class LibraryComponent implements OnInit, AfterViewChecked, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   appsArray: ProjectsListInterface[] = [];

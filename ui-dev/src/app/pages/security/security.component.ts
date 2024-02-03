@@ -7,12 +7,12 @@ import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-development-components',
+  selector: 'app-security',
   template: `<app-projects-list-content
     [dataArray]="developmentArray"
   ></app-projects-list-content>`
 })
-export class CornerstoneDevelopmentComponent implements OnDestroy {
+export class SecurityComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
   pageDataObject: PageDataObject = {
     cornerStone: true

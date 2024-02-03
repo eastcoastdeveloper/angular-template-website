@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { AppsRoutingModule, appsComponents } from './leadership.routing';
+import { LeadershipWrapperModule, appsComponents } from './leadership.routing';
 import { RouterModule } from '@angular/router';
 import { RightColumnModule } from '../shared/right-column.module';
 
@@ -11,8 +11,8 @@ import { RightColumnModule } from '../shared/right-column.module';
     CommonModule,
     SharedModule,
     RouterModule,
-    AppsRoutingModule,
+    LeadershipWrapperModule,
     RightColumnModule
   ]
 })
-export class AppsModule {}
+export class LeadershipModule {}

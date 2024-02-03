@@ -1,27 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SafetySecurityComponent } from 'src/app/content/safety-security/safety-security.component';
-import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
+import { LibraryComponent } from 'src/app/pages/library/library.component';
+import { SecurityComponent } from 'src/app/pages/security/security.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppsWrapperComponent,
+    component: LibraryComponent,
     children: [
       { path: '', redirectTo: 'security-classes', pathMatch: 'full' },
       {
         path: 'security-classes',
-        loadChildren: () =>
-          import(
-            `../cornerstone-development/cornerstone-development.module`
-          ).then((m) => m.CornerstoneDevelopmentModule)
-      },
-      {
-        path: 'regulatory-environment',
-        loadChildren: () =>
-          import(`../routing-in-angular/routing-in-angular.module`).then(
-            (m) => m.ModulesInAngularModule
-          )
+        component: SecurityComponent
       },
       {
         path: 'safety-security',
@@ -38,4 +29,4 @@ const routes: Routes = [
 })
 export class SecurityRoutingModule {}
 
-export const securityComponents = [SafetySecurityComponent];
+export const securityComponents = [SafetySecurityComponent, SecurityComponent];
