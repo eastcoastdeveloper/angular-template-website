@@ -17,11 +17,6 @@ const routes: Routes = [
           )
       },
       {
-        path: 'ensuring-positive-workplace',
-        loadChildren: () =>
-          import(`../nasa/nasa-pod.module`).then((m) => m.NasaPODModule)
-      },
-      {
         path: 'ethical-sales-practices',
         loadChildren: () =>
           import(`../omdb/movie-app.module`).then((m) => m.MovieAppModule)
@@ -47,9 +42,9 @@ const routes: Routes = [
       {
         path: 'charitable-solicitations',
         loadChildren: () =>
-          import(`../drag-drop/charitable-solicitations.module`).then(
-            (m) => m.CharitableSolicitationsModule
-          )
+          import(
+            `../charitable-solicitations/charitable-solicitations.module`
+          ).then((m) => m.CharitableSolicitationsModule)
       },
       {
         path: '**',

@@ -5,10 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-rest-countries',
-  templateUrl: './rest-countries.component.html',
-  styleUrls: ['./rest-countries.component.scss']
+  templateUrl: './environmental-compliance.component.html',
+  styleUrls: ['./environmental-compliance.component.scss']
 })
-export class RestCountriesComponent {
+export class EnvironmentalComplianceComponent {
   pageDataObject: PageDataObject = {
     title: 'Environmental Compliance',
     publishedOn: 'Oct 1, 2022',

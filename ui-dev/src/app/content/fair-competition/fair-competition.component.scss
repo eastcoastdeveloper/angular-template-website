@@ -1,9 +1,8 @@
-@import '../../../styles/page-style.scss';
+@import '../../styles/page-style.scss';
 
 .page-intro {
   .feature-img {
-    background: transparent
-      url('../../../../assets/images/fair_competition.jpg') scroll no-repeat
-      center / cover;
+    background: transparent url('../../../assets/images/fair_competition.jpg')
+      scroll no-repeat center / cover;
   }
 }

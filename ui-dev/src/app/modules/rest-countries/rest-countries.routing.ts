@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RestCountriesComponent } from '../../development/rest-countries/rest-countries.component';
+import { EnvironmentalComplianceComponent } from '../../content/environmental-compliance/environmental-compliance.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: RestCountriesComponent
+    component: EnvironmentalComplianceComponent
   }
 ];
 
@@ -15,4 +15,6 @@ const routes: Routes = [
 })
 export class RestCountriesRoutingModule {}
 
-export const restCountriesComponents = [RestCountriesComponent];
+export const EnvironmentalComplianceComponents = [
+  EnvironmentalComplianceComponent
+];

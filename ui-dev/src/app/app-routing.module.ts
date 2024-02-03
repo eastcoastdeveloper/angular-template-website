@@ -25,13 +25,6 @@ const routes: Routes = [
       )
   },
   {
-    path: 'front-end-dev-resume',
-    loadChildren: () =>
-      import(`./modules/experience/experience.module`).then(
-        (m) => m.ExperiencePageModule
-      )
-  },
-  {
     path: 'about-us',
     loadChildren: () =>
       import(`./modules/about/about.module`).then((m) => m.AboutPageModule)

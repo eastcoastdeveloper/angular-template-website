@@ -6,7 +6,6 @@ import {
   OnInit
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { NasaSearchService } from 'src/app/development/nasa/nasa.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
@@ -31,7 +30,6 @@ export class AppsWrapperComponent
   constructor(
     private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService,
-    private _nasaService: NasaSearchService,
     private _cd: ChangeDetectorRef,
     private _router: Router
   ) {
