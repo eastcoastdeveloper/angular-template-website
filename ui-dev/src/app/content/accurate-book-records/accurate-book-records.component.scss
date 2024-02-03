@@ -1,10 +1,10 @@
-@import '../../../styles/page-style.scss';
+@import '../../styles/page-style';
 
 .page-intro {
   .feature-img {
     background: transparent
-      url('../../../../assets/images/accurate_books_records.jpg') scroll
-      no-repeat center / cover;
+      url('../../../assets/images/accurate_books_records.jpg') scroll no-repeat
+      center / cover;
   }
 }
 

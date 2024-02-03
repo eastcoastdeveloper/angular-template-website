@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AngularjsProjectComponent } from 'src/app/development/records-managememt/records-managememt.component';
+import { AngularjsProjectComponent } from 'src/app/content/records-managememt/records-managememt.component';
 import { AppsWrapperComponent } from '../../pages/wrapper-apps/apps-wrapper.component';
 
 const routes: Routes = [

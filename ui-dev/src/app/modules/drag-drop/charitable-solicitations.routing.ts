@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharitableSolicitations } from '../../development/charitable-solicitations/charitable-solicitations.component';
+import { CharitableSolicitations } from '../../content/charitable-solicitations/charitable-solicitations.component';
 
 const routes: Routes = [
   {

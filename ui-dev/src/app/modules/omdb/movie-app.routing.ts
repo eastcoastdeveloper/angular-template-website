@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { EthicalSalePracticesComponent } from '../../development/ethical-sales-practices/ethical-sales-practices.component';
+import { EthicalSalePracticesComponent } from '../../content/ethical-sales-practices/ethical-sales-practices.component';
 
 const routes: Routes = [
   {

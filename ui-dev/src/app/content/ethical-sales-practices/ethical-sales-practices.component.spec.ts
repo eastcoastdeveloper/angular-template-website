@@ -1,15 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieAppComponent } from './ethical-sales-practices.component';
+import { EthicalSalePracticesComponent } from './ethical-sales-practices.component';
 
-describe('MovieAppComponent', () => {
-  let component: MovieAppComponent;
-  let fixture: ComponentFixture<MovieAppComponent>;
+describe('EthicalSalePracticesComponent', () => {
+  let component: EthicalSalePracticesComponent;
+  let fixture: ComponentFixture<EthicalSalePracticesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MovieAppComponent]
+      declarations: [EthicalSalePracticesComponent]
     }).compileComponents();
   });
 
@@ -17,7 +17,7 @@ describe('MovieAppComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-    fixture = TestBed.createComponent(MovieAppComponent);
+    fixture = TestBed.createComponent(EthicalSalePracticesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

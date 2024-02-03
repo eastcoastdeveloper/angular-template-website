@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
-import { ProjectListService } from 'src/app/services/project-list.service';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
+import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.scss']
+  selector: '[app-date-picker]',
+  templateUrl: './accurate-book-records.component.html',
+  styleUrls: ['./accurate-book-records.component.scss']
 })
-export class TablePaginatedComponent {
+export class AccurateBookRecordsComponent {
   pageDataObject: PageDataObject = {
-    title: 'Data Privacy & Security',
-    publishedOn: 'Aug 1, 2022',
+    title: 'Accurate Book Records',
+    publishedOn: 'Oct 1, 2022',
     updatedOn: 'Jan 10, 2023',
-    repoTitle: 'angular-data-table',
+    repoTitle: 'angular-date-picker',
     repoLink:
-      'https://github.com/eastcoastdeveloper/angular-8-table-pagination',
+      'https://github.com/eastcoastdeveloper/datepicker-angular-component',
     category: '',
-    views: 6676,
-    forks: 191,
+    views: 63,
+    forks: 0,
     threeColumnLayout: true,
     cornerStone: false
   };

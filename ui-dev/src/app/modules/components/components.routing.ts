@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TablePaginatedComponent } from '../../development/components/data-table/data-table.component';
-import { FairCompetitionComponent } from '../../development/components/fair-competition/fair-competition.component';
-import { DoingBusinessGloballyComponent } from '../../development/components/doing-business-globally/doing-business-globally.component';
-import { DatePickerComponent } from 'src/app/development/components/date-picker/date-picker.component';
+import { DataPrivacySecurityComponent } from '../../content/data-privacy-security/data-privacy-security.component';
+import { FairCompetitionComponent } from '../../content/fair-competition/fair-competition.component';
+import { DoingBusinessGloballyComponent } from '../../content/doing-business-globally/doing-business-globally.component';
+import { AccurateBookRecordsComponent } from 'src/app/content/accurate-book-records/accurate-book-records.component';
 import { DynamicSidebarComponent } from '../../development/components/dynamic-sidebar/dynamic-sidebar.component';
-import { UnfairLaborPracticesComponent } from 'src/app/development/components/unfair-labor-practices/unfair-labor-practices.component';
-import { InformationSecurityComponent } from '../../development/components/information-security/information-security.component';
+import { UnfairLaborPracticesComponent } from 'src/app/content/unfair-labor-practices/unfair-labor-practices.component';
+import { InformationSecurityComponent } from '../../content/information-security/information-security.component';
 import { AppsWrapperComponent } from 'src/app/pages/wrapper-apps/apps-wrapper.component';
-import { FairHousingComponent } from 'src/app/development/components/fair-housing/table-in-html.component';
+import { FairHousingComponent } from 'src/app/content/fair-housing/table-in-html.component';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: 'data-privacy-security',
-        component: TablePaginatedComponent
+        component: DataPrivacySecurityComponent
       },
       {
         path: 'fair-competition',
@@ -37,7 +37,7 @@ const routes: Routes = [
       },
       {
         path: 'accurate-book-records',
-        component: DatePickerComponent
+        component: AccurateBookRecordsComponent
       },
       {
         path: 'building-trust',
@@ -67,11 +67,11 @@ const routes: Routes = [
 export class ComponentsRoutingModule {}
 
 export const componentsComponents = [
-  TablePaginatedComponent,
+  DataPrivacySecurityComponent,
   FairCompetitionComponent,
   DoingBusinessGloballyComponent,
   DynamicSidebarComponent,
-  DatePickerComponent,
+  AccurateBookRecordsComponent,
   UnfairLaborPracticesComponent,
   FairHousingComponent,
   InformationSecurityComponent
