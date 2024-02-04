@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 import { PageDataObject } from '../interfaces/pageDataInterface';
@@ -95,7 +95,6 @@ export class ProjectListService implements OnDestroy {
 
   // Call All Projects API
   getAllProjects(type: string, pageNum: number, pageLimit: number) {
-    console.log(`${type} was fetched`);
     const httpOptions = {
       headers: new HttpHeaders()
     };
