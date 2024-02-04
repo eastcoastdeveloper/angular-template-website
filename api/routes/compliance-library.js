@@ -12,11 +12,6 @@ router.get("/", (req, res) => {
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
-  const allCount = projectData.data.length;
-  const projectCount = projectData.data.filter((item) => item.category === "leadership").length;
-  const cmptCount = projectData.data.filter((item) => item.category === "standards").length;
-  const devCount = projectData.data.filter((item) => item.category === "security").length;
-
   if (type === "all") {
     filteredItems = projectData.data;
   } else {
@@ -28,10 +23,10 @@ router.get("/", (req, res) => {
   results[type] = filteredItems.slice(startIndex, endIndex);
 
   results.totals = {
-    all: allCount,
-    leadership: projectCount,
-    standards: cmptCount,
-    security: devCount,
+    all: projectData.data.length,
+    leadership: projectData.data.filter((item) => item.category === "leadership").length,
+    standards: projectData.data.filter((item) => item.category === "standards").length,
+    security: projectData.data.filter((item) => item.category === "security").length,
   };
   res.json(results);
 });
