@@ -6,14 +6,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'countdown',
-  templateUrl: './doing-business-globally.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/doing_business_globally.jpg') scroll no-repeat
-      center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class DoingBusinessGloballyComponent {
+  imgUrl = '../../../assets/images/doing_business_globally.jpg';
   pageDataObject: PageDataObject = {
     title: 'Doing Business Globally',
     publishedOn: 'Oct 1, 2022',

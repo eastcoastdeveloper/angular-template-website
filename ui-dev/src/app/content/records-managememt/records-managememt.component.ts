@@ -5,13 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-angularjs-project',
-  templateUrl: './records-managememt.component.html',
-  styles: `.feature-img {
-    background: transparent url('../../../assets/images/records_management.jpg')
-      scroll no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class AngularjsProjectComponent {
+  imgUrl = '../../../assets/images/records_management.jpg';
   pageDataObject: PageDataObject = {
     title: 'Records Management',
     publishedOn: 'Oct 16, 2017',

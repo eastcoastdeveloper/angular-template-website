@@ -5,13 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-table-in-html',
-  templateUrl: './fair-housing.component.html',
-  styles: ` .feature-img {
-    background: transparent url('../../../assets/images/fair_competition.jpg')
-      scroll no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class FairHousingComponent {
+  imgUrl = '../../../assets/images/fair_competition.jpg';
   pageDataObject: PageDataObject = {
     title: 'Fair Housing',
     publishedOn: 'Oct 1, 2022',

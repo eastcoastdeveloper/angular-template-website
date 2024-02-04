@@ -5,13 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-website-examples',
-  templateUrl: './insider-trading.component.html',
-  styles: `.feature-img {
-    background: transparent url('../../../assets/images/insider_trading.jpg')
-      scroll no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class InsiderTradingComponent {
+  imgUrl = '../../../assets/images/insider_trading.jpg';
   pageDataObject: PageDataObject = {
     title: 'Insider Trading',
     publishedOn: 'Oct 1, 2022',

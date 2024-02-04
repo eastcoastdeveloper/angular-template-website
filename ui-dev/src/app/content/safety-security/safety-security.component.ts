@@ -5,13 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-in-page-navigation',
-  templateUrl: './safety-security.component.html',
-  styles: `.feature-img {
-    background: transparent url('../../../assets/images/safety_security.jpg')
-      scroll no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class SafetySecurityComponent {
+  imgUrl = '../../../assets/images/safety_security.jpg';
   pageDataObject: PageDataObject = {
     title: 'Safety & Security',
     publishedOn: 'Nov 7, 2022',

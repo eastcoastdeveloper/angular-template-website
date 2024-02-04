@@ -4,14 +4,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-slider',
-  templateUrl: './unfair-labor-practices.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/unfair_labor_practices.jpg') scroll no-repeat
-      center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class UnfairLaborPracticesComponent {
+  imgUrl = '../../../assets/images/unfair_labor_practices.jpg';
   currentIndex: number = 0;
   markup: string;
   productInfo: boolean = false;

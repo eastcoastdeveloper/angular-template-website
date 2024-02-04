@@ -5,14 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-rest-countries',
-  templateUrl: './environmental-compliance.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/environmental_compliance.jpg') scroll
-      no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class EnvironmentalComplianceComponent {
+  imgUrl = '../../../assets/images/environmental_compliance.jpg';
   pageDataObject: PageDataObject = {
     title: 'Environmental Compliance',
     publishedOn: 'Oct 1, 2022',

@@ -5,14 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: '[app-date-picker]',
-  templateUrl: './accurate-book-records.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/accurate_books_records.jpg') scroll no-repeat
-      center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class AccurateBookRecordsComponent {
+  imgUrl = '../../../assets/images/accurate_books_records.jpg';
   pageDataObject: PageDataObject = {
     title: 'Accurate Book Records',
     publishedOn: 'Oct 1, 2022',
@@ -33,6 +29,8 @@ export class AccurateBookRecordsComponent {
   ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
+
+  getImg() {}
 
   navigateToPage(url: string) {
     this._globalFeatures.externalLink(url);

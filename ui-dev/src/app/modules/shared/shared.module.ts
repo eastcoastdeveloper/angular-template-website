@@ -12,6 +12,7 @@ import { EndOfPostComponent } from 'src/app/components/end-of-post/end-of-post.c
 import { BackButtonComponent } from 'src/app/components/back-button/back-button.component';
 import { BackButtonDirective } from 'src/app/directives/back-button.directive';
 import { LibraryComponent } from 'src/app/pages/library/library.component';
+import { PageContentComponent } from 'src/app/components/page-content/page-content.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LibraryComponent } from 'src/app/pages/library/library.component';
     EndOfPostComponent,
     BackButtonComponent,
     BackButtonDirective,
-    LibraryComponent
+    LibraryComponent,
+    PageContentComponent
   ],
   imports: [CommonModule, RouterModule, RightColumnModule],
   exports: [
@@ -37,7 +39,8 @@ import { LibraryComponent } from 'src/app/pages/library/library.component';
     EndOfPostComponent,
     BackButtonComponent,
     BackButtonDirective,
-    LibraryComponent
+    LibraryComponent,
+    PageContentComponent
   ]
 })
 export class SharedModule {}

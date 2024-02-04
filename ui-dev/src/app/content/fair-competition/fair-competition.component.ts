@@ -5,13 +5,10 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 
 @Component({
   selector: 'accordion',
-  templateUrl: './fair-competition.component.html',
-  styles: `.feature-img {
-    background: transparent url('../../../assets/images/fair_competition.jpg')
-      scroll no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class FairCompetitionComponent {
+  imgUrl = '../../../assets/images/fair_competition.jpg';
   pageDataObject: PageDataObject = {
     title: 'Fair Competition',
     publishedOn: 'Sept 29, 2022',

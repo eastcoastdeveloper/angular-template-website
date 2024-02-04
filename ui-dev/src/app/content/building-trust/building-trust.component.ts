@@ -5,13 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './building-trust.component.html',
-  styles: `.feature-img {
-    background: transparent url('../../../assets/images/building_trust.jpg')
-      scroll no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class DynamicSidebarComponent {
+  imgUrl = '../../../assets/images/building_trust.jpg';
   pageDataObject: PageDataObject = {
     title: 'Building Trust',
     publishedOn: 'Oct 1, 2022',

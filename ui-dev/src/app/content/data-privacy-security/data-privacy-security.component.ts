@@ -5,14 +5,10 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 
 @Component({
   selector: 'data-table',
-  templateUrl: './data-privacy-security.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/data_privacy_security.jpg') scroll no-repeat
-      center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class DataPrivacySecurityComponent {
+  imgUrl = '../../../assets/images/data_privacy_security.jpg';
   pageDataObject: PageDataObject = {
     title: 'Data Privacy & Security',
     publishedOn: 'Aug 1, 2022',

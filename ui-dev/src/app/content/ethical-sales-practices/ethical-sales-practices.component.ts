@@ -5,14 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'movie-app',
-  templateUrl: './ethical-sales-practices.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/ethical_sales_practices.jpg') scroll no-repeat
-      center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class EthicalSalePracticesComponent {
+  imgUrl = '../../../assets/images/ethical_sales_practices.jpg';
   pageDataObject: PageDataObject = {
     title: 'Ethical Sales Practices',
     publishedOn: 'Oct 1, 2022',

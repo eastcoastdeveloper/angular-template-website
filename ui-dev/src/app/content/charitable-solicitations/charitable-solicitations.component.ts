@@ -5,14 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-drag-drop-ui',
-  templateUrl: './charitable-solicitations.component.html',
-  styles: `.feature-img {
-    background: transparent
-      url('../../../assets/images/charitable_solicitations.jpg') scroll
-      no-repeat center / cover;
-  }`
+  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class CharitableSolicitations {
+  imgUrl = '../../../assets/images/charitable_solicitations.jpg';
   pageDataObject: PageDataObject = {
     title: 'Charitable Solicitations',
     publishedOn: 'Oct 1, 2022',
