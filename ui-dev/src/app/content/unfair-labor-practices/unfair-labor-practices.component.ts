@@ -3,19 +3,10 @@ import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-slider',
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class UnfairLaborPracticesComponent {
   imgUrl = '../../../assets/images/unfair_labor_practices.jpg';
-  currentIndex: number = 0;
-  markup: string;
-  productInfo: boolean = false;
-  loaded: boolean = false;
-  scss: string;
-  typescript: string;
-  interface: string;
-
   pageDataObject: PageDataObject = {
     title: 'Unfair Labor Practices',
     publishedOn: 'Oct 1, 2022',
