@@ -1,21 +1,6 @@
 import { Component, AfterViewChecked, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-// import * as L from 'leaflet';
-// import * as L from 'leaflet';
-// import {
-//   icon,
-//   latLng,
-//   Map,
-//   marker,
-//   point,
-//   polyline,
-//   MapOptions,
-//   Marker,
-//   tileLayer,
-//   map
-// } from 'leaflet';
-declare let L;
 
 @Component({
   selector: 'app-right-column',
@@ -80,23 +65,6 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
         this.windowWidth = val;
       });
   }
-
-  // private initializeMapOptions() {
-  //   this.mapOptions = {
-  //     center: latLng(36.168, -115.15),
-  //     zoom: 13,
-  //     layers: [
-  //       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //         maxZoom: 18,
-  //         attribution: 'Map data © OpenStreetMap contributors'
-  //       })
-  //     ]
-  //   };
-  // }
-
-  // onMapReady(map: Map) {
-  //   this.map = map;
-  // }
 
   navigateToPage(url: string) {
     this._globalFeatures.externalLink(url);

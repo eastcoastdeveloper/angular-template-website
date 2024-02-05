@@ -64,6 +64,7 @@ export class RelatedComponentsComponent implements OnDestroy {
   async fetchItems() {
     await new Promise((resolve) => {
       this._projectListService.getAllProjects(this.type, 1, 10);
+      // this._projectListService.getLocalProjects(this.type, 1, 10);
       resolve(
         this._projectListService.allProjects$
           .pipe(takeUntil(this.unsubscribe$))

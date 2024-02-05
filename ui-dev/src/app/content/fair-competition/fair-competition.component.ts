@@ -4,6 +4,7 @@ import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
+  selector: 'app-fair-competition',
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class FairCompetitionComponent {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, filter, map, Subject, takeUntil } from 'rxjs';
 import { ProjectsListInterface } from '../interfaces/projects-list.interface';
 import { PageDataObject } from '../interfaces/pageDataInterface';
 import { LocalStorageService } from './local-storage.service';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { LocationStrategy } from '@angular/common';
 import { ConfigService } from './config.service';
 import { CategoryInterface } from '../interfaces/categories.interface';
+// import * as jsonData from '../../assets/projects.json';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class ProjectListService implements OnDestroy {
   projectArray: ProjectsListInterface[] = [];
   currentRoute: string;
   totalPages: number;
+  // dataObj: any = jsonData;
 
   constructor(
     private _configService: ConfigService,
@@ -66,6 +68,7 @@ export class ProjectListService implements OnDestroy {
       else {
         new Promise((resolve) => {
           this.getAllProjects(type, pageNum, limit);
+          // this.getLocalProjects(type, pageNum, limit);
           resolve(this.saveNewlyCachedData(type, pageNum));
         });
         this.navigateToRoute(pageNum);
@@ -75,6 +78,7 @@ export class ProjectListService implements OnDestroy {
     // Nothing's Cached
     else {
       this.getAllProjects(type, pageNum, limit);
+      // this.getLocalProjects(type, pageNum, limit);
     }
   }
 
@@ -93,7 +97,53 @@ export class ProjectListService implements OnDestroy {
     this._local.saveData('frontenddev', JSON.stringify(this._local.storage));
   }
 
-  // Call All Projects API
+  // FETCHING LOCAL JSON?
+  // USE THIS INSTEAD OF getAllProjects
+  // THIS SUBSTITUES THE API. RUN ng serve INSTEAD OF npm run dev
+  getLocalProjects(type: string, pageNum: number, pageLimit: number) {
+    this._http.get('../../assets/projects.json').subscribe((data) => {
+      const results: any = {};
+      let filtered: any = [];
+      const cat = type;
+      const page = pageNum;
+      const limit = pageLimit;
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+      if (type === 'all') {
+        filtered = data;
+      } else {
+        const obj = Object.values(data);
+        for (var i = 0; i < obj.length; i++) {
+          if (obj[i].category === type) {
+            filtered.push(obj[i]);
+          }
+        }
+      }
+
+      results[type] = filtered.slice(startIndex, endIndex);
+      results.totals = {
+        all: Object.values(data).length,
+        leadership: this.categoryAmnt(data, 'leadership'),
+        standards: this.categoryAmnt(data, 'standards'),
+        security: this.categoryAmnt(data, 'security')
+      };
+
+      this.totalPages = Math.ceil(results['totals'][type] / 10);
+      this.totalItems$.next(this.totalPages);
+      this.allProjects$.next(results[type]);
+      this.navigateToRoute(pageNum);
+    });
+  }
+
+  // CATEGORY COUNT FOR LOCAL JSON
+  categoryAmnt(data: any, cat: string) {
+    const count = data.filter((item: { category: string }) => {
+      return item.category === cat;
+    });
+    return count.length;
+  }
+
+  // FETCH W/ AN API
   getAllProjects(type: string, pageNum: number, pageLimit: number) {
     const httpOptions = {
       headers: new HttpHeaders()
@@ -111,6 +161,7 @@ export class ProjectListService implements OnDestroy {
           Object.keys(response).filter((currentVal, index) => {
             if (currentVal === type) {
               allProjects = Object.values(response)[index];
+              // console.log(allProjects);
             }
             if (currentVal === 'totals') {
               this.totalPages = Math.ceil(response['totals'][type] / 10);
