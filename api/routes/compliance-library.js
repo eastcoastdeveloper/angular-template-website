@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const projectData = require("../json/projects.json");
+const resource = require("../json/projects.json");
 
 router.get("/", (req, res) => {
   const results = {};
-  let filteredItems = [];
+  let filtered = [];
 
   const type = req.query.type;
   const page = parseInt(req.query.page);
@@ -12,23 +12,31 @@ router.get("/", (req, res) => {
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
-  if (type === "all") {
-    filteredItems = projectData.data;
-  } else {
-    filteredItems = projectData.data.filter((item) => {
-      return item.category === type;
-    });
-  }
+  type === "all"
+    ? (filtered = resource.data)
+    : (filtered = resource.data.filter((item) => {
+        return item.category === type;
+      }));
 
-  results[type] = filteredItems.slice(startIndex, endIndex);
+  // REQUESTED PAGE FROM UI PAGINATION
+  results[type] = filtered.slice(startIndex, endIndex);
 
   results.totals = {
-    all: projectData.data.length,
-    leadership: projectData.data.filter((item) => item.category === "leadership").length,
-    standards: projectData.data.filter((item) => item.category === "standards").length,
-    security: projectData.data.filter((item) => item.category === "security").length,
+    all: resource.data.length,
+    leadership: categoryAmnt("leadership"),
+    standards: categoryAmnt("standards"),
+    security: categoryAmnt("security"),
   };
+
   res.json(results);
 });
+
+// CATEGORY TOTAL
+const categoryAmnt = (cat) => {
+  const count = resource.data.filter((item) => {
+    return item.category === cat;
+  });
+  return count.length;
+};
 
 module.exports = router;
