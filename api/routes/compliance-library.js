@@ -18,15 +18,25 @@ router.get("/", (req, res) => {
         return item.category === type;
       }));
 
+  // REQUESTED PAGE FROM UI PAGINATION
   results[type] = filtered.slice(startIndex, endIndex);
 
   results.totals = {
     all: resource.data.length,
-    leadership: resource.data.filter((item) => item.category === "leadership").length,
-    standards: resource.data.filter((item) => item.category === "standards").length,
-    security: resource.data.filter((item) => item.category === "security").length,
+    leadership: categoryAmnt("leadership"),
+    standards: categoryAmnt("standards"),
+    security: categoryAmnt("security"),
   };
+
   res.json(results);
 });
+
+// CATEGORY TOTAL
+const categoryAmnt = (cat) => {
+  const count = resource.data.filter((item) => {
+    return item.category === cat;
+  });
+  return count.length;
+};
 
 module.exports = router;
