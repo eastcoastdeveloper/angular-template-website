@@ -4,6 +4,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
+  selector: 'app-insider-trading',
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class InsiderTradingComponent {

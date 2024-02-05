@@ -83,7 +83,6 @@ export class ProjectListService implements OnDestroy {
   }
 
   navigateToRoute(pageNum: number) {
-    console.log(pageNum);
     this.currentRoute = this._router.url;
     this._router.navigate([this.currentRoute], {
       queryParams: {
@@ -194,7 +193,6 @@ export class ProjectListService implements OnDestroy {
         })
       )
       .subscribe(() => {
-        console.log(this._local.storage[type][pageNum]);
         this.allProjects$.next(this._local.storage[type][pageNum]);
       });
   }

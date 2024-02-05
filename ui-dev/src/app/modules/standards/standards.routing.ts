@@ -8,7 +8,7 @@ import { DynamicSidebarComponent } from '../../content/building-trust/building-t
 import { UnfairLaborPracticesComponent } from 'src/app/content/unfair-labor-practices/unfair-labor-practices.component';
 import { InformationSecurityComponent } from '../../content/information-security/information-security.component';
 import { LibraryComponent } from 'src/app/pages/library/library.component';
-import { FairHousingComponent } from 'src/app/content/fair-housing/table-in-html.component';
+import { FairHousingComponent } from 'src/app/content/fair-housing/fair-housing.component';
 import { StandardsComponent } from 'src/app/pages/standards/standards.component';
 
 const routes: Routes = [
