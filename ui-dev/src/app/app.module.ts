@@ -30,7 +30,6 @@ export function appConfigInit(appConfigService: ConfigService) {
   ],
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   providers: [
-    Meta,
     HttpClientModule,
     WindowRef,
     {

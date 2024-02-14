@@ -11,9 +11,9 @@ export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];
   @Input() pageHeader: string;
 
-  stackblitzLogo: string = '../../../assets/img/stackblitz_logo.png';
-  stackblitzViews: string = '../../../assets/img/views-icon.jpg';
-  forkIcon: string = '../../../assets/img/fork-icon.png';
+  // stackblitzLogo: string = '../../../assets/img/stackblitz_logo.png';
+  // stackblitzViews: string = '../../../assets/img/views-icon.jpg';
+  // forkIcon: string = '../../../assets/img/fork-icon.png';
 
   constructor(private _globalFeatures: GlobalFeaturesService) {}
 
