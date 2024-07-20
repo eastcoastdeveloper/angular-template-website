@@ -67,7 +67,7 @@ export class ProjectListService implements OnDestroy {
       // Requested Page Called First Time
       else {
         new Promise((resolve) => {
-          this.getAllProjects(type, pageNum, limit);
+          this.getLocalProjects(type, pageNum, limit);
           // this.getLocalProjects(type, pageNum, limit);
           resolve(this.saveNewlyCachedData(type, pageNum));
         });
@@ -77,7 +77,7 @@ export class ProjectListService implements OnDestroy {
 
     // Nothing's Cached
     else {
-      this.getAllProjects(type, pageNum, limit);
+      this.getLocalProjects(type, pageNum, limit);
       // this.getLocalProjects(type, pageNum, limit);
     }
   }
