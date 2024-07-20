@@ -3,7 +3,12 @@ import { BrowserModule, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptorsFromDi
+} from '@angular/common/http';
 import { SharedModule } from './modules/shared/shared.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -19,18 +24,17 @@ export function appConfigInit(appConfigService: ConfigService) {
 }
 
 @NgModule({
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     CommonModule,
-    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     SharedModule,
     ReactiveFormsModule
   ],
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
   providers: [
-    HttpClientModule,
     WindowRef,
     {
       provide: HTTP_INTERCEPTORS,
@@ -42,8 +46,8 @@ export function appConfigInit(appConfigService: ConfigService) {
       useFactory: appConfigInit,
       multi: true,
       deps: [ConfigService]
-    }
-  ],
-  bootstrap: [AppComponent]
+    },
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {}
