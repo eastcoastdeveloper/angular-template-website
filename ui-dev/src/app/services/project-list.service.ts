@@ -67,8 +67,8 @@ export class ProjectListService implements OnDestroy {
       // Requested Page Called First Time
       else {
         new Promise((resolve) => {
-          this.getLocalProjects(type, pageNum, limit);
-          // this.getLocalProjects(type, pageNum, limit);
+          this.getAllProjects(type, pageNum, limit);
+          // this.getAllProjects(type, pageNum, limit);
           resolve(this.saveNewlyCachedData(type, pageNum));
         });
         this.navigateToRoute(pageNum);
@@ -77,7 +77,7 @@ export class ProjectListService implements OnDestroy {
 
     // Nothing's Cached
     else {
-      this.getLocalProjects(type, pageNum, limit);
+      this.getAllProjects(type, pageNum, limit);
       // this.getLocalProjects(type, pageNum, limit);
     }
   }
@@ -161,7 +161,6 @@ export class ProjectListService implements OnDestroy {
           Object.keys(response).filter((currentVal, index) => {
             if (currentVal === type) {
               allProjects = Object.values(response)[index];
-              // console.log(allProjects);
             }
             if (currentVal === 'totals') {
               this.totalPages = Math.ceil(response['totals'][type] / 10);
