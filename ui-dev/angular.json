@@ -24,7 +24,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/app/styles/styles.scss"],
+            "styles": [
+              "src/app/styles/styles.scss",
+              "node_modules/leaflet/dist/leaflet.css"
+            ],
             "allowedCommonJsDependencies": [
               "rxjs-compat",
               "validator",
@@ -74,7 +77,7 @@
               "buildTarget": "AngularTemplateWebsite:build:production"
             },
             "development": {
-              "proxyConfig": "src/proxy.conf.json",
+              "proxyConfig": "",
               "buildTarget": "AngularTemplateWebsite:build:development"
             }
           },

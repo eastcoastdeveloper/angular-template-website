@@ -8,7 +8,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class AngularjsProjectComponent {
-  imgUrl = '../../../assets/images/records_management.jpg';
+  imgUrl = 'assets/images/records_management.jpg';
   pageDataObject: PageDataObject = {
     title: 'Records Management',
     publishedOn: 'Oct 16, 2017',

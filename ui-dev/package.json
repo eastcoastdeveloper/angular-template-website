@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve",
     "build": "ng build --aot --build-optimizer --common-chunk --vendor-chunk --named-chunks",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -23,15 +23,13 @@
     "@angular/platform-browser-dynamic": "^18.2.7",
     "@angular/router": "^18.2.7",
     "body-parser": "^1.20.1",
-    "crypto-js": "^4.1.1",
-    "express": "^4.19.2",
     "ngx-pagination": "^6.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.7",
+    "@angular-devkit/build-angular": "^19.2.1",
     "@angular/cli": "~18.2.7",
     "@angular/compiler-cli": "^18.2.7",
     "@types/crypto-js": "^4.1.1",

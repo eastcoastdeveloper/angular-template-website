@@ -8,7 +8,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class DynamicSidebarComponent {
-  imgUrl = '../../../assets/images/building_trust.jpg';
+  imgUrl = 'assets/images/building_trust.jpg';
   pageDataObject: PageDataObject = {
     title: 'Building Trust',
     publishedOn: 'Oct 1, 2022',

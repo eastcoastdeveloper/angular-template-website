@@ -8,7 +8,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class InsiderTradingComponent {
-  imgUrl = '../../../assets/images/insider_trading.jpg';
+  imgUrl = 'assets/images/insider_trading.jpg';
   pageDataObject: PageDataObject = {
     title: 'Insider Trading',
     publishedOn: 'Oct 1, 2022',

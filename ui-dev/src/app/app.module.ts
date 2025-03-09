@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { WindowRef } from './windowRef';
 import { LoadingInterceptor } from './guards/loading.interceptor';
 import { ConfigService } from './services/config.service';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 export function appConfigInit(appConfigService: ConfigService) {
   return () => {
@@ -32,7 +33,8 @@ export function appConfigInit(appConfigService: ConfigService) {
     FormsModule,
     AppRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LeafletModule
   ],
   providers: [
     WindowRef,

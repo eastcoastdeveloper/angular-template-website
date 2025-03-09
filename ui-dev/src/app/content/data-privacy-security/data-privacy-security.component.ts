@@ -8,7 +8,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class DataPrivacySecurityComponent {
-  imgUrl = '../../../assets/images/data_privacy_security.jpg';
+  imgUrl = 'assets/images/data_privacy_security.jpg';
   pageDataObject: PageDataObject = {
     title: 'Data Privacy & Security',
     publishedOn: 'Aug 1, 2022',

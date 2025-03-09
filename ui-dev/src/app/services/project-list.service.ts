@@ -44,42 +44,47 @@ export class ProjectListService implements OnDestroy {
   // Check for Cache (Called Once OnInit in ProjectList Cmpt)
   isThereCache(type: string, pageNum: number, limit: number) {
     this.categoryType$.next(type);
-    const storage = this._local.getData('frontenddev');
+    // const storage = this._local.getData('frontenddev');
     this.projectArray = [];
 
     this.currentRoute = this._location.path();
+    this.getLocalProjects(type, pageNum, limit);
+
     // There IS Cache
-    if (storage != '') {
-      const parsed = JSON.parse(storage);
-      this._local.storage = parsed;
+    // if (storage != '') {
+    //   const parsed = JSON.parse(storage);
+    //   this._local.storage = parsed;
+    //   console.log('somethings in local storage ');
 
-      // If Requested Page is Cached w/ a Value
-      // Set Pagination Count
-      if (this._local.storage[type].hasOwnProperty(pageNum)) {
-        this.totalPages = this._local.storage.totals[type]!;
-        this.totalPages = (Math.ceil(this.totalPages / 10) * 10) / 10;
-        this.totalItems$.next(this.totalPages);
-        this.projectArray = this._local.storage[type][pageNum];
-        this.allProjects$.next(this.projectArray);
-        this.navigateToRoute(pageNum);
-      }
+    //   // If Requested Page is Cached w/ a Value
+    //   // Set Pagination Count
+    //   if (this._local.storage[type].hasOwnProperty(pageNum)) {
+    //     console.log('populate data with local storage');
+    //     this.totalPages = this._local.storage.totals[type]!;
+    //     this.totalPages = (Math.ceil(this.totalPages / 10) * 10) / 10;
+    //     this.totalItems$.next(this.totalPages);
+    //     this.projectArray = this._local.storage[type][pageNum];
+    //     this.allProjects$.next(this.projectArray);
+    //     this.navigateToRoute(pageNum);
+    //   }
 
-      // Requested Page Called First Time
-      else {
-        new Promise((resolve) => {
-          this.getAllProjects(type, pageNum, limit);
-          // this.getAllProjects(type, pageNum, limit);
-          resolve(this.saveNewlyCachedData(type, pageNum));
-        });
-        this.navigateToRoute(pageNum);
-      }
-    }
+    //   // Requested Page Called First Time
+    //   else {
+    //     new Promise((resolve) => {
+    //       // this.getAllProjects(type, pageNum, limit);
+    //       this.getLocalProjects(type, pageNum, limit);
+    //       resolve(this.saveNewlyCachedData(type, pageNum));
+    //     });
+    //     this.navigateToRoute(pageNum);
+    //   }
+    // }
 
-    // Nothing's Cached
-    else {
-      this.getAllProjects(type, pageNum, limit);
-      // this.getLocalProjects(type, pageNum, limit);
-    }
+    // // Nothing's Cached
+    // else {
+    //   console.log('nothing is stored');
+    //   // this.getAllProjects(type, pageNum, limit);
+    //   this.getLocalProjects(type, pageNum, limit);
+    // }
   }
 
   navigateToRoute(pageNum: number) {
@@ -101,7 +106,7 @@ export class ProjectListService implements OnDestroy {
   // USE THIS INSTEAD OF getAllProjects
   // THIS SUBSTITUES THE API. RUN ng serve INSTEAD OF npm run dev
   getLocalProjects(type: string, pageNum: number, pageLimit: number) {
-    this._http.get('../../assets/projects.json').subscribe((data) => {
+    this._http.get('assets/projects.json').subscribe((data) => {
       const results: any = {};
       let filtered: any = [];
       const cat = type;
@@ -148,6 +153,7 @@ export class ProjectListService implements OnDestroy {
     const httpOptions = {
       headers: new HttpHeaders()
     };
+    console.log('New Data Fetched');
     // Only Call if Not Cached
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(

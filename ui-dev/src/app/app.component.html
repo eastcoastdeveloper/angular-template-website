@@ -25,18 +25,15 @@
     [ngClass]="{ 'show-mobile-nav': sidebarStatus }"
   >
     <nav (click)="closeMobileNav()">
-      <div routerLink="/">
-        <span class="mobile-item-count">{{ totalAll }}</span
-        >All
-      </div>
+      <div routerLink="/"><span class="mobile-item-count">26</span>All</div>
 
       <div
         routerLink="{{ configObject.categoryOne }}/{{
           configObject.categoryOne
         }}-classes"
       >
-        <!-- <span class="mobile-item-count">{{ totalProjects }}</span> -->
-        <span class="nav-name"> {{ configObject.categoryOne }}</span>
+        <span class="mobile-item-count">9</span>
+        <span class="nav-name">Leadership</span>
       </div>
 
       <div
@@ -44,8 +41,8 @@
           configObject.categoryTwo
         }}-classes"
       >
-        <!-- <span class="mobile-item-count">{{ totalComponennts }}</span> -->
-        <span class="nav-name">{{ configObject.categoryTwo }}</span>
+        <span class="mobile-item-count">13</span>
+        <span class="nav-name">Standards</span>
       </div>
 
       <div
@@ -53,8 +50,8 @@
           configObject.categoryThree
         }}-classes"
       >
-        <!-- <span class="mobile-item-count">{{ totalDevelopment }}</span> -->
-        <span class="nav-name">{{ configObject.categoryThree }}</span>
+        <span class="mobile-item-count">4</span>
+        <span class="nav-name">Security</span>
       </div>
 
       <!-- <div routerLink="front-end-dev-resume">Experience</div> -->

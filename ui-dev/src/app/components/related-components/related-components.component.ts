@@ -1,10 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Subject, take, takeUntil } from 'rxjs';
 import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class RelatedComponentsComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
   dataSubject$ = new BehaviorSubject<ProjectsListInterface[]>([]);
 
-  relatedItems: ProjectsListInterface[] = [];
+  relatedItems: ProjectsListInterface[];
   pageDataObject: PageDataObject;
   categoryType: string;
   @Input() type: string;
@@ -23,7 +23,7 @@ export class RelatedComponentsComponent implements OnDestroy {
   constructor(
     private _globalFeatures: GlobalFeaturesService,
     private _projectListService: ProjectListService,
-    private _localStorage: LocalStorageService,
+    private _http: HttpClient,
     private _router: Router
   ) {
     this._router.events.pipe(takeUntil(this.unsubscribe$)).subscribe((ev) => {
@@ -34,48 +34,31 @@ export class RelatedComponentsComponent implements OnDestroy {
   }
 
   ngOnInit() {
+    // console.log(data as ProjectsListInterface[]);
     this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((value) => {
         this.pageDataObject = value;
       });
-    this.isCategoryCached(this.type);
-    if (this.relatedItems.length === 0) {
-      this.fetchItems();
-    } else {
-      let arr = this.dataSubject$.getValue();
-      this.scrambleContents(arr);
-    }
+    // this.isCategoryCached(this.type);
+    // this.relatedItems = this.scrambleContents(data as ProjectsListInterface[]);
+    this._http
+      .get<ProjectsListInterface[]>('assets/projects.json')
+      .pipe(take(1))
+      .subscribe({
+        next: (val) => {
+          this.scrambleContents(val);
+        }
+        // error: (err: Error) => {
+        //   console.log(err);
+        // },
+        // complete: () => {
+        //   console.log('finished');
+        // }
+      });
   }
 
-  isCategoryCached(type: string) {
-    this.categoryType = type;
-    const storage = this._localStorage.getData('frontenddev');
-    if (storage === '') {
-      this.dataSubject$.next([]);
-    } else {
-      let parsed = JSON.parse(storage);
-      // this._globalFeatures.getCategoryFromUrl();
-      this.dataSubject$.next(parsed[type][1]);
-      return parsed;
-    }
-  }
-
-  async fetchItems() {
-    await new Promise((resolve) => {
-      this._projectListService.getAllProjects(this.type, 1, 10);
-      // this._projectListService.getLocalProjects(this.type, 1, 10);
-      resolve(
-        this._projectListService.allProjects$
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe((d) => {
-            this.scrambleContents(d);
-          })
-      );
-    });
-  }
-
-  scrambleContents(arr: ProjectsListInterface[]) {
+  scrambleContents(arr) {
     let currentPage: ProjectsListInterface;
     arr.sort((a, b) => 0.5 - Math.random());
     for (var i = 0; i < arr.length; i++) {
@@ -88,7 +71,48 @@ export class RelatedComponentsComponent implements OnDestroy {
     }
     this.relatedItems = arr;
     this.relatedItems.push(currentPage!);
+    // return this.relatedItems;
   }
+
+  // if (this.relatedItems.length === 0) {
+  //   this.fetchItems();
+  // } else {
+  //   let arr = this.dataSubject$.getValue();
+  //   console.log('ARR');
+  //   console.log(arr);
+  //   this.scrambleContents(arr);
+  //   console.log('RELATED ITEMS');
+  //   console.log(this.relatedItems);
+  // }
+
+  // isCategoryCached(type: string) {
+  //   this.categoryType = type;
+  //   console.log('RELATED COMPONENTS');
+  //   console.log(this.categoryType);
+  //   const storage = this._localStorage.getData('frontenddev');
+  //   if (storage === '') {
+  //     this.dataSubject$.next([]);
+  //   } else {
+  //     let parsed = JSON.parse(storage);
+  //     // this._globalFeatures.getCategoryFromUrl();
+  //     this.dataSubject$.next(parsed[type][1]);
+  //     return parsed;
+  //   }
+  // }
+
+  // async fetchItems() {
+  //   await new Promise((resolve) => {
+  //     // this._projectListService.getAllProjects(this.type, 1, 10);
+  //     this._projectListService.getLocalProjects(this.type, 1, 10);
+  //     resolve(
+  //       this._projectListService.allProjects$
+  //         .pipe(takeUntil(this.unsubscribe$))
+  //         .subscribe((d) => {
+  //           this.scrambleContents(d);
+  //         })
+  //     );
+  //   });
+  // }
 
   navigateToPage(path: string) {
     this._globalFeatures.externalLink(path);

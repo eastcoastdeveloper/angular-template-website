@@ -7,7 +7,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class UnfairLaborPracticesComponent {
-  imgUrl = '../../../assets/images/unfair_labor_practices.jpg';
+  imgUrl = 'assets/images/unfair_labor_practices.jpg';
   pageDataObject: PageDataObject = {
     title: 'Unfair Labor Practices',
     publishedOn: 'Oct 1, 2022',

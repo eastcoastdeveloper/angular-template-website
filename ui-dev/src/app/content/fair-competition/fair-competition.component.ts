@@ -8,7 +8,7 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class FairCompetitionComponent {
-  imgUrl = '../../../assets/images/fair_competition.jpg';
+  imgUrl = 'assets/images/fair_competition.jpg';
   pageDataObject: PageDataObject = {
     title: 'Fair Competition',
     publishedOn: 'Sept 29, 2022',

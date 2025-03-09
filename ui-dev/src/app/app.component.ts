@@ -109,10 +109,10 @@ export class AppComponent
     if (storage != '') {
       const parsed = JSON.parse(storage);
       this._local.storage = parsed;
-      this.totalAll = parsed.totals.all;
-      this.totalProjects = parsed.totals.leadership;
-      this.totalComponennts = parsed.totals.standards;
-      this.totalDevelopment = parsed.totals.security;
+      this.totalAll = 26;
+      this.totalProjects = 9;
+      this.totalComponennts = 13;
+      this.totalDevelopment = 4;
     }
   }
 

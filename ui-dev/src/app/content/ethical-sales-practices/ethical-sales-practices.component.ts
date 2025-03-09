@@ -8,7 +8,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class EthicalSalePracticesComponent {
-  imgUrl = '../../../assets/images/ethical_sales_practices.jpg';
+  imgUrl = 'assets/images/ethical_sales_practices.jpg';
   pageDataObject: PageDataObject = {
     title: 'Ethical Sales Practices',
     publishedOn: 'Oct 1, 2022',

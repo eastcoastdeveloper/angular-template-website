@@ -1,262 +1,262 @@
 [
-    {
-      "title": "Accurate Book Records",
-      "imgUrl": "../../assets/images/accurate_books_records.jpg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "path": "/standards/accurate-book-records",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Building Trust",
-      "imgUrl": "../../assets/images/building_trust.jpg",
-      "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "path": "/standards/building-trust",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Charitable Solicitations",
-      "imgUrl": "../../assets/images/charitable_solicitations.jpg",
-      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-      "path": "/leadership/charitable-solicitations",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "leadership"
-    },
-    {
-      "title": "Data Privacy & Security",
-      "imgUrl": "../../assets/images/data_privacy_security.jpg",
-      "description": "Aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
-      "path": "/standards/data-privacy-security",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Doing Business Globally",
-      "imgUrl": "../../assets/images/doing_business_globally.jpg",
-      "description": "Dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui.",
-      "path": "/standards/doing-business-globally",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Ensuring Positive Workplace",
-      "imgUrl": "../../assets/images/ensuring_positive_workplace.jpg",
-      "description": "Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.",
-      "path": "/leadership/ensuring-positive-workplace",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "leadership"
-    },
-    {
-      "title": "Environmental Compliance",
-      "imgUrl": "../../assets/images/environmental_compliance.jpg",
-      "description": "Voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil.",
-      "path": "/leadership/environmental-compliance",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "leadership"
-    },
-    {
-      "title": "Ethical Hiring",
-      "imgUrl": "../../assets/images/ethical_hiring.jpg",
-      "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "path": "https://www.eduployment.com/blog/what-is-ethical-hiring/",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "leadership"
-    },
-    {
-      "title": "Ethical Sales Practices",
-      "imgUrl": "../../assets/images/ethical_sales_practices.jpg",
-      "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
-      "path": "/leadership/ethical-sales-practices",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "leadership"
-    },
-    {
-      "title": "Fair Competition",
-      "imgUrl": "../../assets/images/fair_competition.jpg",
-      "description": "Laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.",
-      "path": "/standards/fair-competition",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Fair Housing",
-      "imgUrl": "../../assets/images/fair_housing.jpg",
-      "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.",
-      "path": "/standards/fair-housing",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "False Claims",
-      "imgUrl": "../../assets/images/false_claims.jpg",
-      "description": "Chart JS area chart showcasing how easy it is to import data via JSON. Easily change colors, X or Y axis options, labels. Fork and make it your own. Ut aut reiciendis voluptatibus maiores alias consequatur aut.",
-      "path": "https://www.urmc.rochester.edu/compliance-office/education-tools/false-claims-act-prevention.aspx",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "standards"
-    },
-    {
-      "title": "Foreign Corrupt Practices",
-      "imgUrl": "../../assets/images/foreign_corrupt_practices.jpg",
-      "description": "Accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.",
-      "path": "https://www.trade.gov/us-foreign-corrupt-practices-act",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "standards"
-    },
-    {
-      "title": "Gifts & Gratuities",
-      "imgUrl": "../../assets/images/gifts_and_gratuities.jpg",
-      "description": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam.",
-      "path": "https://www.lawinsider.com/dictionary/gifts-and-gratuities",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "standards"
-    },
-    {
-      "title": "Global Trade Controls",
-      "imgUrl": "../../assets/images/global_trade_controls.jpg",
-      "description": "Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis.",
-      "path": "https://www2.deloitte.com/us/en/pages/tax/articles/customs-and-global-trade-export-controls.html",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "standards"
-    },
-    {
-      "title": "Healthcare Compliance",
-      "imgUrl": "../../assets/images/healthcare_compliance.jpg",
-      "description": "Debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.",
-      "path": "https://www.hcca-info.org/",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "standards"
-    },
-    {
-      "title": "Information Security",
-      "imgUrl": "../../assets/images/information_security.jpg",
-      "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-      "path": "/standards/information-security",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Insider Trading",
-      "imgUrl": "../../assets/images/insider_trading.jpg",
-      "description": "Sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
-      "path": "/leadership/insider-trading",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "leadership"
-    },
-    {
-      "title": "Intellectual Property",
-      "imgUrl": "../../assets/images/intellectual_property.jpg",
-      "description": "Sonsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "path": "https://www.wipo.int/about-ip/en/",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "leadership"
-    },
-    {
-      "title": "Phishing",
-      "imgUrl": "../../assets/images/phishing.jpg",
-      "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.",
-      "path": "https://www.trendmicro.com/en_za/what-is/phishing/types-of-phishing.html",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "leadership"
-    },
-    {
-      "title": "Records Management",
-      "imgUrl": "../../assets/images/records_management.jpg",
-      "description": "Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
-      "path": "/leadership/records-management",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "leadership"
-    },
-    {
-      "title": "Regulatory Environment",
-      "imgUrl": "../../assets/images/regulatory_environment.jpg",
-      "description": "Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat duis aute irure dolor in reprehenderit.",
-      "path": "/security/regulatory-environment",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "security"
-    },
-    {
-      "title": "Risk",
-      "imgUrl": "../../assets/images/risk.jpg",
-      "description": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme.",
-      "path": "https://www.techtarget.com/searchcio/definition/compliance-risk",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "security"
-    },
-    {
-      "title": "Safety & Security",
-      "imgUrl": "../../assets/images/safety_security.jpg",
-      "description": "Anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique.",
-      "path": "/security/safety-security",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "security"
-    },
-    {
-      "title": "Unfair Labor Practices",
-      "imgUrl": "../../assets/images/unfair_labor_practices.jpg",
-      "description": "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans.",
-      "path": "/standards/unfair-labor-practices",
-      "altText": "Add your alt text here",
-      "stackblitz": false,
-      "internal": true,
-      "category": "standards"
-    },
-    {
-      "title": "Whistle Blowers",
-      "imgUrl": "../../assets/images/whistle_blowers.jpg",
-      "description": "De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites.",
-      "path": "https://www.whistleblowers.gov/",
-      "altText": "Add your alt text here",
-      "stackblitz": true,
-      "internal": null,
-      "category": "security"
-    }
-  ]
+  {
+    "title": "Accurate Book Records",
+    "imgUrl": "assets/images/accurate_books_records.jpg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "path": "/standards/accurate-book-records",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Building Trust",
+    "imgUrl": "assets/images/building_trust.jpg",
+    "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "path": "/standards/building-trust",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Charitable Solicitations",
+    "imgUrl": "assets/images/charitable_solicitations.jpg",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "path": "/leadership/charitable-solicitations",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "leadership"
+  },
+  {
+    "title": "Data Privacy & Security",
+    "imgUrl": "assets/images/data_privacy_security.jpg",
+    "description": "Aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+    "path": "/standards/data-privacy-security",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Doing Business Globally",
+    "imgUrl": "assets/images/doing_business_globally.jpg",
+    "description": "Dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui.",
+    "path": "/standards/doing-business-globally",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Ensuring Positive Workplace",
+    "imgUrl": "assets/images/ensuring_positive_workplace.jpg",
+    "description": "Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.",
+    "path": "/leadership/ensuring-positive-workplace",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "leadership"
+  },
+  {
+    "title": "Environmental Compliance",
+    "imgUrl": "assets/images/environmental_compliance.jpg",
+    "description": "Voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil.",
+    "path": "/leadership/environmental-compliance",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "leadership"
+  },
+  {
+    "title": "Ethical Hiring",
+    "imgUrl": "assets/images/ethical_hiring.jpg",
+    "description": "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "path": "https://www.eduployment.com/blog/what-is-ethical-hiring/",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "leadership"
+  },
+  {
+    "title": "Ethical Sales Practices",
+    "imgUrl": "assets/images/ethical_sales_practices.jpg",
+    "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
+    "path": "/leadership/ethical-sales-practices",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "leadership"
+  },
+  {
+    "title": "Fair Competition",
+    "imgUrl": "assets/images/fair_competition.jpg",
+    "description": "Laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.",
+    "path": "/standards/fair-competition",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Fair Housing",
+    "imgUrl": "assets/images/fair_housing.jpg",
+    "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.",
+    "path": "/standards/fair-housing",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "False Claims",
+    "imgUrl": "assets/images/false_claims.jpg",
+    "description": "Chart JS area chart showcasing how easy it is to import data via JSON. Easily change colors, X or Y axis options, labels. Fork and make it your own. Ut aut reiciendis voluptatibus maiores alias consequatur aut.",
+    "path": "https://www.urmc.rochester.edu/compliance-office/education-tools/false-claims-act-prevention.aspx",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "standards"
+  },
+  {
+    "title": "Foreign Corrupt Practices",
+    "imgUrl": "assets/images/foreign_corrupt_practices.jpg",
+    "description": "Accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.",
+    "path": "https://www.trade.gov/us-foreign-corrupt-practices-act",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "standards"
+  },
+  {
+    "title": "Gifts & Gratuities",
+    "imgUrl": "assets/images/gifts_and_gratuities.jpg",
+    "description": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam.",
+    "path": "https://www.lawinsider.com/dictionary/gifts-and-gratuities",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "standards"
+  },
+  {
+    "title": "Global Trade Controls",
+    "imgUrl": "assets/images/global_trade_controls.jpg",
+    "description": "Quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis.",
+    "path": "https://www2.deloitte.com/us/en/pages/tax/articles/customs-and-global-trade-export-controls.html",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "standards"
+  },
+  {
+    "title": "Healthcare Compliance",
+    "imgUrl": "assets/images/healthcare_compliance.jpg",
+    "description": "Debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.",
+    "path": "https://www.hcca-info.org/",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "standards"
+  },
+  {
+    "title": "Information Security",
+    "imgUrl": "assets/images/information_security.jpg",
+    "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+    "path": "/standards/information-security",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Insider Trading",
+    "imgUrl": "assets/images/insider_trading.jpg",
+    "description": "Sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
+    "path": "/leadership/insider-trading",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "leadership"
+  },
+  {
+    "title": "Intellectual Property",
+    "imgUrl": "assets/images/intellectual_property.jpg",
+    "description": "Sonsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "path": "https://www.wipo.int/about-ip/en/",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "leadership"
+  },
+  {
+    "title": "Phishing",
+    "imgUrl": "assets/images/phishing.jpg",
+    "description": "Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.",
+    "path": "https://www.trendmicro.com/en_za/what-is/phishing/types-of-phishing.html",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "leadership"
+  },
+  {
+    "title": "Records Management",
+    "imgUrl": "assets/images/records_management.jpg",
+    "description": "Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam.",
+    "path": "/leadership/records-management",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "leadership"
+  },
+  {
+    "title": "Regulatory Environment",
+    "imgUrl": "assets/images/regulatory_environment.jpg",
+    "description": "Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat duis aute irure dolor in reprehenderit.",
+    "path": "/security/regulatory-environment",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "security"
+  },
+  {
+    "title": "Risk",
+    "imgUrl": "assets/images/risk.jpg",
+    "description": "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme.",
+    "path": "https://www.techtarget.com/searchcio/definition/compliance-risk",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "security"
+  },
+  {
+    "title": "Safety & Security",
+    "imgUrl": "assets/images/safety_security.jpg",
+    "description": "Anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique.",
+    "path": "/security/safety-security",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "security"
+  },
+  {
+    "title": "Unfair Labor Practices",
+    "imgUrl": "assets/images/unfair_labor_practices.jpg",
+    "description": "Contrairement à une opinion répandue, le Lorem Ipsum n'est pas simplement du texte aléatoire. Il trouve ses racines dans une oeuvre de la littérature latine classique datant de 45 av. J.-C., le rendant vieux de 2000 ans.",
+    "path": "/standards/unfair-labor-practices",
+    "altText": "Add your alt text here",
+    "stackblitz": false,
+    "internal": true,
+    "category": "standards"
+  },
+  {
+    "title": "Whistle Blowers",
+    "imgUrl": "assets/images/whistle_blowers.jpg",
+    "description": "De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites.",
+    "path": "https://www.whistleblowers.gov/",
+    "altText": "Add your alt text here",
+    "stackblitz": true,
+    "internal": null,
+    "category": "security"
+  }
+]

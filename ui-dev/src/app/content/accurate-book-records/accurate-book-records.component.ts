@@ -8,7 +8,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class AccurateBookRecordsComponent {
-  imgUrl = '../../../assets/images/accurate_books_records.jpg';
+  imgUrl = 'assets/images/accurate_books_records.jpg';
   pageDataObject: PageDataObject = {
     title: 'Accurate Book Records',
     publishedOn: 'Oct 1, 2022',

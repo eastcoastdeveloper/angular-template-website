@@ -17,6 +17,10 @@
   }
 }
 
+.type-name {
+  text-transform: capitalize;
+}
+
 .item-count {
   font-size: 11px;
   display: inline-block;

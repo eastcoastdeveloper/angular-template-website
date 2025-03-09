@@ -8,7 +8,7 @@ import { ProjectListService } from 'src/app/services/project-list.service';
   template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
 })
 export class InformationSecurityComponent {
-  imgUrl = '../../../assets/images/information_security.jpg';
+  imgUrl = 'assets/images/information_security.jpg';
   pageDataObject: PageDataObject = {
     title: 'Information Security',
     publishedOn: 'Oct 1, 2022',
