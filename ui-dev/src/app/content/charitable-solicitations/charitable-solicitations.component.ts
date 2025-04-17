@@ -4,8 +4,9 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-charitable-solitications',
-  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
+    selector: 'app-charitable-solitications',
+    template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`,
+    standalone: false
 })
 export class CharitableSolicitations {
   imgUrl = 'assets/images/charitable_solicitations.jpg';

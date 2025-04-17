@@ -81,9 +81,12 @@
     color: $white;
     margin: 10px 0 0 20px;
     line-height: 35px;
-    > div {
+    > div,
+    a {
       outline: none;
       cursor: pointer;
+      color: white;
+      display: block;
 
       .mobile-item-count {
         font: normal 14px sans-serif;

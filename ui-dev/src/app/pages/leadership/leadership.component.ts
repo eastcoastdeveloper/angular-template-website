@@ -7,10 +7,11 @@ import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-leadership',
-  template: `<app-projects-list-content
+    selector: 'app-leadership',
+    template: `<app-projects-list-content
     [dataArray]="appsArray"
-  ></app-projects-list-content>`
+  ></app-projects-list-content>`,
+    standalone: false
 })
 export class LeadershipComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();

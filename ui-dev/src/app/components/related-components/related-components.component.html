@@ -1,4 +1,4 @@
-<div *ngIf="relatedItems[0].title" class="related-items">
+<div *ngIf="relatedItems && relatedItems[0].title" class="related-items">
   <div class="category-wrapper">
     <div
       *ngFor="let item of relatedItems | slice : 0 : 4"

@@ -1,31 +1,45 @@
 import { Component, AfterViewChecked, OnInit } from '@angular/core';
+// import L from 'leaflet';
 import { Subject, takeUntil } from 'rxjs';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
-import * as L from 'leaflet';
+import { icon, latLng, Map, MapOptions, Marker, tileLayer } from 'leaflet';
+declare let L;
 
 @Component({
   selector: 'app-right-column',
   templateUrl: './right-column.component.html',
-  styleUrls: ['./right-column.component.scss']
+  styleUrls: ['./right-column.component.scss'],
+  standalone: false
 })
 export class RightColumnComponent implements OnInit, AfterViewChecked {
+  map: Map;
+  mapOptions: MapOptions;
+
+  layers: L.Layer[] = [L.marker([36.114704, -115.201462])];
+
   private unsubscribe$ = new Subject<void>();
   threeColumnLayout?: boolean;
   cornerStone?: boolean;
   windowWidth?: number;
 
-  options = {
-    layers: [
-      // Add a base layer (e.g., OpenStreetMap)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution:
-          'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      })
-    ],
-    zoom: 13,
-    center: L.latLng(43.678418, -79.809007) // Set the initial center of the map
-  };
+  private initializeMapOptions() {
+    this.mapOptions = {
+      center: latLng(36.114704, -115.201462),
+      zoom: 6,
+      layers: [
+        tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: 'Map data © OpenStreetMap contributors'
+        })
+      ]
+    };
+  }
+
+  onMapReady(map: Map) {
+    this.map = map;
+    // this.setMarker(this.weatherData);
+    // map.panTo(new L.LatLng(this.latitude, this.longitude));
+  }
 
   socials: { name: string; link: string; altText: string; src: string }[] = [
     {
@@ -69,7 +83,7 @@ export class RightColumnComponent implements OnInit, AfterViewChecked {
   constructor(private _globalFeatures: GlobalFeaturesService) {}
 
   ngOnInit(): void {
-    // this.initializeMapOptions();
+    this.initializeMapOptions();
   }
 
   ngAfterViewChecked(): void {

@@ -23,7 +23,8 @@ import { CategoryInterface } from './interfaces/categories.interface';
   styleUrls: ['./app.component.scss'],
   host: {
     '(window:resize)': 'onWindowResize($event)'
-  }
+  },
+  standalone: false
 })
 export class AppComponent
   implements OnInit, AfterViewInit, AfterContentChecked, OnDestroy
@@ -55,6 +56,10 @@ export class AppComponent
     private _router: Router,
     @Inject(DOCUMENT) private document: Document
   ) {}
+
+  // @HostListener('window:beforeunload') goToPage() {
+  //   this._router.navigate(['/']);
+  // }
 
   ngOnInit(): void {
     this._configService.categoryConfig$

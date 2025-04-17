@@ -11,11 +11,13 @@ import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 import { ProjectsListInterface } from '../../interfaces/projects-list.interface';
+import { SideBarService } from 'src/app/services/sidebar-service';
 
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
-  styleUrls: ['./projects-list.component.scss']
+  styleUrls: ['./projects-list.component.scss'],
+  standalone: false
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
   @ViewChild('leftColumn', { static: false }) leftColumn: ElementRef;
@@ -31,11 +33,13 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
   categoryType: string = 'all';
   windowWidth: number;
   pageQuery: number;
+  sidebarStatus: boolean;
 
   constructor(
     private _projectListService: ProjectListService,
     private _globalFeatures: GlobalFeaturesService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _sideBarService: SideBarService
   ) {
     this._projectListService.changePageDataObject(this.pageDataObject);
   }
@@ -58,6 +62,12 @@ export class ProjectsListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((val) => {
         this.projectsArray = val;
+      });
+
+    this._sideBarService.currentVal$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((currentVal) => {
+        this.sidebarStatus = currentVal;
       });
   }
 

@@ -5,9 +5,10 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
-  selector: 'app-post-details',
-  styleUrls: ['./post-details.component.scss'],
-  templateUrl: './post-details.component.html'
+    selector: 'app-post-details',
+    styleUrls: ['./post-details.component.scss'],
+    templateUrl: './post-details.component.html',
+    standalone: false
 })
 export class PostDetailsComponent implements OnInit, OnDestroy {
   projectListArray: ProjectsListInterface[] = [];

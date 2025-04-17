@@ -4,8 +4,9 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-building-trust',
-  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
+    selector: 'app-building-trust',
+    template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`,
+    standalone: false
 })
 export class DynamicSidebarComponent {
   imgUrl = 'assets/images/building_trust.jpg';

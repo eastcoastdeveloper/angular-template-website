@@ -106,38 +106,42 @@ export class ProjectListService implements OnDestroy {
   // USE THIS INSTEAD OF getAllProjects
   // THIS SUBSTITUES THE API. RUN ng serve INSTEAD OF npm run dev
   getLocalProjects(type: string, pageNum: number, pageLimit: number) {
-    this._http.get('assets/projects.json').subscribe((data) => {
-      const results: any = {};
-      let filtered: any = [];
-      const cat = type;
-      const page = pageNum;
-      const limit = pageLimit;
-      const startIndex = (page - 1) * limit;
-      const endIndex = page * limit;
-      if (type === 'all') {
-        filtered = data;
-      } else {
-        const obj = Object.values(data);
-        for (var i = 0; i < obj.length; i++) {
-          if (obj[i].category === type) {
-            filtered.push(obj[i]);
+    this._http
+      .get(
+        'https://json-powered-website.frontenddevelopment.tech/assets/projects.json'
+      )
+      .subscribe((data) => {
+        const results: any = {};
+        let filtered: any = [];
+        const cat = type;
+        const page = pageNum;
+        const limit = pageLimit;
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+        if (type === 'all') {
+          filtered = data;
+        } else {
+          const obj = Object.values(data);
+          for (var i = 0; i < obj.length; i++) {
+            if (obj[i].category === type) {
+              filtered.push(obj[i]);
+            }
           }
         }
-      }
 
-      results[type] = filtered.slice(startIndex, endIndex);
-      results.totals = {
-        all: Object.values(data).length,
-        leadership: this.categoryAmnt(data, 'leadership'),
-        standards: this.categoryAmnt(data, 'standards'),
-        security: this.categoryAmnt(data, 'security')
-      };
+        results[type] = filtered.slice(startIndex, endIndex);
+        results.totals = {
+          all: Object.values(data).length,
+          leadership: this.categoryAmnt(data, 'leadership'),
+          standards: this.categoryAmnt(data, 'standards'),
+          security: this.categoryAmnt(data, 'security')
+        };
 
-      this.totalPages = Math.ceil(results['totals'][type] / 10);
-      this.totalItems$.next(this.totalPages);
-      this.allProjects$.next(results[type]);
-      this.navigateToRoute(pageNum);
-    });
+        this.totalPages = Math.ceil(results['totals'][type] / 10);
+        this.totalItems$.next(this.totalPages);
+        this.allProjects$.next(results[type]);
+        this.navigateToRoute(pageNum);
+      });
   }
 
   // CATEGORY COUNT FOR LOCAL JSON
@@ -153,7 +157,6 @@ export class ProjectListService implements OnDestroy {
     const httpOptions = {
       headers: new HttpHeaders()
     };
-    console.log('New Data Fetched');
     // Only Call if Not Cached
     return this._http
       .get<HttpResponse<ProjectsListInterface>>(

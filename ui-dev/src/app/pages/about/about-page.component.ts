@@ -4,9 +4,10 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-about-page',
-  templateUrl: './about-page.component.html',
-  styleUrls: ['./about-page.component.scss']
+    selector: 'app-about-page',
+    templateUrl: './about-page.component.html',
+    styleUrls: ['./about-page.component.scss'],
+    standalone: false
 })
 export class AboutPageComponent {
   pageDataObject: PageDataObject = {

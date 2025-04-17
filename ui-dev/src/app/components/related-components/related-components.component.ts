@@ -9,7 +9,8 @@ import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
   selector: 'app-related-components',
-  templateUrl: './related-components.component.html'
+  templateUrl: './related-components.component.html',
+  standalone: false
 })
 export class RelatedComponentsComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();
@@ -34,7 +35,6 @@ export class RelatedComponentsComponent implements OnDestroy {
   }
 
   ngOnInit() {
-    // console.log(data as ProjectsListInterface[]);
     this._projectListService.pageDataObject$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((value) => {
@@ -43,7 +43,9 @@ export class RelatedComponentsComponent implements OnDestroy {
     // this.isCategoryCached(this.type);
     // this.relatedItems = this.scrambleContents(data as ProjectsListInterface[]);
     this._http
-      .get<ProjectsListInterface[]>('assets/projects.json')
+      .get<ProjectsListInterface[]>(
+        'https://json-powered-website.frontenddevelopment.tech/assets/projects.json'
+      )
       .pipe(take(1))
       .subscribe({
         next: (val) => {

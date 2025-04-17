@@ -10,10 +10,12 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectsListInterface } from 'src/app/interfaces/projects-list.interface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { SideBarService } from 'src/app/services/sidebar-service';
 
 @Component({
   selector: 'compliance-library-wrapper',
-  templateUrl: './library.component.html'
+  templateUrl: './library.component.html',
+  standalone: false
 })
 export class LibraryComponent implements OnInit, AfterViewChecked, OnDestroy {
   private unsubscribe$ = new Subject<void>();

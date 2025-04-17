@@ -4,8 +4,9 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-fair-housing',
-  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
+    selector: 'app-fair-housing',
+    template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`,
+    standalone: false
 })
 export class FairHousingComponent {
   imgUrl = 'assets/images/fair_competition.jpg';

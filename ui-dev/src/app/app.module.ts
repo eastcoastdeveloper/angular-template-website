@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule, inject, provideAppInitializer } from '@angular/core';
 import { BrowserModule, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,12 +43,10 @@ export function appConfigInit(appConfigService: ConfigService) {
       useClass: LoadingInterceptor,
       multi: true
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appConfigInit,
-      multi: true,
-      deps: [ConfigService]
-    },
+    provideAppInitializer(() => {
+      const initializerFn = appConfigInit(inject(ConfigService));
+      return initializerFn();
+    }),
     provideHttpClient(withInterceptorsFromDi())
   ]
 })

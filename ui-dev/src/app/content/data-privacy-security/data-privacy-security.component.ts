@@ -4,8 +4,9 @@ import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { GlobalFeaturesService } from 'src/app/services/global-features.service';
 
 @Component({
-  selector: 'app-data-privacy-security',
-  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
+    selector: 'app-data-privacy-security',
+    template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`,
+    standalone: false
 })
 export class DataPrivacySecurityComponent {
   imgUrl = 'assets/images/data_privacy_security.jpg';

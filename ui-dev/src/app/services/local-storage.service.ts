@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as CryptoJS from 'crypto-js';
+import CryptoJS from 'crypto-js';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { LocalStorageInterface } from '../interfaces/localStorage.interface';
 import { ConfigService } from './config.service';

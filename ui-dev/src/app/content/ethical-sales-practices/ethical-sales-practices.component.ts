@@ -4,8 +4,9 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-ethical-sales-practices',
-  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
+    selector: 'app-ethical-sales-practices',
+    template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`,
+    standalone: false
 })
 export class EthicalSalePracticesComponent {
   imgUrl = 'assets/images/ethical_sales_practices.jpg';

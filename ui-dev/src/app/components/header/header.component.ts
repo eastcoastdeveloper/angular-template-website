@@ -1,4 +1,12 @@
-import { Component, Inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import { GlobalFeaturesService } from '../../services/global-features.service';
 import { SideBarService } from '../../services/sidebar-service';
 import { Subject, takeUntil } from 'rxjs';
@@ -7,15 +15,20 @@ import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-header',
   styleUrls: ['./header.component.scss'],
-  templateUrl: './header.component.html'
+  templateUrl: './header.component.html',
+  standalone: false
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   unsubscribe$ = new Subject<void>();
-  menuOpen: boolean = false;
   sidebarStatus!: boolean;
   currentUrl!: string;
   screenSize!: number;
   currentFilter: any;
+
+  menuOpen?: boolean = false;
+  @ViewChild('listElem') listElem: ElementRef;
+  listElems: string[] = ['Web Development Unlimited', 'NASA App', 'IMDB'];
+  selectedValue: string = 'Projects';
 
   constructor(
     private _globalFeatures: GlobalFeaturesService,
@@ -47,6 +60,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this._renderer.removeAttribute(this.document.body, 'class');
     }
     this._sideBarService.changeValue(this.sidebarStatus);
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    this.listElem.nativeElement.classList.toggle('show-menu');
+  }
+
+  clickHandler(item: string) {
+    this.selectedValue = item;
+    this.toggleMenu();
   }
 
   ngOnDestroy(): void {

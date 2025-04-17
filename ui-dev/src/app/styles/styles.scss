@@ -115,7 +115,7 @@ h5 {
 
 .is-active {
   background-color: $greyBlack !important;
-  color: $yellowGold !important;
+  color: white !important;
 
   .item-count {
     background-color: $white !important;
@@ -133,6 +133,10 @@ h5 {
 
 .project-list {
   margin-left: 15px;
+}
+
+.leaflet-bottom.leaflet-right {
+  display: none;
 }
 
 .standard-btn {
@@ -757,7 +761,7 @@ h5 {
 /* ############################ */
 /*             605              */
 /* ############################ */
-@media only screen and (max-width: 605px) {
+@media only screen and (max-width: 850px) {
   .show-mobile-nav {
     left: 0 !important;
   }

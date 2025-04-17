@@ -7,10 +7,11 @@ import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-security',
-  template: `<app-projects-list-content
+    selector: 'app-security',
+    template: `<app-projects-list-content
     [dataArray]="developmentArray"
-  ></app-projects-list-content>`
+  ></app-projects-list-content>`,
+    standalone: false
 })
 export class SecurityComponent implements OnDestroy {
   private unsubscribe$ = new Subject<void>();

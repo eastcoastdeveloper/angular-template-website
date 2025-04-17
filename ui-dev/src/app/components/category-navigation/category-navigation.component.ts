@@ -11,9 +11,10 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-category-navigation',
-  templateUrl: './category-navigation.component.html',
-  styleUrls: ['./category-navigation.component.scss']
+    selector: 'app-category-navigation',
+    templateUrl: './category-navigation.component.html',
+    styleUrls: ['./category-navigation.component.scss'],
+    standalone: false
 })
 export class CategoryNavigationComponent implements OnInit, OnDestroy {
   dataArray: ProjectsListInterface[] = [];

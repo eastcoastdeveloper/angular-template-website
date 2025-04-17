@@ -1,7 +1,7 @@
 <div class="page-content">
   <div class="details">
     <app-back-button></app-back-button>
-    <h1 id="project-list-title" class="page-title">Compliance Library</h1>
+    <h1 id="project-list-title" class="page-title">Courses</h1>
     <app-category-navigation
       *ngIf="windowWidth > 605"
       [categoryType]="'all'"
@@ -15,7 +15,7 @@
       <app-pagination [categoryProp]="categoryType"></app-pagination>
     </div>
 
-    <div class="right-column">
+    <div *ngIf="!sidebarStatus" class="right-column">
       <app-right-column></app-right-column>
     </div>
   </main>

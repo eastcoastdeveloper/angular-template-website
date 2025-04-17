@@ -5,7 +5,7 @@
 >
   <span>Please use internal back button.</span>
 </div>
-<div id="angular-spa">
+<div>
   <div #headerComponent id="header">
     <app-header></app-header>
   </div>
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div
-    *ngIf="600 > width"
+    *ngIf="850 > width"
     id="mobile-menu"
     [ngClass]="{ 'show-mobile-nav': sidebarStatus }"
   >
@@ -56,6 +56,11 @@
 
       <!-- <div routerLink="front-end-dev-resume">Experience</div> -->
       <div routerLink="about-us">About</div>
+      <a href="https://frontenddevelopment.tech/">Web Development Unlimited</a>
+      <a href="https://services.frontenddevelopment.tech/nasa-photo-of-the-day"
+        >NASA App</a
+      >
+      <a href="https://services.frontenddevelopment.tech/omdb-app">IMDB App</a>
     </nav>
   </div>
 </div>

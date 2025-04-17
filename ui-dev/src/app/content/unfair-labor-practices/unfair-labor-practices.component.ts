@@ -3,8 +3,9 @@ import { PageDataObject } from 'src/app/interfaces/pageDataInterface';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-unfair-labor-practices',
-  template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`
+    selector: 'app-unfair-labor-practices',
+    template: `<app-page-content [imgPlaceholder]="imgUrl"></app-page-content>`,
+    standalone: false
 })
 export class UnfairLaborPracticesComponent {
   imgUrl = 'assets/images/unfair_labor_practices.jpg';

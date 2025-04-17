@@ -9,7 +9,7 @@
     transform: translateY(-50%);
     top: 50%;
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(5, auto);
     font: normal 14px sans-serif;
     grid-column-gap: 20px;
     margin-right: 20px;
@@ -17,7 +17,7 @@
       cursor: pointer;
       outline: none;
 
-      span {
+      > span {
         position: relative;
         top: 50%;
         transform: translateY(-50%);

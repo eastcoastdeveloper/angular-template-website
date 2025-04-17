@@ -4,7 +4,6 @@ import { RedirectGuard } from './guards/redirect.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'compliance-library', pathMatch: 'full' },
-  { path: '404', redirectTo: 'compliance-library', pathMatch: 'full' },
   {
     path: 'leadership',
     loadChildren: () =>

@@ -3,9 +3,10 @@ import { GlobalFeaturesService } from 'src/app/services/global-features.service'
 import { ProjectsListInterface } from '../../interfaces/projects-list.interface';
 
 @Component({
-  selector: 'app-projects-list-content',
-  templateUrl: './projects-list-content.component.html',
-  styleUrls: ['../../styles/_cornerstone.scss']
+    selector: 'app-projects-list-content',
+    templateUrl: './projects-list-content.component.html',
+    styleUrls: ['../../styles/_cornerstone.scss'],
+    standalone: false
 })
 export class ProjectsListContentComponent {
   @Input() dataArray: ProjectsListInterface[] = [];

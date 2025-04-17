@@ -7,11 +7,12 @@ import { ConfigService } from 'src/app/services/config.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 
 @Component({
-  selector: 'app-standards',
-  template: `<app-projects-list-content
+    selector: 'app-standards',
+    template: `<app-projects-list-content
       [dataArray]="cmpsArray"
     ></app-projects-list-content>
-    <app-pagination [categoryProp]="categoryType"></app-pagination>`
+    <app-pagination [categoryProp]="categoryType"></app-pagination>`,
+    standalone: false
 })
 export class StandardsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
